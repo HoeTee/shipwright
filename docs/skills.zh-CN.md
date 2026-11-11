@@ -2,7 +2,7 @@
 
 [English](skills.md) · [日本語](skills.ja.md) · [한국어](skills.ko.md)
 
-[README](README.zh-CN.md) 展示主路径上的八个 skill。
+[README](README.zh-CN.md) 展示八个核心 skill。
 本页列出全部 48 个 skill。
 每一行是一件事。
 

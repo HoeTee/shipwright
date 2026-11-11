@@ -2,7 +2,7 @@
 
 [中文](skills.zh-CN.md) · [日本語](skills.ja.md) · [한국어](skills.ko.md)
 
-The [README](../README.md) shows the eight skills on the main path.
+The [README](../README.md) shows the eight core skills.
 This page lists all 48 skills.
 Each line is one job.
 

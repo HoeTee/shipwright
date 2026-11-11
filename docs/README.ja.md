@@ -12,7 +12,7 @@ Codex、Claude Code、OpenCode 向けのプラグイン
 [![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](../references/platforms.md)
 [![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](../LICENSE)
 
-[導入](#インストールして試す) · [流れ](#作業の流れ) · [Skill](#中心の-skill) · [例](#例) · [質問](#よくある質問) · [案内](#リポジトリ案内)
+[導入](#インストールして試す) · [流れ](#作業の流れ) · [コア skill](#コア-skill) · [例](#例) · [質問](#よくある質問)
 
 </div>
 
@@ -113,9 +113,9 @@ Shipwright は、1 つのコーディング作業のための skill 集である
 小さく明確な変更は [shipwright-build](../skills/shipwright-build/SKILL.md) から始めてよい。
 監査は、計画を頼むまで監査のままである。
 
-## 中心の skill
+## コア skill
 
-この 8 つの skill が主な経路である。
+これらはコア skill である。
 
 | Skill | 何をする |
 | --- | --- |
@@ -190,42 +190,17 @@ Skill の手順は中国語である。
 
 </details>
 
-## リポジトリ案内
-
-| パス | 内容 |
-| --- | --- |
-| [skills/](../skills/) | Skill ごとに 1 つのディレクトリがある。各 skill は `SKILL.md` を持つ。 |
-| [skills.ja.md](skills.ja.md) | 48 個すべての一覧。 |
-| [references/](../references/) | 範囲、指摘、証拠、プラットフォームの共通規則。 |
-| [references/principles/](../references/principles/) | 共通の設計原則。 |
-| [showcase/shipwright-workflow.html](showcase/shipwright-workflow.html) | 作業の流れの HTML ガイド。 |
-| [scripts/render_html.mjs](../scripts/render_html.mjs) | HTML レポートを描画する。Node.js 20 以降が必要である。 |
-| [.claude-plugin/](../.claude-plugin/) | Claude Code の marketplace とプラグイン定義。 |
-| [.codex-plugin/](../.codex-plugin/) | Codex のプラグイン定義。 |
-| [CONTRIBUTING-skills.md](../CONTRIBUTING-skills.md) | Skill を変更するときの規則。 |
-
 ## 考え方
 
-変更は小さく、かつ完全にする。
-頼まれた仕事をする。呼び出し元と確認も含む。
-誰も頼んでいない仕事を足さない。
-この規則は [Ponytail](https://github.com/DietrichGebert/ponytail) から来ている。
+変更は小さく完全にし、頼まれていない仕事は足さない。
 
-計画は `plans/` の記録である。
-ノート、コマンド、実行記録、証拠を持つ。
-この規則は [improve](https://github.com/shadcn/improve) から来ている。
+`plans/` の計画は、ノート、コマンド、実行記録、証拠を持つ。
 
-変更は実製品の上で証明する。
-保存済みのスクリーンショットは証拠ではない。
-この規則は [pstack](https://github.com/cursor/plugins/tree/main/pstack) から来ている。
+変更は実製品で証明し、保存済みのスクリーンショットは証拠ではない。
 
-AI レビューには上限がある。マージは人が決める。
-既定の上限は 3 で、定義するのは [shipwright-fix](../skills/shipwright-fix/SKILL.md) だけである。
-回数は pull request を開いたときに始まる。
-この規則は [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) から来ている。
+AI レビューの既定上限は 3 で、マージは人が決める。
 
-重い道具は、頼むまでオフのままである。
-その道具は swarm、arena、autopilot、複数 PR の計画である。
+swarm、arena、autopilot、複数 PR の計画は、頼むまでオフである。
 
 ## 出典と比較
 
@@ -249,5 +224,4 @@ Skill を編集する前に [CONTRIBUTING-skills.md](../CONTRIBUTING-skills.md) 
 
 ## ライセンス
 
-[MIT](../LICENSE)。
-翻案したファイルは、それぞれの表記を残す。
+MIT © HoeTee/shipwright

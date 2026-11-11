@@ -2,7 +2,7 @@
 
 [English](skills.md) · [中文](skills.zh-CN.md) · [한국어](skills.ko.md)
 
-[README](README.ja.md) は、主な経路の 8 つの skill を示す。
+[README](README.ja.md) は 8 つのコア skill を示す。
 このページは 48 個すべてを書く。
 各行は 1 つの仕事である。
 
