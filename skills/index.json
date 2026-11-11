@@ -30,9 +30,11 @@
     },
     {
       "name": "shipwright-bugs",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/bug-and-scale.md",
+        "references/correctness.md"
       ]
     },
     {
@@ -58,9 +60,11 @@
     },
     {
       "name": "shipwright-debt",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/ledger.md",
+        "scripts/scan_shortcuts.py"
       ]
     },
     {
@@ -135,16 +139,24 @@
     },
     {
       "name": "shipwright-lean",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/lean-checks.md",
+        "references/smallest-change.md"
       ]
     },
     {
       "name": "shipwright-perf",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/benchmark-checklist.md",
+        "references/hillclimb.md",
+        "references/mantras.md",
+        "references/performance-checks.md",
+        "scripts/decision_log.py",
+        "scripts/summarize_runs.py"
       ]
     },
     {
@@ -158,9 +170,12 @@
     },
     {
       "name": "shipwright-prevent",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/correct.md",
+        "references/repeated-class.md",
+        "scripts/check_rule_table.py"
       ]
     },
     {
@@ -214,9 +229,15 @@
     },
     {
       "name": "shipwright-reflect",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/divergent-reviewer.md",
+        "references/judgment-reviewer.md",
+        "references/procedure.md",
+        "references/synthesizer.md",
+        "references/tooling-reviewer.md",
+        "scripts/find_transcript.py"
       ]
     },
     {
@@ -242,9 +263,12 @@
     },
     {
       "name": "shipwright-security",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/risk.md",
+        "references/security-checks.md",
+        "scripts/filter_advisories.py"
       ]
     },
     {
@@ -277,9 +301,11 @@
     },
     {
       "name": "shipwright-structure",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/design-red-flags.md",
+        "references/tech-debt.md"
       ]
     },
     {
