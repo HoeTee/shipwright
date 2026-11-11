@@ -123,9 +123,21 @@
     },
     {
       "name": "shipwright-eval",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/blinding.md",
+        "references/iterate.md",
+        "references/numbers.md",
+        "references/question-bank.md",
+        "scripts/export_workspace.py",
+        "scripts/mine_questions.py",
+        "scripts/render_report.py",
+        "scripts/selftest.py",
+        "scripts/stats.py",
+        "scripts/test_export_and_report.py",
+        "scripts/test_mine_questions.py",
+        "scripts/test_stats.py"
       ]
     },
     {
@@ -254,16 +266,69 @@
     },
     {
       "name": "shipwright-prove-create",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/procedure.md",
+        "references/render.md",
+        "references/statechart.md",
+        "scripts/statechart/backends/cfg.ts",
+        "scripts/statechart/backends/mermaid.ts",
+        "scripts/statechart/backends/plain-text.ts",
+        "scripts/statechart/backends/report.ts",
+        "scripts/statechart/frontends/config.ts",
+        "scripts/statechart/frontends/dot.ts",
+        "scripts/statechart/frontends/marks.ts",
+        "scripts/statechart/frontends/messages.ts",
+        "scripts/statechart/frontends/spec.ts",
+        "scripts/statechart/frontends/trace.ts",
+        "scripts/statechart/frontends/value.ts",
+        "scripts/statechart/frontends/verdict.ts",
+        "scripts/statechart/frontends/view.ts",
+        "scripts/statechart/ir.ts",
+        "scripts/statechart/package.json",
+        "scripts/statechart/passes/annotate.ts",
+        "scripts/statechart/passes/label.ts",
+        "scripts/statechart/passes/lift.ts",
+        "scripts/statechart/passes/loop-check.ts",
+        "scripts/statechart/passes/paths.ts",
+        "scripts/statechart/passes/reach.ts",
+        "scripts/statechart/passes/region-check.ts",
+        "scripts/statechart/passes/regions.ts",
+        "scripts/statechart/pipeline.ts",
+        "scripts/statechart/run.ts",
+        "scripts/statechart/statechart",
+        "scripts/statechart/statechart.ts",
+        "scripts/statechart/test/ConfigOracle.java",
+        "scripts/statechart/test/chart.test.ts",
+        "scripts/statechart/test/charts/Braces.mmd",
+        "scripts/statechart/test/charts/Escapes.mmd",
+        "scripts/statechart/test/charts/Phases.mmd",
+        "scripts/statechart/test/cli.test.ts",
+        "scripts/statechart/test/config-fuzz.test.ts",
+        "scripts/statechart/test/corpus.test.ts",
+        "scripts/statechart/test/differential.test.ts",
+        "scripts/statechart/test/grid/Grid.cfg",
+        "scripts/statechart/test/grid/Grid.tla",
+        "scripts/statechart/test/grid/sany.out",
+        "scripts/statechart/test/java.ts",
+        "scripts/statechart/test/labels.ts",
+        "scripts/statechart/test/messages.test.ts",
+        "scripts/statechart/test/pipeline.test.ts",
+        "scripts/statechart/test/plain-tlc.test.ts",
+        "scripts/statechart/test/render.test.ts",
+        "scripts/statechart/test/tlc-out.test.ts",
+        "scripts/statechart/test/tlc.ts",
+        "scripts/statechart/tsconfig.json",
+        "scripts/statechart/worker.ts"
       ]
     },
     {
       "name": "shipwright-prove-maintain",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/procedure.md"
       ]
     },
     {
@@ -442,9 +507,14 @@
     },
     {
       "name": "shipwright-test",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/coverage.md",
+        "references/evidence.md",
+        "references/layers.md",
+        "references/tdd.md",
+        "references/visual.md"
       ]
     },
     {
@@ -456,16 +526,23 @@
     },
     {
       "name": "shipwright-verify-create",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/feature-map-example/README.md",
+        "references/feature-map-example/create-note.md",
+        "references/feature-map-example/search.md",
+        "references/lifecycle.md",
+        "references/procedure.md"
       ]
     },
     {
       "name": "shipwright-verify-maintain",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/lifecycle.md",
+        "references/procedure.md"
       ]
     },
     {
