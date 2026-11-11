@@ -34,7 +34,7 @@ references/cleanup/worktree-audit.sh [-b <pr-base-ref>] [repo-path]
 
 任务进行中，验证用的清理只删这次拉起的实例和草稿。按进程名乱杀不行。删完要确认证据还在。规则在 [Evidence retention](../../references/cleanup/evidence-retention.md)。
 
-任务结束是 PR 合并，或任务关闭。那时删除整个 `/tmp/shipwright-<计划编号>/`，以及评测的 `/tmp/shipwright-eval-<计划编号>/`。
+任务结束是 PR 合并，或任务关闭。那时删除整个 `/tmp/shipwright-<plan-id>/`，以及评测的 `/tmp/shipwright-eval-<plan-id>/`。
 
 不删 PR 附件，不删没有 PR 时放在 `.shipwright/evidence/` 里的关键截图，不删 `plans/` 和已经内嵌了截图的 HTML 结果页。
 

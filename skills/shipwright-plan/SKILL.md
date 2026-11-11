@@ -13,7 +13,7 @@ description: "写 plans/NNN 计划并维护索引；临时 PR 审查也开一个
 ## Steps
 
 1. 记下 `git rev-parse --short HEAD`。摘录必须来自你自己打开的代码，不来自工人的报告。编号只增不减。已有索引就接着编，不重复，不把已否决的发现再写成计划。
-2. 选定要写的条目。审计没选定时不要写 30 份。无人可选时，写收益最高的 3 到 5 条，并在索引里记下这个默认。`plan <描述>` 跳过审计，先从仓库消除歧义，剩下的一次只问一个问题，并给出推荐答案。
+2. 选定要写的条目。审计没选定时不要写 30 份。无人可选时，写收益最高的 3 到 5 条，并在索引里记下这个默认。`plan <description>` 跳过审计，先从仓库消除歧义，剩下的一次只问一个问题，并给出推荐答案。
 3. 每一份计划按 [template.md](references/template.md) 写，文件名 `plans/<NNN>-<slug>.md`。索引按 [index.md](references/index.md) 写成 `plans/README.md`。写给一个没见过这次对话的执行者。自包含、每步有命令和期望结果、写明停止条件。细则在 [writing-rules.md](references/writing-rules.md)。一份真实样例在 [example.md](references/example.md)，那是历史样本，不要执行它。
 4. `Domains` 写 `bugs`、`security`、`test`、`structure`、`perf`、`lean` 里的一个或多个。临时 PR 审查的 Category 写 `review`，同样登记进索引。Run record 和证据附录从模板抄，不另建记录文件。证据附录记分支、SHA 和链接，截图不进 git。
 5. 审一份已有计划用 `review-plan`。对照模板收紧。如果这份计划是本会话写的，再派一个没有这份对话的执行者冷读，报告含糊处。

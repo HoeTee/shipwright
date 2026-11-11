@@ -21,7 +21,7 @@ Codex 用 subagent 或云端代理，Claude Code 用 Agent 工具，OpenCode 用
 
 ## Stop
 
-证据目录用 `/tmp/shipwright-<计划编号>/<commit 前 7 位>/worker-<n>/`。不把对手的复现改合并进产品分支。
+证据目录用 `/tmp/shipwright-<plan-id>/<short-sha>/worker-<n>/`。不把对手的复现改合并进产品分支。
 
 ## Handoff
 
