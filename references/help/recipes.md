@@ -19,7 +19,7 @@ Swap in the real paths and the done checks. Informal wording works. Send the shi
 | /show-me-your-work | shipwright-trail |
 | /ketchup | shipwright-recap, catch-up |
 | /reflect | shipwright-reflect |
-| /bro | shipwright-recap, plain restatement. The bro skill body was not in the source archive. |
+| /bro | shipwright-recap, plain restatement of the last message |
 | /loop | shipwright-autopilot |
 | full autopilot / don't merge | shipwright-autopilot. It never merges. |
 

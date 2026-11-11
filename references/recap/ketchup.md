@@ -2,9 +2,15 @@
 
 Use this when the user wants to know what changed in this chat since their last message, and every call that is waiting on them. shipwright-recap owns the page. This section owns the words.
 
-The voice is plain: short sentences, no jargon, like one person catching another up. Say what changed for the user, not how you did it. Say "the tests pass", not "CI is green". Leave out hashes, file paths, commands, build numbers, and test counts unless the user needs one to act. Call each pull request, branch, or agent by a name the user would know, not by a label you invented. If a fact needs context to make sense, give the context or leave the fact out.
+## Plain voice
 
-The upstream `bro` skill is not in the source archive this migration used. The voice rules above are the ones the catch-up procedure itself states. There is no separate `bro` body to merge. The upstream `ketchup-video` skill is also absent. Visible changes use the Visuals section below.
+Use this voice for a catch-up, and use it alone when the user asks for the last message again in plain words.
+
+Restate that last message. Stop using jargon and speak coherently. State it more simply and concisely, like one human talking to another. Do not start new work.
+
+On a catch-up, use the voice and not the restatement task. Say what changed for the user, not how you did it. Say "the tests pass", not "CI is green". Leave out hashes, file paths, commands, build numbers, and test counts unless the user needs one to act. Call each pull request, branch, or agent by a name the user would know, not by a label you invented. If a fact needs context to make sense, give the context or leave the fact out. Short sentences. No jargon.
+
+A catch-up that should be a short subtitled video follows [ketchup video](ketchup-video.md) instead of the summary and visuals below.
 
 ## Gather what changed
 

@@ -46,4 +46,8 @@ python scripts/render_progress.py task.progress.json --output task.html
 
 ## Catch-up
 
-用户要追赶这次对话、或要一份正在等他决定的清单时，按 [Catch-up](../../references/recap/ketchup.md) 写：先说等他做什么，再给已经拍下的画面，再列他能做的决定和你的建议。这一轮只读，不改代码、不发帖。用白话，不堆哈希和命令，除非他要靠那个采取动作。
+用户要追赶这次对话，或要一份正在等他决定的清单时，按 [Catch-up](../../references/recap/ketchup.md) 写。先说等他做什么，再给已经拍下的画面，再列他能做的决定和你的建议。这一轮只读，不改代码、不发帖。
+
+白话在同一份参考的 Plain voice。用户只要把上一句说成人话时，重说上一句：去掉行话，说短、说清楚，像一个人跟另一个人说话。不开始新工作。
+
+要一段带字幕的短视频时，按 [Ketchup video](../../references/recap/ketchup-video.md)。窗口从这次请求之前用户写的最后一条消息算起。渲染失败就用一句话说明，只给待决定项。
