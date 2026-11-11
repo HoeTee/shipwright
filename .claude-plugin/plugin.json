@@ -1,0 +1,13 @@
+{
+  "name": "shipwright",
+  "version": "0.1.0",
+  "description": "Full-lifecycle coding skills for understanding, planning, building, review, verification, and a human merge decision.",
+  "author": {
+    "name": "Hoe Tee",
+    "url": "https://github.com/HoeTee"
+  },
+  "homepage": "https://github.com/HoeTee/shipwright",
+  "repository": "https://github.com/HoeTee/shipwright",
+  "license": "MIT",
+  "keywords": ["lifecycle", "code-review", "planning", "verification", "agents"]
+}

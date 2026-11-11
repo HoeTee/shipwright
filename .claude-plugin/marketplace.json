@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "shipwright",
+  "description": "Full-lifecycle coding skills. Stage process and domain knowledge stay in separate skills.",
+  "owner": {
+    "name": "Hoe Tee",
+    "url": "https://github.com/HoeTee"
+  },
+  "plugins": [
+    {
+      "name": "shipwright",
+      "description": "Stage-by-domain skills from understanding a change through a human merge decision.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
