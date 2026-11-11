@@ -91,6 +91,21 @@ PRINCIPLES = [
 ]
 
 LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+CODE_FENCE = re.compile(r"^```[^\n]*\n.*?^```\s*$", re.M | re.S)
+INLINE_CODE = re.compile(r"`([^`\n]*)`")
+PLACEHOLDER = re.compile(r"<([^>\n]*)>")
+NON_ASCII = re.compile(r"[^\x00-\x7F]")
+
+
+def placeholders_in_code(text: str) -> list[str]:
+    """Return <placeholder> tokens inside fenced blocks and inline code spans."""
+    tokens = []
+    for match in CODE_FENCE.finditer(text):
+        tokens.extend(PLACEHOLDER.findall(match.group(0)))
+    without_fences = CODE_FENCE.sub("", text)
+    for match in INLINE_CODE.finditer(without_fences):
+        tokens.extend(PLACEHOLDER.findall(match.group(1)))
+    return tokens
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -139,7 +154,7 @@ class SkillLayoutTests(unittest.TestCase):
     def test_plan_templates_and_principle_directory(self):
         template = (SKILLS / "shipwright-plan/references/template.md").read_text(encoding="utf-8")
         index = (SKILLS / "shipwright-plan/references/index.md").read_text(encoding="utf-8")
-        for phrase in ("Self-contained context", "Domains", "Run record", "证据附录", "Copyright (c) 2026 shadcn"):
+        for phrase in ("Self-contained context", "Domains", "Run record", "## Evidence appendix", "Copyright (c) 2026 shadcn"):
             self.assertIn(phrase, template)
         for phrase in ("Execution order", "Domains", "Findings considered and rejected"):
             self.assertIn(phrase, index)
@@ -147,6 +162,26 @@ class SkillLayoutTests(unittest.TestCase):
         for slug in PRINCIPLES:
             self.assertIn(f"{slug}.md", readme)
         self.assertEqual(len(PRINCIPLES), 24)
+
+    def test_repo_paths_and_code_placeholders_are_ascii(self):
+        bad_paths = []
+        for path in ROOT.rglob("*"):
+            if ".git" in path.parts:
+                continue
+            relative = path.relative_to(ROOT).as_posix()
+            if NON_ASCII.search(relative):
+                bad_paths.append(relative)
+        self.assertEqual(bad_paths, [])
+
+        bad_tokens = []
+        for path in ROOT.rglob("*.md"):
+            if ".git" in path.parts:
+                continue
+            text = path.read_text(encoding="utf-8")
+            for token in placeholders_in_code(text):
+                if NON_ASCII.search(token):
+                    bad_tokens.append(f"{path.relative_to(ROOT).as_posix()}: <{token}>")
+        self.assertEqual(bad_tokens, [])
 
     def test_opencode_catalog_matches_skill_files(self):
         script = ROOT / "scripts/build_opencode_index.py"

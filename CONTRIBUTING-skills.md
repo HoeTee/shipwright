@@ -6,6 +6,8 @@ Parallel agents each take one group below. Stay inside that group's skill direct
 
 Link only to files that exist in your change. Shared references that are not created yet should be named in prose, not linked, until Group D adds them. CI checks that every markdown link in a skill resolves.
 
+Directory names, file names, paths, path placeholders, and headings that become a file or section in a user project are English. Skill prose stays Chinese.
+
 ## Shared files
 
 Nobody edits these while filling a group. They are the skeleton contract.
