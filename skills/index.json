@@ -23,9 +23,20 @@
     },
     {
       "name": "shipwright-autopilot",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/autonomous-run.md",
+        "references/hypothesis.md",
+        "references/lanes.md",
+        "references/orchestrate.md",
+        "references/pause.md",
+        "references/stack.md",
+        "scripts/__pycache__/test_check_lanes.cpython-312.pyc",
+        "scripts/check-plan.mjs",
+        "scripts/check-plan.test.ts",
+        "scripts/check_lanes.py",
+        "scripts/test_check_lanes.py"
       ]
     },
     {
@@ -37,9 +48,20 @@
     },
     {
       "name": "shipwright-build",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/bugfix.md",
+        "references/dispatch.md",
+        "references/feature.md",
+        "references/perf.md",
+        "references/refactor.md",
+        "scripts/__pycache__/code_map.cpython-312.pyc",
+        "scripts/__pycache__/save_evidence.cpython-312.pyc",
+        "scripts/__pycache__/test_build_scripts.cpython-312.pyc",
+        "scripts/code_map.py",
+        "scripts/save_evidence.py",
+        "scripts/test_build_scripts.py"
       ]
     },
     {
@@ -51,9 +73,11 @@
     },
     {
       "name": "shipwright-comments",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/comment-sicko.md",
+        "references/procedure.md"
       ]
     },
     {
@@ -65,9 +89,11 @@
     },
     {
       "name": "shipwright-deploy",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/delivery.md",
+        "references/deployment.md"
       ]
     },
     {
@@ -86,9 +112,15 @@
     },
     {
       "name": "shipwright-fix",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/loop.md",
+        "references/stale-evidence.md",
+        "references/verdict.md",
+        "scripts/__pycache__/test_review_count.cpython-312.pyc",
+        "scripts/review_count.py",
+        "scripts/test_review_count.py"
       ]
     },
     {
@@ -121,16 +153,23 @@
     },
     {
       "name": "shipwright-interrogate",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/brief.md",
+        "references/fan-out.md"
       ]
     },
     {
       "name": "shipwright-land",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/after-review.md",
+        "references/shipping.md",
+        "scripts/__pycache__/test_patch_id.cpython-312.pyc",
+        "scripts/patch_id.py",
+        "scripts/test_patch_id.py"
       ]
     },
     {
@@ -200,16 +239,21 @@
     },
     {
       "name": "shipwright-reconcile",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/reconcile.md",
+        "scripts/__pycache__/test_reconcile_plans.cpython-312.pyc",
+        "scripts/reconcile_plans.py",
+        "scripts/test_reconcile_plans.py"
       ]
     },
     {
       "name": "shipwright-recover",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/triage.md"
       ]
     },
     {
@@ -221,9 +265,14 @@
     },
     {
       "name": "shipwright-review",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/adversarial.md",
+        "references/branch.md",
+        "references/ponytail-review.md",
+        "references/rules-baseline.md",
+        "references/vet.md"
       ]
     },
     {
@@ -256,16 +305,53 @@
     },
     {
       "name": "shipwright-ship",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "assets/github-review-threads.graphql",
+        "references/babysit.md",
+        "references/boundaries.md",
+        "references/intake.md",
+        "references/interactions.md",
+        "references/opening.md",
+        "references/platforms/git.md",
+        "references/platforms/gitee.md",
+        "references/platforms/github.md",
+        "references/timing.md",
+        "references/triage.md",
+        "references/watcher.md",
+        "scripts/__pycache__/test_classify_ci.cpython-312.pyc",
+        "scripts/bootstrap.ts",
+        "scripts/classify_ci.py",
+        "scripts/gitee_api.py",
+        "scripts/package.json",
+        "scripts/test_classify_ci.py",
+        "scripts/watch-pr/cli.test.ts",
+        "scripts/watch-pr/cli.ts",
+        "scripts/watch-pr/fakes.test-helper.ts",
+        "scripts/watch-pr/github.test.ts",
+        "scripts/watch-pr/github.ts",
+        "scripts/watch-pr/policy.test.ts",
+        "scripts/watch-pr/policy.ts",
+        "scripts/watch-pr/render.ts",
+        "scripts/watch-pr/tsconfig.json",
+        "scripts/watch-pr/types.compile.ts",
+        "scripts/watch-pr/types.ts",
+        "scripts/watch-pr/watch-pr"
       ]
     },
     {
       "name": "shipwright-signoff",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/business-tasks.md",
+        "references/html.md",
+        "references/interaction-gate.md",
+        "references/packet.md",
+        "scripts/__pycache__/test_render_signoff.cpython-312.pyc",
+        "scripts/render_signoff.py",
+        "scripts/test_render_signoff.py"
       ]
     },
     {
