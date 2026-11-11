@@ -11,7 +11,7 @@ You own the plan, not the code. The plan is a checklist an owner runs box by box
 3. Explore with independent workers. Each returns file pointers, conventions, test commands, and entry points. No inlined dumps. That is principle [guard-the-context-window](../../../references/principles/guard-the-context-window.md).
 4. Copy the skeleton below into the plan file and fill every placeholder. Write it under `plans/` (or `advisor-plans/`) unless the operator names another path. Keep every heading and every sub-block in the order shown. One section per PR. One PR is one change with its own evidence. That is principle [sequence-verifiable-units](../../../references/principles/sequence-verifiable-units.md). Name the execution reference in "How to read this".
 5. Write the body as a how-to. Appendices hold explanation and reference. Each heading states the task or the finding. No long dashes. No mid-sentence colons. Then run shipwright-write's wording pass.
-6. Run `python skills/shipwright-plan/scripts/check_plan.py <plan.md>` and fix every line it prints. The script is part of this reference. It is not a default step of an ordinary plan. That is principle [encode-lessons-in-structure](../../../references/principles/encode-lessons-in-structure.md).
+6. Run `node skills/shipwright-autopilot/scripts/check-plan.mjs <plan.md>` and fix every line it prints. The checker is the original script in shipwright-autopilot. It is not a default step of an ordinary plan. That is principle [encode-lessons-in-structure](../../../references/principles/encode-lessons-in-structure.md).
 7. Hand back. Post the plan path and the script's output, then stop. Execution starts on the operator's explicit go.
 
 ## Verification rule

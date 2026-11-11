@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           package-manager-cache: false
+      - uses: oven-sh/setup-bun@v2
       - name: Run regression and renderer integrity tests
         run: python -B -m unittest discover -s scripts -v
       - name: Validate shipwright skills
@@ -34,3 +35,5 @@ jobs:
         run: |
           python -B -m unittest discover -s skills/shipwright-eval/scripts -v
           python -B skills/shipwright-eval/scripts/selftest.py
+      - name: Run the original plan checker
+        run: bun test skills/shipwright-autopilot/scripts/check-plan.test.ts

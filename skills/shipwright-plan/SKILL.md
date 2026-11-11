@@ -20,7 +20,7 @@ description: "写 plans/NNN 计划并维护索引；临时 PR 审查也开一个
 6. 用户明确加上 `--issues` 时才发工单。公开仓库要先警告并得到确认。步骤在 [issues.md](references/issues.md)。
 7. 没有更窄的 skill 能套上的大任务，先做 [figure-it-out.md](references/figure-it-out.md) 的框定和阶段设计，把阶段清单交出去，不在这里执行。
 
-多 PR 节目默认不启用。只有用户明确要一个多 PR 节目时才读 [multi-pr.md](references/multi-pr.md)，并用 [check_plan.py](scripts/check_plan.py) 检查那份清单。普通计划不跑这个脚本。
+多 PR 节目默认不启用。只有用户明确要一个多 PR 节目时才读 [multi-pr.md](references/multi-pr.md)，并用 [check-plan.mjs](../shipwright-autopilot/scripts/check-plan.mjs) 检查那份清单。普通计划不跑这个脚本。
 
 ## Hand off
 

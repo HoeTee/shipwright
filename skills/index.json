@@ -36,7 +36,7 @@
     },
     {
       "name": "shipwright-autopilot",
-      "version": "3",
+      "version": "5",
       "files": [
         "SKILL.md",
         "references/autonomous-run.md",
@@ -233,7 +233,7 @@
     },
     {
       "name": "shipwright-plan",
-      "version": "2",
+      "version": "3",
       "files": [
         "SKILL.md",
         "references/example.md",
@@ -242,9 +242,7 @@
         "references/issues.md",
         "references/multi-pr.md",
         "references/template.md",
-        "references/writing-rules.md",
-        "scripts/check_plan.py",
-        "scripts/test_check_plan.py"
+        "references/writing-rules.md"
       ]
     },
     {
