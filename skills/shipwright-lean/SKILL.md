@@ -19,7 +19,7 @@ description: "精简：最小完整改动，不加没要求的东西，shortcut:
 5. 有已知上限的捷径写成 `shortcut: <ceiling>, <when-to-upgrade>`。旧代码里的 `ponytail:` 同样算。上限仍成立是决定，不是发现；实际负载已经超过上限，要报告具体后果。注释不能豁免安全、数据完整性或项目必需要求。
 6. 级别保持到你改口：`lean lite`、`lean full`、`lean ultra`（旧说法 `ponytail lite|full|ultra` 同样有效）。交给独立执行者时，把这些规则写进简报。
 
-原则 `laziness-protocol` 在共享目录，见 [principles](../../references/principles/README.md)。梯子以本 skill 为准。
+原则 [laziness-protocol](../../references/principles/laziness-protocol.md) 在共享目录，见 [principles](../../references/principles/README.md)。梯子以本 skill 为准。
 
 ## Stage checks
 

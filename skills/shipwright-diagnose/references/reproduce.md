@@ -10,7 +10,7 @@ Reproduce it yourself on the matching surface, even when a debug or instrumentat
 
 Ask the user only with a stated, specific reason that surface cannot be reached, and only after driving it as far as it goes. If it will not reproduce directly, synthesize the trigger, tighten the conditions, or instrument until it fires.
 
-Save the repro under `/tmp/shipwright-<plan-id>/<sha7>/before-<slug>.png` when the surface is visible, plus a same-named `.aria.txt` snapshot when the surface has one. A CLI or API fault saves the terminal record or response body as `.txt` or `.json` instead. The shared rules for what counts live in `references/evidence.md`, added separately. Mask secrets before any shot. An inconclusive result, or a shot of the wrong surface, is not a pass. Say so. A unit test does not mean the bug has been seen.
+Save the repro under `/tmp/shipwright-<plan-id>/<sha7>/before-<slug>.png` when the surface is visible, plus a same-named `.aria.txt` snapshot when the surface has one. A CLI or API fault saves the terminal record or response body as `.txt` or `.json` instead. The shared rules for what counts live in [evidence.md](../../../references/evidence.md). Mask secrets before any shot. An inconclusive result, or a shot of the wrong surface, is not a pass. Say so. A unit test does not mean the bug has been seen.
 
 ## Step 2. Binary-search the cause
 

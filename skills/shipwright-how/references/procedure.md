@@ -57,4 +57,4 @@ This skill does not carry domain checklists.
 - Existing tests and the commands that run them: shipwright-test.
 - Hot path: shipwright-perf.
 
-Large raw output stays with the worker. The main thread keeps the findings. That is principle `guard-the-context-window` in the shared principles directory.
+Large raw output stays with the worker. The main thread keeps the findings. That is principle [guard-the-context-window](../../../references/principles/guard-the-context-window.md) in the shared principles directory.

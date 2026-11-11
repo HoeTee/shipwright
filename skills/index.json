@@ -199,10 +199,11 @@
     },
     {
       "name": "shipwright-land",
-      "version": "3",
+      "version": "4",
       "files": [
         "SKILL.md",
         "references/after-review.md",
+        "references/batch-ci.md",
         "references/shipping.md",
         "scripts/patch_id.py",
         "scripts/test_patch_id.py"
@@ -427,7 +428,7 @@
     },
     {
       "name": "shipwright-ship",
-      "version": "3",
+      "version": "5",
       "files": [
         "SKILL.md",
         "assets/github-review-threads.graphql",
@@ -442,9 +443,10 @@
         "references/timing.md",
         "references/triage.md",
         "references/watcher.md",
-        "scripts/bootstrap.ts",
+        "scripts/bootstrap.py",
         "scripts/classify_ci.py",
         "scripts/gitee_api.py",
+        "scripts/package-lock.json",
         "scripts/package.json",
         "scripts/test_classify_ci.py",
         "scripts/watch-pr/cli.test.ts",
@@ -483,10 +485,9 @@
     },
     {
       "name": "shipwright-structure",
-      "version": "2",
+      "version": "3",
       "files": [
         "SKILL.md",
-        "references/design-red-flags.md",
         "references/tech-debt.md"
       ]
     },

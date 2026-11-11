@@ -13,4 +13,4 @@ No PR, no CI babysitting, and no shipwright-architect, unless the investigation 
 
 ## Evidence
 
-An investigation does not need a product screenshot unless the question is about behavior on a real surface. When it is, save the shot under `/tmp/shipwright-<plan-id>/<sha7>/` using the shared evidence rules (the file `references/evidence.md` is added separately). A shot of an HTML explainer does not count. If the surface cannot be judged, or the shot is the wrong surface, say so. That is not a pass.
+An investigation does not need a product screenshot unless the question is about behavior on a real surface. When it is, save the shot under `/tmp/shipwright-<plan-id>/<sha7>/` using the shared evidence rules in [evidence.md](../../../references/evidence.md). A shot of an HTML explainer does not count. If the surface cannot be judged, or the shot is the wrong surface, say so. That is not a pass.

@@ -15,7 +15,7 @@ description: "写 plans/NNN 计划并维护索引；临时 PR 审查也开一个
 1. 记下 `git rev-parse --short HEAD`。摘录必须来自你自己打开的代码，不来自工人的报告。编号只增不减。已有索引就接着编，不重复，不把已否决的发现再写成计划。
 2. 选定要写的条目。审计没选定时不要写 30 份。无人可选时，写收益最高的 3 到 5 条，并在索引里记下这个默认。`plan <description>` 跳过审计，先从仓库消除歧义，剩下的一次只问一个问题，并给出推荐答案。
 3. 每一份计划按 [template.md](references/template.md) 写，文件名 `plans/<NNN>-<slug>.md`。索引按 [index.md](references/index.md) 写成 `plans/README.md`。写给一个没见过这次对话的执行者。自包含、每步有命令和期望结果、写明停止条件。细则在 [writing-rules.md](references/writing-rules.md)。一份真实样例在 [example.md](references/example.md)，那是历史样本，不要执行它。
-4. `Domains` 写 `bugs`、`security`、`test`、`structure`、`perf`、`lean` 里的一个或多个。临时 PR 审查的 Category 写 `review`，同样登记进索引。Run record 和证据附录从模板抄，不另建记录文件。证据附录记分支、SHA 和链接，截图不进 git。
+4. `Domains` 写 `bugs`、`security`、`test`、`structure`、`perf`、`lean` 里的一个或多个。临时 PR 审查的 Category 写 `review`，评测计划写 `eval`，同样登记进索引。Run record 和证据附录从模板抄，不另建记录文件。证据附录记分支、SHA 和链接，截图不进 git。
 5. 审一份已有计划用 `review-plan`。对照模板收紧。如果这份计划是本会话写的，再派一个没有这份对话的执行者冷读，报告含糊处。
 6. 用户明确加上 `--issues` 时才发工单。公开仓库要先警告并得到确认。步骤在 [issues.md](references/issues.md)。
 7. 没有更窄的 skill 能套上的大任务，先做 [figure-it-out.md](references/figure-it-out.md) 的框定和阶段设计，把阶段清单交出去，不在这里执行。
@@ -26,7 +26,7 @@ description: "写 plans/NNN 计划并维护索引；临时 PR 审查也开一个
 
 计划写完就停。执行交给 shipwright-build。无人值守交给 shipwright-autopilot。跨函数边界的形状先交给 [shipwright-architect](../shipwright-architect/SKILL.md)。有实验能回答的分歧先交给 [shipwright-prototype](../shipwright-prototype/SKILL.md)。方向类条目来自 [shipwright-roadmap](../shipwright-roadmap/SKILL.md)，通常写成探测计划，不是把功能做完的计划。
 
-原则名记在这里，原文在共享 principles 目录，不抄进计划：`sequence-verifiable-units`、`build-the-lever`、`outcome-oriented-execution`。
+原则名记在这里，原文在共享 principles 目录，不抄进计划：[sequence-verifiable-units](../../references/principles/sequence-verifiable-units.md)、[build-the-lever](../../references/principles/build-the-lever.md)、[outcome-oriented-execution](../../references/principles/outcome-oriented-execution.md)。
 
 ## Stop
 

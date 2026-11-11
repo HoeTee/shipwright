@@ -84,6 +84,12 @@ A cloud session's `/tmp` disappears with the session. Upload and embed before th
 - A worker report with no evidence path or no SHA is sent back once. A second miss is a gap, not a pass.
 - The reviewer opens the frame and the artifact. The implementer's summary is not enough.
 
+## Minimum record
+
+Each record names the candidate version and the version or artifact that actually ran, the environment, the sample id, the task id, the component that ran, the end state, and the business assertion. Also record the commit, the command, the dependencies, the input or fixture, the result, the artifact path, and the limit. A failure, a timeout, a run that did not start, and a pass are separate lines.
+
+An older artifact can be reused only when that run really passed, the inputs and the environment contract match, and the note says why they are equivalent and when the run happened. A new head still needs new evidence unless the patch-id rule says the patch is the same.
+
 ## Retention
 
 Keep `/tmp/shipwright-<plan>/` until the task ends: the pull request merges, or the task is closed. Do not delete it in the middle. Re-review and human review still need it.

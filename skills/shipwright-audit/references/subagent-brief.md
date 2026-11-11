@@ -5,7 +5,7 @@ Source: improve, the subagent prompt contract, plus the finding format those wor
 ## What every brief contains
 
 - The absolute path of the checklist to read, and the exact section headings. For bugs, security, performance, tests, and structure, that path is the domain skill (shipwright-bugs, shipwright-security, shipwright-perf, shipwright-test, shipwright-structure). For dependencies it is [deps.md](deps.md). For DX it is [dx.md](dx.md). For docs it is shipwright-write. For direction it is shipwright-roadmap. Always also include this file's "Finding format" section.
-- The recon facts that scope the search: languages, frameworks, key directories, what to skip. Recon itself is the shared `references/recon.md`, added separately. Carry its facts; do not invent a second recon checklist here.
+- The recon facts that scope the search: languages, frameworks, key directories, what to skip. Recon itself is the shared [recon.md](../../../references/recon.md). Carry its facts; do not invent a second recon checklist here.
 - Domain-specific risk hints from recon. Example: a CLI that writes user files should pay attention to path traversal and command injection.
 - Decided tradeoffs from the intent docs that would otherwise read as findings. Example: "the sync-over-async write in `store.ts` is a documented ADR decision — don't report it."
 - An explicit instruction to return findings only. No fixes, no file dumps. The worker confirms it could read the checklist file.

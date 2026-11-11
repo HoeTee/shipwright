@@ -2,7 +2,7 @@
 
 用于操作配方失效、相关代码变化或明确要求完整维护验证能力的任务。原有验证入口是维护对象，不自动重建产品或测试体系。
 
-维护截图配方时按 [页面检查规则](../../../references/progress-interaction.md) 核对对象。`answer-me-with-html` 生成的说明页、进度页和审查报告不列入截图或视觉验收；实际产品界面按项目要求检查。证据目录用 `/tmp/shipwright-<plan-id>/<sha7>/`，规则见 shipwright-test 的 [evidence.md](../../shipwright-test/references/evidence.md)。
+维护截图配方时按 [页面检查规则](../../../references/progress-interaction.md) 核对对象。`answer-me-with-html` 生成的说明页、进度页和审查报告不列入截图或视觉验收；实际产品界面按项目要求检查。证据目录用 `/tmp/shipwright-<plan-id>/<sha7>/`，规则见 shipwright-test 的 [evidence.md](../../../references/evidence.md)。
 
 ## Inputs and outputs
 

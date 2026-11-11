@@ -24,7 +24,7 @@ description: "讲清一块代码怎么运作：入口、调用链、状态归属
 
 从真实入口跟踪输入、分支、状态、返回值和副作用。跨 API、进程或脚本时核对两端字段、数据归属和失败传播。答案按用户能观察到的行为组织，附 `file:line`。代码推不出的部分写不确定。已有上下文继续用。只有需要新的行为证据时，才在授权范围内运行入口。静态推断不能写成已经跑过。
 
-领域清单不在这里。追调用链和状态归属读 [shipwright-bugs](../shipwright-bugs/SKILL.md)。找现有测试和命令读 [shipwright-test](../shipwright-test/SKILL.md)。找热路径读 [shipwright-perf](../shipwright-perf/SKILL.md)。大段原始输出留在执行者那边。这是共享 principles 目录里的 `guard-the-context-window`。
+领域清单不在这里。追调用链和状态归属读 [shipwright-bugs](../shipwright-bugs/SKILL.md)。找现有测试和命令读 [shipwright-test](../shipwright-test/SKILL.md)。找热路径读 [shipwright-perf](../shipwright-perf/SKILL.md)。大段原始输出留在执行者那边。这是共享 principles 目录里的 [guard-the-context-window](../../references/principles/guard-the-context-window.md)。
 
 ## Architecture facts
 

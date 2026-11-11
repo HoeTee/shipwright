@@ -21,7 +21,7 @@ Present the vetted findings ordered by leverage: impact ÷ effort, discounted by
 3. Prefer findings whose fix has a clean verification story.
 4. "Not worth doing" is a valid verdict. Record it with one line of reasoning.
 
-Severity in the table is only P0, P1, or P2. The canonical record is the shared `references/finding.md`, which is added separately. Until that file exists, use the return shape in [subagent-brief.md](subagent-brief.md). P0 is a disaster in normal use. P1 breaks a core function, permission, or data on a reachable path. P2 is a real defect with limited impact. P0 and P1 block by default. Whether P2 blocks depends on the project's rules. A suggestion with no actual defect is a non-blocking note. Do not force it into P2.
+Severity in the table is only P0, P1, or P2. The canonical record is [finding.md](../../../references/finding.md). Workers return the shape in [subagent-brief.md](subagent-brief.md). P0 is a disaster in normal use. P1 breaks a core function, permission, or data on a reachable path. P2 is a real defect with limited impact. P0 and P1 block by default. Whether P2 blocks depends on the project's rules. A suggestion with no actual defect is a non-blocking note. Do not force it into P2.
 
 ## Direction is not a row in this table
 

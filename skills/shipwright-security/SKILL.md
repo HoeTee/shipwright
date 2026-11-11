@@ -16,7 +16,7 @@ description: "安全：边界校验、权限、注入、密钥处理（截图也
 2. 安全发现描述更安全的 API 或校验边界。不给可运行的演示字符串，不写逐步误用步骤。计划停在代码、配置和测试。
 3. 密钥只写 `file:line` 和类型。修复包含轮换，不只是从文件里删掉。已提交的密钥视为已经泄露。
 4. 截图、证据、计划和回复里不出现密钥值和个人数据。上传前先遮挡。
-5. 校验放在系统边界（原则 `boundary-discipline`）。边界以内信任已经校验过的类型。
+5. 校验放在系统边界（原则 [boundary-discipline](../../references/principles/boundary-discipline.md)）。边界以内信任已经校验过的类型。
 6. `shortcut:` 或旧的 `ponytail:` 不能豁免安全、数据完整性或项目必需要求。容量上限仍然成立时，保留该决定，安全问题另行报告。
 7. 依赖审计只读运行，只报告影响到可达运行代码或构建发布路径的 critical / high。用 [filter_advisories.py](scripts/filter_advisories.py) 过滤，不安装包，不拉取利用细节。
 

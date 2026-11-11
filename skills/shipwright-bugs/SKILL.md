@@ -13,11 +13,11 @@ description: "正确性和可靠性：每个阶段查什么、防什么。用于
 ## Rules
 
 1. 每条发现都要有具体输入和错误结果，并指到 `file:line`。没有案例就不是发现。
-2. 先修共享根因，再核对调用方。症状处打补丁会把证据盖住（原则 `fix-root-causes`）。
-3. 会重试的写操作，重复执行和中途崩溃都要收敛到同一终态（原则 `make-operations-idempotent`）。
-4. 多个执行者可能写同一份状态时，先去掉共享写（原则 `separate-before-serializing-shared-state`）。
-5. 两次修复共享同一个前提、又没通过同一道检查：先把前提写下来并直接验证（原则 `attack-the-premise`）。
-6. 密钥只写位置和类型。界面证据的路径和遮挡规则在共享 `references/evidence.md`。
+2. 先修共享根因，再核对调用方。症状处打补丁会把证据盖住（原则 [fix-root-causes](../../references/principles/fix-root-causes.md)）。
+3. 会重试的写操作，重复执行和中途崩溃都要收敛到同一终态（原则 [make-operations-idempotent](../../references/principles/make-operations-idempotent.md)）。
+4. 多个执行者可能写同一份状态时，先去掉共享写（原则 [separate-before-serializing-shared-state](../../references/principles/separate-before-serializing-shared-state.md)）。
+5. 两次修复共享同一个前提、又没通过同一道检查：先把前提写下来并直接验证（原则 [attack-the-premise](../../references/principles/attack-the-premise.md)）。
+6. 密钥只写位置和类型。界面证据的路径和遮挡规则在共享 [evidence.md](../../references/evidence.md)。
 
 原则正文在共享目录，见 [principles](../../references/principles/README.md)。这里不复述。
 

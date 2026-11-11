@@ -30,3 +30,7 @@ jobs:
         run: python -B -m unittest discover -s scripts -v
       - name: Validate shipwright skills
         run: python -B -m unittest discover -s tests -v
+      - name: Run shipwright-eval tests and selftest
+        run: |
+          python -B -m unittest discover -s skills/shipwright-eval/scripts -v
+          python -B skills/shipwright-eval/scripts/selftest.py

@@ -6,7 +6,7 @@ shipwright-test 定规则。build 写测试并执行，ship 把同一命令放�
 
 「这次真实验收要跑几个任务？」由 shipwright-signoff 问。本文保留真实任务的证据字段和通过标准：入口存在、帮助命令、健康响应或预置成功文件都不够。
 
-只有单元测试不算验证完成。影响交互的改动还要实际操作并按 [evidence.md](evidence.md) 留证。涉及性能还要有前后数字。
+只有单元测试不算验证完成。影响交互的改动还要实际操作并按 [evidence.md](../../../references/evidence.md) 留证。涉及性能还要有前后数字。
 
 ## Design map
 
@@ -48,7 +48,7 @@ def test_checkout(page):
     save_evidence(page, "<plan-id>", "<candidate-sha>", "after", "checkout-submitted")
 ```
 
-`save_evidence` 的路径和命名见 [evidence.md](evidence.md)。
+`save_evidence` 的路径和命名见 [evidence.md](../../../references/evidence.md)。
 
 ## Source rules
 

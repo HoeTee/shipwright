@@ -119,11 +119,11 @@ Skills:
 
 Shared references this group adds. Do not edit `references/principles/README.md`; add the files it names.
 
-- `references/recon.md`
-- `references/scope.md`
-- `references/finding.md`
-- `references/evidence.md`
-- `references/platforms.md` for Codex, Claude Code, and OpenCode
+- [references/recon.md](references/recon.md)
+- [references/scope.md](references/scope.md)
+- [references/finding.md](references/finding.md)
+- [references/evidence.md](references/evidence.md)
+- [references/platforms.md](references/platforms.md) for Codex, Claude Code, and OpenCode
 - `references/principles/<slug>.md` for each slug in `references/principles/README.md`
 
 ## Platforms

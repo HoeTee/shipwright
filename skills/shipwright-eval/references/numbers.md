@@ -2,7 +2,7 @@
 
 质量在前，硬指标在后。质量没变差，硬指标下降，才算赢。tokens 更少但质量更低，不算赢。
 
-报数字之前，先读共享原则 `explain-the-number`（[原则目录](../../../references/principles/README.md)）。评测还要问：每次运行是否真的做了任务，差距是否跨题成立，场景是否就是平时的工作。原则正文不在这里复述。
+报数字之前，先读共享原则 [explain-the-number](../../../references/principles/explain-the-number.md)（[原则目录](../../../references/principles/README.md)）。评测还要问：每次运行是否真的做了任务，差距是否跨题成立，场景是否就是平时的工作。原则正文不在这里复述。
 
 日常 Run record 里的趋势指标只是信号。没有不装 skill 的那一版，就不能说这次 skill 省了多少行或多少 tokens。
 

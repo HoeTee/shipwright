@@ -22,7 +22,7 @@ A plan for a selected direction finding is usually a design or spike plan: inves
 
 ## Experience
 
-When implementation convenience conflicts with the user's delight, choose delight. That is principle `experience-first` in the shared principles directory. Do not restate it. The user is whoever consumes the work: the person at the screen, the colleague who imports a library, and the next engineer. Weigh their experience the same way. Ship less and ship it better. Prototype before committing. Tighten the core loop. A feature that does not serve that loop gets out of the way.
+When implementation convenience conflicts with the user's delight, choose delight. That is principle [experience-first](../../../references/principles/experience-first.md) in the shared principles directory. Do not restate it. The user is whoever consumes the work: the person at the screen, the colleague who imports a library, and the next engineer. Weigh their experience the same way. Ship less and ship it better. Prototype before committing. Tighten the core loop. A feature that does not serve that loop gets out of the way.
 
 ## Invocation
 

@@ -10,7 +10,7 @@ artifact parse, opening the PR) is assigned to shipwright-build
 
 You own the measurement story. Tie every fix to a measurement. Reading the source is not a measurement.
 
-Do not claim a performance ceiling without running it first. Vet the baseline, and each later number, with [Benchmark checklist](benchmark-checklist.md). Principle `explain-the-number` is the shared rule for any number you are about to trust: write the decision first, name the limiter, and keep the run count and the spread with the number.
+Do not claim a performance ceiling without running it first. Vet the baseline, and each later number, with [Benchmark checklist](benchmark-checklist.md). Principle [explain-the-number](../../../references/principles/explain-the-number.md) is the shared rule for any number you are about to trust: write the decision first, name the limiter, and keep the run count and the spread with the number.
 
 Try the mantras in order, cheapest first:
 

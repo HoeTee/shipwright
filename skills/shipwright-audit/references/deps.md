@@ -31,4 +31,4 @@ Negative: the first pass fixes source imports, the second discovers the build ma
 
 ## Hand off
 
-A migration plan is shipwright-plan. The plan estimates the surface and splits the work into verifiable steps. Principle `migrate-callers-then-delete-legacy-api` is in the shared principles directory: move callers, then delete the old API. This file does not implement the move.
+A migration plan is shipwright-plan. The plan estimates the surface and splits the work into verifiable steps. Principle [migrate-callers-then-delete-legacy-api](../../../references/principles/migrate-callers-then-delete-legacy-api.md) is in the shared principles directory: move callers, then delete the old API. This file does not implement the move.

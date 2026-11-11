@@ -2,13 +2,13 @@
 
 像素级一致由图像差异判定。基线就是规格。基线一旦建立，就保持不动。不要靠眼睛宣布一致。
 
-证据放在 `/tmp/shipwright-<plan-id>/<sha7>/`。基线截图用 `baseline-<slug>.png`，差异图用 `diff-<slug>.png`。规则见 [evidence.md](evidence.md)。
+证据放在 `/tmp/shipwright-<plan-id>/<sha7>/`。基线截图用 `baseline-<slug>.png`，差异图用 `diff-<slug>.png`。规则见 [evidence.md](../../../references/evidence.md)。
 
 ## Steps
 
 1. 迁移之前先建立基线。用视觉回归工具给当前组件的各个状态截图；要比对两种实现时，把目标实现也截下来。没有基线，就不能声称一致。这是开工前的阻断条件。
 2. 下面三条一直有效：不改测试工具来凑通过，不改基线来凑通过，不改组件结构来凑通过。基线看起来不对时停下来问，不要改它。
-3. 一次迁移一个组件。可以按组件并行，每个组件一个负责人，各自用独立工作区。共享原语先迁，这一阶段没完成，组件迁移不开始。并行时各自写自己的目录，避免同时改同一份状态。原则 `separate-before-serializing-shared-state` 见 [共享原则目录](../../../references/principles/README.md)。
+3. 一次迁移一个组件。可以按组件并行，每个组件一个负责人，各自用独立工作区。共享原语先迁，这一阶段没完成，组件迁移不开始。并行时各自写自己的目录，避免同时改同一份状态。原则 [separate-before-serializing-shared-state](../../../references/principles/separate-before-serializing-shared-state.md) 见 [共享原则目录](../../../references/principles/README.md)。
 4. 每个组件都在对应界面上用图像差异对照基线。差异非零就是失败。查像素差在哪里。这个组件的差异回到零再结束。
 5. 一个组件或一批可以安全合并的组件，交给 shipwright-ship 开 PR。
 

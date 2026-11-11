@@ -23,4 +23,4 @@ Describe the safer API or the validation boundary. Do not provide a runnable exa
 - Production configuration: overly broad CORS where credentials are allowed, missing response-hardening headers (for example CSP) where sensitive browser surfaces exist, cookies missing appropriate `HttpOnly` / `Secure` / `SameSite` attributes, or debug or verbose behavior enabled in production configuration.
 - Data minimization: personal data or sensitive operational data in logs, stack traces returned to clients, or internal error details exposed through API responses.
 
-Validation sits at the boundary (principle `boundary-discipline`). Inside the system, trust the typed values. A `shortcut:` comment does not exempt a security check, a data-integrity check, or a project requirement.
+Validation sits at the boundary (principle [boundary-discipline](../../../references/principles/boundary-discipline.md)). Inside the system, trust the typed values. A `shortcut:` comment does not exempt a security check, a data-integrity check, or a project requirement.
