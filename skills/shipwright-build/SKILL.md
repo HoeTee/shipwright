@@ -23,10 +23,10 @@ description: "按计划改代码：派独立执行者，按任务类型走剧本
    - 行为不变的结构调整：[refactor.md](references/refactor.md)。先钉住行为，再改结构。大改要有新旧输出比对或界面冒烟。
    - 慢：[perf.md](references/perf.md)。回复写基线、修后数字、差值和产物路径。
    剧本里的 how、why、architect、interrogate、Opening a PR、tdd 分别是 shipwright-how、shipwright-why、shipwright-architect、shipwright-interrogate、shipwright-ship、shipwright-test。原则名见 [principles](../../references/principles/README.md)，不要另抄。
-3. 写代码前用 [code_map.py](scripts/code_map.py) 列出已有函数，能复用就复用。精简读 [shipwright-lean](../shipwright-lean/SKILL.md)，直到用户说 stop lean。迁移时先改调用方再删旧接口，原则是 migrate-callers-then-delete-legacy-api。
+3. 写代码前用 [code_map.py](scripts/code_map.py) 列出已有函数，能复用就复用。精简读 [shipwright-lean](../shipwright-lean/SKILL.md)，直到用户说 stop lean。迁移时先改调用方再删旧接口，原则是 [migrate-callers-then-delete-legacy-api](../../references/principles/migrate-callers-then-delete-legacy-api.md)。
 4. 领域标签指向哪份就读哪份的执行阶段：[bugs](../shipwright-bugs/SKILL.md)、[security](../shipwright-security/SKILL.md)、[test](../shipwright-test/SKILL.md)、[structure](../shipwright-structure/SKILL.md)、[perf](../shipwright-perf/SKILL.md)。
 5. 派一名独立执行者。简报、前言和报告格式见 [dispatch.md](references/dispatch.md)。计划全文内联进简报。没有子代理时按同一前言自己做，并写明不是独立执行者。Codex 用 subagent 或云端代理，Claude Code 用 Agent 工具，OpenCode 用 task，子代理类型 general。模型用 shipwright-setup 记下的角色模型，没有就用当前会话的默认模型。
-6. 在产品的真实界面留证。路径和命名用 [save_evidence.py](scripts/save_evidence.py)：`/tmp/shipwright-<plan-id>/<short-sha>/<kind>-<slug>`。种类是 before、after、variant-a、baseline、diff、lane01–lane10、review。没有界面时存命令输出、响应体或数据库状态。共享证据规则在 `references/evidence.md`，由 shipwright-test 维护；本 skill 只按那个路径存文件。密钥值不进证据。
+6. 在产品的真实界面留证。路径和命名用 [save_evidence.py](scripts/save_evidence.py)：`/tmp/shipwright-<plan-id>/<short-sha>/<kind>-<slug>`。种类是 before、after、variant-a、baseline、diff、lane01–lane10、review。没有界面时存命令输出、响应体或数据库状态。共享证据规则在 [evidence.md](../../references/evidence.md)，由 shipwright-test 维护；本 skill 只按那个路径存文件。密钥值不进证据。
 7. 收回报告后自己重跑 done criteria，读完整 diff，核对范围。四步验收和 APPROVE / REVISE / BLOCK 属于 shipwright-fix。
 8. 把实际跑过的命令、结果和时间写入计划 Run record 的 Verification evidence。开 PR 前的执行或修改，由 shipwright-fix 的计数脚本增加 Pre-PR iterations。这一列不是 AI 审查，上限也不在本 skill。
 

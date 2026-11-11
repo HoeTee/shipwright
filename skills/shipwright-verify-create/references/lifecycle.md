@@ -2,7 +2,7 @@
 
 用于缺少可重复操作与验证入口的项目。已有有效入口优先复用，不能为了创建方法而重建一套工具。
 
-截图配方只覆盖被验证产品的界面。`answer-me-with-html` 生成的说明页、进度页和审查报告不列入截图或视觉验收，按 [页面检查规则](../../../references/progress-interaction.md) 核对生成结果。证据目录用 `/tmp/shipwright-<plan-id>/<sha7>/`，规则见 shipwright-test 的 [evidence.md](../../shipwright-test/references/evidence.md)。
+截图配方只覆盖被验证产品的界面。`answer-me-with-html` 生成的说明页、进度页和审查报告不列入截图或视觉验收，按 [页面检查规则](../../../references/progress-interaction.md) 核对生成结果。证据目录用 `/tmp/shipwright-<plan-id>/<sha7>/`，规则见 shipwright-test 的 [evidence.md](../../../references/evidence.md)。
 
 ## Inputs and outputs
 

@@ -14,8 +14,8 @@ description: "审查-修复循环，派审查子 agent。开 PR 前叫执行/修
 
 1. 用 [review_count.py](scripts/review_count.py) 读写计划 Run record。开 PR 前：`--bump-iteration`。每一次开 PR 之后的 AI 审查：`--bump-review`。口头改上限时加 `--cap N`。计数已到上限时脚本退出，不要开始下一次自动返修。
 2. CI 重跑、网络重试、同一版本上的重复事件、人工评论，都不加计数。
-3. 修复前核对工作树就是受审版本。审 PR 时，从该 PR 的 head 做隔离 worktree，不改用户原来的工作区。规则全文在 [loop.md](references/loop.md)。其中 Automatic round cap 一节保留了旧文「开 PR 前也计数」；不要照那句起算，以本节为准。
-4. 先查共享根因和调用方，再做最小的完整修改。原则 fix-root-causes 见 [principles](../../references/principles/README.md)。两次修复基于同一前提却没通过同一检查时，先写下前提并做一次能分辨真假的观察，原则 attack-the-premise。这不增加审查额度。
+3. 修复前核对工作树就是受审版本。审 PR 时，从该 PR 的 head 做隔离 worktree，不改用户原来的工作区。步骤全文在 [loop.md](references/loop.md)。计数和上限只写在本 skill，loop.md 不另写数字。
+4. 先查共享根因和调用方，再做最小的完整修改。原则 [fix-root-causes](../../references/principles/fix-root-causes.md) 见 [principles](../../references/principles/README.md)。两次修复基于同一前提却没通过同一检查时，先写下前提并做一次能分辨真假的观察，原则 [attack-the-premise](../../references/principles/attack-the-premise.md)。这不增加审查额度。
 5. 哪些证据失效、必须重跑什么，见 [stale-evidence.md](references/stale-evidence.md)。没跑的命令不能写进 Verification evidence。
 6. 派独立审查者复审新的 SHA。审查者只读，不能是写这次修复的人。打开 diff、测试断言和证据文件，不只读执行者摘要。一个结论只管一个 SHA。
 7. 对一次计划执行的验收用 [verdict.md](references/verdict.md)：重跑 done criteria、核对范围、读完整 diff、读新测试。结论是 APPROVE、REVISE 或 BLOCK。REVISE 最多两轮，然后 BLOCK。这两轮是开 PR 前的执行修改，记入 Pre-PR iterations，不是上面的 AI 审查上限。

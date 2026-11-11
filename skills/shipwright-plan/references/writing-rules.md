@@ -16,7 +16,7 @@ Source: improve, Phase 4 and the `plan` / `review-plan` variants. The file skele
 Write each plan for the weakest plausible executor. The template's quality bar is the checklist. These are the rules behind it:
 
 - All context is inlined: why this matters, exact file paths, current-state excerpts, the repo's conventions with a snippet of one exemplar file. "As discussed" is a broken plan.
-- Steps are explicit and ordered. Each step has its own verification command and expected output. That is principle `sequence-verifiable-units`.
+- Steps are explicit and ordered. Each step has its own verification command and expected output. That is principle [sequence-verifiable-units](../../../references/principles/sequence-verifiable-units.md).
 - Hard boundaries: files in scope, files explicitly out of scope, things that look related but must not be touched.
 - Done criteria are machine-checkable. Commands and expected results, not "works correctly."
 - A test plan: what new tests to write, where, and which existing test is the pattern.
@@ -24,7 +24,7 @@ Write each plan for the weakest plausible executor. The template's quality bar i
 - Escape hatches: "if X turns out to be true, STOP and report instead of improvising."
 - Domains is one or more of `bugs`, `security`, `test`, `structure`, `perf`, `lean`. That tag is how later stages choose a domain skill.
 - No secret values. Locations and credential types only.
-- Non-trivial repeated work inside the plan should name a real script or command, not an inline snippet the executor is expected to retype. That is principle `build-the-lever`.
+- Non-trivial repeated work inside the plan should name a real script or command, not an inline snippet the executor is expected to retype. That is principle [build-the-lever](../../../references/principles/build-the-lever.md).
 
 ## Selection
 
@@ -48,4 +48,4 @@ Copy both sections from [template.md](template.md). Do not invent a second `reco
 
 ## Principles named here
 
-`sequence-verifiable-units`, `build-the-lever`, and `outcome-oriented-execution` live in the shared principles directory. Follow the constraint in the template. Do not copy the principle files into the plan.
+[sequence-verifiable-units](../../../references/principles/sequence-verifiable-units.md), [build-the-lever](../../../references/principles/build-the-lever.md), and [outcome-oriented-execution](../../../references/principles/outcome-oriented-execution.md) live in the shared principles directory. Follow the constraint in the template. Do not copy the principle files into the plan.

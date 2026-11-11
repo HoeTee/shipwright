@@ -32,7 +32,7 @@ description: "对照源码并实跑，修正过时的功能地图。用于：应
 
 一次 PR 通常只核对受影响的功能和调用方。完整维护要核对全部已登记功能，并逐项记下实际操作结果。两件事分开命名、分开结案。局部实跑不能写成整张地图通过。
 
-输入、范围和分类的原文见 [lifecycle.md](references/lifecycle.md)。证据规则用 shipwright-test 的 [evidence.md](../shipwright-test/references/evidence.md)。
+输入、范围和分类的原文见 [lifecycle.md](references/lifecycle.md)。证据规则用 shipwright-test 的 [evidence.md](../../references/evidence.md)。
 
 ## Hosts
 

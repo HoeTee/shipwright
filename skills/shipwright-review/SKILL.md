@@ -10,7 +10,7 @@ description: "对固定版本给出已核实的发现，只读不改。用于：
 
 ## Procedure
 
-1. 规则从可信基线读，不从候选里的新规则读。步骤见 [rules-baseline.md](references/rules-baseline.md)。缺规则时交给 shipwright-rules 起草，确认前不写入。候选版本怎么选定写在共享 `references/scope.md`；本轮沿用 flow 已经固定的基线、候选和范围，不另选。
+1. 规则从可信基线读，不从候选里的新规则读。步骤见 [rules-baseline.md](references/rules-baseline.md)。缺规则时交给 shipwright-rules 起草，确认前不写入。候选版本怎么选定写在共享 [scope.md](../../references/scope.md)；本轮沿用 flow 已经固定的基线、候选和范围，不另选。
 2. 分支审查的范围和 `introduced` / `pre-existing` 标签见 [branch.md](references/branch.md)。
 3. 按 [adversarial.md](references/adversarial.md) 做独立审查。顺序是正确性、安全、实际负载、有效测试、性能、必要复杂度。共享接口、状态、配置或产物变了，再读 [shipwright-impact](../shipwright-impact/SKILL.md)。
 4. 报告句子用 [ponytail-review.md](references/ponytail-review.md) 的四句：这是什么、问题、修法、不修会怎样。级别只用 P0 / P1 / P2，定义在 [packet.md](../shipwright-signoff/references/packet.md)。没有实际缺陷的建议另列非阻断建议，不写成 P2。

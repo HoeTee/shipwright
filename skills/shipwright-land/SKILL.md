@@ -16,6 +16,7 @@ description: "合并：只合并非作者像用户一样验证过的版本，自
 4. 合并前用 [patch_id.py](scripts/patch_id.py) 比较结论里的 SHA 和当前 head。patch-id 相同，结论还在。不同则看是不是只有测试、文档或 lint 配置；代码变了就要新的结论和新的检查。`--allow-noise` 只放行测试、文档和 lint 配置的差异。
 5. 自下而上，一次合并一个。合并命令返回后回读 PR 状态。进了队列不等于已经合并。父 PR 合并后，子 PR 改指向主干，用 `--force-with-lease` 推送，再按 patch-id 决定旧结论是否还有效。
 6. 落地过程中不要改其他分支或基线。人审之后的版本变化见 [after-review.md](references/after-review.md)。新提交影响了已审核的结论，就要补验证并请人再看受影响的部分。
+7. 一批并行 PR 在合并前先看合在一起的结果。步骤只在 [batch-ci.md](references/batch-ci.md)。合完确认主干 CI 是绿的。
 
 ## Stop
 

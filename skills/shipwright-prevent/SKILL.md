@@ -20,7 +20,7 @@ description: "同类错误出现两次，就改结构让它不能再犯。用于
 6. 在代理说明文件里保留规则表，英文表头 `Rule` 和 `Enforcement`。跑 [check_rule_table.py](scripts/check_rule_table.py)。只靠文档、注释或提醒拦住的行，脚本会失败。
 7. 你再次纠正时，先修这次的错误，再补规则。规则已经写过但没有强制手段，就是复发，同一次改动里把它升到更高一层。某类错误已经不可能发生时，删掉对应规则。
 
-原则 `encode-lessons-in-structure` 在共享目录，见 [principles](../../references/principles/README.md)。能用结构拦住时，只留结构，不另加一段提醒。
+原则 [encode-lessons-in-structure](../../references/principles/encode-lessons-in-structure.md) 在共享目录，见 [principles](../../references/principles/README.md)。能用结构拦住时，只留结构，不另加一段提醒。
 
 ## Reply
 

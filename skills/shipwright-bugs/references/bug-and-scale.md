@@ -46,11 +46,11 @@ Same wording in ponytail-review and ponytail-audit. Judge it against the load yo
 
 Before editing a bug, search every caller of the function you touch, then fix the root cause once in the shared code. A patch on each caller that leaves the shared function broken is still the bug.
 
-Two or more fixes that share one premise and fail the same gate: write the premise down and test it before another fix that assumes it (principle `attack-the-premise`).
+Two or more fixes that share one premise and fail the same gate: write the premise down and test it before another fix that assumes it (principle [attack-the-premise](../../../references/principles/attack-the-premise.md)).
 
 ## Idempotent retries
 
-Webhooks, queues, and lifecycle steps need an answer to three questions (principle `make-operations-idempotent`):
+Webhooks, queues, and lifecycle steps need an answer to three questions (principle [make-operations-idempotent](../../../references/principles/make-operations-idempotent.md)):
 
 1. What happens if this runs twice in a row?
 2. What happens if the previous run crashed at every possible point?
@@ -60,8 +60,8 @@ If any answer depends on leftover state, the operation needs a reconciliation st
 
 ## Shared mutable state
 
-When concurrent actors might write the same file, branch, key, or object, first ask whether they need that same mutable object (principle `separate-before-serializing-shared-state`). Give each actor its own file, key, branch, or state directory, and merge only at the read boundary. Serialize with a lock, a single writer, or a compare-and-swap only when one shared write target is a real invariant.
+When concurrent actors might write the same file, branch, key, or object, first ask whether they need that same mutable object (principle [separate-before-serializing-shared-state](../../../references/principles/separate-before-serializing-shared-state.md)). Give each actor its own file, key, branch, or state directory, and merge only at the read boundary. Serialize with a lock, a single writer, or a compare-and-swap only when one shared write target is a real invariant.
 
 ## Same-interface evidence
 
-A bug that shows up in a user-visible interface is reproduced there before the fix, and checked there after the fix, on the same screen and the same steps. A unit test does not stand in for that check. Cached or older screenshots do not count. Paths, names, and redaction live in the shared `references/evidence.md` (shipwright-test maintains it).
+A bug that shows up in a user-visible interface is reproduced there before the fix, and checked there after the fix, on the same screen and the same steps. A unit test does not stand in for that check. Cached or older screenshots do not count. Paths, names, and redaction live in the shared [evidence.md](../../../references/evidence.md) (shipwright-test maintains it).

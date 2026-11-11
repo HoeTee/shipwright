@@ -21,3 +21,7 @@ Do not run a playbook that merges. The no-merge rules below replace that playboo
 6. A verifier that did not write the code checks the current head. A verdict covers one SHA. Compare patch-id with shipwright-land before reusing a verdict.
 7. Stop when each PR is verified and green at its current head. Hand the list to the operator. After that, nobody pushes without the operator's go.
 8. Do not grant or bypass an approval the forge enforces. A disabled or soft-failed check stays visible.
+
+## 并行合验
+
+几份并行 PR 合并前先合验。步骤只写在 [batch-ci.md](../../shipwright-land/references/batch-ci.md)。本文件不另写一份。本 skill 仍然不合并。

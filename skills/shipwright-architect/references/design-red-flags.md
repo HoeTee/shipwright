@@ -1,5 +1,7 @@
 # Design red flags
 
+shipwright-structure links here. This is the only copy.
+
 Screen every candidate before synthesis. A red flag is a reason to revise or reject the shape.
 
 ## Shallow module

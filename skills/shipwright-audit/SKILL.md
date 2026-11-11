@@ -19,7 +19,7 @@ description: "全仓或指定范围审计：侦察、并行查九类、亲自复
 
 ## Steps
 
-1. 先侦察。侦察清单在共享的 `references/recon.md`（另写）。把语言、构建和测试命令、意图文档里已经定下的取舍带进后面的步骤。没有可用的验证命令时，把「先建立验证基线」记为往往排第一的发现。
+1. 先侦察。侦察清单在共享的 [recon.md](../../references/recon.md)。把语言、构建和测试命令、意图文档里已经定下的取舍带进后面的步骤。没有可用的验证命令时，把「先建立验证基线」记为往往排第一的发现。
 2. 按 [effort.md](references/effort.md) 定力度。默认 `standard`。用户在请求里写了 `quick` 或 `deep` 就用那一档。`quick` 走 [quick.md](references/quick.md)：热点、bugs / security / test、大约 6 条 HIGH，并用大白话四段呈现。
 3. `standard` 和 `deep` 按类派只读执行者。简报用 [subagent-brief.md](references/subagent-brief.md)，同一轮派完。宿主不能派工时，自己按类别顺序查。类别去哪一份清单见 [procedure.md](references/procedure.md)。依赖和迁移读 [deps.md](references/deps.md)。DX 读 [dx.md](references/dx.md)。bugs、security、perf、test、structure 的清单在对应领域 skill，不抄进这里。
 4. 工人会多报。每一条要进表的发现，自己打开引用的代码确认。三类误报、排序和否决清单见 [vet.md](references/vet.md)。排序命令是 [rank_findings.py](scripts/rank_findings.py)。

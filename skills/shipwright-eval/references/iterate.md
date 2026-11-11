@@ -1,6 +1,6 @@
 # Iterate
 
-一次只改 skill 的一处。用版本对比跑相关题。越过噪声，并且隐藏检查不退步，才保留；否则整处回退。不把没测过的改动叠上去。不从读代码宣布赢了。原则 `prove-it-works` 见 [共享原则目录](../../../references/principles/README.md)。
+一次只改 skill 的一处。用版本对比跑相关题。越过噪声，并且隐藏检查不退步，才保留；否则整处回退。不把没测过的改动叠上去。不从读代码宣布赢了。原则 [prove-it-works](../../../references/principles/prove-it-works.md) 见 [共享原则目录](../../../references/principles/README.md)。
 
 这是对一个可测量目标的持续迭代。一次性修复走别的 skill。指标和实验的完整性由本 skill 负责。尝试可以派独立执行者去做，主控监督并看 diff。
 

@@ -51,6 +51,6 @@ Validation at trust boundaries, error handling that prevents data loss, security
 | full | The rules above. Default. |
 | ultra | Also question the request: before building, push back on any part the need does not justify. |
 
-Principle `laziness-protocol` is the shared two-line form of the same bias (one source of truth, smallest diff). It lives in `references/principles/`. This file is the working ladder.
+Principle [laziness-protocol](../../../references/principles/laziness-protocol.md) is the shared two-line form of the same bias (one source of truth, smallest diff). It lives in `references/principles/`. This file is the working ladder.
 
 Related skills: shipwright-review (one change), shipwright-audit (whole repo), shipwright-debt (the `shortcut:` ledger), shipwright-help (the reference card).

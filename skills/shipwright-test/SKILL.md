@@ -15,12 +15,12 @@ description: "测试和验证：分层、TDD、测行为、证据标准；统一
 
 ## Rules
 
-1. 测调用方、用户或其他服务能观察到的行为。原则 `test-behavior-not-implementation` 见 [共享原则目录](../../references/principles/README.md)。
-2. 用这次 commit 的真实产物证明。原则 `prove-it-works` 见同一目录。
-3. 多步改动每一步结束都有可执行检查，通过了再做下一步。原则 `sequence-verifiable-units` 见同一目录。
+1. 测调用方、用户或其他服务能观察到的行为。原则 [test-behavior-not-implementation](../../references/principles/test-behavior-not-implementation.md) 见 [共享原则目录](../../references/principles/README.md)。
+2. 用这次 commit 的真实产物证明。原则 [prove-it-works](../../references/principles/prove-it-works.md) 见同一目录。
+3. 多步改动每一步结束都有可执行检查，通过了再做下一步。原则 [sequence-verifiable-units](../../references/principles/sequence-verifiable-units.md) 见同一目录。
 4. 预期来自已确认的契约。把当前实现的输出抄成预期，证明不了正确。
 5. 只有单元测试不算验证完成。影响界面或输出的改动，在对应界面实跑并留证。
-6. 统一证据规则写在 [evidence.md](references/evidence.md)。共享文件 `references/evidence.md` 由原则组按这一份落盘。落盘前以本 skill 的这份为准。
+6. 统一证据规则只写在共享的 [evidence.md](../../references/evidence.md)。shipwright-test 维护那一份。本目录的 [evidence.md](references/evidence.md) 只是指针。
 
 ## Layers
 

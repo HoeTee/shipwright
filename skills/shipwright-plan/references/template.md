@@ -1,7 +1,7 @@
 <!--
 Adapted from https://github.com/shadcn/improve (MIT).
 Copyright (c) 2026 shadcn
-Shipwright adds Category `review`, Domains, Run record, and Evidence appendix.
+Shipwright adds Category `review` and `eval`, Domains, Run record, and Evidence appendix.
 -->
 
 # Handoff Plan Template
@@ -41,7 +41,7 @@ File naming: `plans/NNN-short-slug.md`, numbered in recommended execution order.
 - **Effort**: S | M | L
 - **Risk**: LOW | MED | HIGH
 - **Depends on**: plans/NNN-*.md (or "none")
-- **Category**: bug | security | perf | tests | tech-debt | migration | dx | docs | direction | review
+- **Category**: bug | security | perf | tests | tech-debt | migration | dx | docs | direction | review | eval
 - **Domains**: bugs, security, test, structure, perf, lean (one or more)
 - **Planned at**: commit `<short SHA>`, <YYYY-MM-DD>
 - **Issue**: <GitHub issue URL - only when published via `--issues`; omit otherwise>

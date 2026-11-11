@@ -192,6 +192,68 @@ class SkillLayoutTests(unittest.TestCase):
         flow = next(item for item in catalog["skills"] if item["name"] == "shipwright-flow")
         self.assertIn("SKILL.md", flow["files"])
 
+    def test_host_manifests_discover_the_48_skills(self):
+        claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+        codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
+        # Claude Code loads skills/<name>/SKILL.md when plugin.json omits "skills".
+        # A skills entry has to be a directory that itself contains SKILL.md, so
+        # pointing it at the parent directory would hide the 48 skills.
+        self.assertNotIn("skills", claude)
+        self.assertEqual(codex["skills"], "./skills/")
+        plugin = marketplace["plugins"][0]
+        self.assertEqual(plugin["name"], claude["name"])
+        self.assertEqual(plugin["source"], "./")
+        found = {path.parent.name for path in (ROOT / "skills").glob("shipwright-*/SKILL.md")}
+        self.assertEqual(found, EXPECTED)
+
+    def test_one_copy_of_shared_rules(self):
+        structure = (SKILLS / "shipwright-structure/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("../shipwright-architect/references/design-red-flags.md", structure)
+        self.assertFalse((SKILLS / "shipwright-structure/references/design-red-flags.md").exists())
+        template = (SKILLS / "shipwright-plan/references/template.md").read_text(encoding="utf-8")
+        self.assertIn("| eval", template)
+        pointer = (SKILLS / "shipwright-test/references/evidence.md").read_text(encoding="utf-8")
+        self.assertIn("../../../references/evidence.md", pointer)
+        self.assertLess(len(pointer.splitlines()), 12)
+        self.assertFalse((SKILLS / "shipwright-ship/scripts/bootstrap.ts").exists())
+        bootstrap = SKILLS / "shipwright-ship/scripts/bootstrap.py"
+        source = bootstrap.read_text(encoding="utf-8")
+        self.assertTrue(bootstrap.is_file())
+        self.assertIn("npm", source)
+        self.assertNotIn("frozen-lockfile", source)
+        watcher = (SKILLS / "shipwright-ship/scripts/watch-pr/watch-pr").read_text(encoding="utf-8")
+        self.assertIn("bootstrap.py", watcher)
+        self.assertNotIn("bootstrap.ts", watcher)
+
+    def test_parallel_batch_and_review_cap_have_one_home(self):
+        self.assertTrue((SKILLS / "shipwright-land/references/batch-ci.md").is_file())
+        for rel in (
+            "shipwright-land/SKILL.md",
+            "shipwright-land/references/shipping.md",
+            "shipwright-swarm/SKILL.md",
+            "shipwright-autopilot/references/stack.md",
+            "shipwright-prevent/references/repeated-class.md",
+        ):
+            text = (SKILLS / rel).read_text(encoding="utf-8")
+            self.assertIn("batch-ci.md", text, rel)
+        fix = (SKILLS / "shipwright-fix/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("默认 3", fix)
+        for name in EXPECTED - {"shipwright-fix"}:
+            text = (SKILLS / name / "SKILL.md").read_text(encoding="utf-8")
+            self.assertNotIn("默认 3", text, name)
+
+    def test_template_headings_are_not_cjk(self):
+        cjk = re.compile(r"[\u3400-\u9fff\u3040-\u30ff\uac00-\ud7af]")
+        bad = []
+        for path in list(ROOT.rglob("*template*.md")) + [SKILLS / "shipwright-plan/references/index.md"]:
+            if not path.is_file() or ".git" in path.parts:
+                continue
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                if line.startswith("#") and cjk.search(line):
+                    bad.append(f"{path.relative_to(ROOT).as_posix()}:{number}:{line}")
+        self.assertEqual(bad, [])
+
 
 if __name__ == "__main__":
     unittest.main()

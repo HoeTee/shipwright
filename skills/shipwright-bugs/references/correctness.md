@@ -3,7 +3,7 @@ Adapted from improve `references/audit-playbook.md` section 1 (MIT).
 Copyright (c) 2026 shadcn
 https://github.com/shadcn/improve
 The finding-format and priority rubric at the bottom of that playbook
-belong to the shared `references/finding.md`. They are not copied here.
+belong to the shared [finding.md](../../../references/finding.md). They are not copied here.
 -->
 
 # Correctness checks

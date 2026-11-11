@@ -11,7 +11,7 @@ Use this when you produce a performance number: a PR's before and after, a regre
 
 For a quick ballpark the user asked for, one run is enough. Still check questions 4 and 7, and say that it is one run. Skip the rest unless that run looks wrong. A choice between options is never a ballpark.
 
-Principle `explain-the-number` is the shared frame: write the decision before you run, name why the number is not twice as good, and list what else the number could be measuring. This checklist is the procedure for a performance number. Eval numbers use the same questions inside shipwright-eval.
+Principle [explain-the-number](../../../references/principles/explain-the-number.md) is the shared frame: write the decision before you run, name why the number is not twice as good, and list what else the number could be measuring. This checklist is the procedure for a performance number. Eval numbers use the same questions inside shipwright-eval.
 
 ## Before you run anything
 

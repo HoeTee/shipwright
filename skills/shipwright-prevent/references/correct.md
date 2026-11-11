@@ -9,7 +9,7 @@ The user keeps correcting agents in this repo for the same mistakes. Change the 
 
 Assume every contributor is an agent that sees only the files it opened, copies the nearest example, and takes the shortest path that compiles. Design the repo so a change that looks right from one file is right for the whole repo.
 
-Principle `encode-lessons-in-structure` says the same thing in one line: the second time you write an instruction, encode it. If the lesson needs judgment and cannot be encoded, make the instruction more prominent and add an example of the failure. When a structural fix exists, use only that fix. The prose is the symptom. The principle file lives in shared `references/principles/`.
+Principle [encode-lessons-in-structure](../../../references/principles/encode-lessons-in-structure.md) says the same thing in one line: the second time you write an instruction, encode it. If the lesson needs judgment and cannot be encoded, make the instruction more prominent and add an example of the failure. When a structural fix exists, use only that fix. The prose is the symptom. The principle file lives in shared `references/principles/`.
 
 ## Find the mistake classes
 
@@ -19,7 +19,7 @@ First, read recent commits, reverts, review comments, agent instruction files, a
 
 1. **Eliminate it with architecture.** Give each piece of state one owner and each task one supported way. Hide internals so the wrong import fails. Replace hand-synced lists with one source of truth. Delete old ways and dead code an agent would copy. The red flags are in shipwright-structure.
 2. **Enforce it with types so the bad state cannot be written.** If bad code still compiles, add a lint or CI check whose error names the file, type, or function to use instead. If the pattern is already common, fail only when a change adds more.
-3. **Test the behavior.** Fix or delete any test that still passes when the behavior it checks breaks, or that fails when only the internals change. Principle `test-behavior-not-implementation` is the shared form.
+3. **Test the behavior.** Fix or delete any test that still passes when the behavior it checks breaks, or that fails when only the internals change. Principle [test-behavior-not-implementation](../../../references/principles/test-behavior-not-implementation.md) is the shared form.
 4. **Write docs or agent rules last, only for judgment calls.** Nothing fails when an agent skips them.
 
 ## Fix and prove

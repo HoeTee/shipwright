@@ -16,7 +16,7 @@ description: "跨函数边界的设计：先写调用方用法，再定类型和
 
 ## Phase B. Sketch
 
-先写调用方怎么用：README 式的用法，加两三处真实调用。类型从用法推出来，两边不一致时改类型。然后交给 shipwright-arena，每个候选的提示词用 [runner-prompt.md](references/runner-prompt.md)。至少两个结构上不同的方案，即使第一个看起来已经够用。这是原则 `exhaust-the-design-space`。合成前用 [design-red-flags.md](references/design-red-flags.md) 筛每一份。比较接口深度，优先把复杂度藏在更小的公开面上。持续的结构检查在 shipwright-structure，这份清单是设计这一步用的筛子。
+先写调用方怎么用：README 式的用法，加两三处真实调用。类型从用法推出来，两边不一致时改类型。然后交给 shipwright-arena，每个候选的提示词用 [runner-prompt.md](references/runner-prompt.md)。至少两个结构上不同的方案，即使第一个看起来已经够用。这是原则 [exhaust-the-design-space](../../references/principles/exhaust-the-design-space.md)。合成前用 [design-red-flags.md](references/design-red-flags.md) 筛每一份。比较接口深度，优先把复杂度藏在更小的公开面上。持续的结构检查在 shipwright-structure，这份清单是设计这一步用的筛子。
 
 ## Phase C. Agree
 
