@@ -14,8 +14,6 @@ Codex、Claude Code、OpenCode 向けのプラグイン
 
 [導入](#インストールして試す) · [流れ](#作業の流れ) · [Skill](#中心の-skill) · [例](#例) · [質問](#よくある質問) · [案内](#リポジトリ案内)
 
-<code>claude plugin install shipwright --marketplace HoeTee/shipwright</code>
-
 </div>
 
 ## インストールして試す
@@ -88,10 +86,10 @@ Do not push. Do not open a pull request. Do not merge.
 | OpenCode | `@shipwright-flow` |
 
 <p align="center">
-  <img src="media/shipwright-hero.png" alt="作業、段階の選択、構築、レビュー、人の判断。" width="860">
+  <img src="media/shipwright-workflow.png" alt="作業、計画、構築、レビューと修正、出荷、その後に人のマージ。">
 </p>
 
-<p align="center"><em>作業、段階、構築、レビュー、その後に人の判断。</em></p>
+<p align="center"><em>作業、計画、構築、その後にレビューと修正。妨げがなければ出荷と人のマージへ進む。<a href="media/shipwright-workflow.svg">大きい図</a> · <a href="showcase/shipwright-workflow.html">HTML ガイド</a></em></p>
 
 Shipwright は、1 つのコーディング作業のための skill 集である。
 各 skill は 1 つの仕事をする。
@@ -103,11 +101,8 @@ Shipwright は、1 つのコーディング作業のための skill 集である
 
 ## 作業の流れ
 
-<p align="center">
-  <img src="media/shipwright-workflow.png" alt="作業からレビューを経て shipwright-land までの経路。">
-</p>
-
-<p align="center"><em>主な経路。<a href="media/shipwright-workflow.svg">大きい図</a> · <a href="showcase/shipwright-workflow.html">HTML ガイド</a></em></p>
+上の図が主な経路である。
+[HTML ガイド](showcase/shipwright-workflow.html) は各段階を示す。
 
 1. **段階を選ぶ。** [shipwright-flow](../skills/shipwright-flow/SKILL.md) を実行する。目標と許可した操作を記録する。
 2. **その段階を行う。** コードを読む、問題を探す、計画を書く、または変更する。
@@ -121,16 +116,19 @@ Shipwright は、1 つのコーディング作業のための skill 集である
 ## 中心の skill
 
 この 8 つの skill が主な経路である。
-[skill の全一覧](skills.ja.md) に 48 個すべてを書く。
 
-- **[shipwright-flow](../skills/shipwright-flow/SKILL.md)** は段階、範囲、許可した操作を選ぶ。
-- **[shipwright-plan](../skills/shipwright-plan/SKILL.md)** は、新しいエージェントが実行できる計画を書く。
-- **[shipwright-build](../skills/shipwright-build/SKILL.md)** は変更を行い、証拠を持ち帰る。
-- **[shipwright-review](../skills/shipwright-review/SKILL.md)** は確認済みの指摘を報告する。コードは編集しない。
-- **[shipwright-fix](../skills/shipwright-fix/SKILL.md)** は阻止する指摘を直す。AI レビューの上限を持つ。
-- **[shipwright-ship](../skills/shipwright-ship/SKILL.md)** は pull request を開き、CI を追う。マージはしない。
-- **[shipwright-signoff](../skills/shipwright-signoff/SKILL.md)** は人向けの資料を用意する。
-- **[shipwright-land](../skills/shipwright-land/SKILL.md)** は、作者以外が検証し、あなたが許可した後に、その版をマージする。
+| Skill | 何をする |
+| --- | --- |
+| [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 段階、範囲、許可した操作を選ぶ。 |
+| [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 新しいエージェントが実行できる計画を書く。 |
+| [shipwright-build](../skills/shipwright-build/SKILL.md) | 変更を行い、証拠を持ち帰る。 |
+| [shipwright-review](../skills/shipwright-review/SKILL.md) | 確認済みの指摘を報告する。コードは編集しない。 |
+| [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 阻止する指摘を直し、レビューの上限を持つ。 |
+| [shipwright-ship](../skills/shipwright-ship/SKILL.md) | pull request を開き、CI を追う。 |
+| [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 人向けの資料を用意する。 |
+| [shipwright-land](../skills/shipwright-land/SKILL.md) | 作者以外が検証し、許可の後にマージする。 |
+
+[skill の全一覧](skills.ja.md) に 48 個すべてを書く。
 
 ## 例
 

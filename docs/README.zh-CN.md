@@ -14,8 +14,6 @@
 
 [安装](#安装并试用) · [流程](#工作流程) · [Skill](#核心-skill) · [示例](#示例) · [问答](#常见问题) · [指南](#仓库指南)
 
-<code>claude plugin install shipwright --marketplace HoeTee/shipwright</code>
-
 </div>
 
 ## 安装并试用
@@ -88,10 +86,10 @@ Do not push. Do not open a pull request. Do not merge.
 | OpenCode | `@shipwright-flow` |
 
 <p align="center">
-  <img src="media/shipwright-hero.png" alt="任务，然后选择阶段、构建、审查，最后由人决定。" width="860">
+  <img src="media/shipwright-workflow.png" alt="任务、计划、构建、审查与修复、交付，然后人工合并。">
 </p>
 
-<p align="center"><em>任务、阶段、构建、审查，然后由人决定。</em></p>
+<p align="center"><em>任务、计划、构建，然后审查与修复。没有阻断项时进入交付和人工合并。<a href="media/shipwright-workflow.svg">完整尺寸图</a> · <a href="showcase/shipwright-workflow.html">HTML 指南</a></em></p>
 
 Shipwright 是一组 skill，用来完成一项编码任务。
 每个 skill 只做一件事。
@@ -103,11 +101,8 @@ Shipwright 是一组 skill，用来完成一项编码任务。
 
 ## 工作流程
 
-<p align="center">
-  <img src="media/shipwright-workflow.png" alt="从任务经过审查，到 shipwright-land 的路径。">
-</p>
-
-<p align="center"><em>主路径。<a href="media/shipwright-workflow.svg">完整尺寸图</a> · <a href="showcase/shipwright-workflow.html">HTML 指南</a></em></p>
+上面的图是主路径。
+[HTML 指南](showcase/shipwright-workflow.html) 展示每个阶段。
 
 1. **选择阶段。** 运行 [shipwright-flow](../skills/shipwright-flow/SKILL.md)。它记录目标和你允许的操作。
 2. **做这一阶段。** 读代码、找问题、写计划，或改代码。
@@ -121,16 +116,19 @@ Shipwright 是一组 skill，用来完成一项编码任务。
 ## 核心 skill
 
 这八个 skill 是主路径。
-[完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
 
-- **[shipwright-flow](../skills/shipwright-flow/SKILL.md)** 选择阶段、范围，以及你允许的操作。
-- **[shipwright-plan](../skills/shipwright-plan/SKILL.md)** 写一份新代理可以执行的计划。
-- **[shipwright-build](../skills/shipwright-build/SKILL.md)** 完成改动，并带回证据。
-- **[shipwright-review](../skills/shipwright-review/SKILL.md)** 报告已核实的发现。它不改代码。
-- **[shipwright-fix](../skills/shipwright-fix/SKILL.md)** 修复阻断项。它持有 AI 审查上限。
-- **[shipwright-ship](../skills/shipwright-ship/SKILL.md)** 打开 pull request 并跟进 CI。它不合并。
-- **[shipwright-signoff](../skills/shipwright-signoff/SKILL.md)** 为一个人准备审查包。
-- **[shipwright-land](../skills/shipwright-land/SKILL.md)** 在非作者验证并且你允许之后，合并那个版本。
+| Skill | 做什么 |
+| --- | --- |
+| [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 选择阶段、范围，以及你允许的操作。 |
+| [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 写一份新代理可以执行的计划。 |
+| [shipwright-build](../skills/shipwright-build/SKILL.md) | 完成改动，并带回证据。 |
+| [shipwright-review](../skills/shipwright-review/SKILL.md) | 报告已核实的发现，并且不改代码。 |
+| [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 修复阻断项，并持有审查上限。 |
+| [shipwright-ship](../skills/shipwright-ship/SKILL.md) | 打开 pull request，并跟进 CI。 |
+| [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 为一个人准备审查包。 |
+| [shipwright-land](../skills/shipwright-land/SKILL.md) | 在非作者验证并且你允许之后合并。 |
+
+[完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
 
 ## 示例
 

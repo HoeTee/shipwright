@@ -12,19 +12,13 @@ Shipwright is a set of skills for the coding lifecycle.
 You name the stage, or you ask shipwright-flow to select the stage.
 The agent does not merge unless you authorize shipwright-land.
 
-## A The stages
+## A The short path
 
-```flow LR
-(Task) -> Select stage
-Select stage -> Build
-Build -> Review
-Review -> *Human decision
-```
-
-Select stage is shipwright-flow.
-Build is shipwright-build.
-Review is shipwright-review and shipwright-fix.
-Human decision is shipwright-signoff, then shipwright-land when you allow the merge.
+Task goes to Plan, then Build, then Review.
+The Review step and the Fix step loop until no finding blocks the change.
+A clear review goes to Ship, then to a human merge.
+The README picture shows this path.
+The next section shows every stage.
 
 ## B The path
 

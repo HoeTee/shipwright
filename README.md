@@ -14,8 +14,6 @@ A plugin for Codex, Claude Code, and OpenCode
 
 [Install](#install-and-try-it) · [Workflow](#workflow) · [Skills](#what-the-skills-do) · [Example](#example) · [FAQ](#faq) · [Guide](#repository-guide)
 
-<code>claude plugin install shipwright --marketplace HoeTee/shipwright</code>
-
 </div>
 
 ## Install and try it
@@ -88,10 +86,10 @@ Do not push. Do not open a pull request. Do not merge.
 | OpenCode | `@shipwright-flow` |
 
 <p align="center">
-  <img src="docs/media/shipwright-hero.png" alt="Task, then select stage, build, review, and a human decision." width="860">
+  <img src="docs/media/shipwright-workflow.png" alt="Task, Plan, Build, Review and Fix, Ship, then a human merge.">
 </p>
 
-<p align="center"><em>Task, stage, build, review, then a human decision.</em></p>
+<p align="center"><em>Task, Plan, Build, then Review and Fix. A clear review goes to Ship and a human merge. <a href="docs/media/shipwright-workflow.svg">Full-size diagram</a> · <a href="docs/showcase/shipwright-workflow.html">HTML guide</a></em></p>
 
 Shipwright is a set of skills for one coding task.
 Each skill does one job.
@@ -103,11 +101,8 @@ The agent merges only when you allow [shipwright-land](skills/shipwright-land/SK
 
 ## Workflow
 
-<p align="center">
-  <img src="docs/media/shipwright-workflow.png" alt="The path from a task through review to shipwright-land.">
-</p>
-
-<p align="center"><em>The main path. <a href="docs/media/shipwright-workflow.svg">Full-size diagram</a> · <a href="docs/showcase/shipwright-workflow.html">HTML guide</a></em></p>
+The picture above is the main path.
+The [HTML guide](docs/showcase/shipwright-workflow.html) shows every stage.
 
 1. **Select the stage.** Run [shipwright-flow](skills/shipwright-flow/SKILL.md). It records the goal and what you allow.
 2. **Do that stage.** Read the code, find the issue, write the plan, or make the change.
@@ -121,16 +116,19 @@ An audit stays an audit until you ask for a plan.
 ## What the skills do
 
 These eight skills are the main path.
-The [full skill list](docs/skills.md) names all 48 skills.
 
-- **[shipwright-flow](skills/shipwright-flow/SKILL.md)** selects the stage, the scope, and what you allow.
-- **[shipwright-plan](skills/shipwright-plan/SKILL.md)** writes a plan that a new agent can run.
-- **[shipwright-build](skills/shipwright-build/SKILL.md)** makes the change and brings back proof.
-- **[shipwright-review](skills/shipwright-review/SKILL.md)** reports checked findings. It does not edit the code.
-- **[shipwright-fix](skills/shipwright-fix/SKILL.md)** fixes blocking findings. It owns the AI review limit.
-- **[shipwright-ship](skills/shipwright-ship/SKILL.md)** opens the pull request and follows CI. It does not merge.
-- **[shipwright-signoff](skills/shipwright-signoff/SKILL.md)** prepares the packet for a person.
-- **[shipwright-land](skills/shipwright-land/SKILL.md)** merges one version after a non-author verifies it and you allow the merge.
+| Skill | What it does |
+| --- | --- |
+| [shipwright-flow](skills/shipwright-flow/SKILL.md) | Selects the stage, the scope, and what you allow. |
+| [shipwright-plan](skills/shipwright-plan/SKILL.md) | Writes a plan that a new agent can run. |
+| [shipwright-build](skills/shipwright-build/SKILL.md) | Makes the change and brings back proof. |
+| [shipwright-review](skills/shipwright-review/SKILL.md) | Reports checked findings and does not edit. |
+| [shipwright-fix](skills/shipwright-fix/SKILL.md) | Fixes blocking findings and owns the review limit. |
+| [shipwright-ship](skills/shipwright-ship/SKILL.md) | Opens the pull request and follows CI. |
+| [shipwright-signoff](skills/shipwright-signoff/SKILL.md) | Prepares the packet for a person. |
+| [shipwright-land](skills/shipwright-land/SKILL.md) | Merges after a non-author verifies the version and you allow it. |
+
+The [full skill list](docs/skills.md) names all 48 skills.
 
 ## Example
 

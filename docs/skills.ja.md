@@ -10,7 +10,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 開始
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 段階、範囲、許可した操作を選ぶ。 |
 | [shipwright-help](../skills/shipwright-help/SKILL.md) | 早見カードとプロンプトを示す。作業は始めない。 |
@@ -19,7 +19,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 理解
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-how](../skills/shipwright-how/SKILL.md) | コードの一区域がどう動くかを説明する。 |
 | [shipwright-why](../skills/shipwright-why/SKILL.md) | コードがこの形である理由を説明する。 |
@@ -28,7 +28,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 発見
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-audit](../skills/shipwright-audit/SKILL.md) | リポジトリまたは範囲を監査し、作業を順位づける。 |
 | [shipwright-roadmap](../skills/shipwright-roadmap/SKILL.md) | リポジトリの証拠から次の機能を提案する。 |
@@ -37,7 +37,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 計画
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 新しいエージェントが実行できる計画を plans/ に書く。 |
 | [shipwright-architect](../skills/shipwright-architect/SKILL.md) | 関数の境界を越えて設計する。呼び出し側から始める。 |
@@ -45,14 +45,14 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 構築
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-build](../skills/shipwright-build/SKILL.md) | 変更を行い、証拠を持ち帰る。 |
 | [shipwright-autopilot](../skills/shipwright-autopilot/SKILL.md) | 長い無人のループを進める。マージはしない。 |
 
 ## レビュー
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-review](../skills/shipwright-review/SKILL.md) | 1 つの版について確認済みの指摘を報告する。編集はしない。 |
 | [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 阻止する指摘を直す。AI レビューの上限を持つ。 |
@@ -61,7 +61,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 出荷
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-ship](../skills/shipwright-ship/SKILL.md) | pull request を開き、CI を追う。マージはしない。 |
 | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 人向けの資料を用意する。 |
@@ -69,7 +69,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## マージの後
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-deploy](../skills/shipwright-deploy/SKILL.md) | 変更を公開し、対象の環境を確認する。 |
 | [shipwright-recover](../skills/shipwright-recover/SKILL.md) | 障害ログを読み、新しい修正 pull request を開く。 |
@@ -81,7 +81,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 検証
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-verify-create](../skills/shipwright-verify-create/SKILL.md) | 実製品を操作するプロジェクト skill を作る。 |
 | [shipwright-verify-maintain](../skills/shipwright-verify-maintain/SKILL.md) | 製品が変わった後、その skill を更新する。 |
@@ -90,7 +90,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 領域の知識
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-bugs](../skills/shipwright-bugs/SKILL.md) | 作業の正しさの確認を述べる。 |
 | [shipwright-security](../skills/shipwright-security/SKILL.md) | 入力、権限、秘密情報の確認を述べる。 |
@@ -101,7 +101,7 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 
 ## 追加の道具
 
-| Skill | 仕事 |
+| Skill | 何をする |
 | --- | --- |
 | [shipwright-swarm](../skills/shipwright-swarm/SKILL.md) | 並列ワーカーを走らせ、報告を 1 つ返す。 |
 | [shipwright-arena](../skills/shipwright-arena/SKILL.md) | 同じ仕事の候補を比べ、強い部分を残す。 |

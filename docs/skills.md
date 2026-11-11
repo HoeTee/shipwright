@@ -10,7 +10,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Start
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-flow](../skills/shipwright-flow/SKILL.md) | Selects the stage, the scope, and what you allow. |
 | [shipwright-help](../skills/shipwright-help/SKILL.md) | Shows the card and a prompt. It does not start work. |
@@ -19,7 +19,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Understand
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-how](../skills/shipwright-how/SKILL.md) | Explains how one area of code works. |
 | [shipwright-why](../skills/shipwright-why/SKILL.md) | Explains why the code is this way. |
@@ -28,7 +28,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Discover
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-audit](../skills/shipwright-audit/SKILL.md) | Audits a repo or a scope and ranks the work. |
 | [shipwright-roadmap](../skills/shipwright-roadmap/SKILL.md) | Suggests the next feature from repo evidence. |
@@ -37,7 +37,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Plan
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-plan](../skills/shipwright-plan/SKILL.md) | Writes a plan in plans/ that a new agent can run. |
 | [shipwright-architect](../skills/shipwright-architect/SKILL.md) | Designs across function boundaries. It starts from the caller. |
@@ -45,14 +45,14 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Build
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-build](../skills/shipwright-build/SKILL.md) | Makes the change and brings back proof. |
 | [shipwright-autopilot](../skills/shipwright-autopilot/SKILL.md) | Runs a long unattended loop. It does not merge. |
 
 ## Review
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-review](../skills/shipwright-review/SKILL.md) | Reports checked findings for one version. It does not edit. |
 | [shipwright-fix](../skills/shipwright-fix/SKILL.md) | Fixes blocking findings. It owns the AI review limit. |
@@ -61,7 +61,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Ship
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-ship](../skills/shipwright-ship/SKILL.md) | Opens the pull request and follows CI. It does not merge. |
 | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | Prepares the packet for a person. |
@@ -69,7 +69,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## After the merge
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-deploy](../skills/shipwright-deploy/SKILL.md) | Releases the change and checks the target environment. |
 | [shipwright-recover](../skills/shipwright-recover/SKILL.md) | Reads failure logs and opens a new fix pull request. |
@@ -81,7 +81,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Verify
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-verify-create](../skills/shipwright-verify-create/SKILL.md) | Creates a project skill that runs the real product. |
 | [shipwright-verify-maintain](../skills/shipwright-verify-maintain/SKILL.md) | Updates that skill when the product changes. |
@@ -90,7 +90,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Domain knowledge
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-bugs](../skills/shipwright-bugs/SKILL.md) | States the correctness checks for a task. |
 | [shipwright-security](../skills/shipwright-security/SKILL.md) | States the checks for input, access, and secrets. |
@@ -101,7 +101,7 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 
 ## Extra tools
 
-| Skill | Job |
+| Skill | What it does |
 | --- | --- |
 | [shipwright-swarm](../skills/shipwright-swarm/SKILL.md) | Runs parallel workers and returns one report. |
 | [shipwright-arena](../skills/shipwright-arena/SKILL.md) | Compares candidates for one job and keeps the strong parts. |
