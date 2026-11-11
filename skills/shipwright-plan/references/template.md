@@ -1,7 +1,7 @@
 <!--
 Adapted from https://github.com/shadcn/improve (MIT).
 Copyright (c) 2026 shadcn
-Shipwright adds Category `review`, Domains, Run record, and 证据附录.
+Shipwright adds Category `review`, Domains, Run record, and Evidence appendix.
 -->
 
 # Handoff Plan Template
@@ -21,7 +21,7 @@ File naming: `plans/NNN-short-slug.md`, numbered in recommended execution order.
 ## Template
 
 ```markdown
-# Plan NNN: <Imperative title — what will be true after this plan>
+# Plan NNN: <Imperative title - what will be true after this plan>
 
 > **Executor instructions**: Follow this plan step by step. Run every
 > verification command and confirm the expected result before moving to the
@@ -44,7 +44,7 @@ File naming: `plans/NNN-short-slug.md`, numbered in recommended execution order.
 - **Category**: bug | security | perf | tests | tech-debt | migration | dx | docs | direction | review
 - **Domains**: bugs, security, test, structure, perf, lean (one or more)
 - **Planned at**: commit `<short SHA>`, <YYYY-MM-DD>
-- **Issue**: <GitHub issue URL — only when published via `--issues`; omit otherwise>
+- **Issue**: <GitHub issue URL - only when published via `--issues`; omit otherwise>
 
 ## Why this matters
 
@@ -105,7 +105,7 @@ executor's environment. Skip the section otherwise.)
 (Filled from recon — match the repo's observed conventions.)
 
 - Branch: `advisor/NNN-<slug>` (or the repo's branch-naming convention if one is evident)
-- Commit per step or per logical unit; message style: <match repo, e.g. conventional commits — include an example from `git log`>
+- Commit per step or per logical unit; message style: <match repo, e.g. conventional commits - include an example from `git log`>
 - Do NOT push or open a PR unless the operator instructed it.
 
 ## Steps
@@ -180,7 +180,7 @@ Append rows while the work is in progress. Do not rewrite earlier rows.
 - **Open decisions**: <question> (recommendation: <answer>)
 - **Human verdict**: pending
 
-## 证据附录
+## Evidence appendix
 
 - **Branch**: advisor/NNN-<slug>
 - **SHA**: <candidate sha>
