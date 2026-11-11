@@ -14,8 +14,6 @@ Codex, Claude Code, OpenCode용 플러그인
 
 [설치](#설치하고-시험하기) · [흐름](#작업-흐름) · [Skill](#핵심-skill) · [예시](#예시) · [질문](#자주-묻는-질문) · [안내](#저장소-안내)
 
-<code>claude plugin install shipwright --marketplace HoeTee/shipwright</code>
-
 </div>
 
 ## 설치하고 시험하기
@@ -88,10 +86,10 @@ Do not push. Do not open a pull request. Do not merge.
 | OpenCode | `@shipwright-flow` |
 
 <p align="center">
-  <img src="media/shipwright-hero.png" alt="작업, 단계 선택, 빌드, 검토, 사람의 결정." width="860">
+  <img src="media/shipwright-workflow.png" alt="작업, 계획, 빌드, 검토와 수정, 출고, 그다음 사람의 병합.">
 </p>
 
-<p align="center"><em>작업, 단계, 빌드, 검토, 그다음 사람의 결정.</em></p>
+<p align="center"><em>작업, 계획, 빌드, 그다음 검토와 수정. 막는 항목이 없으면 출고와 사람의 병합으로 간다. <a href="media/shipwright-workflow.svg">큰 그림</a> · <a href="showcase/shipwright-workflow.html">HTML 안내</a></em></p>
 
 Shipwright는 코딩 작업 하나를 위한 skill 모음이다.
 각 skill은 일 하나를 한다.
@@ -103,11 +101,8 @@ Shipwright는 코딩 작업 하나를 위한 skill 모음이다.
 
 ## 작업 흐름
 
-<p align="center">
-  <img src="media/shipwright-workflow.png" alt="작업에서 검토를 거쳐 shipwright-land까지의 경로.">
-</p>
-
-<p align="center"><em>주요 경로. <a href="media/shipwright-workflow.svg">큰 그림</a> · <a href="showcase/shipwright-workflow.html">HTML 안내</a></em></p>
+위 그림이 주요 경로이다.
+[HTML 안내](showcase/shipwright-workflow.html)는 각 단계를 보여 준다.
 
 1. **단계를 고른다.** [shipwright-flow](../skills/shipwright-flow/SKILL.md)를 실행한다. 목표와 허용한 작업을 기록한다.
 2. **그 단계를 한다.** 코드를 읽거나, 문제를 찾거나, 계획을 쓰거나, 변경한다.
@@ -121,16 +116,19 @@ Shipwright는 코딩 작업 하나를 위한 skill 모음이다.
 ## 핵심 skill
 
 이 여덟 skill이 주요 경로이다.
-[전체 skill 목록](skills.ko.md)에 48개를 모두 적는다.
 
-- **[shipwright-flow](../skills/shipwright-flow/SKILL.md)** 는 단계, 범위, 허용한 작업을 고른다.
-- **[shipwright-plan](../skills/shipwright-plan/SKILL.md)** 는 새 에이전트가 실행할 수 있는 계획을 쓴다.
-- **[shipwright-build](../skills/shipwright-build/SKILL.md)** 는 변경을 하고 증거를 가져온다.
-- **[shipwright-review](../skills/shipwright-review/SKILL.md)** 는 확인한 발견을 보고한다. 코드를 고치지 않는다.
-- **[shipwright-fix](../skills/shipwright-fix/SKILL.md)** 는 막는 발견을 고친다. AI 검토 한도를 가진다.
-- **[shipwright-ship](../skills/shipwright-ship/SKILL.md)** 는 pull request를 열고 CI를 따라간다. 병합하지 않는다.
-- **[shipwright-signoff](../skills/shipwright-signoff/SKILL.md)** 는 사람용 꾸러미를 준비한다.
-- **[shipwright-land](../skills/shipwright-land/SKILL.md)** 는 작성자가 아닌 사람이 검증하고 당신이 허용한 뒤에 그 버전을 병합한다.
+| Skill | 하는 일 |
+| --- | --- |
+| [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 단계, 범위, 허용한 작업을 고른다. |
+| [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 새 에이전트가 실행할 수 있는 계획을 쓴다. |
+| [shipwright-build](../skills/shipwright-build/SKILL.md) | 변경을 하고 증거를 가져온다. |
+| [shipwright-review](../skills/shipwright-review/SKILL.md) | 확인한 발견을 보고한다. 코드를 고치지 않는다. |
+| [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 막는 발견을 고치고 검토 한도를 가진다. |
+| [shipwright-ship](../skills/shipwright-ship/SKILL.md) | pull request를 열고 CI를 따라간다. |
+| [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 사람용 꾸러미를 준비한다. |
+| [shipwright-land](../skills/shipwright-land/SKILL.md) | 작성자가 아닌 사람이 검증하고 허용한 뒤에 병합한다. |
+
+[전체 skill 목록](skills.ko.md)에 48개를 모두 적는다.
 
 ## 예시
 
