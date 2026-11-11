@@ -12,7 +12,7 @@ A plugin for Codex, Claude Code, and OpenCode
 [![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](references/platforms.md)
 [![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
-[Install](#install-and-try-it) · [Workflow](#workflow) · [Skills](#what-the-skills-do) · [Example](#example) · [FAQ](#faq) · [Guide](#repository-guide)
+[Install](#install-and-try-it) · [Workflow](#workflow) · [Core skills](#core-skills) · [Example](#example) · [FAQ](#faq)
 
 </div>
 
@@ -113,9 +113,9 @@ The [HTML guide](docs/showcase/shipwright-workflow.html) shows every stage.
 A small clear change can start at [shipwright-build](skills/shipwright-build/SKILL.md).
 An audit stays an audit until you ask for a plan.
 
-## What the skills do
+## Core skills
 
-These eight skills are the main path.
+These are the core skills.
 
 | Skill | What it does |
 | --- | --- |
@@ -190,42 +190,17 @@ Paths, file names, and template headings are English.
 
 </details>
 
-## Repository guide
-
-| Path | What it holds |
-| --- | --- |
-| [skills/](skills/) | One directory per skill. Each skill has `SKILL.md`. |
-| [docs/skills.md](docs/skills.md) | The full list of 48 skills. |
-| [references/](references/) | Shared rules for scope, findings, proof, and platforms. |
-| [references/principles/](references/principles/) | The shared design principles. |
-| [docs/showcase/shipwright-workflow.html](docs/showcase/shipwright-workflow.html) | The HTML guide for the workflow. |
-| [scripts/render_html.mjs](scripts/render_html.mjs) | Renders an HTML report. It needs Node.js 20 or newer. |
-| [.claude-plugin/](.claude-plugin/) | The Claude Code marketplace and plugin manifest. |
-| [.codex-plugin/](.codex-plugin/) | The Codex plugin manifest. |
-| [CONTRIBUTING-skills.md](CONTRIBUTING-skills.md) | Rules for a change to a skill. |
-
 ## Philosophy
 
-Keep the change small and complete.
-Do the requested work, including callers and checks.
-Do not add work that nobody requested.
-This rule comes from [Ponytail](https://github.com/DietrichGebert/ponytail).
+Keep each change small and complete, and add no unrequested work.
 
-A plan is a record in `plans/`.
-It holds the notes, the commands, the run record, and the proof.
-This rule comes from [improve](https://github.com/shadcn/improve).
+A plan in `plans/` records the notes, the commands, the run, and the proof.
 
-Prove the change on the real product.
-A cached screenshot is not proof.
-This rule comes from [pstack](https://github.com/cursor/plugins/tree/main/pstack).
+Prove the change on the real product, not from a cached screenshot.
 
-AI review has a limit. A person decides the merge.
-The default limit is 3, and only [shipwright-fix](skills/shipwright-fix/SKILL.md) defines it.
-The count starts when the pull request opens.
-This rule comes from [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill).
+AI review has a limit of 3, and a person decides the merge.
 
-Heavy tools stay off until you ask.
-Those tools are swarm, arena, autopilot, and multi-PR plans.
+Swarm, arena, autopilot, and multi-PR plans stay off until you ask.
 
 ## Credits and comparison
 
@@ -249,5 +224,4 @@ Read [CONTRIBUTING-skills.md](CONTRIBUTING-skills.md) before you edit a skill.
 
 ## License
 
-[MIT](LICENSE).
-Adapted files keep their own notices.
+MIT © HoeTee/shipwright

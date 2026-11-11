@@ -12,7 +12,7 @@
 [![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](../references/platforms.md)
 [![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](../LICENSE)
 
-[安装](#安装并试用) · [流程](#工作流程) · [Skill](#核心-skill) · [示例](#示例) · [问答](#常见问题) · [指南](#仓库指南)
+[安装](#安装并试用) · [流程](#工作流程) · [核心 skill](#核心-skill) · [示例](#示例) · [问答](#常见问题)
 
 </div>
 
@@ -115,7 +115,7 @@ Shipwright 是一组 skill，用来完成一项编码任务。
 
 ## 核心 skill
 
-这八个 skill 是主路径。
+这些是核心 skill。
 
 | Skill | 做什么 |
 | --- | --- |
@@ -190,42 +190,17 @@ Skill 说明是中文。
 
 </details>
 
-## 仓库指南
-
-| 路径 | 内容 |
-| --- | --- |
-| [skills/](../skills/) | 每个 skill 一个目录。每个 skill 有 `SKILL.md`。 |
-| [skills.zh-CN.md](skills.zh-CN.md) | 全部 48 个 skill 的列表。 |
-| [references/](../references/) | 范围、发现、证据和平台的共用规则。 |
-| [references/principles/](../references/principles/) | 共用的设计原则。 |
-| [showcase/shipwright-workflow.html](showcase/shipwright-workflow.html) | 工作流程的 HTML 指南。 |
-| [scripts/render_html.mjs](../scripts/render_html.mjs) | 渲染 HTML 报告。需要 Node.js 20 或更新版本。 |
-| [.claude-plugin/](../.claude-plugin/) | Claude Code 的 marketplace 和插件清单。 |
-| [.codex-plugin/](../.codex-plugin/) | Codex 的插件清单。 |
-| [CONTRIBUTING-skills.md](../CONTRIBUTING-skills.md) | 修改 skill 的规则。 |
-
 ## 理念
 
-改动要小，也要完整。
-做被要求的工作，包括调用方和检查。
-不要加上没有人要求的工作。
-这条规则来自 [Ponytail](https://github.com/DietrichGebert/ponytail)。
+改动要小而完整，并且不加没有人要求的工作。
 
-计划是 `plans/` 里的一份记录。
-它包含笔记、命令、运行记录和证据。
-这条规则来自 [improve](https://github.com/shadcn/improve)。
+`plans/` 里的计划记录笔记、命令、运行记录和证据。
 
-在真实产品上证明改动。
-缓存的截图不是证据。
-这条规则来自 [pstack](https://github.com/cursor/plugins/tree/main/pstack)。
+在真实产品上证明改动，缓存截图不是证据。
 
-AI 审查有上限。合并由人决定。
-默认上限是 3，只有 [shipwright-fix](../skills/shipwright-fix/SKILL.md) 定义它。
-计数从 pull request 打开时开始。
-这条规则来自 [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill)。
+AI 审查的默认上限是 3，合并由人决定。
 
-重型工具在你要求之前保持关闭。
-这些工具是 swarm、arena、autopilot，以及多 PR 计划。
+swarm、arena、autopilot 和多 PR 计划在你要求之前保持关闭。
 
 ## 来源与对比
 
@@ -249,5 +224,4 @@ Ponytail 公布的是它自己的测量。
 
 ## 许可证
 
-[MIT](../LICENSE)。
-改编过的文件保留它们自己的声明。
+MIT © HoeTee/shipwright

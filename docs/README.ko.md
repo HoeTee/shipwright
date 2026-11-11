@@ -12,7 +12,7 @@ Codex, Claude Code, OpenCode용 플러그인
 [![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](../references/platforms.md)
 [![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](../LICENSE)
 
-[설치](#설치하고-시험하기) · [흐름](#작업-흐름) · [Skill](#핵심-skill) · [예시](#예시) · [질문](#자주-묻는-질문) · [안내](#저장소-안내)
+[설치](#설치하고-시험하기) · [흐름](#작업-흐름) · [핵심 skill](#핵심-skill) · [예시](#예시) · [질문](#자주-묻는-질문)
 
 </div>
 
@@ -115,7 +115,7 @@ Shipwright는 코딩 작업 하나를 위한 skill 모음이다.
 
 ## 핵심 skill
 
-이 여덟 skill이 주요 경로이다.
+이것들은 핵심 skill이다.
 
 | Skill | 하는 일 |
 | --- | --- |
@@ -190,42 +190,17 @@ Skill 설명은 중국어이다.
 
 </details>
 
-## 저장소 안내
-
-| 경로 | 내용 |
-| --- | --- |
-| [skills/](../skills/) | Skill마다 디렉터리 하나. 각 skill은 `SKILL.md`를 가진다. |
-| [skills.ko.md](skills.ko.md) | 48개 skill의 전체 목록. |
-| [references/](../references/) | 범위, 발견, 증거, 플랫폼의 공통 규칙. |
-| [references/principles/](../references/principles/) | 공통 설계 원칙. |
-| [showcase/shipwright-workflow.html](showcase/shipwright-workflow.html) | 작업 흐름의 HTML 안내. |
-| [scripts/render_html.mjs](../scripts/render_html.mjs) | HTML 보고서를 그린다. Node.js 20 이상이 필요하다. |
-| [.claude-plugin/](../.claude-plugin/) | Claude Code marketplace와 플러그인 목록. |
-| [.codex-plugin/](../.codex-plugin/) | Codex 플러그인 목록. |
-| [CONTRIBUTING-skills.md](../CONTRIBUTING-skills.md) | Skill을 바꿀 때의 규칙. |
-
 ## 원칙
 
-변경은 작고 완전해야 한다.
-요청한 일을 한다. 호출자와 검사도 포함한다.
-아무도 요청하지 않은 일을 더하지 않는다.
-이 규칙은 [Ponytail](https://github.com/DietrichGebert/ponytail)에서 온다.
+변경은 작고 완전해야 하며, 요청하지 않은 일은 더하지 않는다.
 
-계획은 `plans/`의 기록이다.
-노트, 명령, 실행 기록, 증거를 담는다.
-이 규칙은 [improve](https://github.com/shadcn/improve)에서 온다.
+`plans/`의 계획은 노트, 명령, 실행 기록, 증거를 담는다.
 
-변경은 실제 제품에서 증명한다.
-저장된 스크린샷은 증거가 아니다.
-이 규칙은 [pstack](https://github.com/cursor/plugins/tree/main/pstack)에서 온다.
+변경은 실제 제품에서 증명하고, 저장된 스크린샷은 증거가 아니다.
 
-AI 검토에는 한도가 있다. 병합은 사람이 결정한다.
-기본 한도는 3이고, [shipwright-fix](../skills/shipwright-fix/SKILL.md)만 정의한다.
-횟수는 pull request를 열 때 시작한다.
-이 규칙은 [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill)에서 온다.
+AI 검토의 기본 한도는 3이고, 병합은 사람이 결정한다.
 
-무거운 도구는 요청할 때까지 꺼 둔다.
-그 도구는 swarm, arena, autopilot, 여러 PR 계획이다.
+swarm, arena, autopilot, 여러 PR 계획은 요청할 때까지 꺼 둔다.
 
 ## 출처와 비교
 
@@ -249,5 +224,4 @@ Skill을 고치기 전에 [CONTRIBUTING-skills.md](../CONTRIBUTING-skills.md)를
 
 ## 라이선스
 
-[MIT](../LICENSE).
-고친 파일은 자신의 고지를 유지한다.
+MIT © HoeTee/shipwright

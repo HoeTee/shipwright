@@ -2,7 +2,7 @@
 
 [English](skills.md) · [中文](skills.zh-CN.md) · [日本語](skills.ja.md)
 
-[README](README.ko.md)는 주요 경로의 여덟 skill을 보여 준다.
+[README](README.ko.md)는 여덟 핵심 skill을 보여 준다.
 이 페이지는 48개를 모두 적는다.
 각 줄은 일 하나이다.
 
