@@ -2,9 +2,13 @@
   "skills": [
     {
       "name": "shipwright-architect",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/design-red-flags.md",
+        "references/procedure.md",
+        "references/rationale-template.md",
+        "references/runner-prompt.md"
       ]
     },
     {
@@ -16,9 +20,18 @@
     },
     {
       "name": "shipwright-audit",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/deps.md",
+        "references/dx.md",
+        "references/effort.md",
+        "references/procedure.md",
+        "references/quick.md",
+        "references/subagent-brief.md",
+        "references/vet.md",
+        "scripts/rank_findings.py",
+        "scripts/test_rank_findings.py"
       ]
     },
     {
@@ -98,9 +111,14 @@
     },
     {
       "name": "shipwright-diagnose",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/reproduce.md",
+        "references/runtime-forensics.md",
+        "references/trace-forensics.md",
+        "scripts/test_trace_to_sqlite.py",
+        "scripts/trace_to_sqlite.py"
       ]
     },
     {
@@ -138,16 +156,24 @@
     },
     {
       "name": "shipwright-how",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/architecture-facts.md",
+        "references/explainer-prompt.md",
+        "references/explorer-prompt.md",
+        "references/hosts.md",
+        "references/investigation.md",
+        "references/procedure.md"
       ]
     },
     {
       "name": "shipwright-impact",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/method.md",
+        "references/procedure.md"
       ]
     },
     {
@@ -194,11 +220,18 @@
     },
     {
       "name": "shipwright-plan",
-      "version": "1",
+      "version": "2",
       "files": [
         "SKILL.md",
+        "references/example.md",
+        "references/figure-it-out.md",
         "references/index.md",
-        "references/template.md"
+        "references/issues.md",
+        "references/multi-pr.md",
+        "references/template.md",
+        "references/writing-rules.md",
+        "scripts/check_plan.py",
+        "scripts/test_check_plan.py"
       ]
     },
     {
@@ -213,9 +246,10 @@
     },
     {
       "name": "shipwright-prototype",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/procedure.md"
       ]
     },
     {
@@ -234,9 +268,14 @@
     },
     {
       "name": "shipwright-recall",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/method.md",
+        "references/procedure.md",
+        "references/session-pickup.md",
+        "scripts/find_sessions.py",
+        "scripts/test_find_sessions.py"
       ]
     },
     {
@@ -291,9 +330,10 @@
     },
     {
       "name": "shipwright-roadmap",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/direction.md"
       ]
     },
     {
@@ -394,9 +434,10 @@
     },
     {
       "name": "shipwright-teach",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/procedure.md"
       ]
     },
     {
@@ -429,9 +470,25 @@
     },
     {
       "name": "shipwright-why",
-      "version": "1",
+      "version": "2",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/epistemics.md",
+        "references/investigator-prompt.md",
+        "references/method.md",
+        "references/procedure.md",
+        "references/source-playbook.md",
+        "references/sources/code-archaeology.md",
+        "references/sources/databricks.md",
+        "references/sources/datadog.md",
+        "references/sources/incident-postmortem.md",
+        "references/sources/linear.md",
+        "references/sources/notion.md",
+        "references/sources/sentry.md",
+        "references/sources/slack.md",
+        "references/synthesizer-prompt.md",
+        "scripts/code_archaeology.py",
+        "scripts/test_code_archaeology.py"
       ]
     },
     {
