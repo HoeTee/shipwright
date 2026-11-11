@@ -27,7 +27,7 @@ Codex、Claude Code 和 OpenCode 用同一过程。能派子代理就派独立�
 
 - [orchestrate.md](references/orchestrate.md)：一个协调者分派多个 PR，读产物和 diff，不只读摘要。一个结论只管一个 SHA。
 - [stack.md](references/stack.md)：堆叠 PR，停在已验证、可交给人的状态。
-- [lanes.md](references/lanes.md)：十条实测通道。截图放 `/tmp/shipwright-<计划编号>/<commit 前 7 位>/laneNN-<场景>.png`。人审截图和 30–60 秒视频始终归 shipwright-signoff，不依赖本文件。
+- [lanes.md](references/lanes.md)：十条实测通道。截图放 `/tmp/shipwright-<plan-id>/<short-sha>/laneNN-<slug>.png`。人审截图和 30–60 秒视频始终归 shipwright-signoff，不依赖本文件。
 - [check-plan.mjs](scripts/check-plan.mjs) 是上游格式检查，默认不跑。它要求上游英文骨架里的宿主唤醒命令。[check_lanes.py](scripts/check_lanes.py) 不加 `--enable` 时只报告 disabled。
 
 autopilot-full 不在本插件里。任何允许自己合并的句子都不要执行。

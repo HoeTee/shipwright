@@ -22,6 +22,6 @@ description: "派 N 个并行 worker，收齐后出一份报告；每份报告�
 
 ## Evidence
 
-每份 worker 报告使用 `PASS`、`ISSUES` 或 `BLOCKED`。能证明的缺陷全部列出，不只报第一条。证据放在 `/tmp/shipwright-<计划编号>/<commit 前 7 位>/worker-<n>/`，报告里给路径和 SHA。父会话打开这些文件之后才采用。规则见 [Evidence](../../references/evidence.md)。
+每份 worker 报告使用 `PASS`、`ISSUES` 或 `BLOCKED`。能证明的缺陷全部列出，不只报第一条。证据放在 `/tmp/shipwright-<plan-id>/<short-sha>/worker-<n>/`，报告里给路径和 SHA。父会话打开这些文件之后才采用。规则见 [Evidence](../../references/evidence.md)。
 
 worker 不写同一个文件、分支或键。各自落盘，只在报告处合并。大输出留在 worker，父会话只留摘要。

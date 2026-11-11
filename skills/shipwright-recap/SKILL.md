@@ -28,7 +28,7 @@ node scripts/render_html.mjs patch answer.html --panel A --from panel.md --no-op
 python scripts/render_progress.py task.progress.json --output task.html
 ```
 
-同一任务反复更新同一份 HTML 和同一份状态源。计划的结果页是 `plans/reports/<计划文件名>.html`。新任务才换路径。草稿、组件和署名见 [HTML explainer](../../references/recap/html-explainer.md)。进度、卡点和状态词见 [Progress](../../references/recap/progress-interaction.md)。
+同一任务反复更新同一份 HTML 和同一份状态源。计划的结果页是 `plans/reports/<plan-filename>.html`。新任务才换路径。草稿、组件和署名见 [HTML explainer](../../references/recap/html-explainer.md)。进度、卡点和状态词见 [Progress](../../references/recap/progress-interaction.md)。
 
 默认紧凑浅色图纸（sheet / blueprint / light），保留原版页眉、字号、表格和自动布局，隐藏工具栏。随包渲染器的默认署名保持不变。用户要改整行署名时才传 `--footer`。不要改 `scripts/`。
 

@@ -15,7 +15,7 @@ description: "把 shortcut: 注释汇成技术债账本。用于：盘点故意�
 1. 在仓库根运行 [scan_shortcuts.py](scripts/scan_shortcuts.py)。它用 `git grep --no-index --exclude-standard`，跳过 `.git` 和 `.gitignore` 覆盖的文件，仍然看得到未跟踪文件。
 2. 你指定了别的标记词（例如 `TODO`）时，加 `--marker TODO`。堆栈还有别的注释前缀时，加 `--prefix`。
 3. 每一命中是一行。注释前缀把只是提到这个约定的散文排除在外。你再丢掉不是延期的命中，例如键盘快捷键说明。
-4. 从注释里取出上限和升级条件，写成：`<file>:<line>, <简化了什么>. ceiling: <上限>. upgrade: <何时再看>.` 「简化了什么」来自你读过的那行代码。
+4. 从注释里取出上限和升级条件，写成：`<file>:<line>, <what-it-simplifies>. ceiling: <ceiling>. upgrade: <when-to-revisit>.` 「简化了什么」来自你读过的那行代码。
 5. 需要负责人时加 `--blame`。
 6. 没有升级条件或触发条件的标记标 `no-trigger`。这些会静默烂掉。
 7. 结尾写 `<N> markers, <M> with no trigger.` 没有命中时写 `No shortcut debt. Clean ledger.`
