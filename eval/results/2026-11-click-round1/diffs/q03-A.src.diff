@@ -1,0 +1,16 @@
+Only in /tmp/t/q03a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q03/src/click/_utils.py /tmp/t/q03a91c/click/src/click/_utils.py
+--- /tmp/click-round1/pristine/q03/src/click/_utils.py	2026-08-27 04:07:04.000000000 +0000
++++ /tmp/t/q03a91c/click/src/click/_utils.py	2026-11-11 16:47:31.391484871 +0000
+@@ -18,6 +18,11 @@
+     def __repr__(self) -> str:
+         return f"{self.__class__.__name__}.{self.name}"
+ 
++    def __reduce_ex__(self, protocol: int) -> tuple[t.Any, tuple[type[Sentinel], str]]:
++        # Enum pickles by value. ``object()`` unpickles as a new instance,
++        # which this enum then rejects. Restore the existing member by name.
++        return getattr, (self.__class__, self.name)
++
+ 
+ UNSET: t.Literal[Sentinel.UNSET] = Sentinel.UNSET
+ """Sentinel used to indicate that a value is not set."""

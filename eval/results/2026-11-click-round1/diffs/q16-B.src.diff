@@ -1,0 +1,37 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q16/CHANGES.rst /tmp/t/q16b27e/click/CHANGES.rst
+--- /tmp/click-round1/pristine/q16/CHANGES.rst	2024-11-03 12:22:25.000000000 +0000
++++ /tmp/t/q16b27e/click/CHANGES.rst	2026-11-11 17:17:52.120030633 +0000
+@@ -5,6 +5,8 @@
+ 
+ Unreleased
+ 
++-   Run ``Context.call_on_close`` callbacks when a command exits through
++    ``Context.exit()``, including when an option calls it during parsing.
+ -   Drop support for Python 3.7. :pr:`2588`
+ -   Use modern packaging metadata with ``pyproject.toml`` instead of ``setup.cfg``.
+     :pr:`326`
+Only in /tmp/t/q16b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q16/src/click/core.py /tmp/t/q16b27e/click/src/click/core.py
+--- /tmp/click-round1/pristine/q16/src/click/core.py	2024-11-03 12:22:25.000000000 +0000
++++ /tmp/t/q16b27e/click/src/click/core.py	2026-11-11 17:19:08.299417138 +0000
+@@ -699,7 +699,19 @@
+         raise Abort()
+ 
+     def exit(self, code: int = 0) -> t.NoReturn:
+-        """Exits the application with a given exit code."""
++        """Exits the application with a given exit code.
++
++        :param code: the exit code to exit with.
++
++        .. versionchanged:: 8.2.0
++            Callbacks and resources registered with
++            :meth:`call_on_close` and :meth:`with_resource` are
++            closed before exiting. They still see this context,
++            including when an option calls ``exit`` while parsing.
++        """
++        # Parsing uses scope(cleanup=False), which defers __exit__
++        # cleanup. Close now, while this context is still current.
++        self.close()
+         raise Exit(code)
+ 
+     def get_usage(self) -> str:

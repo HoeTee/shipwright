@@ -1,0 +1,25 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q07/src/click/formatting.py /tmp/t/q07b27e/click/src/click/formatting.py
+--- /tmp/click-round1/pristine/q07/src/click/formatting.py	2026-05-16 05:04:29.000000000 +0000
++++ /tmp/t/q07b27e/click/src/click/formatting.py	2026-11-11 16:58:39.919396696 +0000
+@@ -161,9 +161,20 @@
+         if prefix is None:
+             prefix = "{usage} ".format(usage=_("Usage:"))
+ 
+-        usage_prefix = f"{prefix:>{self.current_indent}}{prog} "
++        # Separate the program name from its arguments with one space. With no
++        # arguments that space is omitted: wrapping an empty string drops the
++        # indent (so the usage line disappears) or, when the prefix is too long
++        # to share a line, leaves a trailing space and a blank second line.
++        usage_prefix = f"{prefix:>{self.current_indent}}{prog}"
++        if args:
++            usage_prefix += " "
++
+         text_width = self.width - self.current_indent
+ 
++        if not args:
++            self.write(f"{usage_prefix}\n")
++            return
++
+         if text_width >= (term_len(usage_prefix) + 20):
+             # The arguments will fit to the right of the prefix.
+             indent = " " * term_len(usage_prefix)

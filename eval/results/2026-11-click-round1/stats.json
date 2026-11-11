@@ -1,0 +1,43 @@
+{
+  "verdict": "inconclusive",
+  "script_decide_if_one_sample_is_exact": "improved",
+  "why_not_the_script_label": "One run per arm. The script treats that sample as a zero-width range, then bootstraps across questions. Question 5 of the procedure asks for five runs before a gap is compared with run-to-run noise.",
+  "n_per_arm": 1,
+  "questions_run": 16,
+  "runs": 32,
+  "skipped": 0,
+  "crashed": 0,
+  "hidden_pass": {"skills": 15, "plain": 15},
+  "full_suite_pass": {"skills": 15, "plain": 15},
+  "source_lines": {"skills": 262, "plain": 444},
+  "quality": {
+    "ratio": 1.0,
+    "range95": [1.0, 1.0],
+    "crosses_one": true,
+    "better_on": "0 / 15",
+    "undefined": ["q09"]
+  },
+  "source_line_ratio_skills_over_plain": {
+    "ratio": 0.5502669386172555,
+    "range95": [0.3757004512003804, 0.7691193362030242],
+    "crosses_one": false,
+    "better_on": "13 / 16",
+    "seed": 1,
+    "draws": 2000
+  },
+  "judge": {"skills_wins": 8, "plain_wins": 2, "ties": 6, "model": "composer-2.5"},
+  "both_perfect_hidden_and_suite": ["q01", "q02", "q03", "q04", "q05", "q06", "q07", "q08", "q10", "q11", "q12", "q13", "q14", "q15", "q16"],
+  "both_failed": ["q09"],
+  "models": {
+    "arms": "grok-4.7 (session model, inherited by both arms)",
+    "judge": "composer-2.5",
+    "judge_families_rejected_by_host": ["claude", "gpt", "gemini"]
+  },
+  "batch_wall_clock_upper_bound_seconds": {
+    "q01-q04": 694,
+    "q05-q08": 549,
+    "q09-q12": 433,
+    "q13-q16": 636
+  },
+  "per_run_time_steps_tokens": "not reported by the host"
+}

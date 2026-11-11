@@ -1,0 +1,81 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q08/CHANGES.rst /tmp/t/q08b27e/click/CHANGES.rst
+--- /tmp/click-round1/pristine/q08/CHANGES.rst	2026-05-08 13:47:47.000000000 +0000
++++ /tmp/t/q08b27e/click/CHANGES.rst	2026-11-11 17:03:08.027940872 +0000
+@@ -53,6 +53,10 @@
+     fail. :issue:`3105` :pr:`3211`
+ -   Add ``click.get_pager_file`` for file-like access to an output
+     pager. :pr:`1572`
++-   Hidden prompts show the validation error when it does not contain the
++    entered secret. Built-in types that quote the value show ``'***'`` in
++    its place. If the raw secret is still part of the message, the generic
++    invalid-value error is shown instead.
+ 
+ Version 8.3.3
+ -------------
+Only in /tmp/t/q08b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q08/src/click/termui.py /tmp/t/q08b27e/click/src/click/termui.py
+--- /tmp/click-round1/pristine/q08/src/click/termui.py	2026-05-08 13:47:47.000000000 +0000
++++ /tmp/t/q08b27e/click/src/click/termui.py	2026-11-11 17:01:19.939861628 +0000
+@@ -104,6 +104,23 @@
+     return default
+ 
+ 
++def _format_hidden_prompt_error(value: t.Any, message: str) -> str | None:
++    """Return a validation error that does not reveal a hidden entry.
++
++    Built-in types quote the value with :func:`repr`. That form is replaced
++    with ``'***'`` so the rest of the message can still be shown. If the raw
++    value remains anywhere in the text, the message is not safe to display
++    and ``None`` is returned so the caller can use a generic error.
++    """
++    secret = value if isinstance(value, str) else str(value)
++    rendered = message.replace(repr(value), repr("***"))
++
++    if secret and secret in rendered:
++        return None
++
++    return rendered
++
++
+ def prompt(
+     text: str,
+     default: t.Any | None = None,
+@@ -126,7 +143,11 @@
+     :param default: the default value to use if no input happens.  If this
+                     is not given it will prompt until it's aborted.
+     :param hide_input: if this is set to true then the input value will
+-                       be hidden.
++                       be hidden. Validation errors still show when they do
++                       not contain the entered value. Messages that quote the
++                       value, as built-in types do, show ``'***'`` in its
++                       place. If the raw value is still part of the message,
++                       a generic error is shown instead.
+     :param confirmation_prompt: Prompt a second time to confirm the
+         value. Can be set to a string instead of ``True`` to customize
+         the message.
+@@ -145,6 +166,10 @@
+                          show_choices is true and text is "Group by" then the
+                          prompt will be "Group by (day, week): ".
+ 
++    .. versionchanged:: 8.4.0
++        Hidden prompts show the validation error when it does not reveal
++        the entered value. Quoted values are masked as ``'***'``.
++
+     .. versionchanged:: 8.3.3
+         ``show_default`` can be a string to show a custom value instead
+         of the actual default, matching the help text behavior.
+@@ -203,7 +228,13 @@
+             result = value_proc(value)
+         except UsageError as e:
+             if hide_input:
+-                echo(_("Error: The value you entered was invalid."), err=err)
++                safe_message = _format_hidden_prompt_error(value, e.message)
++                # Preserve the historical gettext string when the entered
++                # value cannot be redacted without leaving it visible.
++                if safe_message is None:
++                    echo(_("Error: The value you entered was invalid."), err=err)
++                else:
++                    echo(_("Error: {message}").format(message=safe_message), err=err)
+             else:
+                 echo(_("Error: {e.message}").format(e=e), err=err)
+             continue

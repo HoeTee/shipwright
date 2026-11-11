@@ -1,0 +1,50 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q05/src/click/shell_completion.py /tmp/t/q05b27e/click/src/click/shell_completion.py
+--- /tmp/click-round1/pristine/q05/src/click/shell_completion.py	2026-05-23 05:25:38.000000000 +0000
++++ /tmp/t/q05b27e/click/src/click/shell_completion.py	2026-11-11 16:59:27.371591420 +0000
+@@ -181,18 +181,14 @@
+ COMP_CWORD=(commandline -t) %(prog_name)s);
+ 
+     for completion in $response;
+-        set -l metadata (string split \n $completion);
++        set -l metadata (string split "," $completion);
+ 
+         if test $metadata[1] = "dir";
+             __fish_complete_directories $metadata[2];
+         else if test $metadata[1] = "file";
+             __fish_complete_path $metadata[2];
+         else if test $metadata[1] = "plain";
+-            if test $metadata[3] != "_";
+-                echo $metadata[2]\t$metadata[3];
+-            else;
+-                echo $metadata[2];
+-            end;
++            echo $metadata[2];
+         end;
+     end;
+ end;
+@@ -427,15 +423,17 @@
+             Escape newlines in value and help to fix completion errors with
+             multi-line help strings.
+         """
+-        # The fish completion script splits each response line on literal
+-        # newlines, so any newline in the value or help would corrupt the
+-        # frame. Replace them with the two-character escape "\n" so the text
+-        # round-trips through fish without breaking the format. The "_"
+-        # sentinel for missing help mirrors :class:`ZshComplete`.
+-        help_ = item.help or "_"
++        # One completion per line: a comma between type and value, then a
++        # tab before help. Fish command substitution splits the response on
++        # newlines, so a real newline inside the value or help is parsed as
++        # another command. Escape those as the two-character sequence "\n".
+         value = item.value.replace("\n", r"\n")
+-        help_escaped = help_.replace("\n", r"\n")
+-        return f"{item.type}\n{value}\n{help_escaped}"
++
++        if not item.help:
++            return f"{item.type},{value}"
++
++        help_ = item.help.replace("\n", r"\n")
++        return f"{item.type},{value}\t{help_}"
+ 
+ 
+ ShellCompleteType = t.TypeVar("ShellCompleteType", bound="type[ShellComplete]")

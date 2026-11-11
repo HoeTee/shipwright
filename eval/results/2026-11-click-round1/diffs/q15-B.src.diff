@@ -1,0 +1,43 @@
+Only in /tmp/t/q15b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q15/src/click/core.py /tmp/t/q15b27e/click/src/click/core.py
+--- /tmp/click-round1/pristine/q15/src/click/core.py	2024-11-09 21:57:12.000000000 +0000
++++ /tmp/t/q15b27e/click/src/click/core.py	2026-11-11 17:17:24.720262652 +0000
+@@ -429,6 +429,13 @@
+         self._depth = 0
+         self._parameter_source: t.Dict[str, ParameterSource] = {}
+         self._exit_stack = ExitStack()
++        # Help options are created from ``help_option_names`` and must be
++        # the same instance the parser recorded. Eager ordering matches
++        # parameters by identity. Keyed by command id and option names
++        # because a child context may ask its parent for parameters.
++        self._help_option_cache: t.Dict[
++            t.Tuple[int, t.Tuple[str, ...]], Option
++        ] = {}
+ 
+     def to_info_dict(self) -> t.Dict[str, t.Any]:
+         """Gather information that could be useful for a tool generating
+@@ -1294,10 +1301,23 @@
+         if not help_options or not self.add_help_option:
+             return None
+ 
++        # ``get_params`` is called once to build the parser and again to
++        # invoke callbacks. Eager ordering looks the invoked parameters
++        # up in the parser's order by identity, so this must return the
++        # same object both times. Otherwise another eager option always
++        # runs before help, even when help came first on the command line.
++        key = (id(self), tuple(help_options))
++        rv = ctx._help_option_cache.get(key)
++
++        if rv is not None:
++            return rv
++
+         # Avoid circular import.
+         from .decorators import HelpOption
+ 
+-        return HelpOption(help_options)
++        rv = HelpOption(help_options)
++        ctx._help_option_cache[key] = rv
++        return rv
+ 
+     def make_parser(self, ctx: Context) -> OptionParser:
+         """Creates the underlying option parser for this command."""

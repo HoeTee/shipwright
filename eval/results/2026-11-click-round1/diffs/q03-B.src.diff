@@ -1,0 +1,34 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q03/src/click/_utils.py /tmp/t/q03b27e/click/src/click/_utils.py
+--- /tmp/click-round1/pristine/q03/src/click/_utils.py	2026-08-27 04:07:04.000000000 +0000
++++ /tmp/t/q03b27e/click/src/click/_utils.py	2026-11-11 16:47:23.307569407 +0000
+@@ -18,6 +18,30 @@
+     def __repr__(self) -> str:
+         return f"{self.__class__.__name__}.{self.name}"
+ 
++    def __copy__(self) -> Sentinel:
++        """Return this member.
++
++        Member values are unique ``object()`` instances. A real copy would be a
++        new object, which :class:`Sentinel` rejects, so copy keeps the singleton.
++        """
++        return self
++
++    def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:
++        """Return this member. See :meth:`__copy__`."""
++        memo[id(self)] = self
++        return self
++
++    def __reduce_ex__(
++        self, protocol: int
++    ) -> tuple[t.Any, tuple[type[Sentinel], str]]:
++        """Pickle this member by name.
++
++        Rebuilding from ``_value_`` fails: pickle restores a new ``object()``,
++        and that value is not one of the defined members. ``getattr`` of the
++        class and member name returns the original singleton.
++        """
++        return getattr, (self.__class__, self.name)
++
+ 
+ UNSET: t.Literal[Sentinel.UNSET] = Sentinel.UNSET
+ """Sentinel used to indicate that a value is not set."""

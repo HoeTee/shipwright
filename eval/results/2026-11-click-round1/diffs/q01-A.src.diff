@@ -1,0 +1,67 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q01/src/click/core.py /tmp/t/q01a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q01/src/click/core.py	2026-09-21 18:30:59.000000000 +0000
++++ /tmp/t/q01a91c/click/src/click/core.py	2026-11-11 16:47:59.779195440 +0000
+@@ -3268,10 +3268,28 @@
+             value = value()
+         return value
+ 
++    def _explicit_envvar_names(self) -> tuple[str, ...]:
++        """Envvar names declared on this option.
++
++        ``None``, ``""``, and an empty sequence mean no explicit envvar, matching
++        value lookup. Blank entries in a sequence are dropped.
++        """
++        envvar = self.envvar
++        names: tuple[str, ...]
++        if isinstance(envvar, str):
++            names = (envvar,)
++        elif envvar:
++            names = tuple(str(name) for name in envvar)
++        else:
++            names = ()
++        return tuple(name for name in names if name)
++
+     def get_error_hint(self, ctx: Context | None) -> str:
+         result = super().get_error_hint(ctx)
+-        if self.show_envvar and self.envvar is not None:
+-            result += f" (env var: '{self.envvar}')"
++        envvars = self._explicit_envvar_names()
++        if self.show_envvar and envvars:
++            shown = ", ".join(f"'{name}'" for name in envvars)
++            result += f" (env var: {shown})"
+         return result
+ 
+     def _parse_decls(
+@@ -3437,21 +3455,18 @@
+         extra: types.OptionHelpExtra = {}
+ 
+         if self.show_envvar:
+-            envvar = self.envvar
++            envvars = self._explicit_envvar_names()
+ 
+-            if envvar is None:
+-                if (
+-                    self.allow_from_autoenv
+-                    and ctx.auto_envvar_prefix is not None
+-                    and self.name
+-                ):
+-                    envvar = f"{ctx.auto_envvar_prefix}_{self.name.upper()}"
+-
+-            if envvar is not None:
+-                if isinstance(envvar, str):
+-                    extra["envvars"] = (envvar,)
+-                else:
+-                    extra["envvars"] = tuple(str(d) for d in envvar)
++            if (
++                not envvars
++                and self.allow_from_autoenv
++                and ctx.auto_envvar_prefix is not None
++                and self.name
++            ):
++                envvars = (f"{ctx.auto_envvar_prefix}_{self.name.upper()}",)
++
++            if envvars:
++                extra["envvars"] = envvars
+ 
+         # Temporarily enable resilient parsing to avoid type casting
+         # failing for the default. Might be possible to extend this to

@@ -1,0 +1,42 @@
+Only in /tmp/t/q15a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q15/src/click/core.py /tmp/t/q15a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q15/src/click/core.py	2024-11-09 21:57:12.000000000 +0000
++++ /tmp/t/q15a91c/click/src/click/core.py	2026-11-11 17:17:22.996277465 +0000
+@@ -429,6 +429,9 @@
+         self._depth = 0
+         self._parameter_source: t.Dict[str, ParameterSource] = {}
+         self._exit_stack = ExitStack()
++        # Help option instance per command. Parsing and processing must
++        # share one object or eager order cannot see that help was invoked.
++        self._help_option: t.Dict[int, t.Optional[Option]] = {}
+ 
+     def to_info_dict(self) -> t.Dict[str, t.Any]:
+         """Gather information that could be useful for a tool generating
+@@ -1289,15 +1292,26 @@
+ 
+         Unless ``add_help_option`` is ``False``.
+         """
++        # A new object on every call is absent from the parser's invocation
++        # order, so other eager options run before help.
++        memo = ctx._help_option
++        key = id(self)
++
++        if key in memo:
++            return memo[key]
++
+         help_options = self.get_help_option_names(ctx)
+ 
+         if not help_options or not self.add_help_option:
++            memo[key] = None
+             return None
+ 
+         # Avoid circular import.
+         from .decorators import HelpOption
+ 
+-        return HelpOption(help_options)
++        option = HelpOption(help_options)
++        memo[key] = option
++        return option
+ 
+     def make_parser(self, ctx: Context) -> OptionParser:
+         """Creates the underlying option parser for this command."""

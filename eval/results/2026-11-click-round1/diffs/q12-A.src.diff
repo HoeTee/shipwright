@@ -1,0 +1,18 @@
+Only in /tmp/t/q12a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q12/src/click/shell_completion.py /tmp/t/q12a91c/click/src/click/shell_completion.py
+--- /tmp/click-round1/pristine/q12/src/click/shell_completion.py	2025-07-01 14:46:38.000000000 +0000
++++ /tmp/t/q12a91c/click/src/click/shell_completion.py	2026-11-11 17:08:53.694283719 +0000
+@@ -373,7 +373,12 @@
+         return args, incomplete
+ 
+     def format_completion(self, item: CompletionItem) -> str:
+-        return f"{item.type}\n{item.value}\n{item.help if item.help else '_'}"
++        help_ = item.help or "_"
++        # `_describe` splits on the first unescaped colon. `compadd` uses
++        # the value as-is, so escape colons only when help is not the
++        # "_" sentinel the completion script treats as no description.
++        value = item.value.replace(":", r"\:") if help_ != "_" else item.value
++        return f"{item.type}\n{value}\n{help_}"
+ 
+ 
+ class FishComplete(ShellComplete):

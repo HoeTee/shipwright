@@ -1,0 +1,82 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q06/CHANGES.rst /tmp/t/q06a91c/click/CHANGES.rst
+--- /tmp/click-round1/pristine/q06/CHANGES.rst	2026-05-19 23:16:10.000000000 +0000
++++ /tmp/t/q06a91c/click/CHANGES.rst	2026-11-11 17:03:16.291941596 +0000
+@@ -5,6 +5,10 @@
+ 
+ Unreleased
+ 
++-   ``Context.get_parameter_source()`` again reports the real source inside
++    ``ParamType.convert`` and parameter callbacks, including eager callbacks.
++    8.4.0 recorded the source only after conversion, so those hooks observed
++    ``None``.
+ -   Zsh completion scripts parse correctly on Windows. :issue:`3277`
+ -   Shell completion of `Choice` `Enum` values produces a valid completion
+     result. :issue:`3015`
+Only in /tmp/t/q06a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q06/src/click/core.py /tmp/t/q06a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q06/src/click/core.py	2026-05-19 23:16:10.000000000 +0000
++++ /tmp/t/q06a91c/click/src/click/core.py	2026-11-11 17:03:38.551940416 +0000
+@@ -114,6 +114,21 @@
+     return list(zip(*repeat(iter(iterable), batch_size), strict=False))
+ 
+ 
++def _restore_parameter_source(
++    ctx: Context, name: str, previous: ParameterSource | None
++) -> None:
++    """Drop a provisional parameter source written for conversion.
++
++    ``previous`` is ``None`` when the slot had no source yet. The key is
++    removed in that case so :meth:`Context.get_parameter_source` returns
++    ``None`` again instead of keeping the value that failed or lost.
++    """
++    if previous is None:
++        ctx._parameter_source.pop(name, None)
++    else:
++        ctx.set_parameter_source(name, previous)
++
++
+ @contextmanager
+ def augment_usage_errors(
+     ctx: Context, param: Parameter | None = None
+@@ -916,6 +931,11 @@
+         :param name: The name of the parameter.
+         :rtype: ParameterSource
+ 
++        .. versionchanged:: 8.4.1
++            The source is available inside ``ParamType.convert`` and
++            parameter callbacks, including eager ones. 8.4.0 recorded it
++            only after those hooks ran.
++
+         .. versionchanged:: 8.0
+             Returns ``None`` if the parameter was not provided from any
+             source.
+@@ -2625,10 +2645,17 @@
+                 )
+                 echo(style(message, fg="red"), err=True)
+ 
+-            # Process the value through the parameter's type.
++            # Publish the source before type conversion and parameter callbacks.
++            # ``ParamType.convert`` and eager callbacks call
++            # ``Context.get_parameter_source`` for this value. The write is
++            # provisional: conversion failure and a lost feature-switch slot
++            # both put the previous source back. 8.4.0 recorded the source
++            # only after ``process_value``, so those hooks observed ``None``.
++            ctx.set_parameter_source(self.name, source)
+             try:
+                 value = self.process_value(ctx, value)
+             except Exception:
++                _restore_parameter_source(ctx, self.name, existing_source)
+                 if not ctx.resilient_parsing:
+                     raise
+                 # In resilient parsing mode, we do not want to fail the command if the
+@@ -2662,6 +2689,10 @@
+             # Nothing has claimed the slot yet. Record at least our source so downstream
+             # lookups don't return ``None``.
+             ctx.set_parameter_source(self.name, source)
++        else:
++            # This value lost the slot. Drop the provisional source so the
++            # winner's origin stays visible.
++            _restore_parameter_source(ctx, self.name, existing_source)
+ 
+         return value, args
+ 

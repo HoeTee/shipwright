@@ -1,0 +1,24 @@
+Only in /tmp/t/q12b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q12/src/click/shell_completion.py /tmp/t/q12b27e/click/src/click/shell_completion.py
+--- /tmp/click-round1/pristine/q12/src/click/shell_completion.py	2025-07-01 14:46:38.000000000 +0000
++++ /tmp/t/q12b27e/click/src/click/shell_completion.py	2026-11-11 17:07:57.183240225 +0000
+@@ -373,7 +373,18 @@
+         return args, incomplete
+ 
+     def format_completion(self, item: CompletionItem) -> str:
+-        return f"{item.type}\n{item.value}\n{item.help if item.help else '_'}"
++        desc = item.help if item.help else "_"
++        value = item.value
++
++        # Zsh uses ":" to split a completion value from its description.
++        # Escape colons in the value only when a description is shown.
++        # Colons in the description stay literal. A value with no
++        # description must stay literal, because escaping it would
++        # change the completed text.
++        if desc != "_":
++            value = f"{value}".replace(":", r"\:")
++
++        return f"{item.type}\n{value}\n{desc}"
+ 
+ 
+ class FishComplete(ShellComplete):

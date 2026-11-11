@@ -1,0 +1,16 @@
+Only in /tmp/t/q09a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q09/src/click/core.py /tmp/t/q09a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q09/src/click/core.py	2026-02-28 22:21:58.000000000 +0000
++++ /tmp/t/q09a91c/click/src/click/core.py	2026-11-11 17:10:24.740898359 +0000
+@@ -2287,7 +2287,10 @@
+             value = self.default
+ 
+         if call and callable(value):
+-            value = value()
++            # ``default=True`` is stored as ``flag_value``. That object is the
++            # value to return, even when it is callable (for example a class).
++            if getattr(self, "flag_value", UNSET) is not value:
++                value = value()
+ 
+         return value
+ 

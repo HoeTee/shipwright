@@ -1,0 +1,65 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q09/CHANGES.rst /tmp/t/q09b27e/click/CHANGES.rst
+--- /tmp/click-round1/pristine/q09/CHANGES.rst	2026-02-28 22:21:58.000000000 +0000
++++ /tmp/t/q09b27e/click/CHANGES.rst	2026-11-11 17:10:54.812478368 +0000
+@@ -2,6 +2,9 @@
+ 
+ Unreleased
+ 
++-   Do not call a callable ``flag_value`` (such as a class) when that object is used
++    as the option default. ``default=True`` and an explicit default set to the flag
++    value both yield the object itself. Callables in ``default_map`` are still called.
+ -   Fix handling of ``flag_value`` when ``is_flag=False`` to allow such options to be
+     used without an explicit value. :issue:`3084`
+ -   Hide ``Sentinel.UNSET`` values as ``None`` when using ``lookup_default()``.
+Only in /tmp/t/q09b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q09/src/click/core.py /tmp/t/q09b27e/click/src/click/core.py
+--- /tmp/click-round1/pristine/q09/src/click/core.py	2026-02-28 22:21:58.000000000 +0000
++++ /tmp/t/q09b27e/click/src/click/core.py	2026-11-11 17:10:54.228486361 +0000
+@@ -2825,6 +2825,8 @@
+         # and a flag_value set to something else. Refs:
+         # https://github.com/pallets/click/issues/3024#issuecomment-3146199461
+         # https://github.com/pallets/click/pull/3030/commits/06847da
++        # The flag value is stored as-is. A class is callable, but it is the value
++        # the user asked for; ``get_default`` must not instantiate it.
+         if self.default is True and self.flag_value is not UNSET:
+             self.default = self.flag_value
+ 
+@@ -2871,6 +2873,38 @@
+                 if self.is_flag:
+                     raise TypeError("'count' is not valid with 'is_flag'.")
+ 
++    @t.overload
++    def get_default(
++        self, ctx: Context, call: t.Literal[True] = True
++    ) -> t.Any | None: ...
++
++    @t.overload
++    def get_default(
++        self, ctx: Context, call: bool = ...
++    ) -> t.Any | t.Callable[[], t.Any] | None: ...
++
++    def get_default(
++        self, ctx: Context, call: bool = True
++    ) -> t.Any | t.Callable[[], t.Any] | None:
++        """Get the default for the option.
++
++        Same rules as :meth:`Parameter.get_default`, except a callable that is
++        the :attr:`flag_value` is returned as-is. ``default=True`` copies the
++        flag value onto the default, and ``default`` may also be set to that
++        same object. Classes are callable, but the user asked for the class
++        object, not an instance. Other callable defaults are still invoked,
++        including callables supplied by :attr:`Context.default_map`.
++        """
++        value = super().get_default(ctx, call=False)
++
++        # Identity, not equality: a callable default that merely returns the
++        # flag value must still run. Only the flag value object itself is
++        # exempt, whether it arrived via ``default=True`` or ``default=flag_value``.
++        if call and callable(value) and value is not self.flag_value:
++            value = value()
++
++        return value
++
+     def to_info_dict(self) -> dict[str, t.Any]:
+         """
+         .. versionchanged:: 8.3.0
