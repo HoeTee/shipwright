@@ -225,16 +225,15 @@ Extra modes stay off until you ask.
 
 ## How Shipwright compares
 
-Each row says what that repo does, and what Shipwright keeps or adds.
+Each row says what you get from that repo, and what you get from Shipwright.
 
-| | What it does | What Shipwright adds or keeps |
+| | What you get from it | What you get from Shipwright |
 | --- | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | An always-on prompt. It writes only the code the task needs, and it keeps a shortcut ledger. | Keeps the smallest complete change and the ledger. Adds the path from plan to a human merge. |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto | A daily engineering mode with playbooks. It can verify behavior and prove a hard property. | Keeps the verify pair and the prove pair. Parallel and overnight modes stay off until you ask. |
-| [improve](https://github.com/shadcn/improve) | Audits a repo and writes plans for another agent to run. It does not implement the plan. | Keeps the audit and the plan template. The same agent can also build, review, and open the pull request. |
-| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | Reviews a change, fixes confirmed defects, and stops for a person. The AI review limit is 3. | Keeps that limit and the packet for a person. Adds the plan and the build before the review. |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | Lifecycle commands from spec to ship, shown in a command table. | Keeps that table shape in this README. The skills and the rules are Shipwright's. |
-| Shipwright | One path for one coding task. | Plan, build, review, fix, ship, then a person merges. The agent does not merge alone. |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | The agent writes only the code the task needs. A deferred shortcut is collected into a ledger. | You get that smallest change and that ledger. The task also runs from a plan to a pull request a person merges. |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto | A daily mode runs a playbook for the task. It can check the product and prove one hard property. It can also run agents in parallel, or run overnight through a merge. | You can still check the product and prove one hard property. Parallel work and overnight work stay off until you ask. An overnight run does not merge by itself. |
+| [improve](https://github.com/shadcn/improve) | You get an audit and a plan. A cheaper agent can implement that plan. This skill does not edit the product code, and you still merge. | The same task continues into the code change, the review, and an open pull request. A person merges. |
+| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | It reviews a change, fixes confirmed defects, and stops for a person. The AI review stops at 3 rounds. | The AI review still stops at 3, and a person still decides. The task also has a plan and a build before that review. |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | Commands move a task from a spec one slice at a time, test first, then through a review and a production launch check. An optional pass can do every slice after one plan approval, commit each slice, and pause on a failure or a risky step. | One path takes that task from a plan through the change, a review, and an open pull request. A person decides the merge. |
 
 Ponytail publishes its own measurements. Those numbers are not Shipwright results.
 The eval questions are 16 real fixes from [Click](https://github.com/pallets/click). The images use the design method in [garden-skills](https://github.com/ConardLi/garden-skills).
