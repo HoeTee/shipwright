@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipwright evidence</title>
+<style>
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; width: 1760px; height: 420px; overflow: hidden; background: #F4F1E7; color: #111111; }
+  .sheet { box-sizing: border-box; width: 1760px; height: 420px; padding: 36px 56px 32px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  h1 { margin: 0; font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; line-height: 1; }
+  .bars { display: flex; flex-direction: column; gap: 12px; }
+  .bar { display: grid; grid-template-columns: 220px 1fr 120px; align-items: center; gap: 20px; }
+  .bar b, .bar em { font-style: normal; font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -0.04em; }
+  .fill { height: 48px; }
+  .plain { width: 100%; background: #111111; }
+  .skills { width: 56.6%; background: #1E3FFF; }
+  .note { margin: 4px 0 0; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.02em; line-height: 1.25; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <h1>Python lines changed</h1>
+    <div class="bars">
+      <div class="bar">
+        <b>No skills</b>
+        <div class="fill plain"></div>
+        <em>100</em>
+      </div>
+      <div class="bar">
+        <b>Skills</b>
+        <div class="fill skills"></div>
+        <em>56.6</em>
+      </div>
+    </div>
+    <p class="note">43% fewer Python lines. The 95% interval is 27% to 57% fewer. Same pass rate.</p>
+  </div>
+</body>
+</html>

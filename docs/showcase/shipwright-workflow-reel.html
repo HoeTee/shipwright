@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipwright workflow</title>
+<style>
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; background: #F4F1E7; }
+  .sheet {
+    box-sizing: border-box;
+    width: 1680px;
+    padding: 48px 56px 56px;
+    background: #F4F1E7;
+    color: #111111;
+  }
+  .row { display: flex; align-items: center; gap: 18px; }
+  .row + .row { margin-top: 28px; }
+  .card {
+    box-sizing: border-box;
+    min-width: 220px;
+    height: 148px;
+    padding: 18px 28px 22px;
+    border: 4px solid #111111;
+    background: #F4F1E7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .card b {
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    color: #1E3FFF;
+    line-height: 1;
+  }
+  .card span {
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .wide { min-width: 460px; background: #1E3FFF; border-color: #1E3FFF; color: #F4F1E7; }
+  .wide b { color: #F4F1E7; }
+  .arrow {
+    width: 36px;
+    height: 4px;
+    background: #111111;
+    position: relative;
+    flex: none;
+  }
+  .arrow::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    border-top: 4px solid #111111;
+    border-right: 4px solid #111111;
+    transform: rotate(45deg);
+  }
+  .loop {
+    margin-left: auto;
+    width: 560px;
+    border: 4px solid #1E3FFF;
+    padding: 22px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .loop .pair { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .mini {
+    box-sizing: border-box;
+    height: 92px;
+    min-width: 180px;
+    padding: 12px 20px;
+    border: 4px solid #111111;
+    background: #F4F1E7;
+    display: flex;
+    align-items: center;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+  }
+  .swap { width: 54px; display: flex; flex-direction: column; gap: 10px; flex: none; }
+  .swap i { display: block; height: 4px; background: #1E3FFF; position: relative; }
+  .swap i::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    border-top: 4px solid #1E3FFF;
+    border-right: 4px solid #1E3FFF;
+  }
+  .swap i.go::after { right: -2px; transform: rotate(45deg); }
+  .swap i.back::after { left: -2px; transform: rotate(-135deg); }
+  .until {
+    margin: 0;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    color: #1E3FFF;
+  }
+  .tail { justify-content: flex-end; }
+  .card.wide { background: #F4F1E7; color: #111111; border-color: #111111; }
+  .card.wide b { color: #1E3FFF; }
+  .on { background: #1E3FFF !important; color: #F4F1E7 !important; border-color: #1E3FFF !important; }
+  .on b { color: #F4F1E7 !important; }
+  .loop.live { background: #E7ECFF; }
+</style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <div class="row">
+      <div class="card" id="task"><b>01</b><span>Task</span></div>
+      <div class="arrow"></div>
+      <div class="card" id="plan"><b>02</b><span>Plan</span></div>
+      <div class="arrow"></div>
+      <div class="card" id="build"><b>03</b><span>Build</span></div>
+      <div class="arrow"></div>
+      <div class="card" id="review"><b>04</b><span>Review</span></div>
+    </div>
+    <div class="row">
+      <div class="loop" id="loop">
+        <div class="pair">
+          <div class="mini" id="review-loop">Review</div>
+          <div class="swap"><i class="go"></i><i class="back"></i></div>
+          <div class="mini" id="fix">Fix</div>
+        </div>
+        <p class="until">Loop until clear</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="card" id="ship"><b>05</b><span>Ship</span></div>
+      <div class="arrow"></div>
+      <div class="card wide" id="merge"><b>06</b><span>Human merge</span></div>
+    </div>
+  </div>
+<script>
+const beats = [
+  ['task'],
+  ['plan'],
+  ['build'],
+  ['review', 'review-loop'],
+  ['fix'],
+  ['review', 'review-loop'],
+  ['fix'],
+  ['ship'],
+  ['merge'],
+];
+const hold = [8, 8, 8, 8, 8, 6, 6, 8, 16];
+const frames = [];
+beats.forEach((ids, i) => { for (let n = 0; n < hold[i]; n += 1) frames.push(ids); });
+const index = Number(new URLSearchParams(location.search).get('f') || 0);
+const on = new Set(frames[Math.min(index, frames.length - 1)]);
+for (const id of on) document.getElementById(id).classList.add('on');
+if (on.has('review-loop') || on.has('fix')) document.getElementById('loop').classList.add('live');
+document.body.dataset.frames = String(frames.length);
+</script>
+</body>
+</html>

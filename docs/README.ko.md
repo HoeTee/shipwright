@@ -1,4 +1,4 @@
-<h1 align="center">Shipwright</h1>
+<h1 align="center"><img src="media/shipwright-logo.png" width="64" height="64" alt="Shipwright" valign="middle"> Shipwright</h1>
 
 <p align="center">
   <em>Shipwright는 코딩 작업 하나를 첫 확인에서 사람의 병합 결정까지 진행한다.</em>
@@ -20,11 +20,11 @@
 </p>
 
 <p align="center">
-  <sub>실제 Click 버그 수정 16건. 같은 에이전트가 skill이 있을 때와 없을 때 실행한다. 각 팔 2회. <a href="#수치">수치</a>.</sub>
+  <sub>실제 Click 버그 수정 16건. 같은 에이전트가 skill이 있을 때와 없을 때 실행한다. 각 팔 2회. <a href="#실측">실측</a>.</sub>
 </p>
 
 <p align="center">
-  <img src="media/shipwright-workflow.png" alt="작업, 계획, 빌드, 검토와 수정, 출고, 그다음 사람의 병합.">
+  <img src="media/shipwright-workflow.gif" alt="작업, 계획, 빌드, 그다음 검토와 수정을 통과할 때까지 반복하고, 출고한 뒤 사람이 병합한다.">
 </p>
 
 | 하는 일 | Skill | 원칙 |
@@ -87,10 +87,10 @@ You may edit local files and run tests.
 Do not push. Do not open a pull request. Do not merge.
 ```
 
-## 수치
+## 실측
 
 <p align="center">
-  <img src="media/shipwright-numbers.png" width="880" alt="Python 줄. skill 없음은 100. skill 있음은 56.6. 통과율은 같다.">
+  <img src="media/shipwright-evidence.png" width="880" alt="Python 줄. skill 없음은 100. skill 있음은 56.6. 통과율은 같다.">
 </p>
 
 skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 적다.
@@ -100,37 +100,79 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 ## 자주 묻는 질문
 
 <details>
-<summary><h3>설치하면 작업이 시작되는가?</h3></summary>
+<summary><h3>어떤 에이전트에서 도는가?</h3></summary>
 
-설치는 skill만 추가한다.
-새 세션이 작업을 시작한다.
-
-</details>
-
-<details>
-<summary><h3>에이전트가 병합하는가?</h3></summary>
-
-[shipwright-ship](../skills/shipwright-ship/SKILL.md)는 pull request를 병합할 수 있을 때 멈춘다.
-[shipwright-land](../skills/shipwright-land/SKILL.md)는 허용 뒤에만 병합한다.
+Shipwright는 Claude Code, Codex, OpenCode에서 돈다.
+같은 skill이 각 호스트에 올라간다.
+바뀌는 것은 설치 명령과 호출 방식뿐이다.
 
 </details>
 
 <details>
-<summary><h3>검토 한도는 어디에 있는가?</h3></summary>
+<summary><h3>어떻게 설치하는가?</h3></summary>
 
-기본 한도는 3이다.
-[shipwright-fix](../skills/shipwright-fix/SKILL.md)만 그 한도를 정의한다.
+위의 빠른 시작을 쓴다.
+Claude Code는 명령 하나로 된다.
+Codex와 OpenCode는 각 제목 아래의 단계를 쓴다.
+설치 뒤에 새 세션을 연다.
+
+</details>
+
+<details>
+<summary><h3>skill 48개가 모두 필요한가?</h3></summary>
+
+아니다.
+[shipwright-flow](../skills/shipwright-flow/SKILL.md)를 호출하면 그 skill이 단계를 고른다.
+위 표의 여덟 skill이 계획에서 병합까지의 길을 덮는다.
+다른 skill은 그 단계가 필요로 할 때까지 조용하다.
+
+</details>
+
+<details>
+<summary><h3>검토 반복은 언제 멈추는가?</h3></summary>
+
+[shipwright-review](../skills/shipwright-review/SKILL.md)는 발견을 보고하고 코드를 고치지 않는다.
+[shipwright-fix](../skills/shipwright-fix/SKILL.md)가 고치고, AI 검토 한도는 3이다.
 횟수는 pull request를 열 때 시작한다.
-열기 전의 작업은 세지 않는다.
-침묵은 승인이 아니다.
+침묵은 승인이 아니며, 병합은 사람이 결정한다.
 
 </details>
 
 <details>
-<summary><h3>증거는 어디에 두는가?</h3></summary>
+<summary><h3>에이전트가 스스로 병합하는가?</h3></summary>
 
-증거는 `/tmp/shipwright-<plan-id>/<short-sha>/`에 둔다.
-저장된 스크린샷은 증거가 아니다.
+아니다.
+[shipwright-ship](../skills/shipwright-ship/SKILL.md)는 pull request를 열고 멈춘다.
+[shipwright-land](../skills/shipwright-land/SKILL.md)는 작성자가 아닌 사람이 확인하고 허용한 뒤에만 병합한다.
+
+</details>
+
+<details>
+<summary><h3>평가는 무엇을 재었는가?</h3></summary>
+
+같은 에이전트가 skill이 있을 때와 없을 때 실제 Click 버그 수정 16건을 다뤘다.
+각 팔은 2회 실행했다.
+skill이 있으면 Python 줄이 43% 적고, 통과율은 같다.
+세 번째 반복, 더 어려운 문제, 눈가림 판정은 실행하지 않았다.
+
+</details>
+
+<details>
+<summary><h3>어떻게 갱신하는가?</h3></summary>
+
+같은 설치 명령을 다시 실행한다.
+그다음 새 세션을 열어 호스트가 새 파일을 읽게 한다.
+옛 세션은 시작할 때의 파일을 유지한다.
+
+</details>
+
+<details>
+<summary><h3>토큰을 더 쓰는가?</h3></summary>
+
+Shipwright는 토큰 가격을 정하지 않는다.
+이 평가는 금액도 토큰 청구도 재지 않았다.
+더 작은 diff는 토큰을 줄일 수 있으나, 약속은 아니다.
+내는 비용은 호스트의 보통 모델 비용이다.
 
 </details>
 
@@ -140,29 +182,34 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 
 제품을 바꾸기 전에 계획을 쓴다.
 나중 에이전트는 이 대화 없이 그 계획을 실행할 수 있어야 한다.
+계획은 메모, 명령, 실행, 증거를 기록한다.
 [shipwright-flow](../skills/shipwright-flow/SKILL.md)가 단계를 기록하고, [shipwright-plan](../skills/shipwright-plan/SKILL.md)이 계획을 `plans/`에 쓴다.
 
 **가장 작은 완전한 변경**
 
 일을 완전히 끝내는 가장 작은 변경만 한다.
 요청하지 않은 일은 더하지 않는다.
+더 작은 diff는 검토하기 쉽고 되돌리기도 쉽다.
 코드를 쓰는 동안 [shipwright-lean](../skills/shipwright-lean/SKILL.md)은 끌 때까지 켜져 있다.
 
 **끝나기 전에 증거를 남긴다**
 
 실제 제품에서 증명하기 전에는 변경이 끝난 것이 아니다.
 저장된 스크린샷은 증거가 아니다.
+증거는 이 변경에서 실행한 명령에서 와야 한다.
 [shipwright-build](../skills/shipwright-build/SKILL.md)는 증거를 `/tmp/shipwright-<plan-id>/<short-sha>/`에 둔다.
 
 **검토한 다음 고친다**
 
 [shipwright-review](../skills/shipwright-review/SKILL.md)는 발견을 보고하고, 코드를 고치지 않는다.
-각 발견은 실제 피해에 따라 P0, P1, P2 중 하나이다.
+각 발견은 실제 피해에 따라 P0, P1, P2 중 하나이다. P0와 P1은 기본적으로 막는다.
+실제 결함이 없는 메모는 P2가 아니다.
 [shipwright-fix](../skills/shipwright-fix/SKILL.md)가 수정을 하고, AI 검토 한도는 3이다.
 
 **사람이 병합한다**
 
 병합은 사람이 결정한다.
+에이전트는 pull request를 열 수 있으나, 혼자 병합하지는 않는다.
 [shipwright-ship](../skills/shipwright-ship/SKILL.md)는 병합 전에 멈추고, [shipwright-signoff](../skills/shipwright-signoff/SKILL.md)는 사람이 읽는 꾸러미를 쓴다.
 [shipwright-land](../skills/shipwright-land/SKILL.md)는 작성자가 아닌 사람이 확인하고 허용한 뒤에만 병합한다.
 
@@ -171,23 +218,28 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 실제 비교로 측정한 개선만 적어도 된다.
 [shipwright-eval](../skills/shipwright-eval/SKILL.md)은 같은 에이전트를 skill이 있을 때와 없을 때 실행한다.
 매일의 작은 변경에서는 이 비교를 돌리지 않는다.
+다른 프로젝트의 수는 Shipwright의 결과가 아니다.
 
 **추가 모드는 꺼 둔다**
 
 swarm, arena, autopilot, 여러 PR 계획은 요청할 때까지 꺼 둔다.
 그것들은 요청하지 않은 병렬 작업이나 긴 실행을 더한다.
 그 작업을 지목하기 전에는 [shipwright-flow](../skills/shipwright-flow/SKILL.md)가 그것들을 시작하지 않는다.
+보통 작업은 변경 하나와 pull request 하나에 머문다.
 
 ## 출처와 비교
 
-Shipwright는 네 가지 생각을 남긴다.
+Shipwright는 이 생각들을 남긴다.
 
 | 출처 | Shipwright가 남기는 것 |
 | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | [shipwright-lean](../skills/shipwright-lean/SKILL.md)과 [shipwright-debt](../skills/shipwright-debt/SKILL.md)의 shortcut 장부 |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack) | 공통 verify 쌍과 prove 쌍 |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | [shipwright-lean](../skills/shipwright-lean/SKILL.md)은 가장 작은 완전한 변경을 남기고, [shipwright-debt](../skills/shipwright-debt/SKILL.md)는 shortcut 장부를 남긴다 |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack) (poteto) | 공통 verify 쌍과 prove 쌍 |
 | [improve](https://github.com/shadcn/improve) | [shipwright-audit](../skills/shipwright-audit/SKILL.md)와 계획 템플릿 |
 | [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | [shipwright-fix](../skills/shipwright-fix/SKILL.md)의 검토 한도와 [shipwright-signoff](../skills/shipwright-signoff/SKILL.md)의 사람용 꾸러미 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 이 README의 형태. 명령 표를 포함한다 |
+| [garden-skills](https://github.com/ConardLi/garden-skills) | 히어로, 흐름, 실측 그림의 디자인 방법 |
+| [Click](https://github.com/pallets/click) | 평가 문제로 쓴 실제 버그 수정 16건 |
 
 Ponytail이 공개하는 수는 Ponytail 자신의 측정이다.
 그 수는 Shipwright의 결과가 아니다.
