@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipwright evidence q03</title>
+<style>
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; background: #F4F1E7; color: #111111; }
+  .sheet { box-sizing: border-box; width: 880px; padding: 28px 32px 24px; }
+  .eye {
+    margin: 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 8px 0 18px;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .tag {
+    margin: 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .num {
+    margin: 6px 0 0;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 84px;
+    letter-spacing: -0.05em;
+    line-height: 0.88;
+  }
+  .num.hot { color: #1E3FFF; }
+  .unit {
+    margin: 8px 0 0;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+  .did {
+    margin: 10px 0 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .note {
+    margin: 18px 0 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <p class="eye">Before / after · one run · both passed</p>
+    <h1>Sentinel members break on copy and pickle</h1>
+    <div class="cols">
+      <div>
+        <p class="tag">No skill</p>
+        <p class="num">17</p>
+        <p class="unit">Python lines, tests excluded</p>
+        <p class="did">Edited src/click/_utils.py. The record also lists the sentinel test.</p>
+      </div>
+      <div>
+        <p class="tag">shipwright</p>
+        <p class="num hot">4</p>
+        <p class="unit">Python lines, tests excluded</p>
+        <p class="did">Edited the same product file and the same test.</p>
+      </div>
+    </div>
+    <p class="note">Question q03, run 1. Both passed. Records list the files, not the diff. One example, not a rate.</p>
+  </div>
+</body>
+</html>

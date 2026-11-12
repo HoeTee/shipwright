@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipwright evidence tests</title>
+<style>
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; background: #F4F1E7; color: #111111; }
+  .sheet { box-sizing: border-box; width: 880px; padding: 28px 32px 24px; }
+  .eye {
+    margin: 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 8px 0 6px;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+  h1 em { font-style: normal; color: #1E3FFF; }
+  .metric {
+    margin: 12px 0 8px;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+  .track { display: grid; grid-template-columns: 1fr 150px; align-items: center; gap: 12px; margin-top: 8px; }
+  .bar { height: 28px; }
+  .plain { width: 84%; background: #111111; }
+  .skills { width: 100%; background: #1E3FFF; }
+  .val {
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+  .val.hot { color: #1E3FFF; }
+  .legend { display: flex; gap: 22px; margin: 16px 0 10px; }
+  .legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .sw { width: 14px; height: 14px; display: inline-block; }
+  .note {
+    margin: 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <p class="eye">Click · 32 runs each arm</p>
+    <h1>Ships with a test. <em>100% vs 84%.</em></h1>
+    <p class="metric">Runs whose diff changed test lines</p>
+    <div class="track">
+      <div class="bar plain"></div>
+      <div class="val">27 of 32</div>
+    </div>
+    <div class="track">
+      <div class="bar skills"></div>
+      <div class="val hot">32 of 32</div>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:#111111"></i> no skills · 84%</span>
+      <span><i class="sw" style="background:#1E3FFF"></i> skills · 100%</span>
+    </div>
+    <p class="note">A run counts when test_lines is above zero. 27 of 32 is 84%.</p>
+  </div>
+</body>
+</html>

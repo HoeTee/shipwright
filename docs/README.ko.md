@@ -160,13 +160,26 @@ Do not push. Do not open a pull request. Do not merge.
   <img src="media/shipwright-evidence.png" width="880" alt="skill 없음을 100%로 둔 비율. Python 줄은 skill 없음 100%, skill 있음 56.6%로 43.4% 적다. 95% 구간은 27.0%에서 57.4% 더 적다.">
 </p>
 
+skill이 있으면 Python 줄이 43.4% 적다. 95% 구간은 27.0%에서 57.4% 더 적다.
+
 <p align="center">
   <img src="media/shipwright-evidence-count.png" width="880" alt="16문제 중 14문제에서 Python 줄이 더 적다. 통과율은 같다.">
 </p>
 
-skill이 있으면 Python 줄이 43.4% 적다.
-95% 구간은 27.0%에서 57.4% 더 적고, 16문제 중 14문제에서 skill이 있는 쪽이 더 적다.
-통과율은 같다.
+16문제 중 14문제에서 줄이 더 적다. 통과율은 같다.
+
+<p align="center">
+  <img src="media/shipwright-evidence-tests.png" width="880" alt="diff가 테스트 줄을 바꾼 실행. skill 없음은 32번 중 27번으로 84%. skill 있음은 32번 중 32번으로 100%.">
+</p>
+
+diff가 테스트 줄을 바꾼 실행은 skill이 있으면 32번 중 32번, 없으면 32번 중 27번이다.
+
+<p align="center">
+  <img src="media/shipwright-evidence-q03.png" width="880" alt="sentinel 한 번. 테스트를 뺀 Python 줄은 skill 없음 17, Shipwright 4. 둘 다 src/click/_utils.py와 sentinel 테스트를 고쳤다. 둘 다 통과. 기록에 diff는 없다.">
+</p>
+
+sentinel 한 번: skill이 있으면 Python 4줄, 없으면 17줄. 둘 다 통과했다. 이것은 한 예이다.
+
 방법과 한계는 [보고서](../eval/results/2026-11-round2/report.md)에 있다.
 
 ## 자주 묻는 질문
