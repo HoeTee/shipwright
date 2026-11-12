@@ -1,57 +1,84 @@
-<div align="center">
+<h1 align="center">Shipwright</h1>
 
-[English](../README.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
+<p align="center">
+  <em>Shipwright 把一项编码任务从第一次查看到人工合并决定。</em>
+</p>
 
-# Shipwright
+<p align="center">
+  <a href="https://github.com/HoeTee/shipwright/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/HoeTee/shipwright/ci.yml?style=flat-square&label=CI" alt="CI"></a>
+  <a href="https://github.com/HoeTee/shipwright/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/release-v1.0.0-111111?style=flat-square" alt="发行版 v1.0.0"></a>
+  <a href="../references/platforms.md"><img src="https://img.shields.io/badge/works%20with-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-111111?style=flat-square" alt="适用于 Codex、Claude Code 和 OpenCode"></a>
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT 许可证"></a>
+</p>
 
-**Shipwright 把一项编码任务从第一次查看带到人工合并决定。**
+<p align="center">
+  <sub><a href="../README.md">English</a> &middot; <a href="README.ja.md">日本語</a> &middot; <a href="README.ko.md">한국어</a></sub>
+</p>
 
-适用于 Codex、Claude Code 和 OpenCode 的插件
+<p align="center">
+  <img src="media/shipwright-hero.png" width="880" alt="Python 行数少 43%。隐藏测试在有 skill 时通过 30/32，在无 skill 时也通过 30/32。">
+</p>
 
-[![CI](https://github.com/HoeTee/shipwright/actions/workflows/ci.yml/badge.svg)](https://github.com/HoeTee/shipwright/actions/workflows/ci.yml)
-[![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](../references/platforms.md)
-[![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](../LICENSE)
+<p align="center">
+  <strong>Python 行数少 43%。隐藏测试：有 skill 为 30/32，无 skill 为 30/32。</strong><br>
+  <sub>16 个真实的 Click 缺陷修复。同一个代理分别带 skill 和不带 skill 运行。每个臂 2 次。<a href="#数字">数字</a>。</sub>
+</p>
 
-[安装](#安装并试用) · [流程](#工作流程) · [核心 skill](#核心-skill) · [示例](#示例) · [问答](#常见问题)
+<p align="center">
+  <img src="media/shipwright-workflow.png" alt="任务、计划、构建、审查与修复、交付，然后人工合并。">
+</p>
 
-</div>
+| 你在做什么 | Skill | 关键原则 |
+| --- | --- | --- |
+| 开始一项任务 | [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 记录阶段，以及你允许的操作。 |
+| 写计划 | [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 写一份新代理可以执行的计划。 |
+| 做改动 | [shipwright-build](../skills/shipwright-build/SKILL.md) | 从真实产品带回证据。 |
+| 检查改动 | [shipwright-review](../skills/shipwright-review/SKILL.md) | 报告发现。不改代码。 |
+| 修复阻断项 | [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 持有 AI 审查上限。 |
+| 打开 pull request | [shipwright-ship](../skills/shipwright-ship/SKILL.md) | 跟进 CI。不合并。 |
+| 准备审查包 | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 由一个人阅读这份包。 |
+| 合并 | [shipwright-land](../skills/shipwright-land/SKILL.md) | 非作者验证并且你允许之后才合并。 |
 
-## 安装并试用
+[完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
 
-先安装插件。然后新开一个会话。
+## 快速开始
 
-### Claude Code
-
-下面这条命令需要 Claude Code 2.1.292 或更新版本。
+最快的安装是一条命令。
+它需要 Claude Code 2.1.292 或更新版本。
 
 ```bash
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-也可以先加入 marketplace。然后再安装插件。
+HTML 报告需要 Node.js 20 或更新版本。
+评测脚本需要 Python 3。
 
-```bash
-claude plugin marketplace add HoeTee/shipwright
-claude plugin install shipwright@shipwright
-```
+<details>
+<summary>Claude Code</summary>
 
-在会话里运行这两条命令。
+安装之后新开一个会话。
+然后运行 `/shipwright:shipwright-flow`。
 
-```text
-/plugin marketplace add HoeTee/shipwright
-/plugin install shipwright@shipwright
-```
+</details>
 
-### Codex
+<details>
+<summary>Codex</summary>
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
 codex plugin add shipwright@shipwright
 ```
 
-### OpenCode
+新开一个线程。
+然后调用 `$shipwright:shipwright-flow`。
+
+</details>
+
+<details>
+<summary>OpenCode</summary>
 
 把下面这项写入 `opencode.json`。
+保留末尾的斜杠。
 
 ```json
 {
@@ -59,16 +86,9 @@ codex plugin add shipwright@shipwright
 }
 ```
 
-保留末尾的斜杠。
+然后请求 `@shipwright-flow`。
 
-### 要求
-
-需要 Git。
-HTML 报告需要 Node.js 20 或更新版本。
-评测脚本需要 Python 3。
-Skill 文件是 Markdown。
-
-### 发起一项任务
+</details>
 
 发送这段提示。
 
@@ -79,79 +99,15 @@ You may edit local files and run tests.
 Do not push. Do not open a pull request. Do not merge.
 ```
 
-| 代理 | 开始方式 |
-| --- | --- |
-| Codex | `$shipwright:shipwright-flow` |
-| Claude Code | `/shipwright:shipwright-flow` |
-| OpenCode | `@shipwright-flow` |
+## 数字
 
 <p align="center">
-  <img src="media/shipwright-workflow.png" alt="任务、计划、构建、审查与修复、交付，然后人工合并。">
+  <img src="../eval/results/2026-11-round2/chart.png" width="880" alt="Click 第二轮。无 skill 为 100。有 skill 为 56.6。隐藏测试两边都是 30/32。">
 </p>
 
-<p align="center"><em>任务、计划、构建，然后审查与修复。没有阻断项时进入交付和人工合并。<a href="media/shipwright-workflow.svg">完整尺寸图</a> · <a href="showcase/shipwright-workflow.html">HTML 指南</a></em></p>
-
-Shipwright 是一组 skill，用来完成一项编码任务。
-每个 skill 只做一件事。
-[shipwright-flow](../skills/shipwright-flow/SKILL.md) 记录目标、阶段、范围，以及你允许的操作。
-
-你得到一份计划、一处代码改动，以及真实产品上的证据。
-合并由人决定。
-只有你允许 [shipwright-land](../skills/shipwright-land/SKILL.md) 时，代理才会合并。
-
-## 测量结果
-
-在 16 个真实的 Click 缺陷上，同一代理在有 Shipwright skill 时，Python 改动少 43.4%。95% 区间是少 27.0% 到 57.4%。隐藏测试在两边都是 32 次里通过 30 次。
-
-![Python 行。无 skill 为 100。](../eval/results/2026-11-round2/chart.png)
-
-[完整报告](../eval/results/2026-11-round2/report.md)
-
-## 工作流程
-
-上面的图是主路径。
-[HTML 指南](showcase/shipwright-workflow.html) 展示每个阶段。
-
-1. **选择阶段。** 运行 [shipwright-flow](../skills/shipwright-flow/SKILL.md)。它记录目标和你允许的操作。
-2. **做这一阶段。** 读代码、找问题、写计划，或改代码。
-3. **打开 pull request。** [shipwright-ship](../skills/shipwright-ship/SKILL.md) 跟进 CI。它不合并。
-4. **审查有上限。** pull request 打开之后，[shipwright-fix](../skills/shipwright-fix/SKILL.md) 为每次 AI 审查计数。默认上限是 3。打开 pull request 之前的工作不计数。计数不清零。
-5. **请人决定。** [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) 准备人工包。[shipwright-land](../skills/shipwright-land/SKILL.md) 只在你允许之后合并。
-
-小而清楚的改动可以从 [shipwright-build](../skills/shipwright-build/SKILL.md) 开始。
-审计保持为审计，直到你要求写计划。
-
-## 核心 skill
-
-这些是核心 skill。
-
-| Skill | 做什么 |
-| --- | --- |
-| [shipwright-flow](../skills/shipwright-flow/SKILL.md) | 选择阶段、范围，以及你允许的操作。 |
-| [shipwright-plan](../skills/shipwright-plan/SKILL.md) | 写一份新代理可以执行的计划。 |
-| [shipwright-build](../skills/shipwright-build/SKILL.md) | 完成改动，并带回证据。 |
-| [shipwright-review](../skills/shipwright-review/SKILL.md) | 报告已核实的发现，并且不改代码。 |
-| [shipwright-fix](../skills/shipwright-fix/SKILL.md) | 修复阻断项，并持有审查上限。 |
-| [shipwright-ship](../skills/shipwright-ship/SKILL.md) | 打开 pull request，并跟进 CI。 |
-| [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 为一个人准备审查包。 |
-| [shipwright-land](../skills/shipwright-land/SKILL.md) | 在非作者验证并且你允许之后合并。 |
-
-[完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
-
-## 示例
-
-订单列表按 UTC 给日期分组。
-店铺使用自己的时区。
-你允许本地编辑和测试。
-你不允许推送、打开 pull request 或合并。
-
-1. [shipwright-flow](../skills/shipwright-flow/SKILL.md) 记录这个范围。
-2. [shipwright-diagnose](../skills/shipwright-diagnose/SKILL.md) 复现这个 bug。它不改代码。
-3. [shipwright-build](../skills/shipwright-build/SKILL.md) 先加一个失败的测试，再修正分组。
-4. [shipwright-review](../skills/shipwright-review/SKILL.md) 检查该 commit，并报告发现。
-
-阻断项交给 [shipwright-fix](../skills/shipwright-fix/SKILL.md)。
-[shipwright-diagnose](../skills/shipwright-diagnose/SKILL.md) 在[完整列表](skills.zh-CN.md)里。
+有 skill 时，Python 行数比同一个无 skill 的代理少 43%。
+隐藏测试两边都通过 30/32 次。通过率相同。
+95% 区间是少 27% 到 57%。[报告](../eval/results/2026-11-round2/report.md) 写有方法和限制。
 
 ## 常见问题
 
@@ -187,14 +143,6 @@ Shipwright 是一组 skill，用来完成一项编码任务。
 
 证据放在 `/tmp/shipwright-<plan-id>/<short-sha>/`。
 缓存的截图不是证据。
-
-</details>
-
-<details>
-<summary>Skill 用什么语言？</summary>
-
-Skill 说明是中文。
-路径、文件名和模板标题是英文。
 
 </details>
 
