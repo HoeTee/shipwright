@@ -1,0 +1,223 @@
+# Reads the issue form as data. Does not check out the repo or run issue text.
+name: Issue intake
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    name: Label from the issue form
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update intake labels
+        uses: actions/github-script@v9
+        with:
+          script: |
+            // <intake-pure>
+            const INTAKE_MARKER = "<!-- repo-ops-intake -->";
+
+            function headingOf(line) {
+              if (!line.startsWith("### ")) {
+                return null;
+              }
+              const heading = line.slice(4).trim();
+              return heading === "" ? null : heading;
+            }
+
+            function parseSections(body) {
+              const sections = new Map();
+              let name = null;
+              let lines = [];
+              const flush = () => {
+                if (name !== null && !sections.has(name)) {
+                  sections.set(name, lines.join("\n").trim());
+                }
+              };
+              for (const line of String(body ?? "").split(/\r?\n/)) {
+                const heading = headingOf(line);
+                if (heading !== null) {
+                  flush();
+                  lines = [];
+                  name = sections.has(heading) ? null : heading;
+                } else if (name !== null) {
+                  lines.push(line);
+                }
+              }
+              flush();
+              return sections;
+            }
+
+            function isBlank(value) {
+              const text = String(value ?? "").trim();
+              return text === "" || text === "_No response_";
+            }
+
+            function moduleToken(value) {
+              for (const line of String(value ?? "").split(/\r?\n/)) {
+                const trimmed = line.trim();
+                if (trimmed !== "") {
+                  return trimmed;
+                }
+              }
+              return "";
+            }
+
+            function decideIntake(body, allowedModules) {
+              const sections = parseSections(body);
+              const missing = [];
+              for (const field of ["Summary", "Expected result"]) {
+                if (isBlank(sections.get(field))) {
+                  missing.push(field);
+                }
+              }
+              const stepsOk = sections.has("Steps to reproduce") && !isBlank(sections.get("Steps to reproduce"));
+              const acceptanceOk = sections.has("Acceptance criteria") && !isBlank(sections.get("Acceptance criteria"));
+              if (!stepsOk && !acceptanceOk) {
+                missing.push("Steps to reproduce or Acceptance criteria");
+              }
+              const token = sections.has("Module") ? moduleToken(sections.get("Module")) : "";
+              const moduleName = !isBlank(token) && allowedModules.includes(token) ? token : null;
+              if (moduleName === null) {
+                missing.push("Module");
+              }
+              return {
+                ok: missing.length === 0,
+                missing,
+                module: missing.length === 0 ? moduleName : null,
+              };
+            }
+
+            function labelEdits(decision, currentLabels, allowedModules) {
+              const current = new Set(currentLabels);
+              const moduleLabels = allowedModules.map((name) => "module:" + name);
+              if (!decision.ok) {
+                return {
+                  add: ["needs-info"].filter((name) => !current.has(name)),
+                  remove: ["triage", "agent:ready"].concat(moduleLabels).filter((name) => current.has(name)),
+                };
+              }
+              const keep = "module:" + decision.module;
+              return {
+                add: [keep, "agent:ready"].filter((name) => !current.has(name)),
+                remove: ["triage", "needs-info"].concat(moduleLabels.filter((name) => name !== keep)).filter((name) => current.has(name)),
+              };
+            }
+
+            function missingComment(missing) {
+              const lines = missing.map((name) => "- " + name);
+              return [
+                INTAKE_MARKER,
+                "Required fields are empty, or the module is not in the allowed list:",
+              ].concat(lines).concat([
+                "",
+                "Edit the issue to fill them. This check reads the form as data and does not run issue text.",
+              ]).join("\n");
+            }
+
+            function readyComment(moduleName) {
+              return [
+                INTAKE_MARKER,
+                "Required fields are present. Labels include module:" + moduleName + " and agent:ready.",
+              ].join("\n");
+            }
+
+            function commentPlan(existingBodies, nextBody) {
+              if (nextBody == null) {
+                return [];
+              }
+              if (existingBodies.length === 0) {
+                return [{ op: "create", body: nextBody }];
+              }
+              if (existingBodies[0] === nextBody) {
+                return [];
+              }
+              return [{ op: "update", index: 0, body: nextBody }];
+            }
+            // </intake-pure>
+
+            const ALLOWED_MODULES = ["skills", "docs", "references", "eval", "tooling", "assets", "plugin", "repo"];
+
+            function statusOf(error) {
+              if (error && typeof error.status === "number") {
+                return error.status;
+              }
+              if (error && error.response && typeof error.response.status === "number") {
+                return error.response.status;
+              }
+              return 0;
+            }
+
+            async function applyIntake() {
+              const issue = context.payload.issue;
+              if (!issue || issue.pull_request) {
+                return;
+              }
+              const decision = decideIntake(issue.body, ALLOWED_MODULES);
+              const currentLabels = (issue.labels || []).map((label) => (
+                typeof label === "string" ? label : label.name
+              ));
+              const edits = labelEdits(decision, currentLabels, ALLOWED_MODULES);
+              const owner = context.repo.owner;
+              const repo = context.repo.repo;
+              const issue_number = issue.number;
+
+              if (edits.add.length > 0) {
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number,
+                  labels: edits.add,
+                });
+              }
+              for (const name of edits.remove) {
+                try {
+                  await github.rest.issues.removeLabel({ owner, repo, issue_number, name });
+                } catch (error) {
+                  if (statusOf(error) !== 404) {
+                    throw error;
+                  }
+                }
+              }
+
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner,
+                repo,
+                issue_number,
+                per_page: 100,
+              });
+              const botComments = comments.filter((comment) => {
+                const login = comment.user && comment.user.login;
+                return login === "github-actions[bot]"
+                  && typeof comment.body === "string"
+                  && comment.body.includes(INTAKE_MARKER);
+              });
+              const nextBody = decision.ok
+                ? (botComments.length > 0 ? readyComment(decision.module) : null)
+                : missingComment(decision.missing);
+              const operations = commentPlan(botComments.map((comment) => comment.body), nextBody);
+              for (const operation of operations) {
+                if (operation.op === "create") {
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number,
+                    body: operation.body,
+                  });
+                } else if (operation.op === "update") {
+                  await github.rest.issues.updateComment({
+                    owner,
+                    repo,
+                    comment_id: botComments[operation.index].id,
+                    body: operation.body,
+                  });
+                }
+              }
+            }
+
+            await applyIntake();
