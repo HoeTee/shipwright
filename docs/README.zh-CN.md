@@ -160,13 +160,26 @@ Do not push. Do not open a pull request. Do not merge.
   <img src="media/shipwright-evidence.png" width="880" alt="无 skill 基线的份额。Python 行数：无 skill 为 100%，有 skill 为 56.6%，少 43.4%。95% 区间是少 27.0% 到 57.4%。">
 </p>
 
+有 skill 时，Python 行数少 43.4%。95% 区间是少 27.0% 到 57.4%。
+
 <p align="center">
   <img src="media/shipwright-evidence-count.png" width="880" alt="16 题里有 14 题的 Python 行数更少。通过率相同。">
 </p>
 
-有 skill 时，Python 行数少 43.4%。
-95% 区间是少 27.0% 到 57.4%，并且 16 题里有 14 题更少。
-通过率相同。
+16 题里有 14 题更少。通过率相同。
+
+<p align="center">
+  <img src="media/shipwright-evidence-tests.png" width="880" alt="diff 改到测试行的运行。无 skill 是 32 次里的 27 次，即 84%。有 skill 是 32 次里的 32 次，即 100%。">
+</p>
+
+diff 改到测试行：有 skill 是 32 次里的 32 次，无 skill 是 32 次里的 27 次。
+
+<p align="center">
+  <img src="media/shipwright-evidence-q03.png" width="880" alt="一次 sentinel 运行。Python 行数不含测试：无 skill 17，Shipwright 4。两边都改了 src/click/_utils.py 和 sentinel 测试。两边都通过。记录里没有 diff。">
+</p>
+
+一次 sentinel 运行：有 skill 是 4 行 Python，无 skill 是 17 行。两边都通过。这是一个例子。
+
 方法和限制见[报告](../eval/results/2026-11-round2/report.md)。
 
 ## 常见问题

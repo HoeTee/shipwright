@@ -160,13 +160,26 @@ Do not push. Do not open a pull request. Do not merge.
   <img src="docs/media/shipwright-evidence.png" width="880" alt="Share of the no-skills baseline. Python lines: no skills 100%, skills 56.6%, which is 43.4% fewer. The 95% interval is 27.0% to 57.4% fewer.">
 </p>
 
+Skills changed 43.4% fewer Python lines. The 95% interval is 27.0% to 57.4% fewer.
+
 <p align="center">
   <img src="docs/media/shipwright-evidence-count.png" width="880" alt="Fewer Python lines on 14 of 16 questions. Same pass rate.">
 </p>
 
-Skills changed 43.4% fewer Python lines.
-The 95% interval is 27.0% to 57.4% fewer, and the skills arm was lower on 14 of 16 questions.
-The pass rate is the same.
+Fewer Python lines on 14 of 16 questions. The pass rate is the same.
+
+<p align="center">
+  <img src="docs/media/shipwright-evidence-tests.png" width="880" alt="Runs whose diff changed test lines. No skills 27 of 32, which is 84%. Skills 32 of 32, which is 100%.">
+</p>
+
+The diff changed test lines on 32 of 32 skill runs, and on 27 of 32 runs with no skills.
+
+<p align="center">
+  <img src="docs/media/shipwright-evidence-q03.png" width="880" alt="One sentinel run. Python lines, tests excluded: no skill 17, shipwright 4. Both edited src/click/_utils.py and the sentinel test. Both passed. Records do not include the diff.">
+</p>
+
+One sentinel run: 4 Python lines with skills, 17 without. Both passed. One example.
+
 Method and limits: [report](eval/results/2026-11-round2/report.md).
 
 ## FAQ

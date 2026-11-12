@@ -160,13 +160,26 @@ Do not push. Do not open a pull request. Do not merge.
   <img src="media/shipwright-evidence.png" width="880" alt="skill なしを 100% とした割合。Python の行は skill なし 100%、skill あり 56.6% で 43.4% 少ない。95% 区間は 27.0% から 57.4% 少ない。">
 </p>
 
+skill ありは Python の行が 43.4% 少ない。95% 区間は 27.0% から 57.4% 少ない。
+
 <p align="center">
   <img src="media/shipwright-evidence-count.png" width="880" alt="16 問中 14 問で Python の行が少ない。通過率は同じ。">
 </p>
 
-skill ありは Python の行が 43.4% 少ない。
-95% 区間は 27.0% から 57.4% 少なく、16 問中 14 問で skill ありの方が少ない。
-通過率は同じである。
+16 問中 14 問で行が少ない。通過率は同じである。
+
+<p align="center">
+  <img src="media/shipwright-evidence-tests.png" width="880" alt="diff がテスト行を変えた実行。skill なしは 32 回中 27 回で 84%。skill ありは 32 回中 32 回で 100%。">
+</p>
+
+diff がテスト行を変えたのは、skill あり 32 回中 32 回、skill なし 32 回中 27 回である。
+
+<p align="center">
+  <img src="media/shipwright-evidence-q03.png" width="880" alt="sentinel の 1 回。テストを除いた Python 行は skill なし 17、Shipwright 4。どちらも src/click/_utils.py と sentinel テストを編集。どちらも通過。記録に diff はない。">
+</p>
+
+sentinel の 1 回：skill ありは Python 4 行、skill なしは 17 行。どちらも通過した。これは 1 例である。
+
 方法と限界は[報告](../eval/results/2026-11-round2/report.md)。
 
 ## よくある質問
