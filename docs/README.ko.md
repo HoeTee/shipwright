@@ -16,11 +16,10 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python 줄이 43% 적다. 숨은 테스트는 skill이 있을 때 30/32, 없을 때도 30/32이다.">
+  <img src="media/shipwright-hero.png" width="880" alt="Python 줄이 43% 적다. 통과율은 같다: 30/32 대 30/32.">
 </p>
 
 <p align="center">
-  <strong>Python 줄이 43% 적다. 숨은 테스트는 skill 있음 30/32, skill 없음 30/32.</strong><br>
   <sub>실제 Click 버그 수정 16건. 같은 에이전트가 skill이 있을 때와 없을 때 실행한다. 각 팔 2회. <a href="#수치">수치</a>.</sub>
 </p>
 

@@ -16,11 +16,10 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python 行数少 43%。隐藏测试在有 skill 时通过 30/32，在无 skill 时也通过 30/32。">
+  <img src="media/shipwright-hero.png" width="880" alt="Python 行数少 43%。通过率相同：30/32 对 30/32。">
 </p>
 
 <p align="center">
-  <strong>Python 行数少 43%。隐藏测试：有 skill 为 30/32，无 skill 为 30/32。</strong><br>
   <sub>16 个真实的 Click 缺陷修复。同一个代理分别带 skill 和不带 skill 运行。每个臂 2 次。<a href="#数字">数字</a>。</sub>
 </p>
 
