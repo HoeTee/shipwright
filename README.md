@@ -1,57 +1,84 @@
-<div align="center">
+<h1 align="center">Shipwright</h1>
 
-[中文](docs/README.zh-CN.md) · [日本語](docs/README.ja.md) · [한국어](docs/README.ko.md)
+<p align="center">
+  <em>Shipwright takes one coding task from the first look to a human merge decision.</em>
+</p>
 
-# Shipwright
+<p align="center">
+  <a href="https://github.com/HoeTee/shipwright/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/HoeTee/shipwright/ci.yml?style=flat-square&label=CI" alt="CI"></a>
+  <a href="https://github.com/HoeTee/shipwright/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/release-v1.0.0-111111?style=flat-square" alt="Release v1.0.0"></a>
+  <a href="references/platforms.md"><img src="https://img.shields.io/badge/works%20with-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-111111?style=flat-square" alt="Works with Codex, Claude Code, and OpenCode"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
+</p>
 
-**Shipwright takes one coding task from the first look to a human merge decision.**
+<p align="center">
+  <sub><a href="docs/README.zh-CN.md">Chinese</a> &middot; <a href="docs/README.ja.md">Japanese</a> &middot; <a href="docs/README.ko.md">Korean</a></sub>
+</p>
 
-A plugin for Codex, Claude Code, and OpenCode
+<p align="center">
+  <img src="docs/media/shipwright-hero.png" width="880" alt="-43% fewer Python lines. Hidden tests passed 30 of 32 runs with skills and 30 of 32 runs with no skills.">
+</p>
 
-[![CI](https://github.com/HoeTee/shipwright/actions/workflows/ci.yml/badge.svg)](https://github.com/HoeTee/shipwright/actions/workflows/ci.yml)
-[![Plugin](https://img.shields.io/badge/plugin-Codex%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-1f6feb)](references/platforms.md)
-[![MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
+<p align="center">
+  <strong>-43% Python lines. Hidden tests: 30/32 with skills, 30/32 with no skills.</strong><br>
+  <sub>16 real Click bug fixes. The same agent ran with skills and with no skills. 2 runs per arm. <a href="#numbers">Numbers</a>.</sub>
+</p>
 
-[Install](#install-and-try-it) · [Workflow](#workflow) · [Core skills](#core-skills) · [Example](#example) · [FAQ](#faq)
+<p align="center">
+  <img src="docs/media/shipwright-workflow.png" alt="Task, Plan, Build, Review and Fix, Ship, then a human merge.">
+</p>
 
-</div>
+| What you're doing | Skill | Key principle |
+| --- | --- | --- |
+| Start a task | [shipwright-flow](skills/shipwright-flow/SKILL.md) | Record the stage and what you allow. |
+| Write the plan | [shipwright-plan](skills/shipwright-plan/SKILL.md) | Write a plan a new agent can run. |
+| Make the change | [shipwright-build](skills/shipwright-build/SKILL.md) | Bring back proof from the real product. |
+| Check the change | [shipwright-review](skills/shipwright-review/SKILL.md) | Report findings. Do not edit. |
+| Fix a blocker | [shipwright-fix](skills/shipwright-fix/SKILL.md) | Own the AI review limit. |
+| Open the pull request | [shipwright-ship](skills/shipwright-ship/SKILL.md) | Follow CI. Do not merge. |
+| Prepare the packet | [shipwright-signoff](skills/shipwright-signoff/SKILL.md) | A person reads this packet. |
+| Merge | [shipwright-land](skills/shipwright-land/SKILL.md) | Merge after a non-author checks it and you allow it. |
 
-## Install and try it
+The [full skill list](docs/skills.md) names all 48 skills.
 
-Install the plugin. Then start a new session.
+## Quick start
 
-### Claude Code
-
-Use this command on Claude Code 2.1.292 or newer.
+The fastest install is one command.
+It needs Claude Code 2.1.292 or newer.
 
 ```bash
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-Add the marketplace first. Then install the plugin.
+HTML reports need Node.js 20 or newer.
+Evaluation scripts need Python 3.
 
-```bash
-claude plugin marketplace add HoeTee/shipwright
-claude plugin install shipwright@shipwright
-```
+<details>
+<summary>Claude Code</summary>
 
-Inside a session, run these two commands.
+Start a new session after you install.
+Then run `/shipwright:shipwright-flow`.
 
-```text
-/plugin marketplace add HoeTee/shipwright
-/plugin install shipwright@shipwright
-```
+</details>
 
-### Codex
+<details>
+<summary>Codex</summary>
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
 codex plugin add shipwright@shipwright
 ```
 
-### OpenCode
+Start a new thread.
+Then call `$shipwright:shipwright-flow`.
+
+</details>
+
+<details>
+<summary>OpenCode</summary>
 
 Put this entry in `opencode.json`.
+Keep the final slash.
 
 ```json
 {
@@ -59,16 +86,9 @@ Put this entry in `opencode.json`.
 }
 ```
 
-Keep the final slash.
+Then ask for `@shipwright-flow`.
 
-### Requirements
-
-You need Git.
-HTML reports need Node.js 20 or newer.
-Evaluation scripts need Python 3.
-The skill files are Markdown.
-
-### Ask for a task
+</details>
 
 Send this prompt.
 
@@ -79,79 +99,15 @@ You may edit local files and run tests.
 Do not push. Do not open a pull request. Do not merge.
 ```
 
-| Agent | How to start |
-| --- | --- |
-| Codex | `$shipwright:shipwright-flow` |
-| Claude Code | `/shipwright:shipwright-flow` |
-| OpenCode | `@shipwright-flow` |
+## Numbers
 
 <p align="center">
-  <img src="docs/media/shipwright-workflow.png" alt="Task, Plan, Build, Review and Fix, Ship, then a human merge.">
+  <img src="eval/results/2026-11-round2/chart.png" width="880" alt="Click round 2. Plain is 100. Skills is 56.6. Hidden tests passed 30 of 32 runs on each arm.">
 </p>
 
-<p align="center"><em>Task, Plan, Build, then Review and Fix. A clear review goes to Ship and a human merge. <a href="docs/media/shipwright-workflow.svg">Full-size diagram</a> · <a href="docs/showcase/shipwright-workflow.html">HTML guide</a></em></p>
-
-Shipwright is a set of skills for one coding task.
-Each skill does one job.
-[shipwright-flow](skills/shipwright-flow/SKILL.md) records the goal, the stage, the scope, and what you allow.
-
-You get a plan, a code change, and proof from the real product.
-A person decides the merge.
-The agent merges only when you allow [shipwright-land](skills/shipwright-land/SKILL.md).
-
-## Measured result
-
-On 16 real Click bugs, the same agent with Shipwright skills changed 43.4% fewer Python lines than with no skills. The 95% interval is 27.0% to 57.4% fewer lines. Hidden tests passed 30 of 32 runs on each arm.
-
-![Python lines. No skills is 100.](eval/results/2026-11-round2/chart.png)
-
-[Full report](eval/results/2026-11-round2/report.md)
-
-## Workflow
-
-The picture above is the main path.
-The [HTML guide](docs/showcase/shipwright-workflow.html) shows every stage.
-
-1. **Select the stage.** Run [shipwright-flow](skills/shipwright-flow/SKILL.md). It records the goal and what you allow.
-2. **Do that stage.** Read the code, find the issue, write the plan, or make the change.
-3. **Open the pull request.** [shipwright-ship](skills/shipwright-ship/SKILL.md) follows CI. It does not merge.
-4. **Review with a limit.** After the pull request is open, [shipwright-fix](skills/shipwright-fix/SKILL.md) counts each AI review. The default limit is 3. Work before the pull request does not count. The count does not reset.
-5. **Ask a person.** [shipwright-signoff](skills/shipwright-signoff/SKILL.md) prepares the packet. [shipwright-land](skills/shipwright-land/SKILL.md) merges only after you allow it.
-
-A small clear change can start at [shipwright-build](skills/shipwright-build/SKILL.md).
-An audit stays an audit until you ask for a plan.
-
-## Core skills
-
-These are the core skills.
-
-| Skill | What it does |
-| --- | --- |
-| [shipwright-flow](skills/shipwright-flow/SKILL.md) | Selects the stage, the scope, and what you allow. |
-| [shipwright-plan](skills/shipwright-plan/SKILL.md) | Writes a plan that a new agent can run. |
-| [shipwright-build](skills/shipwright-build/SKILL.md) | Makes the change and brings back proof. |
-| [shipwright-review](skills/shipwright-review/SKILL.md) | Reports checked findings and does not edit. |
-| [shipwright-fix](skills/shipwright-fix/SKILL.md) | Fixes blocking findings and owns the review limit. |
-| [shipwright-ship](skills/shipwright-ship/SKILL.md) | Opens the pull request and follows CI. |
-| [shipwright-signoff](skills/shipwright-signoff/SKILL.md) | Prepares the packet for a person. |
-| [shipwright-land](skills/shipwright-land/SKILL.md) | Merges after a non-author verifies the version and you allow it. |
-
-The [full skill list](docs/skills.md) names all 48 skills.
-
-## Example
-
-The order list groups dates by UTC.
-The store uses its own time zone.
-You allow local edits and tests.
-You do not allow a push, a pull request, or a merge.
-
-1. [shipwright-flow](skills/shipwright-flow/SKILL.md) records that scope.
-2. [shipwright-diagnose](skills/shipwright-diagnose/SKILL.md) reproduces the bug. It does not edit.
-3. [shipwright-build](skills/shipwright-build/SKILL.md) adds a failing test, then fixes the grouping.
-4. [shipwright-review](skills/shipwright-review/SKILL.md) checks that commit and reports findings.
-
-Blocking findings go to [shipwright-fix](skills/shipwright-fix/SKILL.md).
-[shipwright-diagnose](skills/shipwright-diagnose/SKILL.md) is in the [full skill list](docs/skills.md).
+Skills changed 43% fewer Python lines than the same agent with no skills.
+Hidden tests passed 30 of 32 runs on each arm. The pass rate is the same.
+The 95% interval is 27% to 57% fewer lines. The [report](eval/results/2026-11-round2/report.md) has the method and the limits.
 
 ## FAQ
 
@@ -187,14 +143,6 @@ Silence is not approval.
 
 Proof goes under `/tmp/shipwright-<plan-id>/<short-sha>/`.
 A cached screenshot is not proof.
-
-</details>
-
-<details>
-<summary>What language are the skills?</summary>
-
-Skill instructions are Chinese.
-Paths, file names, and template headings are English.
 
 </details>
 
