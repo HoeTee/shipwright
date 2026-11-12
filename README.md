@@ -1,4 +1,4 @@
-<h1 align="center">Shipwright</h1>
+<h1 align="center"><img src="docs/media/shipwright-logo.png" width="64" height="64" alt="Shipwright" valign="middle"> Shipwright</h1>
 
 <p align="center">
   <em>Shipwright takes one coding task from the first look to a human merge decision.</em>
@@ -20,11 +20,11 @@
 </p>
 
 <p align="center">
-  <sub>16 real Click bug fixes. The same agent ran with skills and with no skills. 2 runs per arm. <a href="#numbers">Numbers</a>.</sub>
+  <sub>16 real Click bug fixes. The same agent ran with skills and with no skills. 2 runs per arm. <a href="#evidence">Evidence</a>.</sub>
 </p>
 
 <p align="center">
-  <img src="docs/media/shipwright-workflow.png" alt="Task, Plan, Build, Review and Fix, Ship, then a human merge.">
+  <img src="docs/media/shipwright-workflow.gif" alt="Task, Plan, Build, then Review and Fix loop until clear, then Ship and a human merge.">
 </p>
 
 | What you're doing | Skill | Key principle |
@@ -87,10 +87,10 @@ You may edit local files and run tests.
 Do not push. Do not open a pull request. Do not merge.
 ```
 
-## Numbers
+## Evidence
 
 <p align="center">
-  <img src="docs/media/shipwright-numbers.png" width="880" alt="Python lines changed. No skills is 100. Skills is 56.6. Same pass rate.">
+  <img src="docs/media/shipwright-evidence.png" width="880" alt="Python lines changed. No skills is 100. Skills is 56.6. Same pass rate.">
 </p>
 
 Skills changed 43% fewer Python lines than the same agent with no skills.
@@ -100,37 +100,79 @@ The 95% interval is 27% to 57% fewer lines. The [report](eval/results/2026-11-ro
 ## FAQ
 
 <details>
-<summary><h3>Does install start the work?</h3></summary>
+<summary><h3>Which agents can run it?</h3></summary>
 
-Install only adds the skills.
-A new session starts the task.
-
-</details>
-
-<details>
-<summary><h3>Will the agent merge?</h3></summary>
-
-[shipwright-ship](skills/shipwright-ship/SKILL.md) stops when the pull request can merge.
-[shipwright-land](skills/shipwright-land/SKILL.md) merges only after you allow it.
+Shipwright runs in Claude Code, Codex, and OpenCode.
+The same skills load on each host.
+Only the install command and the call syntax change.
 
 </details>
 
 <details>
-<summary><h3>Where is the review limit?</h3></summary>
+<summary><h3>How do I install it?</h3></summary>
 
-The default limit is 3.
-Only [shipwright-fix](skills/shipwright-fix/SKILL.md) defines it.
+Use the Quick start above.
+Claude Code needs one command.
+Codex and OpenCode use the steps under their headings.
+Start a new session after you install.
+
+</details>
+
+<details>
+<summary><h3>Do I need all 48 skills?</h3></summary>
+
+No.
+Call [shipwright-flow](skills/shipwright-flow/SKILL.md), and it picks the stage.
+The eight skills in the table above cover the path from plan to merge.
+The other skills stay quiet until that stage needs them.
+
+</details>
+
+<details>
+<summary><h3>When does the review loop stop?</h3></summary>
+
+[shipwright-review](skills/shipwright-review/SKILL.md) reports findings and does not edit.
+[shipwright-fix](skills/shipwright-fix/SKILL.md) makes the fixes, and the AI review limit is 3.
 The count starts when the pull request opens.
-Work before that pull request does not count.
-Silence is not approval.
+Silence is not approval, and a person still decides the merge.
 
 </details>
 
 <details>
-<summary><h3>Where does proof go?</h3></summary>
+<summary><h3>Can the agent merge by itself?</h3></summary>
 
-Proof goes under `/tmp/shipwright-<plan-id>/<short-sha>/`.
-A cached screenshot is not proof.
+No.
+[shipwright-ship](skills/shipwright-ship/SKILL.md) opens the pull request and stops.
+[shipwright-land](skills/shipwright-land/SKILL.md) merges only after a non-author checks the change and you allow it.
+
+</details>
+
+<details>
+<summary><h3>What did the eval measure?</h3></summary>
+
+The same agent ran with skills and with no skills on 16 real Click bug fixes.
+Each arm ran 2 times.
+Skills changed 43% fewer Python lines, and the pass rate was the same.
+A third repeat, a harder set, and a blind judge did not run.
+
+</details>
+
+<details>
+<summary><h3>How do I update it?</h3></summary>
+
+Run the same install commands again.
+Then start a new session so the host loads the new files.
+An old session keeps the files from when it started.
+
+</details>
+
+<details>
+<summary><h3>Does it spend extra tokens?</h3></summary>
+
+Shipwright does not set a token price.
+The eval did not measure a dollar cost or a token bill.
+A smaller diff can use fewer tokens, but that is not a promise.
+You pay your host's normal model cost.
 
 </details>
 
@@ -140,30 +182,35 @@ A cached screenshot is not proof.
 
 Write the plan before you change the product.
 A later agent must run that plan with no extra chat.
-[shipwright-flow](skills/shipwright-flow/SKILL.md) records the stage, and [shipwright-plan](skills/shipwright-plan/SKILL.md) writes the plan in `plans/`.
+The plan records the notes, the commands, the run, and the proof.
+[shipwright-flow](skills/shipwright-flow/SKILL.md) records the stage, and [shipwright-plan](skills/shipwright-plan/SKILL.md) writes that plan in `plans/`.
 
 **Smallest complete change**
 
 Make the smallest change that fully does the job.
 Do not add work that nobody asked for.
+A smaller diff is easier to review and easier to revert.
 [shipwright-lean](skills/shipwright-lean/SKILL.md) stays on while you write code, until you turn it off.
 
 **Proof before done**
 
 A change is not done until you prove it on the real product.
 A cached screenshot is not proof.
-[shipwright-build](skills/shipwright-build/SKILL.md) stores the proof under `/tmp/shipwright-<plan-id>/<short-sha>/`.
+The proof must come from a command you ran on this change.
+[shipwright-build](skills/shipwright-build/SKILL.md) stores that proof under `/tmp/shipwright-<plan-id>/<short-sha>/`.
 
 **Review, then fix**
 
 [shipwright-review](skills/shipwright-review/SKILL.md) reports findings and does not edit the code.
-Each finding is P0, P1, or P2, based on the real harm.
+Each finding is P0, P1, or P2. P0 and P1 block by default.
+A note with no real defect is not a P2.
 [shipwright-fix](skills/shipwright-fix/SKILL.md) makes the fixes, and the AI review limit is 3.
 
 **A person merges**
 
 A person must decide the merge.
-[shipwright-ship](skills/shipwright-ship/SKILL.md) stops before the merge, and [shipwright-signoff](skills/shipwright-signoff/SKILL.md) writes the packet.
+The agent may open the pull request, but it may not merge alone.
+[shipwright-signoff](skills/shipwright-signoff/SKILL.md) writes the packet a person reads.
 [shipwright-land](skills/shipwright-land/SKILL.md) merges only after a non-author checks it and you allow it.
 
 **Measure real runs**
@@ -171,23 +218,28 @@ A person must decide the merge.
 Cite a gain only when a real comparison measured it.
 [shipwright-eval](skills/shipwright-eval/SKILL.md) runs the same agent with skills and with no skills.
 That comparison is not part of every small change.
+A number from another project is not a Shipwright result.
 
 **Extra modes stay off**
 
 Swarm, arena, autopilot, and multi-PR plans stay off until you ask.
 They add parallel work or a long run you did not request.
 [shipwright-flow](skills/shipwright-flow/SKILL.md) does not start them unless you name that work.
+A normal task stays on one change and one pull request.
 
 ## Credits and comparison
 
-Shipwright keeps four ideas.
+Shipwright keeps these ideas.
 
 | Source | What Shipwright keeps |
 | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | [shipwright-lean](skills/shipwright-lean/SKILL.md) and the shortcut ledger in [shipwright-debt](skills/shipwright-debt/SKILL.md) |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack) | The shared verify pair and the shared prove pair |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | [shipwright-lean](skills/shipwright-lean/SKILL.md) keeps the smallest complete change, and [shipwright-debt](skills/shipwright-debt/SKILL.md) keeps the shortcut ledger |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto | The shared verify pair and the shared prove pair |
 | [improve](https://github.com/shadcn/improve) | [shipwright-audit](skills/shipwright-audit/SKILL.md) and the plan template |
 | [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | The review limit in [shipwright-fix](skills/shipwright-fix/SKILL.md) and the human packet in [shipwright-signoff](skills/shipwright-signoff/SKILL.md) |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | The shape of this README, including the command table |
+| [garden-skills](https://github.com/ConardLi/garden-skills) | The design method for the hero, the workflow, and the evidence chart |
+| [Click](https://github.com/pallets/click) | The 16 real bug fixes used as the eval questions |
 
 Ponytail publishes its own measurements.
 Those numbers are not Shipwright results.

@@ -3,27 +3,19 @@
 <head>
 <meta charset="utf-8">
 <title>Shipwright hero</title>
-<!--
-  Design Read: wide stat banner for a coding plugin README.
-  Audience: a developer on a phone or a laptop.
-  Visual language: Pentagram — type does the work, one cobalt block, no decoration.
-  Palette: cream #F4F1E7, ink #111111, cobalt #1E3FFF.
-  Type: Noto Sans Display for the name and the number. Noto Sans for the lines under them.
-  Radius 0. No shadow. No gradient.
--->
 <style>
   @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
   @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
-  html, body { margin: 0; width: 1760px; height: 700px; overflow: hidden; background: #F4F1E7; }
-  .frame { display: flex; width: 1760px; height: 700px; }
-  .left, .right { box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; }
-  .left { width: 980px; padding: 48px 40px 64px 64px; color: #111111; }
-  .right { width: 780px; padding: 48px 56px 64px 56px; background: #1E3FFF; color: #F4F1E7; }
+  html, body { margin: 0; width: 1760px; height: 460px; overflow: hidden; background: #F4F1E7; }
+  .frame { display: flex; width: 1760px; height: 460px; }
+  .left, .right { box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+  .left { width: 980px; padding: 36px 48px 36px 72px; color: #111111; }
+  .right { width: 780px; padding: 36px 64px; background: #1E3FFF; color: #F4F1E7; }
   .name, .num, .tag, .label { margin: 0; text-wrap: pretty; }
-  .name { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 132px; letter-spacing: -0.05em; line-height: 0.84; }
-  .tag { margin-top: 28px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; line-height: 1.15; max-width: 14em; }
-  .num { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 248px; letter-spacing: -0.06em; line-height: 0.78; }
-  .label { margin-top: 24px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; }
+  .name { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 120px; letter-spacing: -0.05em; line-height: 0.86; }
+  .tag { margin-top: 18px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -0.02em; line-height: 1.15; max-width: 16em; }
+  .num { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 188px; letter-spacing: -0.06em; line-height: 0.8; }
+  .label { margin-top: 16px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.03em; line-height: 1.05; }
 </style>
 </head>
 <body>

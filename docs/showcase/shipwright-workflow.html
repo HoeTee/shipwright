@@ -3,144 +3,138 @@
 <head>
 <meta charset="utf-8">
 <title>Shipwright workflow</title>
-<!--
-  Same system as the hero: cream ground, ink rules, one cobalt block for Human merge.
-  One horizontal row. Sharp corners. No shadow.
--->
 <style>
   @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
   html, body { margin: 0; background: #F4F1E7; }
-  .row {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    width: max-content;
-    padding: 28px 32px;
-    background: #F4F1E7;
-  }
-  .node {
+  .sheet {
     box-sizing: border-box;
-    height: 132px;
-    padding: 0 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid #111111;
+    width: 1680px;
+    padding: 48px 56px 56px;
     background: #F4F1E7;
     color: #111111;
-    font-family: "Display", "Noto Sans Display", sans-serif;
-    font-weight: 700;
-    font-size: 64px;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    white-space: nowrap;
   }
-  .human { background: #1E3FFF; color: #F4F1E7; border-color: #1E3FFF; }
-  .gap { width: 36px; height: 132px; position: relative; flex: none; }
-  .gap::before {
-    content: "";
-    position: absolute;
-    left: 0; right: 8px; top: 50%;
-    height: 3px;
-    background: #111111;
-  }
-  .gap::after {
-    content: "";
-    position: absolute;
-    right: 0; top: 50%;
-    width: 14px; height: 14px;
-    border-top: 3px solid #111111;
-    border-right: 3px solid #111111;
-    transform: translateY(-50%) rotate(45deg);
-  }
-  .loop {
-    width: 176px;
-    height: 132px;
-    flex: none;
+  .row { display: flex; align-items: center; gap: 18px; }
+  .row + .row { margin-top: 28px; }
+  .card {
+    box-sizing: border-box;
+    min-width: 220px;
+    height: 148px;
+    padding: 18px 28px 22px;
+    border: 4px solid #111111;
+    background: #F4F1E7;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 6px;
   }
-  .lab {
-    text-align: center;
+  .card b {
     font-family: "Display", "Noto Sans Display", sans-serif;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 28px;
     letter-spacing: -0.03em;
     color: #1E3FFF;
     line-height: 1;
   }
-  .arr { position: relative; height: 16px; }
-  .arr::before {
-    content: "";
-    position: absolute;
-    left: 6px; right: 16px; top: 7px;
-    height: 3px;
+  .card span {
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .wide { min-width: 460px; background: #1E3FFF; border-color: #1E3FFF; color: #F4F1E7; }
+  .wide b { color: #F4F1E7; }
+  .arrow {
+    width: 36px;
+    height: 4px;
     background: #111111;
-  }
-  .arr::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    width: 11px; height: 11px;
-    border-top: 3px solid #111111;
-    border-right: 3px solid #111111;
-  }
-  .arr.go::after { right: 2px; transform: rotate(45deg); }
-  .arr.back::before { left: 16px; right: 6px; }
-  .arr.back::after { left: 2px; transform: rotate(-135deg); }
-  .clear {
-    width: 150px;
-    height: 132px;
+    position: relative;
     flex: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
   }
-  .clear .shaft { position: relative; height: 16px; }
-  .clear .shaft::before {
+  .arrow::after {
     content: "";
     position: absolute;
-    left: 0; right: 16px; top: 7px;
-    height: 3px;
-    background: #111111;
-  }
-  .clear .shaft::after {
-    content: "";
-    position: absolute;
-    right: 2px; top: 2px;
-    width: 11px; height: 11px;
-    border-top: 3px solid #111111;
-    border-right: 3px solid #111111;
+    right: -2px;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    border-top: 4px solid #111111;
+    border-right: 4px solid #111111;
     transform: rotate(45deg);
   }
+  .loop {
+    margin-left: auto;
+    width: 560px;
+    border: 4px solid #1E3FFF;
+    padding: 22px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .loop .pair { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .mini {
+    box-sizing: border-box;
+    height: 92px;
+    min-width: 180px;
+    padding: 12px 20px;
+    border: 4px solid #111111;
+    background: #F4F1E7;
+    display: flex;
+    align-items: center;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+  }
+  .swap { width: 54px; display: flex; flex-direction: column; gap: 10px; flex: none; }
+  .swap i { display: block; height: 4px; background: #1E3FFF; position: relative; }
+  .swap i::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    border-top: 4px solid #1E3FFF;
+    border-right: 4px solid #1E3FFF;
+  }
+  .swap i.go::after { right: -2px; transform: rotate(45deg); }
+  .swap i.back::after { left: -2px; transform: rotate(-135deg); }
+  .until {
+    margin: 0;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    color: #1E3FFF;
+  }
+  .tail { justify-content: flex-end; }
 </style>
 </head>
 <body>
-  <div class="row" id="row">
-    <div class="node">Task</div>
-    <div class="gap"></div>
-    <div class="node">Plan</div>
-    <div class="gap"></div>
-    <div class="node">Build</div>
-    <div class="gap"></div>
-    <div class="node">Review</div>
-    <div class="loop">
-      <div class="lab">block</div>
-      <div class="arr go"></div>
-      <div class="arr back"></div>
-      <div class="lab">again</div>
+  <div class="sheet" id="sheet">
+    <div class="row">
+      <div class="card"><b>01</b><span>Task</span></div>
+      <div class="arrow"></div>
+      <div class="card"><b>02</b><span>Plan</span></div>
+      <div class="arrow"></div>
+      <div class="card"><b>03</b><span>Build</span></div>
+      <div class="arrow"></div>
+      <div class="card"><b>04</b><span>Review</span></div>
     </div>
-    <div class="node">Fix</div>
-    <div class="clear">
-      <div class="lab">clear</div>
-      <div class="shaft"></div>
+    <div class="row">
+      <div class="loop">
+        <div class="pair">
+          <div class="mini">Review</div>
+          <div class="swap"><i class="go"></i><i class="back"></i></div>
+          <div class="mini">Fix</div>
+        </div>
+        <p class="until">Loop until clear</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="card"><b>05</b><span>Ship</span></div>
+      <div class="arrow"></div>
+      <div class="card wide"><b>06</b><span>Human merge</span></div>
     </div>
-    <div class="node">Ship</div>
-    <div class="gap"></div>
-    <div class="node human">Human merge</div>
   </div>
 </body>
 </html>
