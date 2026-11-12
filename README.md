@@ -40,6 +40,50 @@
 
 The [full skill list](docs/skills.md) names all 48 skills.
 
+## Anatomy
+
+Every skill file has the same two front matter fields.
+The headings below are the common ones.
+A skill keeps only the headings it needs.
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│ skills/shipwright-*/SKILL.md                                       │
+│                                                                    │
+│ ┌─ frontmatter ──────────────────────────────────────────────────┐ │
+│ │ name: shipwright-<skill>                                       │ │
+│ │ description: when to use it, and when not                      │ │
+│ └────────────────────────────────────────────────────────────────┘ │
+│ # title                                                            │
+│ When to use       -> first lines. A heading on some skills.        │
+│ Steps / Procedure -> the work this skill does                      │
+│ Handoff           -> who takes the next stage                      │
+│ Stop              -> what this skill will not do                   │
+│                                                                    │
+│ references/*.md   -> most skills. A step names the file.           │
+│ scripts/          -> some skills. Checkers and helpers.            │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+The plugin files in this repo:
+
+```
+shipwright/
+  skills/                         48 skills. Each has SKILL.md.
+    shipwright-*/references/      notes. 37 skills have this.
+    shipwright-*/scripts/         helpers. 18 skills have this.
+    plugin.json                   points at this folder
+  .claude-plugin/plugin.json      Claude Code plugin
+  .claude-plugin/marketplace.json marketplace name
+  .codex-plugin/plugin.json       Codex plugin. skills: ./skills/
+  docs/                           READMEs and the skill lists
+  eval/results/                   the Click round reports
+  references/                     rules the skills share
+```
+
+OpenCode has no manifest in this repo.
+Your `opencode.json` points at `skills/`.
+
 ## Quick start
 
 The fastest install is one command.
@@ -132,27 +176,31 @@ Shipwright does not set a token price, and the eval did not measure a token bill
 
 **Plan, then cut**
 
-Write the plan before you change the product.
-A later agent must run that plan with no extra chat.
-Then make the smallest change that fully does the job.
+Write the plan before you touch the code.
+The next agent should run it with no extra chat.
+Then make the smallest change that does the job.
+Smaller diff, fewer bugs. That's it.
 
-**Prove it, then review it**
+**Prove it**
 
-A change is not done until a command on this change proves it.
-Review reports findings and does not edit the code.
-Fix makes the repairs, and the AI review limit is 3.
+Don't write code you can't prove works.
+Run a command on this change, because a saved screenshot is not proof.
+Review finds the holes and does not edit.
+Fix patches them, and the AI review stops at 3.
 
-**A person merges**
+**You merge**
 
-The agent may open the pull request.
-It may not merge alone.
-A non-author must check the change, and you must allow the merge.
+The agent can open the pull request.
+It does not get to merge it.
+Someone who did not write the change has to look.
+Then you say yes.
 
-**Measure only what you ran**
+**Show the run**
 
-Cite a gain only when a real comparison measured it.
-A number from another project is not a Shipwright result.
-Extra modes stay off until you ask for them.
+If we did not measure it, we do not claim it.
+The numbers here come from a real run of this project.
+Another project's numbers are not ours.
+Extra modes stay off until you ask.
 
 ## How Shipwright compares
 
