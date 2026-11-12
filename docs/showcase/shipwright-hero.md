@@ -1,17 +1,14 @@
----
-title: "-43%"
-subtitle: fewer Python lines
-lang: en
-template: doc
-theme: blueprint
-mode: light
-source: 16 real Click bug fixes
----
+# Shipwright hero
 
-```kv cols=1
-* With skills: 30 of 32 hidden tests
-* With no skills: 30 of 32 hidden tests
-```
+The banner is `shipwright-hero.html`.
+Export it at 1760 by 700 and save `docs/media/shipwright-hero.png`.
 
-The pass rate is the same.
-The skills arm did not pass more tests.
+The words on the banner:
+
+- Shipwright
+- -43%
+- Python lines changed
+- Same pass rate
+- 30/32 vs 30/32
+
+The pass rate is the same on both arms.

@@ -16,11 +16,10 @@
 </p>
 
 <p align="center">
-  <img src="docs/media/shipwright-hero.png" width="880" alt="-43% fewer Python lines. Hidden tests passed 30 of 32 runs with skills and 30 of 32 runs with no skills.">
+  <img src="docs/media/shipwright-hero.png" width="880" alt="-43% Python lines changed. Same pass rate: 30/32 vs 30/32.">
 </p>
 
 <p align="center">
-  <strong>-43% Python lines. Hidden tests: 30/32 with skills, 30/32 with no skills.</strong><br>
   <sub>16 real Click bug fixes. The same agent ran with skills and with no skills. 2 runs per arm. <a href="#numbers">Numbers</a>.</sub>
 </p>
 

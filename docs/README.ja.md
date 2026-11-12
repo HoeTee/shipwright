@@ -16,11 +16,10 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python の行は 43% 少ない。隠しテストは skill ありで 30/32、skill なしでも 30/32。">
+  <img src="media/shipwright-hero.png" width="880" alt="Python の行は 43% 少ない。通過率は同じ：30/32 対 30/32。">
 </p>
 
 <p align="center">
-  <strong>Python の行は 43% 少ない。隠しテストは skill あり 30/32、skill なし 30/32。</strong><br>
   <sub>実在する Click のバグ修正 16 件。同じエージェントが skill ありと skill なしで動く。各腕 2 回。<a href="#数値">数値</a>。</sub>
 </p>
 
