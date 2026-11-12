@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python 行数少 43%。通过率相同：30/32 对 30/32。">
+  <img src="media/shipwright-hero.png" width="880" alt="shipwright。从第一次查看到人工合并。Python 行数少 43%。">
 </p>
 
 <p align="center">
@@ -49,19 +49,13 @@
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-HTML 报告需要 Node.js 20 或更新版本。
-评测脚本需要 Python 3。
-
-<details>
-<summary>Claude Code</summary>
-
 安装之后新开一个会话。
 然后运行 `/shipwright:shipwright-flow`。
 
-</details>
+HTML 报告需要 Node.js 20 或更新版本。
+评测脚本需要 Python 3。
 
-<details>
-<summary>Codex</summary>
+#### Codex
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
@@ -71,10 +65,7 @@ codex plugin add shipwright@shipwright
 新开一个线程。
 然后调用 `$shipwright:shipwright-flow`。
 
-</details>
-
-<details>
-<summary>OpenCode</summary>
+#### OpenCode
 
 把下面这项写入 `opencode.json`。
 保留末尾的斜杠。
@@ -86,8 +77,6 @@ codex plugin add shipwright@shipwright
 ```
 
 然后请求 `@shipwright-flow`。
-
-</details>
 
 发送这段提示。
 
@@ -101,17 +90,17 @@ Do not push. Do not open a pull request. Do not merge.
 ## 数字
 
 <p align="center">
-  <img src="../eval/results/2026-11-round2/chart.png" width="880" alt="Click 第二轮。无 skill 为 100。有 skill 为 56.6。隐藏测试两边都是 30/32。">
+  <img src="media/shipwright-numbers.png" width="880" alt="Python 行数。无 skill 为 100。有 skill 为 56.6。通过率相同。">
 </p>
 
 有 skill 时，Python 行数比同一个无 skill 的代理少 43%。
-隐藏测试两边都通过 30/32 次。通过率相同。
+通过率相同。
 95% 区间是少 27% 到 57%。[报告](../eval/results/2026-11-round2/report.md) 写有方法和限制。
 
 ## 常见问题
 
 <details>
-<summary>安装会开始工作吗？</summary>
+<summary><h3>安装会开始工作吗？</h3></summary>
 
 安装只加入 skill。
 新会话才开始任务。
@@ -119,7 +108,7 @@ Do not push. Do not open a pull request. Do not merge.
 </details>
 
 <details>
-<summary>代理会合并吗？</summary>
+<summary><h3>代理会合并吗？</h3></summary>
 
 [shipwright-ship](../skills/shipwright-ship/SKILL.md) 在 pull request 可以合并时停下。
 [shipwright-land](../skills/shipwright-land/SKILL.md) 只在你允许之后合并。
@@ -127,7 +116,7 @@ Do not push. Do not open a pull request. Do not merge.
 </details>
 
 <details>
-<summary>审查上限在哪里？</summary>
+<summary><h3>审查上限在哪里？</h3></summary>
 
 默认上限是 3。
 只有 [shipwright-fix](../skills/shipwright-fix/SKILL.md) 定义它。
@@ -138,7 +127,7 @@ Do not push. Do not open a pull request. Do not merge.
 </details>
 
 <details>
-<summary>证据放在哪里？</summary>
+<summary><h3>证据放在哪里？</h3></summary>
 
 证据放在 `/tmp/shipwright-<plan-id>/<short-sha>/`。
 缓存的截图不是证据。
@@ -147,15 +136,47 @@ Do not push. Do not open a pull request. Do not merge.
 
 ## 理念
 
-改动要小而完整，并且不加没有人要求的工作。
+**先写计划，再改代码**
 
-`plans/` 里的计划记录笔记、命令、运行记录和证据。
+先写计划，再改产品。
+后来的代理必须能在没有这段对话的情况下执行这份计划。
+[shipwright-flow](../skills/shipwright-flow/SKILL.md) 记录阶段，[shipwright-plan](../skills/shipwright-plan/SKILL.md) 把计划写进 `plans/`。
 
-在真实产品上证明改动，缓存截图不是证据。
+**最小的完整改动**
 
-AI 审查的默认上限是 3，合并由人决定。
+只做能完成这项工作的最小改动。
+不要加入没有人要求的工作。
+写代码时 [shipwright-lean](../skills/shipwright-lean/SKILL.md) 保持开启，直到你关掉它。
+
+**完成之前要有证据**
+
+在真实产品上证明之前，改动不算完成。
+缓存的截图不是证据。
+[shipwright-build](../skills/shipwright-build/SKILL.md) 把证据放在 `/tmp/shipwright-<plan-id>/<short-sha>/`。
+
+**先审查，再修复**
+
+[shipwright-review](../skills/shipwright-review/SKILL.md) 报告发现，并且不改代码。
+每条发现按实际危害标为 P0、P1 或 P2。
+[shipwright-fix](../skills/shipwright-fix/SKILL.md) 负责修复，AI 审查上限是 3。
+
+**由人来合并**
+
+合并必须由人决定。
+[shipwright-ship](../skills/shipwright-ship/SKILL.md) 在合并前停下，[shipwright-signoff](../skills/shipwright-signoff/SKILL.md) 写出给人看的包。
+[shipwright-land](../skills/shipwright-land/SKILL.md) 只在非作者检查并且你允许之后合并。
+
+**用真实运行来测量**
+
+只有真实比较测到的收益，才可以写出。
+[shipwright-eval](../skills/shipwright-eval/SKILL.md) 让同一个代理分别带 skill 和不带 skill 运行。
+日常的小改动不跑这次比较。
+
+**额外模式保持关闭**
 
 swarm、arena、autopilot 和多 PR 计划在你要求之前保持关闭。
+它们会加入你没有要求的并行工作或长时间运行。
+除非你点名这项工作，[shipwright-flow](../skills/shipwright-flow/SKILL.md) 不会启动它们。
 
 ## 来源与对比
 

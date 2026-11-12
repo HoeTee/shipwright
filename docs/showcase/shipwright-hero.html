@@ -3,112 +3,38 @@
 <head>
 <meta charset="utf-8">
 <title>Shipwright hero</title>
+<!--
+  Design Read: wide stat banner for a coding plugin README.
+  Audience: a developer on a phone or a laptop.
+  Visual language: Pentagram — type does the work, one cobalt block, no decoration.
+  Palette: cream #F4F1E7, ink #111111, cobalt #1E3FFF.
+  Type: Noto Sans Display for the name and the number. Noto Sans for the lines under them.
+  Radius 0. No shadow. No gradient.
+-->
 <style>
-  html, body {
-    margin: 0;
-    width: 1760px;
-    height: 700px;
-    overflow: hidden;
-    background: #0b1020;
-  }
-  body {
-    font-family: "Noto Sans", "Segoe UI", sans-serif;
-    color: #f5f8fc;
-    position: relative;
-  }
-  .bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(820px 520px at 22% 58%, rgba(47, 104, 196, 0.55), transparent 68%),
-      radial-gradient(640px 420px at 78% 46%, rgba(28, 74, 150, 0.38), transparent 70%),
-      linear-gradient(180deg, #12182b 0%, #0b1020 100%);
-  }
-  .brand {
-    position: absolute;
-    top: 40px;
-    left: 72px;
-    z-index: 2;
-    margin: 0;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #b7c7dc;
-  }
-  .row {
-    position: relative;
-    z-index: 2;
-    height: 700px;
-    display: flex;
-    align-items: center;
-  }
-  .left {
-    width: 980px;
-    padding: 36px 40px 0 72px;
-    box-sizing: border-box;
-  }
-  .num {
-    margin: 0;
-    font-size: 228px;
-    font-weight: 700;
-    letter-spacing: -0.045em;
-    line-height: 0.86;
-  }
-  .label {
-    margin: 22px 0 0;
-    font-size: 58px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #d5e0ee;
-  }
-  .rule {
-    width: 2px;
-    height: 250px;
-    background: rgba(255, 255, 255, 0.18);
-    flex: none;
-  }
-  .right {
-    flex: 1;
-    padding: 36px 64px 0 72px;
-  }
-  .kicker {
-    margin: 0 0 18px;
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #b7c7dc;
-  }
-  .score {
-    margin: 0;
-    font-size: 92px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    white-space: nowrap;
-  }
-  .vs {
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #b7c7dc;
-    padding: 0 18px;
-  }
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; width: 1760px; height: 700px; overflow: hidden; background: #F4F1E7; }
+  .frame { display: flex; width: 1760px; height: 700px; }
+  .left, .right { box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; }
+  .left { width: 980px; padding: 48px 40px 64px 64px; color: #111111; }
+  .right { width: 780px; padding: 48px 56px 64px 56px; background: #1E3FFF; color: #F4F1E7; }
+  .name, .num, .tag, .label { margin: 0; text-wrap: pretty; }
+  .name { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 132px; letter-spacing: -0.05em; line-height: 0.84; }
+  .tag { margin-top: 28px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; line-height: 1.15; max-width: 14em; }
+  .num { font-family: "Display", "Noto Sans Display", sans-serif; font-weight: 700; font-size: 248px; letter-spacing: -0.06em; line-height: 0.78; }
+  .label { margin-top: 24px; font-family: "Text", "Noto Sans", sans-serif; font-weight: 700; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05; }
 </style>
 </head>
 <body>
-  <div class="bg"></div>
-  <p class="brand">Shipwright</p>
-  <div class="row">
+  <div class="frame">
     <div class="left">
+      <p class="name">shipwright</p>
+      <p class="tag">From the first look to a human merge.</p>
+    </div>
+    <div class="right">
       <p class="num">-43%</p>
       <p class="label">Python lines changed</p>
-    </div>
-    <div class="rule"></div>
-    <div class="right">
-      <p class="kicker">Same pass rate</p>
-      <p class="score">30/32<span class="vs">vs</span>30/32</p>
     </div>
   </div>
 </body>

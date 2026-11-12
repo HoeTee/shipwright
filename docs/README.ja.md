@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python の行は 43% 少ない。通過率は同じ：30/32 対 30/32。">
+  <img src="media/shipwright-hero.png" width="880" alt="shipwright。最初の確認から人のマージまで。Python の行は 43% 少ない。">
 </p>
 
 <p align="center">
@@ -49,19 +49,13 @@ Claude Code 2.1.292 以降が必要である。
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-HTML レポートには Node.js 20 以降が必要である。
-評価スクリプトには Python 3 が必要である。
-
-<details>
-<summary>Claude Code</summary>
-
 導入の後、新しいセッションを開く。
 その後 `/shipwright:shipwright-flow` を実行する。
 
-</details>
+HTML レポートには Node.js 20 以降が必要である。
+評価スクリプトには Python 3 が必要である。
 
-<details>
-<summary>Codex</summary>
+#### Codex
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
@@ -71,10 +65,7 @@ codex plugin add shipwright@shipwright
 新しいスレッドを開く。
 その後 `$shipwright:shipwright-flow` を呼ぶ。
 
-</details>
-
-<details>
-<summary>OpenCode</summary>
+#### OpenCode
 
 次の項目を `opencode.json` に書く。
 末尾のスラッシュを残す。
@@ -86,8 +77,6 @@ codex plugin add shipwright@shipwright
 ```
 
 その後 `@shipwright-flow` を頼む。
-
-</details>
 
 このプロンプトを送る。
 
@@ -101,17 +90,17 @@ Do not push. Do not open a pull request. Do not merge.
 ## 数値
 
 <p align="center">
-  <img src="../eval/results/2026-11-round2/chart.png" width="880" alt="Click 第 2 回。skill なしは 100。skill ありは 56.6。隠しテストは両腕とも 30/32。">
+  <img src="media/shipwright-numbers.png" width="880" alt="Python の行。skill なしは 100。skill ありは 56.6。通過率は同じ。">
 </p>
 
 skill ありは、同じエージェントの skill なしより Python の行が 43% 少ない。
-隠しテストは両腕とも 32 回中 30 回通った。通過率は同じである。
+通過率は同じである。
 95% 区間は 27% から 57% 少ない。[報告](../eval/results/2026-11-round2/report.md) に方法と限界を書く。
 
 ## よくある質問
 
 <details>
-<summary>インストールで作業は始まるか。</summary>
+<summary><h3>インストールで作業は始まるか。</h3></summary>
 
 インストールは skill を加えるだけである。
 新しいセッションが作業を始める。
@@ -119,7 +108,7 @@ skill ありは、同じエージェントの skill なしより Python の行�
 </details>
 
 <details>
-<summary>エージェントはマージするか。</summary>
+<summary><h3>エージェントはマージするか。</h3></summary>
 
 [shipwright-ship](../skills/shipwright-ship/SKILL.md) は、pull request がマージできる状態で止まる。
 [shipwright-land](../skills/shipwright-land/SKILL.md) は、許可の後にだけマージする。
@@ -127,7 +116,7 @@ skill ありは、同じエージェントの skill なしより Python の行�
 </details>
 
 <details>
-<summary>レビューの上限はどこにあるか。</summary>
+<summary><h3>レビューの上限はどこにあるか。</h3></summary>
 
 既定の上限は 3 である。
 定義するのは [shipwright-fix](../skills/shipwright-fix/SKILL.md) だけである。
@@ -138,7 +127,7 @@ skill ありは、同じエージェントの skill なしより Python の行�
 </details>
 
 <details>
-<summary>証拠はどこに置くか。</summary>
+<summary><h3>証拠はどこに置くか。</h3></summary>
 
 証拠は `/tmp/shipwright-<plan-id>/<short-sha>/` に置く。
 保存済みのスクリーンショットは証拠ではない。
@@ -147,15 +136,47 @@ skill ありは、同じエージェントの skill なしより Python の行�
 
 ## 考え方
 
-変更は小さく完全にし、頼まれていない仕事は足さない。
+**コードの前に計画を書く**
 
-`plans/` の計画は、ノート、コマンド、実行記録、証拠を持つ。
+製品を変える前に、計画を書く。
+後のエージェントは、この会話なしでその計画を実行できなければならない。
+[shipwright-flow](../skills/shipwright-flow/SKILL.md) が段階を記録し、[shipwright-plan](../skills/shipwright-plan/SKILL.md) が計画を `plans/` に書く。
 
-変更は実製品で証明し、保存済みのスクリーンショットは証拠ではない。
+**最小で完全な変更**
 
-AI レビューの既定上限は 3 で、マージは人が決める。
+仕事を完全に終える最小の変更だけをする。
+頼まれていない仕事は足さない。
+コードを書く間、[shipwright-lean](../skills/shipwright-lean/SKILL.md) は止めるまでオンである。
+
+**完了の前に証拠を出す**
+
+実製品で証明するまで、変更は完了ではない。
+保存済みのスクリーンショットは証拠ではない。
+[shipwright-build](../skills/shipwright-build/SKILL.md) は証拠を `/tmp/shipwright-<plan-id>/<short-sha>/` に置く。
+
+**レビューしてから直す**
+
+[shipwright-review](../skills/shipwright-review/SKILL.md) は指摘を報告し、コードを編集しない。
+各指摘は、実際の害に基づいて P0、P1、P2 のいずれかである。
+[shipwright-fix](../skills/shipwright-fix/SKILL.md) が修正を行い、AI レビューの上限は 3 である。
+
+**人がマージする**
+
+マージは人が決める。
+[shipwright-ship](../skills/shipwright-ship/SKILL.md) はマージの前に止まり、[shipwright-signoff](../skills/shipwright-signoff/SKILL.md) は人が読む資料を書く。
+[shipwright-land](../skills/shipwright-land/SKILL.md) は、作者以外が確認し、許可のあとだけマージする。
+
+**実測する**
+
+実際の比較で測った改善だけを書いてよい。
+[shipwright-eval](../skills/shipwright-eval/SKILL.md) は、同じエージェントを skill ありと skill なしで動かす。
+日常の小さな変更では、この比較を走らせない。
+
+**追加モードはオフ**
 
 swarm、arena、autopilot、複数 PR の計画は、頼むまでオフである。
+それらは、頼んでいない並列作業か長い実行を足す。
+その作業を名指しするまで、[shipwright-flow](../skills/shipwright-flow/SKILL.md) はそれらを始めない。
 
 ## 出典と比較
 

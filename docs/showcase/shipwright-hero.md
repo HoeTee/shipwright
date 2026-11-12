@@ -1,14 +1,14 @@
-# Shipwright hero
+# Shipwright images
 
-The banner is `shipwright-hero.html`.
-Export it at 1760 by 700 and save `docs/media/shipwright-hero.png`.
+The three README images share one system.
+The ground is cream. The ink is black. One block is cobalt.
+Type does the work. Corners are square. There is no shadow.
 
-The words on the banner:
+| File | PNG |
+| --- | --- |
+| `shipwright-hero.html` | `docs/media/shipwright-hero.png` |
+| `shipwright-workflow.html` | `docs/media/shipwright-workflow.png` |
+| `shipwright-numbers.html` | `docs/media/shipwright-numbers.png` |
 
-- Shipwright
-- -43%
-- Python lines changed
-- Same pass rate
-- 30/32 vs 30/32
-
-The pass rate is the same on both arms.
+The hero says `shipwright`, `From the first look to a human merge.`, and `-43% Python lines changed`.
+The numbers image says the pass rate is the same. It does not give a fraction.

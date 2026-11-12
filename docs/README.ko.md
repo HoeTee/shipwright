@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="media/shipwright-hero.png" width="880" alt="Python 줄이 43% 적다. 통과율은 같다: 30/32 대 30/32.">
+  <img src="media/shipwright-hero.png" width="880" alt="shipwright. 첫 확인에서 사람의 병합까지. Python 줄이 43% 적다.">
 </p>
 
 <p align="center">
@@ -49,19 +49,13 @@ Claude Code 2.1.292 이상이 필요하다.
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-HTML 보고서에는 Node.js 20 이상이 필요하다.
-평가 스크립트에는 Python 3이 필요하다.
-
-<details>
-<summary>Claude Code</summary>
-
 설치 뒤에 새 세션을 연다.
 그다음 `/shipwright:shipwright-flow`를 실행한다.
 
-</details>
+HTML 보고서에는 Node.js 20 이상이 필요하다.
+평가 스크립트에는 Python 3이 필요하다.
 
-<details>
-<summary>Codex</summary>
+#### Codex
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
@@ -71,10 +65,7 @@ codex plugin add shipwright@shipwright
 새 스레드를 연다.
 그다음 `$shipwright:shipwright-flow`를 호출한다.
 
-</details>
-
-<details>
-<summary>OpenCode</summary>
+#### OpenCode
 
 다음 항목을 `opencode.json`에 넣는다.
 끝의 슬래시를 유지한다.
@@ -86,8 +77,6 @@ codex plugin add shipwright@shipwright
 ```
 
 그다음 `@shipwright-flow`를 요청한다.
-
-</details>
 
 이 프롬프트를 보낸다.
 
@@ -101,17 +90,17 @@ Do not push. Do not open a pull request. Do not merge.
 ## 수치
 
 <p align="center">
-  <img src="../eval/results/2026-11-round2/chart.png" width="880" alt="Click 2라운드. skill 없음은 100. skill 있음은 56.6. 숨은 테스트는 양쪽 모두 30/32.">
+  <img src="media/shipwright-numbers.png" width="880" alt="Python 줄. skill 없음은 100. skill 있음은 56.6. 통과율은 같다.">
 </p>
 
 skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 적다.
-숨은 테스트는 양쪽 모두 32회 중 30회를 통과했다. 통과율은 같다.
+통과율은 같다.
 95% 구간은 27%에서 57% 더 적다. [보고서](../eval/results/2026-11-round2/report.md)에 방법과 한계가 있다.
 
 ## 자주 묻는 질문
 
 <details>
-<summary>설치하면 작업이 시작되는가?</summary>
+<summary><h3>설치하면 작업이 시작되는가?</h3></summary>
 
 설치는 skill만 추가한다.
 새 세션이 작업을 시작한다.
@@ -119,7 +108,7 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 </details>
 
 <details>
-<summary>에이전트가 병합하는가?</summary>
+<summary><h3>에이전트가 병합하는가?</h3></summary>
 
 [shipwright-ship](../skills/shipwright-ship/SKILL.md)는 pull request를 병합할 수 있을 때 멈춘다.
 [shipwright-land](../skills/shipwright-land/SKILL.md)는 허용 뒤에만 병합한다.
@@ -127,7 +116,7 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 </details>
 
 <details>
-<summary>검토 한도는 어디에 있는가?</summary>
+<summary><h3>검토 한도는 어디에 있는가?</h3></summary>
 
 기본 한도는 3이다.
 [shipwright-fix](../skills/shipwright-fix/SKILL.md)만 그 한도를 정의한다.
@@ -138,7 +127,7 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 </details>
 
 <details>
-<summary>증거는 어디에 두는가?</summary>
+<summary><h3>증거는 어디에 두는가?</h3></summary>
 
 증거는 `/tmp/shipwright-<plan-id>/<short-sha>/`에 둔다.
 저장된 스크린샷은 증거가 아니다.
@@ -147,15 +136,47 @@ skill이 있으면, 같은 에이전트의 skill 없음보다 Python 줄이 43% 
 
 ## 원칙
 
-변경은 작고 완전해야 하며, 요청하지 않은 일은 더하지 않는다.
+**코드보다 계획을 먼저 쓴다**
 
-`plans/`의 계획은 노트, 명령, 실행 기록, 증거를 담는다.
+제품을 바꾸기 전에 계획을 쓴다.
+나중 에이전트는 이 대화 없이 그 계획을 실행할 수 있어야 한다.
+[shipwright-flow](../skills/shipwright-flow/SKILL.md)가 단계를 기록하고, [shipwright-plan](../skills/shipwright-plan/SKILL.md)이 계획을 `plans/`에 쓴다.
 
-변경은 실제 제품에서 증명하고, 저장된 스크린샷은 증거가 아니다.
+**가장 작은 완전한 변경**
 
-AI 검토의 기본 한도는 3이고, 병합은 사람이 결정한다.
+일을 완전히 끝내는 가장 작은 변경만 한다.
+요청하지 않은 일은 더하지 않는다.
+코드를 쓰는 동안 [shipwright-lean](../skills/shipwright-lean/SKILL.md)은 끌 때까지 켜져 있다.
+
+**끝나기 전에 증거를 남긴다**
+
+실제 제품에서 증명하기 전에는 변경이 끝난 것이 아니다.
+저장된 스크린샷은 증거가 아니다.
+[shipwright-build](../skills/shipwright-build/SKILL.md)는 증거를 `/tmp/shipwright-<plan-id>/<short-sha>/`에 둔다.
+
+**검토한 다음 고친다**
+
+[shipwright-review](../skills/shipwright-review/SKILL.md)는 발견을 보고하고, 코드를 고치지 않는다.
+각 발견은 실제 피해에 따라 P0, P1, P2 중 하나이다.
+[shipwright-fix](../skills/shipwright-fix/SKILL.md)가 수정을 하고, AI 검토 한도는 3이다.
+
+**사람이 병합한다**
+
+병합은 사람이 결정한다.
+[shipwright-ship](../skills/shipwright-ship/SKILL.md)는 병합 전에 멈추고, [shipwright-signoff](../skills/shipwright-signoff/SKILL.md)는 사람이 읽는 꾸러미를 쓴다.
+[shipwright-land](../skills/shipwright-land/SKILL.md)는 작성자가 아닌 사람이 확인하고 허용한 뒤에만 병합한다.
+
+**실제 실행으로 측정한다**
+
+실제 비교로 측정한 개선만 적어도 된다.
+[shipwright-eval](../skills/shipwright-eval/SKILL.md)은 같은 에이전트를 skill이 있을 때와 없을 때 실행한다.
+매일의 작은 변경에서는 이 비교를 돌리지 않는다.
+
+**추가 모드는 꺼 둔다**
 
 swarm, arena, autopilot, 여러 PR 계획은 요청할 때까지 꺼 둔다.
+그것들은 요청하지 않은 병렬 작업이나 긴 실행을 더한다.
+그 작업을 지목하기 전에는 [shipwright-flow](../skills/shipwright-flow/SKILL.md)가 그것들을 시작하지 않는다.
 
 ## 출처와 비교
 
