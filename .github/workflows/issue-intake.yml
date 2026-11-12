@@ -141,7 +141,7 @@ jobs:
             }
             // </intake-pure>
 
-            const ALLOWED_MODULES = ["skills", "docs", "references", "eval", "tooling", "assets", "plugin", "repo"];
+            const ALLOWED_MODULES = ["plugin", "skills", "docs", "references", "eval", "tooling", "assets"];
 
             function statusOf(error) {
               if (error && typeof error.status === "number") {

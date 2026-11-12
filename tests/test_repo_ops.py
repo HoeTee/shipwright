@@ -146,6 +146,13 @@ def glob_match(pattern: str, path: str) -> bool:
     return glob_to_re(pattern).match(path) is not None
 
 
+def first_module(path: str, modules: dict) -> str | None:
+    for name, patterns in modules.items():
+        if any(glob_match(pattern, path) for pattern in patterns):
+            return name
+    return None
+
+
 def listed_files() -> list[str]:
     output = subprocess.check_output(
         ["git", "ls-files", "-co", "--exclude-standard"],
@@ -252,7 +259,13 @@ class RepoOpsTests(unittest.TestCase):
             config["protected_paths"],
             [".github/**", "**/*.env*", "LICENSE"],
         )
-        self.assertEqual(list(config["modules"]), self.allowed)
+        self.assertEqual(list(config["modules"])[:2], ["plugin", "skills"])
+        self.assertIn("repo", config["modules"])
+        self.assertEqual(
+            [name for name in config["modules"] if name != "repo"],
+            self.allowed,
+        )
+        self.assertNotIn("repo", self.allowed)
 
     def test_parser_matches_pyyaml_when_installed(self):
         try:
@@ -285,6 +298,67 @@ class RepoOpsTests(unittest.TestCase):
             hits = [path for path in listed_files() if any(glob_match(pattern, path) for pattern in patterns)]
             self.assertTrue(hits, name)
 
+    def test_first_listed_module_owns_the_file(self):
+        modules = self.config["modules"]
+        self.assertEqual(first_module("skills/index.json", modules), "plugin")
+        self.assertEqual(first_module("skills/plugin.json", modules), "plugin")
+        self.assertEqual(first_module("skills/shipwright-flow/SKILL.md", modules), "skills")
+
+    def test_pull_request_template_sections(self):
+        text = (ROOT / ".github" / "pull_request_template.md").read_text(encoding="utf-8")
+        headings = [line[3:] for line in text.splitlines() if line.startswith("## ")]
+        self.assertEqual(
+            headings,
+            [
+                "Summary",
+                "Related issue",
+                "Module",
+                "What changed",
+                "Shipwright skills used",
+                "Verification per step",
+                "Tests",
+                "Out-of-scope edits",
+                "Ignored issue text",
+            ],
+        )
+        self.assertEqual(headings[0], "Summary")
+        for required in ("Shipwright skills used", "Verification per step"):
+            self.assertIn(required, headings)
+        parts = re.split(r"(?m)^## ", text)[1:]
+        self.assertEqual(len(parts), len(headings))
+        for part in parts:
+            self.assertRegex(part, r"<!-- .+ -->")
+        visible = [
+            line.strip()
+            for line in text.splitlines()
+            if line.strip() and not line.startswith("## ") and not line.strip().startswith("<!--")
+        ]
+        self.assertEqual(visible, [])
+
+    def test_repo_module_is_not_an_intake_choice(self):
+        body = """\
+### Summary
+
+The intake workflow should not start work on protected paths.
+
+### Steps to reproduce
+
+1. Open .github/workflows/issue-intake.yml.
+
+### Expected result
+
+The issue stays out of the ready queue.
+
+### Module
+
+repo
+"""
+        result = self.decide(body, ["triage"])
+        self.assertFalse(result["decision"]["ok"])
+        self.assertIsNone(result["decision"]["module"])
+        self.assertIn("Module", result["decision"]["missing"])
+        self.assertNotIn("module:repo", result["labels"]["add"])
+
     def test_glob_dialect(self):
         self.assertTrue(glob_match("skills/**", "skills/shipwright-flow/SKILL.md"))
         self.assertTrue(glob_match("SKILL.md", "SKILL.md"))
@@ -307,7 +381,8 @@ class RepoOpsTests(unittest.TestCase):
             "skill.yml": "Acceptance criteria",
             "docs.yml": "Acceptance criteria",
         }
-        module_names = list(self.config["modules"])
+        module_names = [name for name in self.config["modules"] if name != "repo"]
+        self.assertNotIn("repo", module_names)
         for filename, choice in expected.items():
             form = self.labels.parse_yaml(
                 (ROOT / ".github" / "ISSUE_TEMPLATE" / filename).read_text(encoding="utf-8")

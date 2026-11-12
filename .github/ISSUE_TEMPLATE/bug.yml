@@ -31,16 +31,15 @@ body:
     id: module
     attributes:
       label: Module
-      description: Which part of the repo this is about. The options are the modules in .github/repo-ops.yml.
+      description: Which part of the repo this issue is about. repo is omitted because those paths are protected.
       options:
+        - plugin
         - skills
         - docs
         - references
         - eval
         - tooling
         - assets
-        - plugin
-        - repo
     validations:
       required: true
   - type: textarea
