@@ -19,4 +19,4 @@ Shipwright constraints that sit on top of the source playbook:
 - The body is Chinese, about 120 lines. The bulk lives in `references/`.
 - Directory names, file names, path placeholders, and structural headings are English.
 - Instructions name Codex, Claude Code, and OpenCode by what they share. They do not name a host tool.
-- A new file under `skills/<name>/` has to be reflected in `skills/index.json` by `python scripts/build_opencode_index.py`. Do not hand-edit the catalog.
+- A changed file under `skills/<name>/` has to be reflected in `skills/index.json` by `python scripts/build_opencode_index.py`. Do not hand-edit the catalog. The version is a hash of the file bytes.

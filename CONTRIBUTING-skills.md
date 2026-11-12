@@ -28,7 +28,7 @@ Nobody edits these while filling a group. They are the skeleton contract.
 - `references/principles/README.md`
 - `scripts/build_opencode_index.py`
 
-`skills/index.json` is the OpenCode catalog. It is generated. When you add or remove a file inside a skill directory, run `python scripts/build_opencode_index.py` and commit the result. Do not hand-edit it.
+`skills/index.json` is the OpenCode HTTP catalog. It is generated. When a file inside a skill directory changes, run `python scripts/build_opencode_index.py` and commit the result. Do not hand-edit it. The version is a hash of the file bytes.
 
 Leave the legacy skill and the renderer where they are. CI still runs the renderer tests from `scripts/`.
 

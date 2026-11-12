@@ -40,6 +40,52 @@
 
 [完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
 
+## 结构
+
+每个 skill 文件都有这两个开头字段。
+下面是常见标题。
+一个 skill 只留它需要的标题。
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│ skills/shipwright-*/SKILL.md                                       │
+│                                                                    │
+│ ┌─ 开头字段 ─────────────────────────────────────────────────────┐ │
+│ │ name: shipwright-<skill>                                       │ │
+│ │ description: 何时用，何时不用                                  │ │
+│ └────────────────────────────────────────────────────────────────┘ │
+│ # 标题                                                             │
+│ When to use       -> 开头几行。有的 skill 用这个标题。             │
+│ Steps / Procedure -> 这个 skill 要做的事                           │
+│ Handoff           -> 下一阶段交给谁                                │
+│ Stop              -> 这个 skill 不做的事                           │
+│                                                                    │
+│ references/*.md   -> 多数 skill 有。某一步点名才读。               │
+│ scripts/          -> 一部分 skill 有。检查和帮手。                 │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+这个仓库里的插件文件：
+
+```
+shipwright/
+  skills/                         48 个 skill。每个都有 SKILL.md。
+    shipwright-*/references/      补充说明。37 个 skill 有。
+    shipwright-*/scripts/         帮手脚本。18 个 skill 有。
+    plugin.json                   指向这个目录
+    index.json                    OpenCode 的 HTTP 目录
+  .claude-plugin/plugin.json      Claude Code 插件
+  .claude-plugin/marketplace.json 市场名
+  .codex-plugin/plugin.json       Codex 插件。skills: ./skills/
+  docs/                           README 和 skill 列表
+  eval/results/                   Click 那一轮的报告
+  references/                     各 skill 共用的规则
+```
+
+OpenCode 在这个仓库里没有插件清单。
+`skills/index.json` 是 HTTP 目录。
+你的 `opencode.jsonc` 写一个本地文件夹，或写这个目录地址。
+
 ## 快速开始
 
 最快的安装是一条命令。
@@ -67,15 +113,36 @@ codex plugin add shipwright@shipwright
 
 #### OpenCode
 
-把下面这项写入 `opencode.json`。
+OpenCode 读取 skill 文件夹。
+它不用插件清单。
+
+先克隆仓库。
+然后把文件夹写进 `~/.config/opencode/opencode.jsonc`。
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+也可以把 `skills/` 复制或软链接到 `~/.config/opencode/skills`。
+项目里可以用 `.opencode/skills`，做法一样。
+
+也可以不克隆。
+指向 HTTP 目录。
 保留末尾的斜杠。
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+目录文件是 `skills/index.json`。
 然后请求 `@shipwright-flow`。
 
 发送这段提示。
@@ -130,29 +197,33 @@ Shipwright 不设定 token 价格，这次评测也没有测量 token 账单。�
 
 ## 理念
 
-**先计划，再砍到最小**
+**先写计划，再砍**
 
-先写计划，再改产品。
-后来的代理必须能在没有这段对话的情况下执行这份计划。
-然后只做能完成这项工作的最小改动。
+动代码之前，先把计划写下来。
+下一个人不看这段聊天，也得能照着干。
+然后只改把这件事做完所必需的那一点。
+diff 越小，bug 越少。就这样。
 
-**先证明，再审查**
+**先证明它能跑**
 
-在这次改动上跑过命令之前，改动不算完成。
-审查只报告发现，不改代码。
-修复负责改，AI 审查上限是 3。
+证明不了能跑的代码，别写。
+在这次改动上跑一条命令，存下来的截图不算数。
+审查只找洞，不改代码。
+修复去补，AI 审查到 3 次就停。
 
-**由人来合并**
+**合并你来**
 
-代理可以打开 pull request。
-它不能独自合并。
-非作者必须检查这次改动，并且你必须允许合并。
+代理可以开 pull request。
+它没资格自己合并。
+没写这段代码的人得看一眼。
+然后你点头。
 
-**只引用你跑过的测量**
+**没跑过就别吹**
 
-只有真实比较测到的收益，才可以写出。
-别的项目的数字不是 Shipwright 的结果。
-额外模式在你要求之前保持关闭。
+没测过的，别写成我们的成绩。
+这里的数字来自这个项目自己的实测。
+别人家的数字不是我们的。
+额外模式，你不点名就别开。
 
 ## 对比
 

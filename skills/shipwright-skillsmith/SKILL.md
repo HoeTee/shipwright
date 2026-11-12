@@ -20,7 +20,7 @@ description: "新写或修改 skill（含本插件和项目 skill）；要证明
 3. 引用的文件必须存在。能用路径指向别的 skill 或原则时，不要把它们再抄一遍。
 4. 只保留会改变决定的句子。拿不准就删。
 5. 结构有变化时补可核对的检查。纯偏好的措辞不用配测试。
-6. 在 `skills/` 下增删文件后，运行 `python scripts/build_opencode_index.py`，提交生成的 `skills/index.json`。不要手改目录。
+6. 在 `skills/` 下增删或改动文件后，运行 `python scripts/build_opencode_index.py`，提交生成的 `skills/index.json`。不要手改目录。version 是文件字节的哈希。
 
 任务做到一半发现 skill 坏了：在单独的 PR 里修，不要在当前任务里悄悄绕过去。
 

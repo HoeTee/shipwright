@@ -2,7 +2,7 @@
   "skills": [
     {
       "name": "shipwright-architect",
-      "version": "2",
+      "version": "af24511aca5a",
       "files": [
         "SKILL.md",
         "references/design-red-flags.md",
@@ -13,14 +13,14 @@
     },
     {
       "name": "shipwright-arena",
-      "version": "1",
+      "version": "f476cb2993e8",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-audit",
-      "version": "2",
+      "version": "8c6d6d768be5",
       "files": [
         "SKILL.md",
         "references/deps.md",
@@ -36,7 +36,7 @@
     },
     {
       "name": "shipwright-autopilot",
-      "version": "5",
+      "version": "f8a3593a7618",
       "files": [
         "SKILL.md",
         "references/autonomous-run.md",
@@ -53,7 +53,7 @@
     },
     {
       "name": "shipwright-bugs",
-      "version": "2",
+      "version": "6662ef8c2f18",
       "files": [
         "SKILL.md",
         "references/bug-and-scale.md",
@@ -62,7 +62,7 @@
     },
     {
       "name": "shipwright-build",
-      "version": "3",
+      "version": "5fc7249e5723",
       "files": [
         "SKILL.md",
         "references/bugfix.md",
@@ -77,14 +77,14 @@
     },
     {
       "name": "shipwright-cleanup",
-      "version": "1",
+      "version": "06ecde0d46e1",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-comments",
-      "version": "2",
+      "version": "225ccaeb3aae",
       "files": [
         "SKILL.md",
         "references/comment-sicko.md",
@@ -93,7 +93,7 @@
     },
     {
       "name": "shipwright-debt",
-      "version": "2",
+      "version": "e11620f658b3",
       "files": [
         "SKILL.md",
         "references/ledger.md",
@@ -102,7 +102,7 @@
     },
     {
       "name": "shipwright-deploy",
-      "version": "2",
+      "version": "ab3338478d00",
       "files": [
         "SKILL.md",
         "references/delivery.md",
@@ -111,7 +111,7 @@
     },
     {
       "name": "shipwright-diagnose",
-      "version": "2",
+      "version": "41c081cc4eb3",
       "files": [
         "SKILL.md",
         "references/reproduce.md",
@@ -123,7 +123,7 @@
     },
     {
       "name": "shipwright-eval",
-      "version": "2",
+      "version": "7de92cd7db1f",
       "files": [
         "SKILL.md",
         "references/blinding.md",
@@ -142,7 +142,7 @@
     },
     {
       "name": "shipwright-fix",
-      "version": "3",
+      "version": "b97b061d3dcf",
       "files": [
         "SKILL.md",
         "references/loop.md",
@@ -154,21 +154,21 @@
     },
     {
       "name": "shipwright-flow",
-      "version": "1",
+      "version": "2bfc5d03a906",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-help",
-      "version": "1",
+      "version": "3b5ac99b57a6",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-how",
-      "version": "2",
+      "version": "9f41494f7852",
       "files": [
         "SKILL.md",
         "references/architecture-facts.md",
@@ -181,7 +181,7 @@
     },
     {
       "name": "shipwright-impact",
-      "version": "2",
+      "version": "edcd166574b1",
       "files": [
         "SKILL.md",
         "references/method.md",
@@ -190,7 +190,7 @@
     },
     {
       "name": "shipwright-interrogate",
-      "version": "2",
+      "version": "46f841711a69",
       "files": [
         "SKILL.md",
         "references/brief.md",
@@ -199,7 +199,7 @@
     },
     {
       "name": "shipwright-land",
-      "version": "4",
+      "version": "8045c942569b",
       "files": [
         "SKILL.md",
         "references/after-review.md",
@@ -211,7 +211,7 @@
     },
     {
       "name": "shipwright-lean",
-      "version": "2",
+      "version": "c509091736cd",
       "files": [
         "SKILL.md",
         "references/lean-checks.md",
@@ -220,7 +220,7 @@
     },
     {
       "name": "shipwright-perf",
-      "version": "2",
+      "version": "f8cf771020ac",
       "files": [
         "SKILL.md",
         "references/benchmark-checklist.md",
@@ -233,7 +233,7 @@
     },
     {
       "name": "shipwright-plan",
-      "version": "3",
+      "version": "011b3a3941e7",
       "files": [
         "SKILL.md",
         "references/example.md",
@@ -247,7 +247,7 @@
     },
     {
       "name": "shipwright-prevent",
-      "version": "2",
+      "version": "5e30cb1c01cb",
       "files": [
         "SKILL.md",
         "references/correct.md",
@@ -257,7 +257,7 @@
     },
     {
       "name": "shipwright-prototype",
-      "version": "2",
+      "version": "3c208d1db876",
       "files": [
         "SKILL.md",
         "references/procedure.md"
@@ -265,7 +265,7 @@
     },
     {
       "name": "shipwright-prove-create",
-      "version": "2",
+      "version": "30578f073ea0",
       "files": [
         "SKILL.md",
         "references/procedure.md",
@@ -324,7 +324,7 @@
     },
     {
       "name": "shipwright-prove-maintain",
-      "version": "2",
+      "version": "3f86a66f9578",
       "files": [
         "SKILL.md",
         "references/procedure.md"
@@ -332,7 +332,7 @@
     },
     {
       "name": "shipwright-recall",
-      "version": "2",
+      "version": "c8e9e5657dd4",
       "files": [
         "SKILL.md",
         "references/method.md",
@@ -344,14 +344,14 @@
     },
     {
       "name": "shipwright-recap",
-      "version": "1",
+      "version": "ef4216c48e76",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-reconcile",
-      "version": "3",
+      "version": "ea5957b9598a",
       "files": [
         "SKILL.md",
         "references/reconcile.md",
@@ -361,7 +361,7 @@
     },
     {
       "name": "shipwright-recover",
-      "version": "2",
+      "version": "e157164cfba5",
       "files": [
         "SKILL.md",
         "references/triage.md"
@@ -369,7 +369,7 @@
     },
     {
       "name": "shipwright-reflect",
-      "version": "2",
+      "version": "cba2f6c13c7f",
       "files": [
         "SKILL.md",
         "references/divergent-reviewer.md",
@@ -382,7 +382,7 @@
     },
     {
       "name": "shipwright-review",
-      "version": "2",
+      "version": "4252ff3ad168",
       "files": [
         "SKILL.md",
         "references/adversarial.md",
@@ -394,7 +394,7 @@
     },
     {
       "name": "shipwright-roadmap",
-      "version": "2",
+      "version": "54224e82d2e6",
       "files": [
         "SKILL.md",
         "references/direction.md"
@@ -402,14 +402,14 @@
     },
     {
       "name": "shipwright-rules",
-      "version": "1",
+      "version": "8ea12dfdfbc5",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-security",
-      "version": "2",
+      "version": "39193b586978",
       "files": [
         "SKILL.md",
         "references/risk.md",
@@ -419,14 +419,14 @@
     },
     {
       "name": "shipwright-setup",
-      "version": "1",
+      "version": "82f8293705a9",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-ship",
-      "version": "5",
+      "version": "4952b4475866",
       "files": [
         "SKILL.md",
         "assets/github-review-threads.graphql",
@@ -463,7 +463,7 @@
     },
     {
       "name": "shipwright-signoff",
-      "version": "3",
+      "version": "3a21cce25dea",
       "files": [
         "SKILL.md",
         "references/business-tasks.md",
@@ -476,14 +476,14 @@
     },
     {
       "name": "shipwright-skillsmith",
-      "version": "1",
+      "version": "bfad808f8b39",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-structure",
-      "version": "3",
+      "version": "10cf0a5d5975",
       "files": [
         "SKILL.md",
         "references/tech-debt.md"
@@ -491,14 +491,14 @@
     },
     {
       "name": "shipwright-swarm",
-      "version": "1",
+      "version": "abee8dfd36f9",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-teach",
-      "version": "2",
+      "version": "9d8aa35a229d",
       "files": [
         "SKILL.md",
         "references/procedure.md"
@@ -506,7 +506,7 @@
     },
     {
       "name": "shipwright-test",
-      "version": "2",
+      "version": "218f66b6eb84",
       "files": [
         "SKILL.md",
         "references/coverage.md",
@@ -518,14 +518,14 @@
     },
     {
       "name": "shipwright-trail",
-      "version": "1",
+      "version": "6628cafcd58f",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-verify-create",
-      "version": "2",
+      "version": "835efe3c89c8",
       "files": [
         "SKILL.md",
         "references/feature-map-example/README.md",
@@ -537,7 +537,7 @@
     },
     {
       "name": "shipwright-verify-maintain",
-      "version": "2",
+      "version": "122bd13f6736",
       "files": [
         "SKILL.md",
         "references/lifecycle.md",
@@ -546,7 +546,7 @@
     },
     {
       "name": "shipwright-why",
-      "version": "2",
+      "version": "c5213ea83dcb",
       "files": [
         "SKILL.md",
         "references/epistemics.md",
@@ -569,7 +569,7 @@
     },
     {
       "name": "shipwright-write",
-      "version": "1",
+      "version": "de8967a39dc9",
       "files": [
         "SKILL.md"
       ]

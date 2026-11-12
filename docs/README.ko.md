@@ -40,6 +40,52 @@
 
 [전체 skill 목록](skills.ko.md)에 48개를 모두 적는다.
 
+## 구조
+
+모든 skill 파일의 앞머리는 이 두 칸이다.
+아래는 자주 나오는 제목이다.
+skill은 필요한 제목만 남긴다.
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│ skills/shipwright-*/SKILL.md                                       │
+│                                                                    │
+│ ┌─ 앞머리 ───────────────────────────────────────────────────────┐ │
+│ │ name: shipwright-<skill>                                       │ │
+│ │ description: 언제 쓰고, 언제 쓰지 않는가                       │ │
+│ └────────────────────────────────────────────────────────────────┘ │
+│ # 제목                                                             │
+│ When to use       -> 앞의 몇 줄. 제목인 skill도 있다.              │
+│ Steps / Procedure -> 이 skill이 하는 일                            │
+│ Handoff           -> 다음 단계를 누구에게 넘기는가                 │
+│ Stop              -> 이 skill이 하지 않는 일                       │
+│                                                                    │
+│ references/*.md   -> 대부분 있다. 단계가 이름을 부를 때 읽는다.    │
+│ scripts/          -> 일부만 있다. 검사와 도우미.                   │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+이 저장소의 플러그인 파일:
+
+```
+shipwright/
+  skills/                         skill 48개. 각각 SKILL.md.
+    shipwright-*/references/      보충. 37개 skill에 있다.
+    shipwright-*/scripts/         도우미. 18개 skill에 있다.
+    plugin.json                   이 폴더를 가리킨다
+    index.json                    OpenCode HTTP 카탈로그
+  .claude-plugin/plugin.json      Claude Code 플러그인
+  .claude-plugin/marketplace.json 마켓 이름
+  .codex-plugin/plugin.json       Codex. skills: ./skills/
+  docs/                           README와 skill 목록
+  eval/results/                   Click 라운드 보고서
+  references/                     skill이 공유하는 규칙
+```
+
+OpenCode 플러그인 목록 파일은 이 저장소에 없다.
+`skills/index.json`이 HTTP 카탈로그다.
+`opencode.jsonc`에는 폴더나 그 카탈로그 주소를 적는다.
+
 ## 빠른 시작
 
 가장 빠른 설치는 명령 하나이다.
@@ -67,15 +113,36 @@ codex plugin add shipwright@shipwright
 
 #### OpenCode
 
-다음 항목을 `opencode.json`에 넣는다.
+OpenCode는 skill 폴더를 읽는다.
+플러그인 목록 파일은 쓰지 않는다.
+
+저장소를 먼저 복제한다.
+그다음 폴더를 `~/.config/opencode/opencode.jsonc`에 넣는다.
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+또는 `skills/`를 `~/.config/opencode/skills`에 복사하거나 심볼릭 링크로 둔다.
+프로젝트에서는 `.opencode/skills`를 같은 방식으로 쓴다.
+
+복제하지 않는 방법도 있다.
+HTTP 카탈로그를 가리킨다.
 끝의 슬래시를 유지한다.
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+카탈로그 파일은 `skills/index.json`이다.
 그다음 `@shipwright-flow`를 요청한다.
 
 이 프롬프트를 보낸다.
@@ -130,29 +197,33 @@ Shipwright는 토큰 가격을 정하지 않고, 이 평가도 토큰 청구를 
 
 ## 원칙
 
-**계획한 다음 줄인다**
+**계획 먼저. 그다음 잘라.**
 
-제품을 바꾸기 전에 계획을 쓴다.
-나중 에이전트는 이 대화 없이 그 계획을 실행할 수 있어야 한다.
-그다음 일을 완전히 끝내는 가장 작은 변경만 한다.
+코드 건드리기 전에 계획을 써라.
+다음 사람은 이 채팅 없이도 그걸 실행할 수 있어야 한다.
+그다음, 일을 끝내는 가장 작은 변경만 넣어라.
+diff가 작을수록 버그가 적다. 그게 전부다.
 
-**증명한 다음 검토한다**
+**증명해**
 
-이 변경에서 명령을 실행하기 전에는 변경이 끝난 것이 아니다.
-검토는 발견을 보고하고 코드를 고치지 않는다.
-수정은 Fix가 하고, AI 검토 한도는 3이다.
+돈다고 증명 못 하는 코드는 쓰지 마라.
+이 변경에서 명령을 돌리고, 저장한 화면은 증거로 치지 마라.
+검토는 구멍만 찾고 코드는 안 고친다.
+고치는 건 Fix이고, AI 검토는 3에서 멈춘다.
 
-**사람이 병합한다**
+**병합은 네가 해**
 
 에이전트는 pull request를 열 수 있다.
-혼자 병합하지는 않는다.
-작성자가 아닌 사람이 확인하고, 당신이 허용해야 한다.
+자기가 병합할 자격은 없다.
+코드를 안 쓴 사람이 봐야 한다.
+그다음 네가 승낙한다.
 
-**측정한 것만 적는다**
+**안 잰 수는 꺼내지 마**
 
-실제 비교로 측정한 개선만 적어도 된다.
-다른 프로젝트의 수는 Shipwright의 결과가 아니다.
-추가 모드는 요청할 때까지 꺼 둔다.
+재지 않은 걸 우리 성적이라고 하지 마라.
+여기 있는 수는 이 프로젝트의 실측이다.
+남의 수는 우리 결과가 아니다.
+추가 모드는 네가 시키기 전에 켜지 마라.
 
 ## 비교
 
