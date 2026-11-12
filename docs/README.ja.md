@@ -225,16 +225,15 @@ sentinel の 1 回：skill ありは Python 4 行、skill なしは 17 行。ど
 
 ## 比較
 
-各行は、そのリポジトリがすることと、Shipwright が残すか足すことを書く。
+各行は、そのリポジトリから得られる結果と、Shipwright から得られる結果を書く。
 
-| | それがすること | Shipwright が残すか足すもの |
+| | それから得られるもの | Shipwright から得られるもの |
 | --- | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | 常時オンのプロンプトである。タスクに必要なコードだけを書き、shortcut 台帳を残す。 | 最小で完全な変更と台帳を残す。計画から人のマージまでの道を足す。 |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常のエンジニアリングモードと playbook である。振る舞いを検証し、難しい性質を証明できる。 | verify の組と prove の組を残す。並列と夜間のモードは、頼むまでオフである。 |
-| [improve](https://github.com/shadcn/improve) | リポジトリを監査し、別のエージェントが実行する計画を書く。自分では実装しない。 | 監査と計画テンプレートを残す。同じエージェントが構築し、レビューし、pull request を開くこともできる。 |
-| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 変更をレビューし、確認された欠陥を直し、人の前で止まる。AI レビューの上限は 3 である。 | その上限と、人が読む資料を残す。レビューの前に計画と構築を足す。 |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | 仕様から出荷までのライフサイクルコマンドを、コマンド表で示す。 | この README はその表の形を残す。skill と規則は Shipwright 自身のものである。 |
-| Shipwright | 1 つのコーディング作業に 1 つの道がある。 | 計画、構築、レビュー、修正、出荷、その後に人がマージする。エージェントは単独ではマージしない。 |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | エージェントはタスクに必要なコードだけを書く。後回しにした shortcut は台帳に集まる。 | その最小の変更と台帳が得られる。タスクは計画から、人がマージする pull request まで進む。 |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常モードが playbook でタスクを進める。製品を検査し、難しい性質を 1 つ証明できる。エージェントを並列に走らせることも、夜間にマージまで進めることもできる。 | 製品の検査と、難しい性質の証明は、ここでもできる。並列と夜間は頼むまでオフである。夜間の実行は自分ではマージしない。 |
+| [improve](https://github.com/shadcn/improve) | 監査と計画が得られる。より安いエージェントがその計画を実装できる。この skill は製品コードを編集しない。マージは人が行う。 | 同じタスクはコードの変更、レビュー、開いた pull request まで続く。人がマージする。 |
+| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 変更をレビューし、確認された欠陥を直し、人の判断を待って止まる。AI レビューは 3 ラウンドで止まる。 | AI レビューはやはり 3 で止まる。決定はやはり人が行う。レビューの前に、計画と構築もある。 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | コマンドはタスクを仕様から、コード、テスト、レビュー、本番公開前の確認まで進める。計画を一度承認すると、各タスクを構築し、テストし、コミットし、失敗または危険な手順で一時停止する。 | 1 つの道が、そのタスクを計画から変更、レビュー、開いた pull request まで進める。マージを決めるのは人である。 |
 
 Ponytail が公開するのは、Ponytail 自身の測定である。その数字は Shipwright の結果ではない。
 評価の問題は [Click](https://github.com/pallets/click) の実在するバグ修正 16 件である。画像は [garden-skills](https://github.com/ConardLi/garden-skills) のデザイン方法を使う。

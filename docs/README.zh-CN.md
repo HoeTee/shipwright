@@ -225,16 +225,15 @@ diff 越小，bug 越少。就这样。
 
 ## 对比
 
-每一行写那个仓库做什么，以及 Shipwright 保留或补上什么。
+每一行写你从那个仓库得到什么，以及你从 Shipwright 得到什么。
 
-| | 它做什么 | Shipwright 保留或补上的部分 |
+| | 你从它得到什么 | 你从 Shipwright 得到什么 |
 | --- | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | 一条常驻提示。它只写任务需要的代码，并保留 shortcut 账本。 | 保留最小的完整改动和这本账。补上从计划到人工合并的路径。 |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 一套日常工程模式和 playbook。它可以验证行为，也可以证明一条难的性质。 | 保留 verify 一对和 prove 一对。并行和通宵模式在你要求之前保持关闭。 |
-| [improve](https://github.com/shadcn/improve) | 审计仓库，并给另一个代理写计划。它自己不实现计划。 | 保留审计和计划模板。同一个代理还可以构建、审查并打开 pull request。 |
-| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 审查一次改动，修复已确认的缺陷，然后停给人看。AI 审查上限是 3。 | 保留这个上限和给人看的包。在审查之前补上计划和构建。 |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | 从规格到交付的生命周期命令，用命令表展示。 | 这份 README 保留那种表的形状。skill 和规则是 Shipwright 自己的。 |
-| Shipwright | 一项编码任务走一条路径。 | 计划、构建、审查、修复、交付，然后由人合并。代理不能独自合并。 |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | 代理只写任务需要的代码。推迟的 shortcut 会收进一本账。 | 你得到那个最小改动和那本账。任务还会从计划走到由人合并的 pull request。 |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常模式按 playbook 做这项任务。它可以检查产品，并证明一条难的性质。它也可以并行跑代理，或通宵做到合并。 | 你仍可以检查产品，并证明一条难的性质。并行和通宵在你要求之前保持关闭。通宵运行不会自己合并。 |
+| [improve](https://github.com/shadcn/improve) | 你得到一次审计和一份计划。更便宜的代理可以实现那份计划。这个 skill 不改产品代码，合并仍由你做。 | 同一项任务会继续做出代码改动、完成审查，并打开 pull request。由人合并。 |
+| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 它审查一次改动，修复已确认的缺陷，然后停下来交给人决定。AI 审查在 3 轮停止。 | AI 审查仍在 3 轮停止，决定仍由人做。审查之前，这项任务还有计划和构建。 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 命令把任务从规格带到代码、测试、审查，以及生产发布前的检查。计划批准一次之后，它会构建、测试并提交每一项，失败或遇到有风险的步骤就暂停。 | 一条路径把这项任务从计划带到改动、审查，以及打开的 pull request。由人决定是否合并。 |
 
 Ponytail 公布的是它自己的测量。那些数字不是 Shipwright 的结果。
 评测题目是 [Click](https://github.com/pallets/click) 里 16 个真实缺陷修复。图片用的是 [garden-skills](https://github.com/ConardLi/garden-skills) 的设计方法。

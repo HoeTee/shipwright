@@ -225,16 +225,15 @@ diff가 작을수록 버그가 적다. 그게 전부다.
 
 ## 비교
 
-각 행은 그 저장소가 하는 일과, Shipwright가 남기거나 더하는 일을 적는다.
+각 행은 그 저장소에서 얻는 결과와, Shipwright에서 얻는 결과를 적는다.
 
-| | 그것이 하는 일 | Shipwright가 남기거나 더하는 것 |
+| | 그것에서 얻는 것 | Shipwright에서 얻는 것 |
 | --- | --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | 항상 켜진 프롬프트이다. 작업에 필요한 코드만 쓰고, shortcut 장부를 남긴다. | 가장 작은 완전한 변경과 장부를 남긴다. 계획에서 사람의 병합까지의 길을 더한다. |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack) (poteto) | 매일의 엔지니어링 모드와 playbook이다. 동작을 검증하고, 어려운 성질을 증명할 수 있다. | verify 쌍과 prove 쌍을 남긴다. 병렬과 밤새 모드는 요청할 때까지 꺼 둔다. |
-| [improve](https://github.com/shadcn/improve) | 저장소를 감사하고, 다른 에이전트가 실행할 계획을 쓴다. 스스로 구현하지는 않는다. | 감사와 계획 템플릿을 남긴다. 같은 에이전트가 빌드하고, 검토하고, pull request를 열 수도 있다. |
-| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 변경을 검토하고, 확인된 결함을 고친 뒤, 사람 앞에서 멈춘다. AI 검토 한도는 3이다. | 그 한도와 사람이 읽는 꾸러미를 남긴다. 검토 전에 계획과 빌드를 더한다. |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | 명세에서 출고까지의 수명 주기 명령을 명령 표로 보여 준다. | 이 README는 그 표의 형태를 남긴다. skill과 규칙은 Shipwright 자신의 것이다. |
-| Shipwright | 코딩 작업 하나에 길이 하나 있다. | 계획, 빌드, 검토, 수정, 출고, 그다음 사람이 병합한다. 에이전트는 혼자 병합하지 않는다. |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | 에이전트는 작업에 필요한 코드만 쓴다. 미룬 shortcut은 장부로 모인다. | 그 최소 변경과 장부를 얻는다. 작업은 계획에서 사람이 병합하는 pull request까지 간다. |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack) (poteto) | 매일의 모드가 playbook으로 작업을 진행한다. 제품을 검사하고, 어려운 성질을 하나 증명할 수 있다. 에이전트를 병렬로 돌리거나, 밤새 병합까지 진행할 수 있다. | 제품 검사와 어려운 성질의 증명은 여기서도 된다. 병렬과 밤새 작업은 요청할 때까지 꺼져 있다. 밤새 실행은 스스로 병합하지 않는다. |
+| [improve](https://github.com/shadcn/improve) | 감사와 계획을 얻는다. 더 싼 에이전트가 그 계획을 구현할 수 있다. 이 skill은 제품 코드를 고치지 않는다. 병합은 사람이 한다. | 같은 작업은 코드 변경, 검토, 열린 pull request까지 이어진다. 사람이 병합한다. |
+| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 변경을 검토하고, 확인된 결함을 고친 뒤, 사람의 결정을 기다리며 멈춘다. AI 검토는 3라운드에서 멈춘다. | AI 검토는 여전히 3에서 멈춘다. 결정은 여전히 사람이 한다. 검토 전에 계획과 빌드도 있다. |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 명령은 작업을 명세에서 코드, 테스트, 검토, 프로덕션 출시 전 확인까지 진행한다. 계획을 한 번 승인하면, 각 작업을 빌드하고 테스트하고 커밋하며, 실패하거나 위험한 단계에서 잠시 멈춘다. | 하나의 길이 그 작업을 계획에서 변경, 검토, 열린 pull request까지 진행한다. 병합을 결정하는 것은 사람이다. |
 
 Ponytail이 공개하는 수는 Ponytail 자신의 측정이다. 그 수는 Shipwright의 결과가 아니다.
 평가 문제는 [Click](https://github.com/pallets/click)의 실제 버그 수정 16건이다. 그림은 [garden-skills](https://github.com/ConardLi/garden-skills)의 디자인 방법을 쓴다.
