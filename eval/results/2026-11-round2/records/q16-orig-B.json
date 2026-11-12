@@ -1,0 +1,28 @@
+{
+  "set": "click",
+  "id": "q16",
+  "rep": "orig",
+  "arm": "B",
+  "sha": "c326df95e9e3da0425360e030413f6a3ee25fdee",
+  "title": "close callbacks do not run when the command exits",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.224,
+  "hidden_tail": "...........................                                              [100%]\n27 passed in 0.04s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 1.075,
+  "full_tail": ".sssssssssssssssssssss.................................................. [ 80%]\n........................................................................ [ 91%]\n......................................................                   [100%]\n608 passed, 21 skipped, 1 xfailed in 0.86s",
+  "python_lines": 14,
+  "other_lines": 2,
+  "test_lines": 102,
+  "files": [
+    "CHANGES.rst",
+    "src/click/core.py",
+    "tests/test_context.py"
+  ],
+  "scored_at": 1794445189.3688157,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

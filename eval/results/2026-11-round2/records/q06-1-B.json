@@ -1,0 +1,28 @@
+{
+  "set": "click",
+  "id": "q06",
+  "rep": 1,
+  "arm": "B",
+  "sha": "7d05a59b9d46a415d85937630d1d812cf477f60a",
+  "title": "get_parameter_source is empty during conversion",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.89,
+  "hidden_tail": "........................................................................ [ 84%]\n........................................................................ [ 95%]\n..................................                                       [100%]\n682 passed in 0.68s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.374,
+  "full_tail": "..............s......................................................... [ 91%]\n........................................................................ [ 95%]\n.......................................................................  [100%]\n1630 passed, 24 skipped, 30000 deselected, 1 xfailed in 2.81s",
+  "python_lines": 48,
+  "other_lines": 4,
+  "test_lines": 117,
+  "files": [
+    "CHANGES.rst",
+    "src/click/core.py",
+    "tests/test_context.py"
+  ],
+  "scored_at": 1794445215.2973943,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

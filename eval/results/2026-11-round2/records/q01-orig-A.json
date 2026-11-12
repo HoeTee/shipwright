@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q01",
+  "rep": "orig",
+  "arm": "A",
+  "sha": "c53d3732b98c764932e146c007146ad402acb229",
+  "title": "envvar help for an empty value or a sequence",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.896,
+  "hidden_tail": "........................................................................ [ 85%]\n........................................................................ [ 95%]\n............................                                             [100%]\n676 passed in 0.66s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.983,
+  "full_tail": "........................................................................ [ 94%]\n........................................................................ [ 97%]\n................................................                         [100%]\n2111 passed, 24 skipped, 31000 deselected, 1 xfailed in 3.39s",
+  "python_lines": 47,
+  "other_lines": 0,
+  "test_lines": 50,
+  "files": [
+    "src/click/core.py",
+    "tests/test_options.py"
+  ],
+  "scored_at": 1794445169.5278463,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

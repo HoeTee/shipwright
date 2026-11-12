@@ -99,6 +99,14 @@ Shipwright は、1 つのコーディング作業のための skill 集である
 マージは人が決める。
 [shipwright-land](../skills/shipwright-land/SKILL.md) を許可したときだけ、エージェントはマージする。
 
+## 測定結果
+
+16 件の実際の Click 不具合で、同じエージェントは Shipwright の skill があるとき、Python の変更が 43.4% 少なかった。95% 区間は 27.0% から 57.4% 少ない。隠しテストは両側とも 32 回中 30 回通った。
+
+![Python の行。skill なしは 100。](../eval/results/2026-11-round2/chart.png)
+
+[詳しい報告](../eval/results/2026-11-round2/report.md)
+
 ## 作業の流れ
 
 上の図が主な経路である。

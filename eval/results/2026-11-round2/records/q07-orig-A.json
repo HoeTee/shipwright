@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q07",
+  "rep": "orig",
+  "arm": "A",
+  "sha": "0551bf53588ae87f462d336f24f853a156fefe3a",
+  "title": "write_usage prints a blank line when there are no arguments",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.234,
+  "hidden_tail": "...................................                                      [100%]\n35 passed in 0.05s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.311,
+  "full_tail": "........................................................................ [ 92%]\n........................................................................ [ 96%]\n...................................................                      [100%]\n1610 passed, 24 skipped, 30000 deselected, 1 xfailed in 2.76s",
+  "python_lines": 8,
+  "other_lines": 0,
+  "test_lines": 37,
+  "files": [
+    "src/click/formatting.py",
+    "tests/test_formatting.py"
+  ],
+  "scored_at": 1794445180.2381122,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

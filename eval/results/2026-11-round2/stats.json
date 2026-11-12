@@ -1,0 +1,320 @@
+{
+  "headline": {
+    "reps": [
+      "orig",
+      "1"
+    ],
+    "runs_per_arm": 2,
+    "questions": 16,
+    "hidden": {
+      "passed": {
+        "A": 30,
+        "B": 30
+      },
+      "total": {
+        "A": 32,
+        "B": 32
+      },
+      "diff": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "crosses_zero": true,
+      "questions": 16
+    },
+    "suite_excluding_flaky_pager": {
+      "passed": {
+        "A": 30,
+        "B": 30
+      },
+      "total": {
+        "A": 32,
+        "B": 32
+      },
+      "diff": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "crosses_zero": true,
+      "questions": 16
+    },
+    "python_line_ratio": 0.5658989520220501,
+    "python_line_ratio_low": 0.4258079164337429,
+    "python_line_ratio_high": 0.7298052772693034,
+    "fewer_python_lines_pct": 43.41010479779499,
+    "fewer_low_pct": 27.019472273069656,
+    "fewer_high_pct": 57.4192083566257,
+    "line_ratio_crosses_one": false,
+    "line_better_on": "14 / 16",
+    "line_gap_exceeds_spread_on": "6 / 16",
+    "variance": {
+      "median_line_range": {
+        "A": 1.5,
+        "B": 4.5
+      },
+      "questions_with_hidden_split": {
+        "A": 0,
+        "B": 0
+      },
+      "questions": 16
+    },
+    "conclusive": {
+      "hidden_pass_difference": false,
+      "python_lines": true,
+      "blind_judge": false
+    },
+    "hidden_advantage": false
+  },
+  "lines": {
+    "ratio": 0.5658989520220501,
+    "range95": [
+      0.4258079164337429,
+      0.7298052772693034
+    ],
+    "crosses_one": false,
+    "better_on": "14 / 16",
+    "tasks": [
+      {
+        "task": "q01",
+        "experiment_median": 30.5,
+        "control_median": 52.0,
+        "experiment_range": [
+          14.0,
+          47.0
+        ],
+        "control_range": [
+          50.0,
+          54.0
+        ],
+        "measurable": false,
+        "ratio": 0.5865384615384616
+      },
+      {
+        "task": "q02",
+        "experiment_median": 4.5,
+        "control_median": 29.5,
+        "experiment_range": [
+          4.0,
+          5.0
+        ],
+        "control_range": [
+          10.0,
+          49.0
+        ],
+        "measurable": false,
+        "ratio": 0.15254237288135594
+      },
+      {
+        "task": "q03",
+        "experiment_median": 4.5,
+        "control_median": 20.5,
+        "experiment_range": [
+          4.0,
+          5.0
+        ],
+        "control_range": [
+          17.0,
+          24.0
+        ],
+        "measurable": true,
+        "ratio": 0.21951219512195122
+      },
+      {
+        "task": "q04",
+        "experiment_median": 6.5,
+        "control_median": 12.0,
+        "experiment_range": [
+          5.0,
+          8.0
+        ],
+        "control_range": [
+          5.0,
+          19.0
+        ],
+        "measurable": false,
+        "ratio": 0.5416666666666666
+      },
+      {
+        "task": "q05",
+        "experiment_median": 27.5,
+        "control_median": 28.5,
+        "experiment_range": [
+          25.0,
+          30.0
+        ],
+        "control_range": [
+          26.0,
+          31.0
+        ],
+        "measurable": false,
+        "ratio": 0.9649122807017544
+      },
+      {
+        "task": "q06",
+        "experiment_median": 23.5,
+        "control_median": 50.0,
+        "experiment_range": [
+          14.0,
+          33.0
+        ],
+        "control_range": [
+          48.0,
+          52.0
+        ],
+        "measurable": true,
+        "ratio": 0.47
+      },
+      {
+        "task": "q07",
+        "experiment_median": 7.5,
+        "control_median": 12.5,
+        "experiment_range": [
+          7.0,
+          8.0
+        ],
+        "control_range": [
+          12.0,
+          13.0
+        ],
+        "measurable": true,
+        "ratio": 0.6
+      },
+      {
+        "task": "q08",
+        "experiment_median": 25.0,
+        "control_median": 31.0,
+        "experiment_range": [
+          19.0,
+          31.0
+        ],
+        "control_range": [
+          27.0,
+          35.0
+        ],
+        "measurable": false,
+        "ratio": 0.8064516129032258
+      },
+      {
+        "task": "q09",
+        "experiment_median": 5.5,
+        "control_median": 22.0,
+        "experiment_range": [
+          5.0,
+          6.0
+        ],
+        "control_range": [
+          10.0,
+          34.0
+        ],
+        "measurable": false,
+        "ratio": 0.25
+      },
+      {
+        "task": "q10",
+        "experiment_median": 8.0,
+        "control_median": 8.0,
+        "experiment_range": [
+          8.0,
+          8.0
+        ],
+        "control_range": [
+          8.0,
+          8.0
+        ],
+        "measurable": false,
+        "ratio": 1.0
+      },
+      {
+        "task": "q11",
+        "experiment_median": 34.5,
+        "control_median": 26.0,
+        "experiment_range": [
+          26.0,
+          43.0
+        ],
+        "control_range": [
+          13.0,
+          39.0
+        ],
+        "measurable": false,
+        "ratio": 1.3269230769230769
+      },
+      {
+        "task": "q12",
+        "experiment_median": 8.0,
+        "control_median": 12.5,
+        "experiment_range": [
+          7.0,
+          9.0
+        ],
+        "control_range": [
+          12.0,
+          13.0
+        ],
+        "measurable": true,
+        "ratio": 0.64
+      },
+      {
+        "task": "q13",
+        "experiment_median": 2.0,
+        "control_median": 3.0,
+        "experiment_range": [
+          2.0,
+          2.0
+        ],
+        "control_range": [
+          2.0,
+          4.0
+        ],
+        "measurable": false,
+        "ratio": 0.6666666666666666
+      },
+      {
+        "task": "q14",
+        "experiment_median": 29.0,
+        "control_median": 36.0,
+        "experiment_range": [
+          21.0,
+          37.0
+        ],
+        "control_range": [
+          32.0,
+          40.0
+        ],
+        "measurable": false,
+        "ratio": 0.8055555555555556
+      },
+      {
+        "task": "q15",
+        "experiment_median": 16.0,
+        "control_median": 22.0,
+        "experiment_range": [
+          16.0,
+          16.0
+        ],
+        "control_range": [
+          22.0,
+          22.0
+        ],
+        "measurable": true,
+        "ratio": 0.7272727272727273
+      },
+      {
+        "task": "q16",
+        "experiment_median": 8.0,
+        "control_median": 14.0,
+        "experiment_range": [
+          8.0,
+          8.0
+        ],
+        "control_range": [
+          14.0,
+          14.0
+        ],
+        "measurable": true,
+        "ratio": 0.5714285714285714
+      }
+    ],
+    "undefined": [],
+    "measurable_n": 6,
+    "task_n": 16
+  }
+}

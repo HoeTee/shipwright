@@ -1,0 +1,28 @@
+{
+  "set": "click",
+  "id": "q04",
+  "rep": "orig",
+  "arm": "A",
+  "sha": "82f377c547e1867d073f02bb8f476214d07e245b",
+  "title": "deprecated label has a stray leading space",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.92,
+  "hidden_tail": "........................................................................ [ 88%]\n........................................................................ [ 98%]\n..........                                                               [100%]\n730 passed in 0.71s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.573,
+  "full_tail": "........................................................................ [ 95%]\n........................................................................ [ 99%]\n.........                                                                [100%]\n1640 passed, 24 skipped, 30000 deselected, 1 xfailed in 3.01s",
+  "python_lines": 8,
+  "other_lines": 0,
+  "test_lines": 36,
+  "files": [
+    "src/click/core.py",
+    "tests/test_commands.py",
+    "tests/test_options.py"
+  ],
+  "scored_at": 1794445174.0543575,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

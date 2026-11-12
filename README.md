@@ -99,6 +99,14 @@ You get a plan, a code change, and proof from the real product.
 A person decides the merge.
 The agent merges only when you allow [shipwright-land](skills/shipwright-land/SKILL.md).
 
+## Measured result
+
+On 16 real Click bugs, the same agent with Shipwright skills changed 43.4% fewer Python lines than with no skills. The 95% interval is 27.0% to 57.4% fewer lines. Hidden tests passed 30 of 32 runs on each arm.
+
+![Python lines. No skills is 100.](eval/results/2026-11-round2/chart.png)
+
+[Full report](eval/results/2026-11-round2/report.md)
+
 ## Workflow
 
 The picture above is the main path.
