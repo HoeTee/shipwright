@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipwright evidence count</title>
+<style>
+  @font-face { font-family: "Display"; src: url("file:///usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Text"; src: url("file:///usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"); font-weight: 700; }
+  html, body { margin: 0; background: #F4F1E7; color: #111111; }
+  .sheet { box-sizing: border-box; width: 880px; padding: 28px 32px 24px; }
+  .eye {
+    margin: 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 8px 0 16px;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .num {
+    margin: 0;
+    font-family: "Display", "Noto Sans Display", sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+  .num.hot { color: #1E3FFF; }
+  .cap {
+    margin: 10px 0 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .note {
+    margin: 16px 0 0;
+    font-family: "Text", "Noto Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <p class="eye">Same pass rate</p>
+    <h1>Fewer lines on most questions.</h1>
+    <div class="cols">
+      <div>
+        <p class="num hot">14 of 16</p>
+        <p class="cap">questions where skills changed fewer Python lines</p>
+      </div>
+      <div>
+        <p class="num">Same</p>
+        <p class="cap">pass rate on both arms</p>
+      </div>
+    </div>
+    <p class="note">A question counts when the skills median is lower. The pass rate is the same on both arms.</p>
+  </div>
+</body>
+</html>

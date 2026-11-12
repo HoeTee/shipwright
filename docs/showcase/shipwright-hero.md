@@ -10,8 +10,9 @@ Type does the work. Corners are square. There is no shadow.
 | `shipwright-workflow.html` | `docs/media/shipwright-workflow.png` |
 | `shipwright-workflow-reel.html` | `docs/media/shipwright-workflow.gif` |
 | `shipwright-evidence.html` | `docs/media/shipwright-evidence.png` |
+| `shipwright-evidence-count.html` | `docs/media/shipwright-evidence-count.png` |
 | `docs/media/shipwright-logo.svg` | `docs/media/shipwright-logo.png` |
 
 The hero says `shipwright`, `From the first look to a human merge.`, and `-43% Python lines changed`.
-The evidence image says the pass rate is the same. It does not give a fraction.
-The GIF lights each stage in order. Review and Fix loop. It ends on Human merge.
+The evidence chart is a share of the no-skills baseline. The count figure says 14 of 16 questions and the same pass rate. Neither figure gives a pass-rate fraction.
+The workflow shows Review once, inside step 04 with Fix. The GIF lights each stage, loops Review and Fix, and ends on Human merge.

@@ -90,159 +90,85 @@ Do not push. Do not open a pull request. Do not merge.
 ## 実測
 
 <p align="center">
-  <img src="media/shipwright-evidence.png" width="880" alt="Python の行。skill なしは 100。skill ありは 56.6。通過率は同じ。">
+  <img src="media/shipwright-evidence.png" width="880" alt="skill なしを 100% とした割合。Python の行は skill なし 100%、skill あり 56.6% で 43.4% 少ない。95% 区間は 27.0% から 57.4% 少ない。">
 </p>
 
-skill ありは、同じエージェントの skill なしより Python の行が 43% 少ない。
+<p align="center">
+  <img src="media/shipwright-evidence-count.png" width="880" alt="16 問中 14 問で Python の行が少ない。通過率は同じ。">
+</p>
+
+skill ありは Python の行が 43.4% 少ない。
+95% 区間は 27.0% から 57.4% 少なく、16 問中 14 問で skill ありの方が少ない。
 通過率は同じである。
-95% 区間は 27% から 57% 少ない。[報告](../eval/results/2026-11-round2/report.md) に方法と限界を書く。
+方法と限界は[報告](../eval/results/2026-11-round2/report.md)。
 
 ## よくある質問
 
-<details>
-<summary><h3>どのエージェントで動くか。</h3></summary>
+**どのエージェントで動くか。**
+Claude Code、Codex、OpenCode は同じ skill を使う。変わるのは導入コマンドと呼び出し方だけである。
 
-Shipwright は Claude Code、Codex、OpenCode で動く。
-同じ skill が各ホストに読み込まれる。
-変わるのは、導入コマンドと呼び出し方だけである。
+**どう導入するか。**
+上のクイックスタートを使い、その後に新しいセッションを開く。古いセッションは開始時のファイルのままである。
 
-</details>
+**48 個の skill がすべて必要か。**
+必要ではない。shipwright-flow を呼ぶ。表の 8 個が道を覆い、残りは必要になるまで静かである。
 
-<details>
-<summary><h3>どう導入するか。</h3></summary>
+**レビューの繰り返しはいつ止まるか。**
+レビューは指摘を報告し、コードを編集しない。修正は Fix が行い、上限は 3 で、回数は pull request を開いたときに始まり、沈黙は承認ではない。
 
-上のクイックスタートを使う。
-Claude Code はコマンド 1 つで足りる。
-Codex と OpenCode は、それぞれの見出しの手順を使う。
-導入の後、新しいセッションを開く。
+**エージェントは自分でマージするか。**
+しない。Ship は pull request を開いて止まる。Land は、作者以外が確認し、許可のあとだけマージする。
 
-</details>
+**評価は何を測ったか。**
+同じエージェントが skill ありと skill なしで、実在する Click のバグ修正 16 件を扱い、各腕は 2 回動いた。skill ありは Python の行が 43.4% 少なく、通過率は同じで、3 回目は走っていない。
 
-<details>
-<summary><h3>48 個の skill がすべて必要か。</h3></summary>
+**どう更新するか。**
+同じ導入コマンドをもう一度実行し、新しいセッションを開く。
 
-必要ではない。
-[shipwright-flow](../skills/shipwright-flow/SKILL.md) を呼び、段階を選ばせる。
-上の表の 8 個が、計画からマージまでの道を覆う。
-他の skill は、その段階が必要とするまで静かである。
-
-</details>
-
-<details>
-<summary><h3>レビューの繰り返しはいつ止まるか。</h3></summary>
-
-[shipwright-review](../skills/shipwright-review/SKILL.md) は指摘を報告し、コードを編集しない。
-[shipwright-fix](../skills/shipwright-fix/SKILL.md) が修正し、AI レビューの上限は 3 である。
-回数は pull request を開いたときに始まる。
-沈黙は承認ではなく、マージは人が決める。
-
-</details>
-
-<details>
-<summary><h3>エージェントは自分でマージするか。</h3></summary>
-
-しない。
-[shipwright-ship](../skills/shipwright-ship/SKILL.md) は pull request を開いて止まる。
-[shipwright-land](../skills/shipwright-land/SKILL.md) は、作者以外が確認し、許可のあとだけマージする。
-
-</details>
-
-<details>
-<summary><h3>評価は何を測ったか。</h3></summary>
-
-同じエージェントが、skill ありと skill なしで、実在する Click のバグ修正 16 件を扱った。
-各腕は 2 回動いた。
-skill ありは Python の行が 43% 少なく、通過率は同じである。
-3 回目、より難しい題、盲検の判定は走っていない。
-
-</details>
-
-<details>
-<summary><h3>どう更新するか。</h3></summary>
-
-同じ導入コマンドをもう一度実行する。
-その後、新しいセッションを開き、ホストに新しいファイルを読ませる。
-古いセッションは、開始時のファイルのままである。
-
-</details>
-
-<details>
-<summary><h3>トークンを余分に使うか。</h3></summary>
-
-Shipwright はトークンの価格を定めない。
-この評価は金額もトークンの請求も測っていない。
-より小さい差分はトークンを減らせるかもしれないが、約束ではない。
-支払うのは、ホストの通常のモデル費用である。
-
-</details>
+**トークンを余分に使うか。**
+Shipwright はトークンの価格を定めず、この評価はトークンの請求も測っていない。支払うのはホストの通常のモデル費用である。
 
 ## 考え方
 
-**コードの前に計画を書く**
+**計画してから削る**
 
 製品を変える前に、計画を書く。
 後のエージェントは、この会話なしでその計画を実行できなければならない。
-計画は、メモ、コマンド、実行、証拠を記録する。
-[shipwright-flow](../skills/shipwright-flow/SKILL.md) が段階を記録し、[shipwright-plan](../skills/shipwright-plan/SKILL.md) が計画を `plans/` に書く。
+その後、仕事を完全に終える最小の変更だけをする。
 
-**最小で完全な変更**
+**証明してからレビューする**
 
-仕事を完全に終える最小の変更だけをする。
-頼まれていない仕事は足さない。
-より小さい差分は、レビューしやすく、戻しやすい。
-コードを書く間、[shipwright-lean](../skills/shipwright-lean/SKILL.md) は止めるまでオンである。
-
-**完了の前に証拠を出す**
-
-実製品で証明するまで、変更は完了ではない。
-保存済みのスクリーンショットは証拠ではない。
-証拠は、この変更で実行したコマンドから来なければならない。
-[shipwright-build](../skills/shipwright-build/SKILL.md) は証拠を `/tmp/shipwright-<plan-id>/<short-sha>/` に置く。
-
-**レビューしてから直す**
-
-[shipwright-review](../skills/shipwright-review/SKILL.md) は指摘を報告し、コードを編集しない。
-各指摘は、実際の害に基づいて P0、P1、P2 のいずれかである。P0 と P1 は既定で止める。
-実害のないメモは P2 ではない。
-[shipwright-fix](../skills/shipwright-fix/SKILL.md) が修正を行い、AI レビューの上限は 3 である。
+この変更でコマンドを実行するまで、変更は完了ではない。
+レビューは指摘を報告し、コードを編集しない。
+修正は Fix が行い、AI レビューの上限は 3 である。
 
 **人がマージする**
 
-マージは人が決める。
-エージェントは pull request を開いてよいが、単独ではマージしない。
-[shipwright-ship](../skills/shipwright-ship/SKILL.md) はマージの前に止まり、[shipwright-signoff](../skills/shipwright-signoff/SKILL.md) は人が読む資料を書く。
-[shipwright-land](../skills/shipwright-land/SKILL.md) は、作者以外が確認し、許可のあとだけマージする。
+エージェントは pull request を開いてよい。
+単独ではマージしない。
+作者以外が確認し、あなたが許可しなければならない。
 
-**実測する**
+**測ったものだけを書く**
 
 実際の比較で測った改善だけを書いてよい。
-[shipwright-eval](../skills/shipwright-eval/SKILL.md) は、同じエージェントを skill ありと skill なしで動かす。
-日常の小さな変更では、この比較を走らせない。
 他のプロジェクトの数字は Shipwright の結果ではない。
+追加モードは、頼むまでオフである。
 
-**追加モードはオフ**
+## 比較
 
-swarm、arena、autopilot、複数 PR の計画は、頼むまでオフである。
-それらは、頼んでいない並列作業か長い実行を足す。
-その作業を名指しするまで、[shipwright-flow](../skills/shipwright-flow/SKILL.md) はそれらを始めない。
-通常の作業は、1 つの変更と 1 つの pull request にとどまる。
+各行は、そのリポジトリがすることと、Shipwright が残すか足すことを書く。
 
-## 出典と比較
+| | それがすること | Shipwright が残すか足すもの |
+| --- | --- | --- |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | 常時オンのプロンプトである。タスクに必要なコードだけを書き、shortcut 台帳を残す。 | 最小で完全な変更と台帳を残す。計画から人のマージまでの道を足す。 |
+| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常のエンジニアリングモードと playbook である。振る舞いを検証し、難しい性質を証明できる。 | verify の組と prove の組を残す。並列と夜間のモードは、頼むまでオフである。 |
+| [improve](https://github.com/shadcn/improve) | リポジトリを監査し、別のエージェントが実行する計画を書く。自分では実装しない。 | 監査と計画テンプレートを残す。同じエージェントが構築し、レビューし、pull request を開くこともできる。 |
+| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 変更をレビューし、確認された欠陥を直し、人の前で止まる。AI レビューの上限は 3 である。 | その上限と、人が読む資料を残す。レビューの前に計画と構築を足す。 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 仕様から出荷までのライフサイクルコマンドを、コマンド表で示す。 | この README はその表の形を残す。skill と規則は Shipwright 自身のものである。 |
+| Shipwright | 1 つのコーディング作業に 1 つの道がある。 | 計画、構築、レビュー、修正、出荷、その後に人がマージする。エージェントは単独ではマージしない。 |
 
-Shipwright はこれらの考えを残す。
-
-| 出典 | Shipwright が残すもの |
-| --- | --- |
-| [Ponytail](https://github.com/DietrichGebert/ponytail) | [shipwright-lean](../skills/shipwright-lean/SKILL.md) は最小で完全な変更を残し、[shipwright-debt](../skills/shipwright-debt/SKILL.md) は shortcut 台帳を残す |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 共通の verify の組と prove の組 |
-| [improve](https://github.com/shadcn/improve) | [shipwright-audit](../skills/shipwright-audit/SKILL.md) と計画テンプレート |
-| [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | [shipwright-fix](../skills/shipwright-fix/SKILL.md) のレビュー上限と、[shipwright-signoff](../skills/shipwright-signoff/SKILL.md) の人向けの資料 |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | この README の形。コマンド表を含む |
-| [garden-skills](https://github.com/ConardLi/garden-skills) | ヒーロー、流れ、実測図のデザイン方法 |
-| [Click](https://github.com/pallets/click) | 評価の問題に使った、実在するバグ修正 16 件 |
-
-Ponytail が公開するのは、Ponytail 自身の測定である。
-その数字は Shipwright の結果ではない。
+Ponytail が公開するのは、Ponytail 自身の測定である。その数字は Shipwright の結果ではない。
+評価の問題は [Click](https://github.com/pallets/click) の実在するバグ修正 16 件である。画像は [garden-skills](https://github.com/ConardLi/garden-skills) のデザイン方法を使う。
 
 ## フィードバックと貢献
 
