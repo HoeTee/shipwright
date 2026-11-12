@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q13",
+  "rep": 1,
+  "arm": "B",
+  "sha": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+  "title": "shell completion drops commands inside nested groups",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.259,
+  "hidden_tail": "..........................................                               [100%]\n42 passed in 0.08s",
+  "full_pass": false,
+  "full_exit": 1,
+  "full_seconds": 1.287,
+  "full_tail": "FAILED tests/test_utils.py::test_echo_via_pager[test7- less ] - AssertionErro...\nFAILED tests/test_utils.py::test_echo_via_pager[test9- cat ] - AssertionError...\nFAILED tests/test_utils.py::test_echo_via_pager[test9-less] - AssertionError:...\n10 failed, 722 passed, 21 skipped, 1 xfailed in 1.06s",
+  "python_lines": 4,
+  "other_lines": 0,
+  "test_lines": 24,
+  "files": [
+    "src/click/shell_completion.py",
+    "tests/test_shell_completion.py"
+  ],
+  "scored_at": 1794445234.2790368,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

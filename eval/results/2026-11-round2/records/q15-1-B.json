@@ -1,0 +1,28 @@
+{
+  "set": "click",
+  "id": "q15",
+  "rep": 1,
+  "arm": "B",
+  "sha": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+  "title": "generated help option is not eager",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.255,
+  "hidden_tail": "............................................................             [100%]\n60 passed in 0.06s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 1.051,
+  "full_tail": "........................................................................ [ 88%]\n........................................................................ [ 99%]\n..                                                                       [100%]\n628 passed, 21 skipped, 1 xfailed in 0.83s",
+  "python_lines": 22,
+  "other_lines": 2,
+  "test_lines": 38,
+  "files": [
+    "CHANGES.rst",
+    "src/click/core.py",
+    "tests/test_options.py"
+  ],
+  "scored_at": 1794446037.6726546,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

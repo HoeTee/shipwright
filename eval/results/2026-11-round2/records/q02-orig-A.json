@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q02",
+  "rep": "orig",
+  "arm": "A",
+  "sha": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+  "title": "short help cuts abbreviations in the wrong place",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.238,
+  "hidden_tail": "....................................                                     [100%]\n36 passed in 0.03s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.984,
+  "full_tail": "........................................................................ [ 95%]\n........................................................................ [ 98%]\n.............................                                            [100%]\n2092 passed, 24 skipped, 31000 deselected, 1 xfailed in 3.35s",
+  "python_lines": 4,
+  "other_lines": 0,
+  "test_lines": 33,
+  "files": [
+    "src/click/utils.py",
+    "tests/test_utils/test_make_default_short_help.py"
+  ],
+  "scored_at": 1794445168.8652227,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q05",
+  "rep": 1,
+  "arm": "B",
+  "sha": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "title": "fish completion breaks on multiline help",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.275,
+  "hidden_tail": ".....................................................                    [100%]\n53 passed in 0.09s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.344,
+  "full_tail": "...............s........................................................ [ 91%]\n........................................................................ [ 95%]\n........................................................................ [100%]\n1631 passed, 24 skipped, 30000 deselected, 1 xfailed in 2.79s",
+  "python_lines": 31,
+  "other_lines": 0,
+  "test_lines": 36,
+  "files": [
+    "src/click/shell_completion.py",
+    "tests/test_shell_completion.py"
+  ],
+  "scored_at": 1794445210.9893131,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

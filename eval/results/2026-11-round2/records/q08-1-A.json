@@ -1,0 +1,28 @@
+{
+  "set": "click",
+  "id": "q08",
+  "rep": 1,
+  "arm": "A",
+  "sha": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+  "title": "hidden prompt hides the custom error",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.395,
+  "hidden_tail": "............................................sssssssssssssssssssss....... [ 34%]\n.........ss............................................................. [ 68%]\n...................................................................      [100%]\n188 passed, 23 skipped in 0.20s",
+  "full_pass": true,
+  "full_exit": 0,
+  "full_seconds": 3.128,
+  "full_tail": "........................................................................ [ 94%]\n........................................................................ [ 99%]\n.........                                                                [100%]\n1497 passed, 23 skipped, 30000 deselected, 1 xfailed in 2.58s",
+  "python_lines": 31,
+  "other_lines": 4,
+  "test_lines": 47,
+  "files": [
+    "CHANGES.rst",
+    "src/click/termui.py",
+    "tests/test_termui.py"
+  ],
+  "scored_at": 1794445222.5156138,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q14",
+  "rep": 1,
+  "arm": "A",
+  "sha": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+  "title": "boolean flags get the wrong value when a type is set",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.359,
+  "hidden_tail": "........................................................................ [ 50%]\n........................................................................ [100%]\n144 passed in 0.17s",
+  "full_pass": false,
+  "full_exit": 1,
+  "full_seconds": 1.244,
+  "full_tail": "FAILED tests/test_utils.py::test_echo_via_pager[test7- less] - AssertionError...\nFAILED tests/test_utils.py::test_echo_via_pager[test8-cat ] - AssertionError:...\nFAILED tests/test_utils.py::test_echo_via_pager[test8-less] - AssertionError:...\n21 failed, 710 passed, 21 skipped, 1 xfailed in 1.01s",
+  "python_lines": 21,
+  "other_lines": 0,
+  "test_lines": 49,
+  "files": [
+    "src/click/core.py",
+    "tests/test_options.py"
+  ],
+  "scored_at": 1794445235.9386184,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}

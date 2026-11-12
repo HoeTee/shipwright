@@ -99,6 +99,14 @@ Shipwright는 코딩 작업 하나를 위한 skill 모음이다.
 병합은 사람이 결정한다.
 [shipwright-land](../skills/shipwright-land/SKILL.md)를 허용할 때만 에이전트가 병합한다.
 
+## 측정 결과
+
+실제 Click 버그 16개에서, 같은 에이전트는 Shipwright skill이 있을 때 Python 변경이 43.4% 적었다. 95% 구간은 27.0%에서 57.4% 적다. 숨은 테스트는 양쪽 모두 32회 중 30회 통과했다.
+
+![Python 줄. skill 없음은 100.](../eval/results/2026-11-round2/chart.png)
+
+[전체 보고](../eval/results/2026-11-round2/report.md)
+
 ## 작업 흐름
 
 위 그림이 주요 경로이다.

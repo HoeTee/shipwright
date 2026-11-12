@@ -1,0 +1,64 @@
+{
+  "reps": [
+    "orig",
+    "1"
+  ],
+  "runs_per_arm": 2,
+  "questions": 16,
+  "hidden": {
+    "passed": {
+      "A": 30,
+      "B": 30
+    },
+    "total": {
+      "A": 32,
+      "B": 32
+    },
+    "diff": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "crosses_zero": true,
+    "questions": 16
+  },
+  "suite_excluding_flaky_pager": {
+    "passed": {
+      "A": 30,
+      "B": 30
+    },
+    "total": {
+      "A": 32,
+      "B": 32
+    },
+    "diff": 0.0,
+    "low": 0.0,
+    "high": 0.0,
+    "crosses_zero": true,
+    "questions": 16
+  },
+  "python_line_ratio": 0.5658989520220501,
+  "python_line_ratio_low": 0.4258079164337429,
+  "python_line_ratio_high": 0.7298052772693034,
+  "fewer_python_lines_pct": 43.41010479779499,
+  "fewer_low_pct": 27.019472273069656,
+  "fewer_high_pct": 57.4192083566257,
+  "line_ratio_crosses_one": false,
+  "line_better_on": "14 / 16",
+  "line_gap_exceeds_spread_on": "6 / 16",
+  "variance": {
+    "median_line_range": {
+      "A": 1.5,
+      "B": 4.5
+    },
+    "questions_with_hidden_split": {
+      "A": 0,
+      "B": 0
+    },
+    "questions": 16
+  },
+  "conclusive": {
+    "hidden_pass_difference": false,
+    "python_lines": true,
+    "blind_judge": false
+  },
+  "hidden_advantage": false
+}

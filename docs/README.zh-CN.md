@@ -99,6 +99,14 @@ Shipwright 是一组 skill，用来完成一项编码任务。
 合并由人决定。
 只有你允许 [shipwright-land](../skills/shipwright-land/SKILL.md) 时，代理才会合并。
 
+## 测量结果
+
+在 16 个真实的 Click 缺陷上，同一代理在有 Shipwright skill 时，Python 改动少 43.4%。95% 区间是少 27.0% 到 57.4%。隐藏测试在两边都是 32 次里通过 30 次。
+
+![Python 行。无 skill 为 100。](../eval/results/2026-11-round2/chart.png)
+
+[完整报告](../eval/results/2026-11-round2/report.md)
+
 ## 工作流程
 
 上面的图是主路径。

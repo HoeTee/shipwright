@@ -1,0 +1,27 @@
+{
+  "set": "click",
+  "id": "q11",
+  "rep": "orig",
+  "arm": "B",
+  "sha": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+  "title": "default=True on shared flags depends on declaration order",
+  "hidden_pass": true,
+  "hidden_exit": 0,
+  "hidden_seconds": 0.204,
+  "hidden_tail": "......                                                                   [100%]\n6 passed in 0.02s",
+  "full_pass": false,
+  "full_exit": 1,
+  "full_seconds": 1.753,
+  "full_tail": "FAILED tests/test_utils.py::test_echo_via_pager[test9-cat ] - AssertionError:...\nFAILED tests/test_utils.py::test_echo_via_pager[test9- less] - AssertionError...\nFAILED tests/test_utils.py::test_echo_via_pager[test9- less ] - AssertionErro...\n39 failed, 1263 passed, 21 skipped, 1 xfailed in 1.50s",
+  "python_lines": 39,
+  "other_lines": 0,
+  "test_lines": 45,
+  "files": [
+    "src/click/core.py",
+    "tests/test_basic.py"
+  ],
+  "scored_at": 1794445186.2660067,
+  "full_pass_no_pager": true,
+  "full_fail_n_no_pager": 0,
+  "full_fail_names": []
+}
