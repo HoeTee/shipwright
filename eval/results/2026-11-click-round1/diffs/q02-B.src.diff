@@ -1,0 +1,67 @@
+Only in /tmp/t/q02b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q02/src/click/utils.py /tmp/t/q02b27e/click/src/click/utils.py
+--- /tmp/click-round1/pristine/q02/src/click/utils.py	2026-09-10 19:29:49.000000000 +0000
++++ /tmp/t/q02b27e/click/src/click/utils.py	2026-11-11 16:54:21.048835832 +0000
+@@ -59,6 +59,51 @@
+     return str(value)
+ 
+ 
++# Stems whose trailing period belongs to the abbreviation ("vs.", "Dr."),
++# not to the end of a sentence. Compared case-insensitively.
++_ABBREVIATION_STEMS = {
++    "cf",
++    "dr",
++    "eg",
++    "ie",
++    "jr",
++    "mr",
++    "mrs",
++    "ms",
++    "prof",
++    "sr",
++    "st",
++    "vs",
++}
++
++# "e.g.", "i.e.", "U.S.", "U.S.A.", "Ph.D.", "a.m." — at least one internal
++# period, and every dot-separated piece is a short alpha token.
++_DOTTED_ABBREVIATION_RE = re.compile(r"[A-Za-z]{1,2}(?:\.[A-Za-z]{1,2})+\.")
++
++
++def _period_ends_sentence(word: str, next_word: str | None) -> bool:
++    """Return whether ``word``'s trailing period ends a sentence.
++
++    A period that is part of an abbreviation (``vs.``, ``e.g.``, ``Dr.``)
++    is not a boundary. A following lowercase word is a continuation
++    (``9. aaaa``), not a new sentence. A capital letter or a digit
++    (``fruit. 3``) starts one.
++    """
++    if not word.endswith("."):
++        return False
++
++    if (
++        _DOTTED_ABBREVIATION_RE.fullmatch(word)
++        or word[:-1].lower() in _ABBREVIATION_STEMS
++    ):
++        return False
++
++    if next_word is None:
++        return True
++
++    return not next_word[0].islower()
++
++
+ def _make_default_short_help(help: str, max_length: int = 45) -> str:
+     """Returns a condensed version of help string.
+ 
+@@ -89,7 +134,9 @@
+         if total_length > max_length:  # too long, truncate
+             break
+ 
+-        if word[-1] == ".":  # sentence end, truncate without "..."
++        next_word = words[i + 1] if i != last_index else None
++
++        if _period_ends_sentence(word, next_word):
+             return " ".join(words[: i + 1])
+ 
+         if total_length == max_length and i != last_index:

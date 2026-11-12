@@ -1,0 +1,19 @@
+Only in /tmp/t/q16a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q16/src/click/core.py /tmp/t/q16a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q16/src/click/core.py	2024-11-03 12:22:25.000000000 +0000
++++ /tmp/t/q16a91c/click/src/click/core.py	2026-11-11 17:17:27.200241388 +0000
+@@ -1128,7 +1128,13 @@
+         ctx = self.context_class(self, info_name=info_name, parent=parent, **extra)
+ 
+         with ctx.scope(cleanup=False):
+-            self.parse_args(ctx, args)
++            try:
++                self.parse_args(ctx, args)
++            except Exit:
++                # Parsing defers cleanup, and Exit leaves before the caller
++                # enters the context. Close now so callbacks still see it.
++                ctx.close()
++                raise
+         return ctx
+ 
+     def parse_args(self, ctx: Context, args: list[str]) -> list[str]:

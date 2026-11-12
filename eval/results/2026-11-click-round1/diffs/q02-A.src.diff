@@ -1,0 +1,15 @@
+Only in /tmp/t/q02a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q02/src/click/utils.py /tmp/t/q02a91c/click/src/click/utils.py
+--- /tmp/click-round1/pristine/q02/src/click/utils.py	2026-09-10 19:29:49.000000000 +0000
++++ /tmp/t/q02a91c/click/src/click/utils.py	2026-11-11 16:49:19.822425963 +0000
+@@ -89,7 +89,9 @@
+         if total_length > max_length:  # too long, truncate
+             break
+ 
+-        if word[-1] == ".":  # sentence end, truncate without "..."
++        # A period ends a sentence at the end of the text, or when the next
++        # word does not continue in lowercase. "vs. pears" stays one sentence.
++        if word[-1] == "." and (i == last_index or not words[i + 1][0].islower()):
+             return " ".join(words[: i + 1])
+ 
+         if total_length == max_length and i != last_index:

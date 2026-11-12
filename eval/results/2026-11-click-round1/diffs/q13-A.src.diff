@@ -1,0 +1,12 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q13/src/click/shell_completion.py /tmp/t/q13a91c/click/src/click/shell_completion.py
+--- /tmp/click-round1/pristine/q13/src/click/shell_completion.py	2025-05-20 14:55:39.000000000 +0000
++++ /tmp/t/q13a91c/click/src/click/shell_completion.py	2026-11-11 17:15:28.369325262 +0000
+@@ -567,7 +567,7 @@
+                     with cmd.make_context(
+                         name, args, parent=ctx, resilient_parsing=True
+                     ) as sub_ctx:
+-                        args = ctx._protected_args + ctx.args
++                        args = sub_ctx._protected_args + sub_ctx.args
+                         ctx = sub_ctx
+                 else:
+                     sub_ctx = ctx

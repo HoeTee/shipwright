@@ -1,0 +1,49 @@
+Only in /tmp/t/q11a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q11/src/click/core.py /tmp/t/q11a91c/click/src/click/core.py
+--- /tmp/click-round1/pristine/q11/src/click/core.py	2025-09-24 13:35:04.000000000 +0000
++++ /tmp/t/q11a91c/click/src/click/core.py	2026-11-11 17:10:42.976641600 +0000
+@@ -438,6 +438,9 @@
+         self._close_callbacks: list[t.Callable[[], t.Any]] = []
+         self._depth = 0
+         self._parameter_source: dict[str, ParameterSource] = {}
++        # Names whose exposed value is only a stand-in for UNSET. A later
++        # parameter sharing that name may still replace it with a real default.
++        self._unset_param_names: set[str] = set()
+         self._exit_stack = ExitStack()
+ 
+     @property
+@@ -2533,22 +2536,23 @@
+                 value = UNSET
+ 
+         # Add parameter's value to the context.
+-        if (
+-            self.expose_value
+-            # We skip adding the value if it was previously set by another parameter
+-            # targeting the same variable name. This prevents parameters competing for
+-            # the same name to override each other.
+-            and self.name not in ctx.params
+-        ):
++        if self.expose_value:
+             # Click is logically enforcing that the name is None if the parameter is
+             # not to be exposed. We still assert it here to please the type checker.
+             assert self.name is not None, (
+                 f"{self!r} parameter's name should not be None when exposing value."
+             )
+-            # Normalize UNSET values to None, as we're about to pass them to the
+-            # command function and move them to the pure-Python realm of user-written
+-            # code.
+-            ctx.params[self.name] = value if value is not UNSET else None
++            # A real value already exposed for this name wins. An unset placeholder
++            # does not: otherwise flags that share a name ignore default=True unless
++            # that flag is declared first.
++            if self.name not in ctx.params or self.name in ctx._unset_param_names:
++                if value is UNSET:
++                    # Normalize UNSET to None before it reaches user code.
++                    ctx.params[self.name] = None
++                    ctx._unset_param_names.add(self.name)
++                else:
++                    ctx.params[self.name] = value
++                    ctx._unset_param_names.discard(self.name)
+ 
+         return value, args
+ 

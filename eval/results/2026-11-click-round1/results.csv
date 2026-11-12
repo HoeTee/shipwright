@@ -1,0 +1,33 @@
+id,sha,title,arm,hidden_pass,full_pass,source_lines,test_lines,skill_reads,skills_opened,judge_winner
+q01,c53d3732b98c764932e146c007146ad402acb229,envvar help for an empty value or a sequence,skills,True,True,47,50,6,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test,tie
+q01,c53d3732b98c764932e146c007146ad402acb229,envvar help for an empty value or a sequence,plain,True,True,50,52,0,,tie
+q02,f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e,short help cuts abbreviations in the wrong place,skills,True,True,4,33,7,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test shipwright-why,skills
+q02,f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e,short help cuts abbreviations in the wrong place,plain,True,True,49,84,0,,skills
+q03,f58ca3e81424a35626c8a475eb59ab95589008ce,Sentinel members break on copy and pickle,skills,True,True,5,42,5,shipwright-bugs shipwright-build shipwright-flow shipwright-lean shipwright-test,plain
+q03,f58ca3e81424a35626c8a475eb59ab95589008ce,Sentinel members break on copy and pickle,plain,True,True,24,30,0,,plain
+q04,82f377c547e1867d073f02bb8f476214d07e245b,deprecated label has a stray leading space,skills,True,True,8,36,7,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test shipwright-why,skills
+q04,82f377c547e1867d073f02bb8f476214d07e245b,deprecated label has a stray leading space,plain,True,True,5,0,0,,skills
+q05,b7e5fd4cc7de70280eccd39f2bb956df617e5519,fish completion breaks on multiline help,skills,True,True,25,38,5,shipwright-bugs shipwright-build shipwright-flow shipwright-lean shipwright-test,tie
+q05,b7e5fd4cc7de70280eccd39f2bb956df617e5519,fish completion breaks on multiline help,plain,True,True,26,34,0,,tie
+q06,7d05a59b9d46a415d85937630d1d812cf477f60a,get_parameter_source is empty during conversion,skills,True,True,37,129,6,shipwright-bugs shipwright-build shipwright-diagnose shipwright-flow shipwright-lean shipwright-test,skills
+q06,7d05a59b9d46a415d85937630d1d812cf477f60a,get_parameter_source is empty during conversion,plain,True,True,56,161,0,,skills
+q07,0551bf53588ae87f462d336f24f853a156fefe3a,write_usage prints a blank line when there are no arguments,skills,True,True,8,37,7,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test shipwright-why,tie
+q07,0551bf53588ae87f462d336f24f853a156fefe3a,write_usage prints a blank line when there are no arguments,plain,True,True,13,0,0,,tie
+q08,a09c1c655eef3d43181eb46036b66cf058d72df4,hidden prompt hides the custom error,skills,True,True,19,36,6,shipwright-bugs shipwright-build shipwright-flow shipwright-lean shipwright-security shipwright-test,tie
+q08,a09c1c655eef3d43181eb46036b66cf058d72df4,hidden prompt hides the custom error,plain,True,True,39,53,0,,tie
+q09,546f2851f414b07413777ebcae89b2c21a685252,a class used as flag_value is constructed too early,skills,False,False,5,67,6,shipwright-bugs shipwright-build shipwright-diagnose shipwright-flow shipwright-lean shipwright-test,skills
+q09,546f2851f414b07413777ebcae89b2c21a685252,a class used as flag_value is constructed too early,plain,False,False,37,96,0,,skills
+q10,91de59c6c8abc8251e7af551cd4546cc964288af,flag_value is no longer optional,skills,True,True,8,43,4,shipwright-bugs shipwright-flow shipwright-lean shipwright-test,tie
+q10,91de59c6c8abc8251e7af551cd4546cc964288af,flag_value is no longer optional,plain,True,True,8,25,0,,tie
+q11,1c20dc6e724cd5625faaa17b715ba928d44c08bf,default=True on shared flags depends on declaration order,skills,True,True,26,47,5,shipwright-bugs shipwright-build shipwright-flow shipwright-lean shipwright-test,skills
+q11,1c20dc6e724cd5625faaa17b715ba928d44c08bf,default=True on shared flags depends on declaration order,plain,True,True,39,45,0,,skills
+q12,a1235aacb1be55dc66ddcfefbf64dec44b6ab54d,zsh completion breaks when a value contains a colon,skills,True,True,7,17,6,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test,skills
+q12,a1235aacb1be55dc66ddcfefbf64dec44b6ab54d,zsh completion breaks when a value contains a colon,plain,True,True,13,10,0,,skills
+q13,ac6a2acfdb4550c35ce69ce54db502ba96c96324,shell completion drops commands inside nested groups,skills,True,True,2,24,6,shipwright-bugs shipwright-build shipwright-diagnose shipwright-flow shipwright-lean shipwright-test,tie
+q13,ac6a2acfdb4550c35ce69ce54db502ba96c96324,shell completion drops commands inside nested groups,plain,True,True,2,24,0,,tie
+q14,4fd2fea0db423d242aedcae0a5f664efe0a93484,boolean flags get the wrong value when a type is set,skills,True,True,37,44,5,shipwright-bugs shipwright-build shipwright-diagnose shipwright-flow shipwright-lean,skills
+q14,4fd2fea0db423d242aedcae0a5f664efe0a93484,boolean flags get the wrong value when a type is set,plain,True,True,45,53,0,,skills
+q15,70c673d37eb91ba42a129be9037caf3ebed62f3e,generated help option is not eager,skills,True,True,16,44,5,shipwright-bugs shipwright-build shipwright-flow shipwright-lean shipwright-test,skills
+q15,70c673d37eb91ba42a129be9037caf3ebed62f3e,generated help option is not eager,plain,True,True,22,0,0,,skills
+q16,c326df95e9e3da0425360e030413f6a3ee25fdee,close callbacks do not run when the command exits,skills,True,True,8,93,7,shipwright-bugs shipwright-build shipwright-flow shipwright-how shipwright-lean shipwright-test shipwright-why,plain
+q16,c326df95e9e3da0425360e030413f6a3ee25fdee,close callbacks do not run when the command exits,plain,True,True,16,102,0,,plain

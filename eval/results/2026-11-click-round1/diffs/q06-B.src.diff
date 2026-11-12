@@ -1,0 +1,122 @@
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q06/CHANGES.rst /tmp/t/q06b27e/click/CHANGES.rst
+--- /tmp/click-round1/pristine/q06/CHANGES.rst	2026-05-19 23:16:10.000000000 +0000
++++ /tmp/t/q06b27e/click/CHANGES.rst	2026-11-11 17:02:17.971921532 +0000
+@@ -5,6 +5,10 @@
+ 
+ Unreleased
+ 
++-   :meth:`Context.get_parameter_source` reports the real source inside
++    :meth:`ParamType.convert` and parameter callbacks, including eager
++    callbacks. Since 8.4.0 the source was stored only after conversion, so
++    those lookups returned ``None``.
+ -   Zsh completion scripts parse correctly on Windows. :issue:`3277`
+ -   Shell completion of `Choice` `Enum` values produces a valid completion
+     result. :issue:`3015`
+Only in /tmp/t/q06b27e/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q06/src/click/core.py /tmp/t/q06b27e/click/src/click/core.py
+--- /tmp/click-round1/pristine/q06/src/click/core.py	2026-05-19 23:16:10.000000000 +0000
++++ /tmp/t/q06b27e/click/src/click/core.py	2026-11-11 17:02:18.399921814 +0000
+@@ -114,6 +114,23 @@
+     return list(zip(*repeat(iter(iterable), batch_size), strict=False))
+ 
+ 
++def _replace_parameter_source(
++    ctx: Context, name: str, source: ParameterSource | None
++) -> ParameterSource | None:
++    """Store ``source`` for ``name`` and return the source that was there before.
++
++    ``None`` clears the recorded source. Conversion and callbacks need the
++    origin of the value they are handling, but a feature-switch sibling may
++    still own the slot afterwards.
++    """
++    previous = ctx.get_parameter_source(name)
++    if source is None:
++        ctx._parameter_source.pop(name, None)
++    else:
++        ctx.set_parameter_source(name, source)
++    return previous
++
++
+ @contextmanager
+ def augment_usage_errors(
+     ctx: Context, param: Parameter | None = None
+@@ -916,6 +933,11 @@
+         :param name: The name of the parameter.
+         :rtype: ParameterSource
+ 
++        .. versionchanged:: 8.4.1
++            The source is recorded before type conversion and before the
++            parameter callback runs, including eager callbacks, so it can
++            be read from those hooks.
++
+         .. versionchanged:: 8.0
+             Returns ``None`` if the parameter was not provided from any
+             source.
+@@ -2625,11 +2647,20 @@
+                 )
+                 echo(style(message, fg="red"), err=True)
+ 
++            # Publish the source before conversion and callbacks.
++            # ``ParamType.convert`` and eager callbacks call
++            # ``Context.get_parameter_source`` and must observe this value's
++            # origin. The previous source is restored below when a
++            # feature-switch sibling keeps the slot, and on a hard failure
++            # so a rejected value does not stay recorded.
++            _replace_parameter_source(ctx, self.name, source)
++
+             # Process the value through the parameter's type.
+             try:
+                 value = self.process_value(ctx, value)
+             except Exception:
+                 if not ctx.resilient_parsing:
++                    _replace_parameter_source(ctx, self.name, existing_source)
+                     raise
+                 # In resilient parsing mode, we do not want to fail the command if the
+                 # value is incompatible with the parameter type, so we reset the value
+@@ -2662,6 +2693,11 @@
+             # Nothing has claimed the slot yet. Record at least our source so downstream
+             # lookups don't return ``None``.
+             ctx.set_parameter_source(self.name, source)
++        else:
++            # This value lost the slot. Put back the source of the option
++            # that already owns it; the temporary source above was only
++            # visible to this parameter's conversion and callback.
++            ctx.set_parameter_source(self.name, existing_source)
+ 
+         return value, args
+ 
+@@ -3363,12 +3399,24 @@
+         """
+         value, source = super().consume_value(ctx, opts)
+ 
++        def prompt_for_value() -> t.Any:
++            # ``prompt_for_value`` converts the answer before ``consume_value``
++            # returns, so the prompt source has to be visible first.
++            previous = _replace_parameter_source(
++                ctx, self.name, ParameterSource.PROMPT
++            )
++            try:
++                return self.prompt_for_value(ctx)
++            except Exception:
++                _replace_parameter_source(ctx, self.name, previous)
++                raise
++
+         # The parser will emit a sentinel value if the option is allowed to as a flag
+         # without a value.
+         if value is FLAG_NEEDS_VALUE:
+             # If the option allows for a prompt, we start an interaction with the user.
+             if self.prompt is not None and not ctx.resilient_parsing:
+-                value = self.prompt_for_value(ctx)
++                value = prompt_for_value()
+                 source = ParameterSource.PROMPT
+             # Else the flag takes its flag_value as value.
+             else:
+@@ -3406,7 +3454,7 @@
+             and (self.required or self.prompt_required)
+             and not ctx.resilient_parsing
+         ):
+-            value = self.prompt_for_value(ctx)
++            value = prompt_for_value()
+             source = ParameterSource.PROMPT
+ 
+         return value, source

@@ -1,0 +1,37 @@
+Only in /tmp/t/q08a91c/click: .ruff_cache
+diff -ru -x __pycache__ -x .pytest_cache -x '*.pyc' /tmp/click-round1/pristine/q08/src/click/termui.py /tmp/t/q08a91c/click/src/click/termui.py
+--- /tmp/click-round1/pristine/q08/src/click/termui.py	2026-05-08 13:47:47.000000000 +0000
++++ /tmp/t/q08a91c/click/src/click/termui.py	2026-11-11 17:00:52.683816931 +0000
+@@ -104,6 +104,20 @@
+     return default
+ 
+ 
++def _mask_hidden_prompt_error(message: str, value: t.Any) -> str:
++    """Return an error for a failed hidden prompt without revealing the secret.
++
++    Built-in types include the value via ``{value!r}``. That quoted form is
++    replaced with ``'***'``. If the raw value is still present, the message
++    is replaced with a generic error.
++    """
++    secret = value if isinstance(value, str) else str(value)
++    masked = message.replace(repr(secret), "'***'")
++    if secret and secret in masked:
++        return _("The value you entered was invalid.")
++    return masked
++
++
+ def prompt(
+     text: str,
+     default: t.Any | None = None,
+@@ -203,9 +217,8 @@
+             result = value_proc(value)
+         except UsageError as e:
+             if hide_input:
+-                echo(_("Error: The value you entered was invalid."), err=err)
+-            else:
+-                echo(_("Error: {e.message}").format(e=e), err=err)
++                e.message = _mask_hidden_prompt_error(e.message, value)
++            echo(_("Error: {e.message}").format(e=e), err=err)
+             continue
+         if not confirmation_prompt:
+             return result

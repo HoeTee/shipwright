@@ -1,0 +1,374 @@
+{
+  "model": "composer-2.5",
+  "calibration_passed": true,
+  "items": {
+    "q01": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Both centralize explicit envvar extraction, fix help and missing-option hints for empty/sequence values, and differ only slightly in formatting and annotations."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q02": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "red",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 1,
+          "scope": 2
+        },
+        "note": "Both satisfy the stated truncation rules, but red does so with a minimal in-loop change whereas blue adds a large abbreviation helper and tables for the same behavior on the given examples."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q03": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "blue",
+        "red": {
+          "correctness": 1,
+          "completeness": 1,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Blue restores the sentinel for copy, deepcopy, and pickle; red only adds pickle support and leaves copy and deepcopy broken."
+      },
+      "winner_arm": "B",
+      "skills_arm_wins": false,
+      "plain_arm_wins": true
+    },
+    "q04": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "blue",
+        "red": {
+          "correctness": 2,
+          "completeness": 2,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Blue fixes the empty-help deprecated spacing in both command help builders and for options, while red only updates one of the two command paths."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q05": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both patches make the same fish and Python formatting changes to use comma-tab rows, escape embedded newlines, and preserve ordinary plain completions via metadata[2]."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q06": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "red",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 2,
+          "completeness": 3,
+          "size": 2,
+          "scope": 2
+        },
+        "note": "Both publish the source before conversion and restore it when a feature switch wins, but red unconditionally rolls back on conversion errors and stays smaller whereas blue only restores on hard failures and adds prompt-path churn."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q07": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Both patches fix empty-args usage by omitting the trailing space and writing the prefix line directly, and blue adds related formatting tests while red only expands comments."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q08": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 2
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both implement the same redaction rules for INT, safe custom errors, and generic fallback when the secret remains in the message; red adds changelog and docs, blue stays minimal."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q09": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "blue",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 2
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both skip calling the default when it is the same object as flag_value (preserving default_map callables), but blue does it in four lines at Parameter.get_default while red adds a larger Option override plus changelog."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q10": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both patches apply the same one-line fix (use flag_value instead of default for _flag_needs_value) with only comment wording differing."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q11": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "red",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Both fixes let a real default override an earlier unset shared-name placeholder without clobbering explicit values, but red achieves that with a smaller change."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q12": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "red",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "note": "Both patches apply the same conditional colon escaping in ZshComplete.format_completion, but red does it in fewer lines with equivalent behavior."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q13": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "tie",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both patches fix nested-group completion the same way by taking args from the subcontext after make_context instead of the parent."
+      },
+      "winner_arm": "tie",
+      "skills_arm_wins": false,
+      "plain_arm_wins": false
+    },
+    "q14": {
+      "red_arm": "B",
+      "blue_arm": "A",
+      "scores": {
+        "winner": "blue",
+        "red": {
+          "correctness": 2,
+          "completeness": 3,
+          "size": 2,
+          "scope": 2
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Blue restores flag_value for explicit bool and str types with minimal logic without relying on not self.default or a boolean True flag value for strings."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q15": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "red",
+        "red": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 2,
+          "size": 3,
+          "scope": 3
+        },
+        "note": "Both cache the same HelpOption instance for eager identity ordering, but red also adds regression tests while blue changes only core.py."
+      },
+      "winner_arm": "A",
+      "skills_arm_wins": true,
+      "plain_arm_wins": false
+    },
+    "q16": {
+      "red_arm": "A",
+      "blue_arm": "B",
+      "scores": {
+        "winner": "blue",
+        "red": {
+          "correctness": 2,
+          "completeness": 2,
+          "size": 3,
+          "scope": 3
+        },
+        "blue": {
+          "correctness": 3,
+          "completeness": 3,
+          "size": 2,
+          "scope": 2
+        },
+        "note": "Blue invokes context cleanup inside exit() so all ctx.exit() paths run call_on_close during deferred-cleanup parsing, while red only closes on Exit caught after parse_args."
+      },
+      "winner_arm": "B",
+      "skills_arm_wins": false,
+      "plain_arm_wins": true
+    }
+  }
+}
