@@ -233,7 +233,7 @@ diff가 작을수록 버그가 적다. 그게 전부다.
 | [pstack](https://github.com/cursor/plugins/tree/main/pstack) (poteto) | 매일의 모드가 playbook으로 작업을 진행한다. 제품을 검사하고, 어려운 성질을 하나 증명할 수 있다. 에이전트를 병렬로 돌리거나, 밤새 병합까지 진행할 수 있다. | 제품 검사와 어려운 성질의 증명은 여기서도 된다. 병렬과 밤새 작업은 요청할 때까지 꺼져 있다. 밤새 실행은 스스로 병합하지 않는다. |
 | [improve](https://github.com/shadcn/improve) | 감사와 계획을 얻는다. 더 싼 에이전트가 그 계획을 구현할 수 있다. 이 skill은 제품 코드를 고치지 않는다. 병합은 사람이 한다. | 같은 작업은 코드 변경, 검토, 열린 pull request까지 이어진다. 사람이 병합한다. |
 | [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 변경을 검토하고, 확인된 결함을 고친 뒤, 사람의 결정을 기다리며 멈춘다. AI 검토는 3라운드에서 멈춘다. | AI 검토는 여전히 3에서 멈춘다. 결정은 여전히 사람이 한다. 검토 전에 계획과 빌드도 있다. |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | 명령은 작업을 명세에서 코드, 테스트, 검토, 프로덕션 출시 전 확인까지 진행한다. 계획을 한 번 승인하면, 각 작업을 빌드하고 테스트하고 커밋하며, 실패하거나 위험한 단계에서 잠시 멈춘다. | 하나의 길이 그 작업을 계획에서 변경, 검토, 열린 pull request까지 진행한다. 병합을 결정하는 것은 사람이다. |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 명령은 작업을 명세에서 조각 하나씩, 테스트를 먼저 쓰고 진행한다. 그다음 검토와 프로덕션 출시 전 확인이 있다. 선택 방식에서는 계획을 한 번 승인하면, 각 조각을 같은 방식으로 진행하고 하나씩 커밋하며, 실패하거나 위험한 단계에서 잠시 멈춘다. | 하나의 길이 그 작업을 계획에서 변경, 검토, 열린 pull request까지 진행한다. 병합을 결정하는 것은 사람이다. |
 
 Ponytail이 공개하는 수는 Ponytail 자신의 측정이다. 그 수는 Shipwright의 결과가 아니다.
 평가 문제는 [Click](https://github.com/pallets/click)의 실제 버그 수정 16건이다. 그림은 [garden-skills](https://github.com/ConardLi/garden-skills)의 디자인 방법을 쓴다.

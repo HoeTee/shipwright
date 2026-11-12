@@ -233,7 +233,7 @@ sentinel の 1 回：skill ありは Python 4 行、skill なしは 17 行。ど
 | [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常モードが playbook でタスクを進める。製品を検査し、難しい性質を 1 つ証明できる。エージェントを並列に走らせることも、夜間にマージまで進めることもできる。 | 製品の検査と、難しい性質の証明は、ここでもできる。並列と夜間は頼むまでオフである。夜間の実行は自分ではマージしない。 |
 | [improve](https://github.com/shadcn/improve) | 監査と計画が得られる。より安いエージェントがその計画を実装できる。この skill は製品コードを編集しない。マージは人が行う。 | 同じタスクはコードの変更、レビュー、開いた pull request まで続く。人がマージする。 |
 | [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 変更をレビューし、確認された欠陥を直し、人の判断を待って止まる。AI レビューは 3 ラウンドで止まる。 | AI レビューはやはり 3 で止まる。決定はやはり人が行う。レビューの前に、計画と構築もある。 |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | コマンドはタスクを仕様から、コード、テスト、レビュー、本番公開前の確認まで進める。計画を一度承認すると、各タスクを構築し、テストし、コミットし、失敗または危険な手順で一時停止する。 | 1 つの道が、そのタスクを計画から変更、レビュー、開いた pull request まで進める。マージを決めるのは人である。 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | コマンドはタスクを仕様から、一度に一つのスライスで、テストを先に書いて進める。その後にレビューと本番公開前の確認がある。任意の方式では、計画を一度承認すると、各スライスを同じやり方で進め、個別にコミットし、失敗または危険な手順で一時停止する。 | 1 つの道が、そのタスクを計画から変更、レビュー、開いた pull request まで進める。マージを決めるのは人である。 |
 
 Ponytail が公開するのは、Ponytail 自身の測定である。その数字は Shipwright の結果ではない。
 評価の問題は [Click](https://github.com/pallets/click) の実在するバグ修正 16 件である。画像は [garden-skills](https://github.com/ConardLi/garden-skills) のデザイン方法を使う。

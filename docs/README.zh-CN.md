@@ -233,7 +233,7 @@ diff 越小，bug 越少。就这样。
 | [pstack](https://github.com/cursor/plugins/tree/main/pstack)（poteto） | 日常模式按 playbook 做这项任务。它可以检查产品，并证明一条难的性质。它也可以并行跑代理，或通宵做到合并。 | 你仍可以检查产品，并证明一条难的性质。并行和通宵在你要求之前保持关闭。通宵运行不会自己合并。 |
 | [improve](https://github.com/shadcn/improve) | 你得到一次审计和一份计划。更便宜的代理可以实现那份计划。这个 skill 不改产品代码，合并仍由你做。 | 同一项任务会继续做出代码改动、完成审查，并打开 pull request。由人合并。 |
 | [code-review-lifecycle](https://github.com/HoeTee/code-review-lifecycle-skill) | 它审查一次改动，修复已确认的缺陷，然后停下来交给人决定。AI 审查在 3 轮停止。 | AI 审查仍在 3 轮停止，决定仍由人做。审查之前，这项任务还有计划和构建。 |
-| [agent-skills](https://github.com/addyosmani/agent-skills) | 命令把任务从规格带到代码、测试、审查，以及生产发布前的检查。计划批准一次之后，它会构建、测试并提交每一项，失败或遇到有风险的步骤就暂停。 | 一条路径把这项任务从计划带到改动、审查，以及打开的 pull request。由人决定是否合并。 |
+| [agent-skills](https://github.com/addyosmani/agent-skills) | 命令把任务从规格开始，一次做一个切片，测试先写，然后进入审查和生产发布前的检查。还有一种可选方式：计划批准一次之后，可以按同样的方式做完每个切片，并逐项提交，失败或遇到有风险的步骤就暂停。 | 一条路径把这项任务从计划带到改动、审查，以及打开的 pull request。由人决定是否合并。 |
 
 Ponytail 公布的是它自己的测量。那些数字不是 Shipwright 的结果。
 评测题目是 [Click](https://github.com/pallets/click) 里 16 个真实缺陷修复。图片用的是 [garden-skills](https://github.com/ConardLi/garden-skills) 的设计方法。
