@@ -134,3 +134,7 @@ Shared references this group adds. Do not edit `references/principles/README.md`
 - OpenCode has no Claude-style plugin manifest for a skill bundle. It loads `SKILL.md` directories and an HTTP catalog. This repo ships that catalog as `skills/index.json`. See [OpenCode skills](https://opencode.ai/docs/skills/).
 
 Install commands and links in this repo use `HoeTee/shipwright`.
+
+## Repo operations
+
+Issue forms, intake labels, and the limits on automated maintenance are in [Repo operations](docs/repo-ops.md).

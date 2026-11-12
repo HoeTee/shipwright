@@ -1,0 +1,60 @@
+version: 1
+repo: HoeTee/shipwright
+default_branch: main
+commit_author:
+  name: HoeTee
+  email: "123862692+HoeTee@users.noreply.github.com"
+workflow:
+  # Load skills/shipwright-flow/SKILL.md from the fresh checkout and follow it.
+  entry: shipwright-flow
+  pr_must_list:
+    - skills_used
+    - verification_per_step
+test_command: "python -B -m unittest discover -s scripts -v && python -B -m unittest discover -s tests -v && python -B -m unittest discover -s skills/shipwright-eval/scripts -v && python -B skills/shipwright-eval/scripts/selftest.py && bun test skills/shipwright-autopilot/scripts/check-plan.test.ts"
+modules:
+  plugin:
+    - .claude-plugin/**
+    - .codex-plugin/**
+    - skills/index.json
+    - skills/plugin.json
+    - agents/**
+  skills:
+    - skills/**
+    - SKILL.md
+  docs:
+    - README.md
+    - docs/**
+    - CONTRIBUTING-skills.md
+  references:
+    - references/**
+  eval:
+    - eval/**
+  tooling:
+    - scripts/**
+    - tests/**
+    - "**/package.json"
+  assets:
+    - assets/**
+  repo:
+    - .github/**
+    - .gitignore
+    - .gitattributes
+    - LICENSE
+protected_paths:
+  - .github/**
+  - "**/*.env*"
+  - LICENSE
+workers:
+  - shipwright-worker-1
+  - shipwright-worker-2
+auto_accept:
+  external_issues: true
+  trusted_authors:
+    - HoeTee
+pr_intake:
+  external_prs: review_only
+cost:
+  max_running: 2
+  max_review_rounds: 3
+  eval_label: eval
+scan_minutes: 30

@@ -1,0 +1,51 @@
+name: Skill
+description: Ask for a new skill or a change to a skill.
+labels:
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: "Describe one skill to add or change. The intake workflow reads this form as data and does not run it."
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: The skill to add, or the change you want.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What must be true when the work is done.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What a reader or agent can do after the change.
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      description: Which part of the repo this issue is about. repo is omitted because those paths are protected.
+      options:
+        - plugin
+        - skills
+        - docs
+        - references
+        - eval
+        - tooling
+        - assets
+    validations:
+      required: true
+  - type: textarea
+    id: non-goals
+    attributes:
+      label: Non-goals
+      description: Changes that should stay out of the work.
+    validations:
+      required: false

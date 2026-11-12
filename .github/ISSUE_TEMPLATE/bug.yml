@@ -1,0 +1,51 @@
+name: Bug
+description: Report something the repo does that is wrong.
+labels:
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: "Describe one bug. The intake workflow reads this form as data and does not run it."
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you did, in order.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What should have happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      description: Which part of the repo this issue is about. repo is omitted because those paths are protected.
+      options:
+        - plugin
+        - skills
+        - docs
+        - references
+        - eval
+        - tooling
+        - assets
+    validations:
+      required: true
+  - type: textarea
+    id: non-goals
+    attributes:
+      label: Non-goals
+      description: Changes that should stay out of the fix.
+    validations:
+      required: false
