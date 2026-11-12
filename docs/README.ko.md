@@ -73,6 +73,7 @@ shipwright/
     shipwright-*/references/      보충. 37개 skill에 있다.
     shipwright-*/scripts/         도우미. 18개 skill에 있다.
     plugin.json                   이 폴더를 가리킨다
+    index.json                    OpenCode HTTP 카탈로그
   .claude-plugin/plugin.json      Claude Code 플러그인
   .claude-plugin/marketplace.json 마켓 이름
   .codex-plugin/plugin.json       Codex. skills: ./skills/
@@ -81,8 +82,9 @@ shipwright/
   references/                     skill이 공유하는 규칙
 ```
 
-OpenCode 목록 파일은 이 저장소에 없다.
-너의 `opencode.json`이 `skills/`를 가리킨다.
+OpenCode 플러그인 목록 파일은 이 저장소에 없다.
+`skills/index.json`이 HTTP 카탈로그다.
+`opencode.jsonc`에는 폴더나 그 카탈로그 주소를 적는다.
 
 ## 빠른 시작
 
@@ -111,15 +113,36 @@ codex plugin add shipwright@shipwright
 
 #### OpenCode
 
-다음 항목을 `opencode.json`에 넣는다.
+OpenCode는 skill 폴더를 읽는다.
+플러그인 목록 파일은 쓰지 않는다.
+
+저장소를 먼저 복제한다.
+그다음 폴더를 `~/.config/opencode/opencode.jsonc`에 넣는다.
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+또는 `skills/`를 `~/.config/opencode/skills`에 복사하거나 심볼릭 링크로 둔다.
+프로젝트에서는 `.opencode/skills`를 같은 방식으로 쓴다.
+
+복제하지 않는 방법도 있다.
+HTTP 카탈로그를 가리킨다.
 끝의 슬래시를 유지한다.
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+카탈로그 파일은 `skills/index.json`이다.
 그다음 `@shipwright-flow`를 요청한다.
 
 이 프롬프트를 보낸다.

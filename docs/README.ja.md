@@ -73,6 +73,7 @@ shipwright/
     shipwright-*/references/      補足。37 skill にある。
     shipwright-*/scripts/         補助スクリプト。18 skill にある。
     plugin.json                   このフォルダを指す
+    index.json                    OpenCode の HTTP カタログ
   .claude-plugin/plugin.json      Claude Code プラグイン
   .claude-plugin/marketplace.json マーケット名
   .codex-plugin/plugin.json       Codex。skills: ./skills/
@@ -81,8 +82,9 @@ shipwright/
   references/                     skill が共有する規則
 ```
 
-OpenCode のマニフェストは、このリポジトリにはない。
-あなたの `opencode.json` が `skills/` を指す。
+OpenCode のプラグインマニフェストは、このリポジトリにはない。
+`skills/index.json` が HTTP カタログだ。
+`opencode.jsonc` には、フォルダかそのカタログ URL を書く。
 
 ## クイックスタート
 
@@ -111,15 +113,36 @@ codex plugin add shipwright@shipwright
 
 #### OpenCode
 
-次の項目を `opencode.json` に書く。
+OpenCode は skill フォルダを読む。
+プラグインマニフェストは使わない。
+
+まずリポジトリをクローンする。
+その後、フォルダを `~/.config/opencode/opencode.jsonc` に足す。
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+または `skills/` を `~/.config/opencode/skills` にコピーかシンボリックリンクする。
+プロジェクトでは `.opencode/skills` を同じように使える。
+
+クローンしない方法もある。
+HTTP カタログを指す。
 末尾のスラッシュを残す。
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+カタログファイルは `skills/index.json` だ。
 その後 `@shipwright-flow` を頼む。
 
 このプロンプトを送る。

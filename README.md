@@ -73,6 +73,7 @@ shipwright/
     shipwright-*/references/      notes. 37 skills have this.
     shipwright-*/scripts/         helpers. 18 skills have this.
     plugin.json                   points at this folder
+    index.json                    OpenCode HTTP catalog
   .claude-plugin/plugin.json      Claude Code plugin
   .claude-plugin/marketplace.json marketplace name
   .codex-plugin/plugin.json       Codex plugin. skills: ./skills/
@@ -81,8 +82,9 @@ shipwright/
   references/                     rules the skills share
 ```
 
-OpenCode has no manifest in this repo.
-Your `opencode.json` points at `skills/`.
+OpenCode has no plugin manifest in this repo.
+`skills/index.json` is the HTTP catalog.
+Your `opencode.jsonc` lists a folder, or that catalog URL.
 
 ## Quick start
 
@@ -111,15 +113,36 @@ Then call `$shipwright:shipwright-flow`.
 
 #### OpenCode
 
-Put this entry in `opencode.json`.
+OpenCode loads skill folders.
+It does not use a plugin manifest.
+
+Clone the repo.
+Then add the folder to `~/.config/opencode/opencode.jsonc`.
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+Or copy or symlink `skills/` into `~/.config/opencode/skills`.
+A project can use `.opencode/skills` the same way.
+
+Or skip the clone.
+Point at the HTTP catalog.
 Keep the final slash.
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+The catalog file is `skills/index.json`.
 Then ask for `@shipwright-flow`.
 
 Send this prompt.

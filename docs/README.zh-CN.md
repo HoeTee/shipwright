@@ -73,6 +73,7 @@ shipwright/
     shipwright-*/references/      补充说明。37 个 skill 有。
     shipwright-*/scripts/         帮手脚本。18 个 skill 有。
     plugin.json                   指向这个目录
+    index.json                    OpenCode 的 HTTP 目录
   .claude-plugin/plugin.json      Claude Code 插件
   .claude-plugin/marketplace.json 市场名
   .codex-plugin/plugin.json       Codex 插件。skills: ./skills/
@@ -81,8 +82,9 @@ shipwright/
   references/                     各 skill 共用的规则
 ```
 
-OpenCode 在这个仓库里没有清单文件。
-你的 `opencode.json` 指向 `skills/`。
+OpenCode 在这个仓库里没有插件清单。
+`skills/index.json` 是 HTTP 目录。
+你的 `opencode.jsonc` 写一个本地文件夹，或写这个目录地址。
 
 ## 快速开始
 
@@ -111,15 +113,36 @@ codex plugin add shipwright@shipwright
 
 #### OpenCode
 
-把下面这项写入 `opencode.json`。
+OpenCode 读取 skill 文件夹。
+它不用插件清单。
+
+先克隆仓库。
+然后把文件夹写进 `~/.config/opencode/opencode.jsonc`。
+
+```bash
+git clone https://github.com/HoeTee/shipwright ~/shipwright
+```
+
+```jsonc
+{
+  "skills": ["~/shipwright/skills"]
+}
+```
+
+也可以把 `skills/` 复制或软链接到 `~/.config/opencode/skills`。
+项目里可以用 `.opencode/skills`，做法一样。
+
+也可以不克隆。
+指向 HTTP 目录。
 保留末尾的斜杠。
 
-```json
+```jsonc
 {
   "skills": ["https://raw.githubusercontent.com/HoeTee/shipwright/main/skills/"]
 }
 ```
 
+目录文件是 `skills/index.json`。
 然后请求 `@shipwright-flow`。
 
 发送这段提示。

@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -185,12 +187,31 @@ class SkillLayoutTests(unittest.TestCase):
 
     def test_opencode_catalog_matches_skill_files(self):
         script = ROOT / "scripts/build_opencode_index.py"
+        spec = importlib.util.spec_from_file_location("build_opencode_index", script)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
         result = subprocess.run([sys.executable, str(script), "--check"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         catalog = json.loads((SKILLS / "index.json").read_text(encoding="utf-8"))
         self.assertEqual({item["name"] for item in catalog["skills"]}, EXPECTED)
-        flow = next(item for item in catalog["skills"] if item["name"] == "shipwright-flow")
-        self.assertIn("SKILL.md", flow["files"])
+        for item in catalog["skills"]:
+            skill = SKILLS / item["name"]
+            on_disk = module.skill_files(skill)
+            self.assertEqual(item["files"], on_disk, item["name"])
+            self.assertEqual(item["version"], module.content_version(skill, on_disk), item["name"])
+            self.assertIn("SKILL.md", item["files"])
+            for rel in item["files"]:
+                self.assertFalse(rel.startswith(("/", "..")), rel)
+                self.assertNotIn("/../", f"/{rel}/")
+        with tempfile.TemporaryDirectory() as tmp:
+            skill = Path(tmp) / "demo-skill"
+            skill.mkdir()
+            (skill / "SKILL.md").write_text("one", encoding="utf-8")
+            files = ["SKILL.md"]
+            before = module.content_version(skill, files)
+            (skill / "SKILL.md").write_text("two", encoding="utf-8")
+            after = module.content_version(skill, files)
+            self.assertNotEqual(before, after)
 
     def test_host_manifests_discover_the_48_skills(self):
         claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
