@@ -1,1 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2689 212" width="2689" height="212" role="img" aria-label="Task to Plan to Build to Review and Fix, then Ship and Human merge"><rect width="2689" height="212" fill="#f6f6f3"/><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4b5260"/></marker></defs><g fill="none" stroke="#4b5260" stroke-width="3.2" stroke-linecap="round"><line x1="288" y1="106.0" x2="344" y2="106.0" marker-end="url(#arr)"/><line x1="583" y1="106.0" x2="639" y2="106.0" marker-end="url(#arr)"/><line x1="906" y1="106.0" x2="962" y2="106.0" marker-end="url(#arr)"/><line x1="1296" y1="82.0" x2="1416" y2="82.0" marker-end="url(#arr)"/><line x1="1416" y1="130.0" x2="1296" y2="130.0" marker-end="url(#arr)"/><line x1="1598" y1="106.0" x2="1707" y2="106.0" marker-end="url(#arr)"/><line x1="1946" y1="106.0" x2="2002" y2="106.0" marker-end="url(#arr)"/></g><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="32" fill="#1d5fbf" text-anchor="middle" x="1356.0" y="70.0">block</text><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="32" fill="#1d5fbf" text-anchor="middle" x="1356.0" y="162.0">again</text><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="32" fill="#1d5fbf" text-anchor="middle" x="1652.5" y="88.0">clear</text><rect x="48" y="28" width="240" height="156" rx="78.0" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="168.0" y="106.0">Task</text><rect x="344" y="28" width="239" height="156" rx="12" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="463.5" y="106.0">Plan</text><rect x="639" y="28" width="267" height="156" rx="12" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="772.5" y="106.0">Build</text><rect x="962" y="28" width="334" height="156" rx="12" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="1129.0" y="106.0">Review</text><rect x="1416" y="28" width="182" height="156" rx="12" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="1507.0" y="106.0">Fix</text><rect x="1707" y="28" width="239" height="156" rx="12" fill="#ffffff" stroke="#1d2026" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="500" fill="#16181d" text-anchor="middle" dominant-baseline="central" x="1826.5" y="106.0">Ship</text><rect x="2002" y="28" width="639" height="156" rx="12" fill="#e4ecf8" stroke="#1d5fbf" stroke-width="3.2"/><text font-family="Noto Sans, Segoe UI, Arial, sans-serif" font-size="78" font-weight="700" fill="#1d5fbf" text-anchor="middle" dominant-baseline="central" x="2321.5" y="106.0">Human merge</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2174 188" width="2174" height="188" role="img" aria-label="Task to Plan to Build to Review and Fix, then Ship and Human merge">
+  <rect width="2174" height="188" fill="#F4F1E7"/>
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="square">
+    <line x1="214" y1="94" x2="246" y2="94"/>
+    <polyline points="238,86 248,94 238,102"/>
+    <line x1="430" y1="94" x2="462" y2="94"/>
+    <polyline points="454,86 464,94 454,102"/>
+    <line x1="678" y1="94" x2="710" y2="94"/>
+    <polyline points="702,86 712,94 702,102"/>
+    <line x1="990" y1="70" x2="1154" y2="70"/>
+    <polyline points="1144,62 1156,70 1144,78"/>
+    <line x1="1154" y1="118" x2="990" y2="118"/>
+    <polyline points="1002,110 990,118 1002,126"/>
+    <line x1="1322" y1="94" x2="1460" y2="94"/>
+    <polyline points="1450,86 1462,94 1450,102"/>
+    <line x1="1648" y1="94" x2="1680" y2="94"/>
+    <polyline points="1672,86 1682,94 1672,102"/>
+  </g>
+  <g font-family="Noto Sans Display, Noto Sans, sans-serif" font-weight="700">
+    <text x="1072" y="52" text-anchor="middle" font-size="30" fill="#1E3FFF">block</text>
+    <text x="1072" y="156" text-anchor="middle" font-size="30" fill="#1E3FFF">again</text>
+    <text x="1391" y="70" text-anchor="middle" font-size="30" fill="#1E3FFF">clear</text>
+  </g>
+  <g font-family="Noto Sans Display, Noto Sans, sans-serif" font-size="64" font-weight="700">
+    <rect x="32" y="28" width="182" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="123" y="108" text-anchor="middle" fill="#111111">Task</text>
+    <rect x="250" y="28" width="180" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="340" y="108" text-anchor="middle" fill="#111111">Plan</text>
+    <rect x="468" y="28" width="210" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="573" y="108" text-anchor="middle" fill="#111111">Build</text>
+    <rect x="714" y="28" width="276" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="852" y="108" text-anchor="middle" fill="#111111">Review</text>
+    <rect x="1160" y="28" width="162" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="1241" y="108" text-anchor="middle" fill="#111111">Fix</text>
+    <rect x="1466" y="28" width="182" height="132" fill="#F4F1E7" stroke="#111111" stroke-width="3"/>
+    <text x="1557" y="108" text-anchor="middle" fill="#111111">Ship</text>
+    <rect x="1684" y="28" width="458" height="132" fill="#1E3FFF"/>
+    <text x="1913" y="108" text-anchor="middle" fill="#F4F1E7">Human merge</text>
+  </g>
+</svg>

@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/media/shipwright-hero.png" width="880" alt="-43% Python lines changed. Same pass rate: 30/32 vs 30/32.">
+  <img src="docs/media/shipwright-hero.png" width="880" alt="shipwright. From the first look to a human merge. -43% Python lines changed.">
 </p>
 
 <p align="center">
@@ -49,19 +49,13 @@ It needs Claude Code 2.1.292 or newer.
 claude plugin install shipwright --marketplace HoeTee/shipwright
 ```
 
-HTML reports need Node.js 20 or newer.
-Evaluation scripts need Python 3.
-
-<details>
-<summary>Claude Code</summary>
-
 Start a new session after you install.
 Then run `/shipwright:shipwright-flow`.
 
-</details>
+HTML reports need Node.js 20 or newer.
+Evaluation scripts need Python 3.
 
-<details>
-<summary>Codex</summary>
+#### Codex
 
 ```bash
 codex plugin marketplace add HoeTee/shipwright
@@ -71,10 +65,7 @@ codex plugin add shipwright@shipwright
 Start a new thread.
 Then call `$shipwright:shipwright-flow`.
 
-</details>
-
-<details>
-<summary>OpenCode</summary>
+#### OpenCode
 
 Put this entry in `opencode.json`.
 Keep the final slash.
@@ -86,8 +77,6 @@ Keep the final slash.
 ```
 
 Then ask for `@shipwright-flow`.
-
-</details>
 
 Send this prompt.
 
@@ -101,17 +90,17 @@ Do not push. Do not open a pull request. Do not merge.
 ## Numbers
 
 <p align="center">
-  <img src="eval/results/2026-11-round2/chart.png" width="880" alt="Click round 2. Plain is 100. Skills is 56.6. Hidden tests passed 30 of 32 runs on each arm.">
+  <img src="docs/media/shipwright-numbers.png" width="880" alt="Python lines changed. No skills is 100. Skills is 56.6. Same pass rate.">
 </p>
 
 Skills changed 43% fewer Python lines than the same agent with no skills.
-Hidden tests passed 30 of 32 runs on each arm. The pass rate is the same.
+The pass rate is the same.
 The 95% interval is 27% to 57% fewer lines. The [report](eval/results/2026-11-round2/report.md) has the method and the limits.
 
 ## FAQ
 
 <details>
-<summary>Does install start the work?</summary>
+<summary><h3>Does install start the work?</h3></summary>
 
 Install only adds the skills.
 A new session starts the task.
@@ -119,7 +108,7 @@ A new session starts the task.
 </details>
 
 <details>
-<summary>Will the agent merge?</summary>
+<summary><h3>Will the agent merge?</h3></summary>
 
 [shipwright-ship](skills/shipwright-ship/SKILL.md) stops when the pull request can merge.
 [shipwright-land](skills/shipwright-land/SKILL.md) merges only after you allow it.
@@ -127,7 +116,7 @@ A new session starts the task.
 </details>
 
 <details>
-<summary>Where is the review limit?</summary>
+<summary><h3>Where is the review limit?</h3></summary>
 
 The default limit is 3.
 Only [shipwright-fix](skills/shipwright-fix/SKILL.md) defines it.
@@ -138,7 +127,7 @@ Silence is not approval.
 </details>
 
 <details>
-<summary>Where does proof go?</summary>
+<summary><h3>Where does proof go?</h3></summary>
 
 Proof goes under `/tmp/shipwright-<plan-id>/<short-sha>/`.
 A cached screenshot is not proof.
@@ -147,15 +136,47 @@ A cached screenshot is not proof.
 
 ## Philosophy
 
-Keep each change small and complete, and add no unrequested work.
+**Plan before code**
 
-A plan in `plans/` records the notes, the commands, the run, and the proof.
+Write the plan before you change the product.
+A later agent must run that plan with no extra chat.
+[shipwright-flow](skills/shipwright-flow/SKILL.md) records the stage, and [shipwright-plan](skills/shipwright-plan/SKILL.md) writes the plan in `plans/`.
 
-Prove the change on the real product, not from a cached screenshot.
+**Smallest complete change**
 
-AI review has a limit of 3, and a person decides the merge.
+Make the smallest change that fully does the job.
+Do not add work that nobody asked for.
+[shipwright-lean](skills/shipwright-lean/SKILL.md) stays on while you write code, until you turn it off.
+
+**Proof before done**
+
+A change is not done until you prove it on the real product.
+A cached screenshot is not proof.
+[shipwright-build](skills/shipwright-build/SKILL.md) stores the proof under `/tmp/shipwright-<plan-id>/<short-sha>/`.
+
+**Review, then fix**
+
+[shipwright-review](skills/shipwright-review/SKILL.md) reports findings and does not edit the code.
+Each finding is P0, P1, or P2, based on the real harm.
+[shipwright-fix](skills/shipwright-fix/SKILL.md) makes the fixes, and the AI review limit is 3.
+
+**A person merges**
+
+A person must decide the merge.
+[shipwright-ship](skills/shipwright-ship/SKILL.md) stops before the merge, and [shipwright-signoff](skills/shipwright-signoff/SKILL.md) writes the packet.
+[shipwright-land](skills/shipwright-land/SKILL.md) merges only after a non-author checks it and you allow it.
+
+**Measure real runs**
+
+Cite a gain only when a real comparison measured it.
+[shipwright-eval](skills/shipwright-eval/SKILL.md) runs the same agent with skills and with no skills.
+That comparison is not part of every small change.
+
+**Extra modes stay off**
 
 Swarm, arena, autopilot, and multi-PR plans stay off until you ask.
+They add parallel work or a long run you did not request.
+[shipwright-flow](skills/shipwright-flow/SKILL.md) does not start them unless you name that work.
 
 ## Credits and comparison
 
