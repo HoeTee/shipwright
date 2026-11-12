@@ -34,6 +34,7 @@ description: "速查卡和可直接发送的提示词，不开工。用于：问
 | 同一任务多份候选 | shipwright-arena |
 | 长任务决策日志 | shipwright-trail |
 | 给人看的文字 | shipwright-write |
+| 项目 README | shipwright-readme |
 | 新写或修改 skill | shipwright-skillsmith |
 | 工作区堆积或任务结束 | shipwright-cleanup |
 

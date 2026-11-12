@@ -3,7 +3,7 @@
 [English](skills.md) · [日本語](skills.ja.md) · [한국어](skills.ko.md)
 
 [README](README.zh-CN.md) 展示八个核心 skill。
-本页列出全部 48 个 skill。
+本页列出全部 49 个 skill。
 每一行是一件事。
 
 shipwright-autopilot、shipwright-swarm、shipwright-arena 和 shipwright-eval 在你要求之前保持关闭。
@@ -108,5 +108,6 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena 和 shipwright-eval �
 | [shipwright-trail](../skills/shipwright-trail/SKILL.md) | 保留决策日志，并请另一个模型复查。 |
 | [shipwright-recap](../skills/shipwright-recap/SKILL.md) | 为每个结果渲染一份 HTML 页面。 |
 | [shipwright-write](../skills/shipwright-write/SKILL.md) | 写文档、pull request 文字和 commit 信息。 |
+| [shipwright-readme](../skills/shipwright-readme/SKILL.md) | 按真实文件和实测结果写项目 README。 |
 | [shipwright-skillsmith](../skills/shipwright-skillsmith/SKILL.md) | 编写或修改一个 skill。 |
 | [shipwright-eval](../skills/shipwright-eval/SKILL.md) | 只在你要求时测量一个 skill。 |

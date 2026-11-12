@@ -154,14 +154,14 @@
     },
     {
       "name": "shipwright-flow",
-      "version": "2bfc5d03a906",
+      "version": "523ac5202120",
       "files": [
         "SKILL.md"
       ]
     },
     {
       "name": "shipwright-help",
-      "version": "3b5ac99b57a6",
+      "version": "937fa9714a74",
       "files": [
         "SKILL.md"
       ]
@@ -328,6 +328,14 @@
       "files": [
         "SKILL.md",
         "references/procedure.md"
+      ]
+    },
+    {
+      "name": "shipwright-readme",
+      "version": "865872de6d92",
+      "files": [
+        "SKILL.md",
+        "references/checklist.md"
       ]
     },
     {
@@ -569,7 +577,7 @@
     },
     {
       "name": "shipwright-write",
-      "version": "de8967a39dc9",
+      "version": "ff72073472ba",
       "files": [
         "SKILL.md"
       ]

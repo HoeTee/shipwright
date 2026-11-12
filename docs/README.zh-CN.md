@@ -38,7 +38,7 @@
 | 准备审查包 | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 由一个人阅读这份包。 |
 | 合并 | [shipwright-land](../skills/shipwright-land/SKILL.md) | 非作者验证并且你允许之后才合并。 |
 
-[完整 skill 列表](skills.zh-CN.md) 列出全部 48 个 skill。
+[完整 skill 列表](skills.zh-CN.md) 列出全部 49 个 skill。
 
 ## 结构
 
@@ -69,8 +69,8 @@
 
 ```
 shipwright/
-  skills/                         48 个 skill。每个都有 SKILL.md。
-    shipwright-*/references/      补充说明。37 个 skill 有。
+  skills/                         49 个 skill。每个都有 SKILL.md。
+    shipwright-*/references/      补充说明。38 个 skill 有。
     shipwright-*/scripts/         帮手脚本。18 个 skill 有。
     plugin.json                   指向这个目录
     index.json                    OpenCode 的 HTTP 目录
@@ -186,7 +186,7 @@ diff 改到测试行：有 skill 是 32 次里的 32 次，无 skill 是 32 次�
 
 - **哪些代理可以运行它？** Claude Code、Codex 和 OpenCode 用同一套 skill。变的只是安装命令和调用写法。
 - **怎么安装？** 用上面的快速开始，然后新开一个会话。旧会话仍用它开始时的文件。
-- **需要全部 48 个 skill 吗？** 不需要。调用 shipwright-flow。表格里的八个 skill 覆盖这条路径，其余的在需要之前保持安静。
+- **需要全部 49 个 skill 吗？** 不需要。调用 shipwright-flow。表格里的八个 skill 覆盖这条路径，其余的在需要之前保持安静。
 - **审查循环什么时候停下？** 审查只报告发现，不改代码。修复负责改，上限是 3，从 pull request 打开时计数，沉默不是批准。
 - **代理会自己合并吗？** 不会。Ship 打开 pull request 后停下。Land 只在非作者检查并且你允许之后合并。
 - **评测测量了什么？** 同一个代理分别带 skill 和不带 skill，修 16 个真实的 Click 缺陷，每个臂 2 次。有 skill 时 Python 行数少 43.4%，通过率相同，第三次重复没有跑。

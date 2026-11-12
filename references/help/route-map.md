@@ -16,7 +16,7 @@ Infer from the message. If it is unclear, ask one multiple-choice question: Get 
 - Design before code → shipwright-architect. Several candidates → shipwright-arena. Adversarial review → shipwright-interrogate.
 - Fan-out → shipwright-swarm. Catch me up on this chat, restate the last message in plain words, or a short subtitled video of that catch-up → shipwright-recap. An earlier session → shipwright-recall.
 - A real-app verification skill → shipwright-verify-create or shipwright-verify-maintain. A formal proof → shipwright-prove-create or shipwright-prove-maintain.
-- Prose → shipwright-write. Comments in code → shipwright-comments.
+- Prose → shipwright-write. A project README → shipwright-readme. Comments in code → shipwright-comments.
 - A personal mode skill → shipwright-skillsmith, [automate me](../skillsmith/automate-me.md).
 - Decision trail → shipwright-trail. Reflect → shipwright-reflect.
 - Prompt shape → [prompting](prompting.md), [recipes](recipes.md), [sharpen](sharpen.md).

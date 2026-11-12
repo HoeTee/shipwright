@@ -1,15 +1,15 @@
 ---
 name: shipwright-write
-description: "文档、PR 描述、commit 信息、去掉 AI 腔。用于：写给人看的文字。不要用于：代码注释找 comments。"
+description: "文档、PR 描述、commit 信息、去掉 AI 腔。用于：写给人看的文字。不要用于：代码注释找 comments。项目 README 找 shipwright-readme。"
 ---
 
 # shipwright-write
 
 ## When to use
 
-何时用：文档、RFC、README、PR 描述、commit 信息，以及任何要给人看的说明。也用于去掉 AI 腔。
+何时用：文档、RFC、PR 描述、commit 信息，以及任何要给人看的说明。也用于去掉 AI 腔。项目 README 整页交给 shipwright-readme。
 
-何时不用：代码里的注释。那是 shipwright-comments。
+何时不用：代码里的注释。那是 shipwright-comments。项目 README 的版式、证据和图不在这里写。
 
 ## Procedure
 

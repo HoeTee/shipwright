@@ -71,4 +71,4 @@ description: "判断阶段、领域和模式，固定基线、候选和范围，
 
 ## 另外的入口
 
-本机模型用 shipwright-setup。结果页用 shipwright-recap。评测只在用户明确要求时用 shipwright-eval。
+本机模型用 shipwright-setup。结果页用 shipwright-recap。项目 README 用 shipwright-readme。评测只在用户明确要求时用 shipwright-eval。

@@ -3,7 +3,7 @@
 [English](skills.md) · [中文](skills.zh-CN.md) · [日本語](skills.ja.md)
 
 [README](README.ko.md)는 여덟 핵심 skill을 보여 준다.
-이 페이지는 48개를 모두 적는다.
+이 페이지는 49개를 모두 적는다.
 각 줄은 일 하나이다.
 
 shipwright-autopilot, shipwright-swarm, shipwright-arena, shipwright-eval은 요청할 때까지 꺼 둔다.
@@ -108,5 +108,6 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, shipwright-eval은 요
 | [shipwright-trail](../skills/shipwright-trail/SKILL.md) | 결정 기록을 남기고 다른 모델에 재확인을 맡긴다. |
 | [shipwright-recap](../skills/shipwright-recap/SKILL.md) | 각 결과에 대해 HTML 페이지를 그린다. |
 | [shipwright-write](../skills/shipwright-write/SKILL.md) | 문서, pull request 글, commit 메시지를 쓴다. |
+| [shipwright-readme](../skills/shipwright-readme/SKILL.md) | 실제 파일과 측정 결과로 프로젝트 README를 쓴다. |
 | [shipwright-skillsmith](../skills/shipwright-skillsmith/SKILL.md) | skill을 쓰거나 고친다. |
 | [shipwright-eval](../skills/shipwright-eval/SKILL.md) | 요청할 때만 skill을 측정한다. |
