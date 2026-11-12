@@ -3,7 +3,7 @@
 [中文](skills.zh-CN.md) · [日本語](skills.ja.md) · [한국어](skills.ko.md)
 
 The [README](../README.md) shows the eight core skills.
-This page lists all 48 skills.
+This page lists all 49 skills.
 Each line is one job.
 
 shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval stay off until you ask.
@@ -108,5 +108,6 @@ shipwright-autopilot, shipwright-swarm, shipwright-arena, and shipwright-eval st
 | [shipwright-trail](../skills/shipwright-trail/SKILL.md) | Keeps a decision log and asks another model to recheck. |
 | [shipwright-recap](../skills/shipwright-recap/SKILL.md) | Renders an HTML page for each result. |
 | [shipwright-write](../skills/shipwright-write/SKILL.md) | Writes docs, pull request text, and commit messages. |
+| [shipwright-readme](../skills/shipwright-readme/SKILL.md) | Writes a project README from real files and measured results. |
 | [shipwright-skillsmith](../skills/shipwright-skillsmith/SKILL.md) | Writes or edits a skill. |
 | [shipwright-eval](../skills/shipwright-eval/SKILL.md) | Measures a skill only when you ask. |

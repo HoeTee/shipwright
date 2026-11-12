@@ -38,7 +38,7 @@
 | 資料を用意する | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 人がこの資料を読む。 |
 | マージする | [shipwright-land](../skills/shipwright-land/SKILL.md) | 作者以外が確認し、許可の後にマージする。 |
 
-[skill の全一覧](skills.ja.md) に 48 個すべてを書く。
+[skill の全一覧](skills.ja.md) に 49 個すべてを書く。
 
 ## 構造
 
@@ -69,8 +69,8 @@ skill は必要な見出しだけを残す。
 
 ```
 shipwright/
-  skills/                         skill 48 個。各 SKILL.md。
-    shipwright-*/references/      補足。37 skill にある。
+  skills/                         skill 49 個。各 SKILL.md。
+    shipwright-*/references/      補足。38 skill にある。
     shipwright-*/scripts/         補助スクリプト。18 skill にある。
     plugin.json                   このフォルダを指す
     index.json                    OpenCode の HTTP カタログ
@@ -186,7 +186,7 @@ sentinel の 1 回：skill ありは Python 4 行、skill なしは 17 行。ど
 
 - **どのエージェントで動くか。** Claude Code、Codex、OpenCode は同じ skill を使う。変わるのは導入コマンドと呼び出し方だけである。
 - **どう導入するか。** 上のクイックスタートを使い、その後に新しいセッションを開く。古いセッションは開始時のファイルのままである。
-- **48 個の skill がすべて必要か。** 必要ではない。shipwright-flow を呼ぶ。表の 8 個が道を覆い、残りは必要になるまで静かである。
+- **49 個の skill がすべて必要か。** 必要ではない。shipwright-flow を呼ぶ。表の 8 個が道を覆い、残りは必要になるまで静かである。
 - **レビューの繰り返しはいつ止まるか。** レビューは指摘を報告し、コードを編集しない。修正は Fix が行い、上限は 3 で、回数は pull request を開いたときに始まり、沈黙は承認ではない。
 - **エージェントは自分でマージするか。** しない。Ship は pull request を開いて止まる。Land は、作者以外が確認し、許可のあとだけマージする。
 - **評価は何を測ったか。** 同じエージェントが skill ありと skill なしで、実在する Click のバグ修正 16 件を扱い、各腕は 2 回動いた。skill ありは Python の行が 43.4% 少なく、通過率は同じで、3 回目は走っていない。

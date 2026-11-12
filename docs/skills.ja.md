@@ -3,7 +3,7 @@
 [English](skills.md) · [中文](skills.zh-CN.md) · [한국어](skills.ko.md)
 
 [README](README.ja.md) は 8 つのコア skill を示す。
-このページは 48 個すべてを書く。
+このページは 49 個すべてを書く。
 各行は 1 つの仕事である。
 
 shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は、頼むまでオフである。
@@ -108,5 +108,6 @@ shipwright-autopilot、shipwright-swarm、shipwright-arena、shipwright-eval は
 | [shipwright-trail](../skills/shipwright-trail/SKILL.md) | 決定の記録を残し、別のモデルに再確認を頼む。 |
 | [shipwright-recap](../skills/shipwright-recap/SKILL.md) | 各結果について HTML ページを描画する。 |
 | [shipwright-write](../skills/shipwright-write/SKILL.md) | 文書、pull request の文、commit メッセージを書く。 |
+| [shipwright-readme](../skills/shipwright-readme/SKILL.md) | 実在のファイルと測定結果からプロジェクト README を書く。 |
 | [shipwright-skillsmith](../skills/shipwright-skillsmith/SKILL.md) | skill を書く、または編集する。 |
 | [shipwright-eval](../skills/shipwright-eval/SKILL.md) | 頼まれたときだけ skill を測定する。 |

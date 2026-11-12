@@ -38,7 +38,7 @@
 | Prepare the packet | [shipwright-signoff](skills/shipwright-signoff/SKILL.md) | A person reads this packet. |
 | Merge | [shipwright-land](skills/shipwright-land/SKILL.md) | Merge after a non-author checks it and you allow it. |
 
-The [full skill list](docs/skills.md) names all 48 skills.
+The [full skill list](docs/skills.md) names all 49 skills.
 
 ## Anatomy
 
@@ -69,8 +69,8 @@ The plugin files in this repo:
 
 ```
 shipwright/
-  skills/                         48 skills. Each has SKILL.md.
-    shipwright-*/references/      notes. 37 skills have this.
+  skills/                         49 skills. Each has SKILL.md.
+    shipwright-*/references/      notes. 38 skills have this.
     shipwright-*/scripts/         helpers. 18 skills have this.
     plugin.json                   points at this folder
     index.json                    OpenCode HTTP catalog
@@ -186,7 +186,7 @@ Method and limits: [report](eval/results/2026-11-round2/report.md).
 
 - **Which agents can run it?** Claude Code, Codex, and OpenCode use the same skills. Only the install command and the call change.
 - **How do I install it?** Use the Quick start above, then start a new session. An old session keeps the files from when it started.
-- **Do I need all 48 skills?** No. Call shipwright-flow. The eight skills in the table cover the path, and the rest stay quiet until needed.
+- **Do I need all 49 skills?** No. Call shipwright-flow. The eight skills in the table cover the path, and the rest stay quiet until needed.
 - **When does the review loop stop?** Review reports findings and does not edit. Fix makes the repairs, the limit is 3 from the open pull request, and silence is not approval.
 - **Can the agent merge by itself?** No. Ship opens the pull request and stops. Land merges only after a non-author checks the change and you allow it.
 - **What did the eval measure?** The same agent ran with skills and with no skills on 16 real Click bug fixes, two runs each. Skills changed 43.4% fewer Python lines, the pass rate was the same, and a third repeat did not run.

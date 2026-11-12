@@ -38,7 +38,7 @@
 | 꾸러미를 준비한다 | [shipwright-signoff](../skills/shipwright-signoff/SKILL.md) | 사람이 이 꾸러미를 읽는다. |
 | 병합한다 | [shipwright-land](../skills/shipwright-land/SKILL.md) | 작성자가 아닌 사람이 확인하고 허용한 뒤에 병합한다. |
 
-[전체 skill 목록](skills.ko.md)에 48개를 모두 적는다.
+[전체 skill 목록](skills.ko.md)에 49개를 모두 적는다.
 
 ## 구조
 
@@ -69,8 +69,8 @@ skill은 필요한 제목만 남긴다.
 
 ```
 shipwright/
-  skills/                         skill 48개. 각각 SKILL.md.
-    shipwright-*/references/      보충. 37개 skill에 있다.
+  skills/                         skill 49개. 각각 SKILL.md.
+    shipwright-*/references/      보충. 38개 skill에 있다.
     shipwright-*/scripts/         도우미. 18개 skill에 있다.
     plugin.json                   이 폴더를 가리킨다
     index.json                    OpenCode HTTP 카탈로그
@@ -186,7 +186,7 @@ sentinel 한 번: skill이 있으면 Python 4줄, 없으면 17줄. 둘 다 통�
 
 - **어떤 에이전트에서 도는가?** Claude Code, Codex, OpenCode는 같은 skill을 쓴다. 바뀌는 것은 설치 명령과 호출 방식뿐이다.
 - **어떻게 설치하는가?** 위의 빠른 시작을 쓰고, 그다음 새 세션을 연다. 옛 세션은 시작할 때의 파일을 유지한다.
-- **skill 48개가 모두 필요한가?** 아니다. shipwright-flow를 호출한다. 표의 여덟 skill이 길을 덮고, 나머지는 필요할 때까지 조용하다.
+- **skill 49개가 모두 필요한가?** 아니다. shipwright-flow를 호출한다. 표의 여덟 skill이 길을 덮고, 나머지는 필요할 때까지 조용하다.
 - **검토 반복은 언제 멈추는가?** 검토는 발견을 보고하고 코드를 고치지 않는다. 수정은 Fix가 하고, 한도는 3이며, 횟수는 pull request를 열 때 시작하고, 침묵은 승인이 아니다.
 - **에이전트가 스스로 병합하는가?** 아니다. Ship는 pull request를 열고 멈춘다. Land는 작성자가 아닌 사람이 확인하고 허용한 뒤에만 병합한다.
 - **평가는 무엇을 재었는가?** 같은 에이전트가 skill이 있을 때와 없을 때 실제 Click 버그 수정 16건을 다뤘고, 각 팔은 2회 실행했다. skill이 있으면 Python 줄이 43.4% 적고, 통과율은 같으며, 세 번째 반복은 실행하지 않았다.

@@ -61,6 +61,7 @@ EXPECTED = {
     "shipwright-trail",
     "shipwright-recap",
     "shipwright-write",
+    "shipwright-readme",
     "shipwright-skillsmith",
     "shipwright-eval",
 }
@@ -129,7 +130,7 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
 
 
 class SkillLayoutTests(unittest.TestCase):
-    def test_exactly_the_48_skills(self):
+    def test_exactly_the_49_skills(self):
         found = {path.parent.name for path in SKILLS.glob("shipwright-*/SKILL.md")}
         self.assertEqual(found, EXPECTED)
         extra = {path.name for path in SKILLS.iterdir() if path.is_dir()} - EXPECTED
@@ -213,13 +214,13 @@ class SkillLayoutTests(unittest.TestCase):
             after = module.content_version(skill, files)
             self.assertNotEqual(before, after)
 
-    def test_host_manifests_discover_the_48_skills(self):
+    def test_host_manifests_discover_the_49_skills(self):
         claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
         codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
         marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
         # Claude Code loads skills/<name>/SKILL.md when plugin.json omits "skills".
         # A skills entry has to be a directory that itself contains SKILL.md, so
-        # pointing it at the parent directory would hide the 48 skills.
+        # pointing it at the parent directory would hide the 49 skills.
         self.assertNotIn("skills", claude)
         self.assertEqual(codex["skills"], "./skills/")
         plugin = marketplace["plugins"][0]

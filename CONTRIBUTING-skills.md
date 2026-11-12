@@ -1,6 +1,6 @@
 # Contributing skills
 
-This repository is the shipwright skeleton. Forty-eight skills are laid out under `skills/shipwright-*/`. `shipwright-flow` is written. The other skill bodies are one-line stubs.
+This repository is the shipwright skeleton. Forty-nine skills are laid out under `skills/shipwright-*/`. `shipwright-flow` is written. The other skill bodies are one-line stubs.
 
 Parallel agents each take one group below. Stay inside that group's skill directories. Do not edit another group's `SKILL.md`.
 
@@ -114,6 +114,7 @@ Skills:
 | `shipwright-trail` | Decision log. |
 | `shipwright-recap` | HTML result page and the progress page. |
 | `shipwright-write` | Docs, PR text, commit messages. |
+| `shipwright-readme` | Principles for a project README. shipwright-write hands that page here. |
 | `shipwright-skillsmith` | Author or edit a skill. |
 | `shipwright-cleanup` | Clean worktrees after the task ends. Do not delete plans or live evidence early. |
 
