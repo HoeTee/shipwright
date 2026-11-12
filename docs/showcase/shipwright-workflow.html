@@ -8,106 +8,88 @@
   html, body { margin: 0; background: #F4F1E7; }
   .sheet {
     box-sizing: border-box;
-    width: 1680px;
-    padding: 48px 56px 56px;
+    width: 960px;
+    padding: 28px 32px 32px;
     background: #F4F1E7;
     color: #111111;
   }
-  .row { display: flex; align-items: center; gap: 18px; }
-  .row + .row { margin-top: 28px; }
-  .card {
+  .row { display: flex; align-items: stretch; gap: 12px; }
+  .row + .row { margin-top: 16px; }
+  .card, .loop {
     box-sizing: border-box;
-    min-width: 220px;
-    height: 148px;
-    padding: 18px 28px 22px;
+    min-height: 118px;
     border: 4px solid #111111;
     background: #F4F1E7;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
   }
-  .card b {
+  .card { flex: 1; padding: 14px 18px 16px; }
+  .card b, .num {
     font-family: "Display", "Noto Sans Display", sans-serif;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 18px;
     letter-spacing: -0.03em;
     color: #1E3FFF;
     line-height: 1;
   }
-  .card span {
+  .card span, .word {
     font-family: "Display", "Noto Sans Display", sans-serif;
     font-weight: 700;
-    font-size: 64px;
-    letter-spacing: -0.045em;
+    font-size: 36px;
+    letter-spacing: -0.04em;
     line-height: 0.95;
   }
-  .wide { min-width: 460px; background: #1E3FFF; border-color: #1E3FFF; color: #F4F1E7; }
+  .wide { background: #1E3FFF; border-color: #1E3FFF; color: #F4F1E7; }
   .wide b { color: #F4F1E7; }
   .arrow {
-    width: 36px;
+    width: 28px;
     height: 4px;
     background: #111111;
     position: relative;
     flex: none;
+    align-self: center;
   }
   .arrow::after {
     content: "";
     position: absolute;
     right: -2px;
-    top: -7px;
-    width: 14px;
-    height: 14px;
+    top: -6px;
+    width: 12px;
+    height: 12px;
     border-top: 4px solid #111111;
     border-right: 4px solid #111111;
     transform: rotate(45deg);
   }
   .loop {
-    margin-left: auto;
-    width: 560px;
-    border: 4px solid #1E3FFF;
-    padding: 22px 28px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex: 1.45;
+    border-color: #1E3FFF;
+    padding: 14px 16px 12px;
+    gap: 8px;
   }
-  .loop .pair { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .mini {
-    box-sizing: border-box;
-    height: 92px;
-    min-width: 180px;
-    padding: 12px 20px;
-    border: 4px solid #111111;
-    background: #F4F1E7;
-    display: flex;
-    align-items: center;
-    font-family: "Display", "Noto Sans Display", sans-serif;
-    font-weight: 700;
-    font-size: 48px;
-    letter-spacing: -0.04em;
-  }
-  .swap { width: 54px; display: flex; flex-direction: column; gap: 10px; flex: none; }
+  .pair { display: flex; align-items: center; gap: 10px; }
+  .word { padding: 2px 0; }
+  .swap { width: 36px; display: flex; flex-direction: column; gap: 8px; flex: none; }
   .swap i { display: block; height: 4px; background: #1E3FFF; position: relative; }
   .swap i::after {
     content: "";
     position: absolute;
-    top: -6px;
-    width: 12px;
-    height: 12px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
     border-top: 4px solid #1E3FFF;
     border-right: 4px solid #1E3FFF;
   }
-  .swap i.go::after { right: -2px; transform: rotate(45deg); }
-  .swap i.back::after { left: -2px; transform: rotate(-135deg); }
+  .swap i.go::after { right: -1px; transform: rotate(45deg); }
+  .swap i.back::after { left: -1px; transform: rotate(-135deg); }
   .until {
     margin: 0;
     font-family: "Display", "Noto Sans Display", sans-serif;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 22px;
     letter-spacing: -0.03em;
     color: #1E3FFF;
   }
-  .tail { justify-content: flex-end; }
 </style>
 </head>
 <body>
@@ -118,15 +100,14 @@
       <div class="card"><b>02</b><span>Plan</span></div>
       <div class="arrow"></div>
       <div class="card"><b>03</b><span>Build</span></div>
-      <div class="arrow"></div>
-      <div class="card"><b>04</b><span>Review</span></div>
     </div>
     <div class="row">
       <div class="loop">
+        <b class="num">04</b>
         <div class="pair">
-          <div class="mini">Review</div>
+          <div class="word">Review</div>
           <div class="swap"><i class="go"></i><i class="back"></i></div>
-          <div class="mini">Fix</div>
+          <div class="word">Fix</div>
         </div>
         <p class="until">Loop until clear</p>
       </div>
