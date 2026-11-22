@@ -36,7 +36,7 @@ One or two files with an obvious approach: do not write a plan. Say so and hand 
 
 ## `plan <description>`
 
-Skip the audit. The user already knows what they want. Run recon, investigate just enough to specify it, and write a single plan. Resolve each ambiguity from the codebase first. Only what remains becomes a question. Ask one question at a time, each with a recommended answer.
+Skip the audit. The user already knows what they want. Run recon, investigate just enough to specify it, and write a single plan. Resolve each ambiguity from the codebase first. What remains follows [clarify.md](../../shipwright-flow/references/clarify.md): quick clarification unless the user asked to think it through. Do not ask one question at a time unless the user requested that. There is no round cap here. An unanswered item stays pending. Own, watch, or autopilot may adopt a recommendation only when the user did not ask for deep discussion, and that adoption is labeled assumption. Do not write a pending item as confirmed. Work that depends on a deep-discussion decision waits for the user to confirm the shared understanding.
 
 ## `review-plan <file>`
 

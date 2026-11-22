@@ -1,12 +1,12 @@
 ---
 name: shipwright-architect
-description: "跨函数边界的设计：先写调用方用法，再定类型和接口，至少两种方案。用于：新模块、新接口。不要用于：小改动或做法已定。"
+description: "跨函数边界的设计：先写调用方用法，再定类型和接口。真实的结构性取舍才比较方案。用于：新模块、新接口，且复用不够、做法未定。不要用于：小改动、方案已定，或第一件完全够用的做法没有结构取舍。"
 ---
 
 # shipwright-architect
 
 何时用：新模块、新接口，或跳进代码会把错误的形状定死。
-何时不用：小改动，或做法已经定了。只读地整理现有结构用 [shipwright-how](../shipwright-how/SKILL.md)，不走本流程。
+何时不用：小改动、做法已经定了，或第一件完全够用的做法没有结构取舍。只读地整理现有结构用 [shipwright-how](../shipwright-how/SKILL.md)，不走本流程。
 
 本 skill 产出类型、签名和取舍。`plan` 模式停在草图。`change` 模式才按草图填代码，并且要有本地修改授权。
 
@@ -16,11 +16,11 @@ description: "跨函数边界的设计：先写调用方用法，再定类型和
 
 ## Phase B. Sketch
 
-先写调用方怎么用：README 式的用法，加两三处真实调用。类型从用法推出来，两边不一致时改类型。然后交给 shipwright-arena，每个候选的提示词用 [runner-prompt.md](references/runner-prompt.md)。至少两个结构上不同的方案，即使第一个看起来已经够用。这是原则 [exhaust-the-design-space](../../references/principles/exhaust-the-design-space.md)。合成前用 [design-red-flags.md](references/design-red-flags.md) 筛每一份。比较接口深度，优先把复杂度藏在更小的公开面上。持续的结构检查在 shipwright-structure，这份清单是设计这一步用的筛子。
+先写调用方怎么用：README 式的用法，加两三处真实调用。类型从用法推出来，两边不一致时改类型。小改动、做法已经定了，或 [shipwright-lean](../shipwright-lean/SKILL.md) 梯子上第一件完全够用的做法没有真实结构取舍时，跳过 shipwright-arena，就用那一件。不为了凑第二个方案，也不因为任务存在就调用本 skill。只有跨函数边界的真实结构取舍才比较方案：交给 shipwright-arena，每个候选的提示词用 [runner-prompt.md](references/runner-prompt.md)，至少两个结构上不同的方案。原则 [exhaust-the-design-space](../../references/principles/exhaust-the-design-space.md) 只管这种没有先例的结构取舍。合成前用 [design-red-flags.md](references/design-red-flags.md) 筛每一份。比较接口深度，优先把复杂度藏在更小的公开面上。持续的结构检查在 shipwright-structure，这份清单是设计这一步用的筛子。
 
 ## Phase C. Agree
 
-默认不设人工关口，直接往下。对方明确说「先给我看再写」时，交出合成结果并停。对方否定形状时，把反对当作 Phase A 的新证据，重做 Phase B，然后再写代码。想在写之前加压，用 shipwright-interrogate。
+默认不设人工关口，直接往下。这不覆盖用户显式的深入讨论：那些决策仍按 [clarify.md](../shipwright-flow/references/clarify.md)，等用户确认共享理解之后，才做依赖它们的实现。不能声称整项已获确认。本 skill 的 rationale 不是 ADR。对方明确说「先给我看再写」时，交出合成结果并停。对方否定形状时，把反对当作 Phase A 的新证据，重做 Phase B，然后再写代码。想在写之前加压，用 shipwright-interrogate。
 
 ## Phase D. Implement
 
@@ -36,4 +36,4 @@ description: "跨函数边界的设计：先写调用方用法，再定类型和
 
 ## Stop
 
-没有两个不同的方案，就不合成。红旗没过，就不进入实现。模式是 `plan` 时不写产品代码。结果页交给 shipwright-recap。
+有真实结构取舍却没有两个不同的方案，就不合成。没有结构取舍时，一个够用的方案就是草图。红旗没过，就不进入实现。模式是 `plan` 时不写产品代码。结果页交给 shipwright-recap。本 skill 不是每个任务的必经步骤。

@@ -2,7 +2,7 @@
   "skills": [
     {
       "name": "shipwright-architect",
-      "version": "af24511aca5a",
+      "version": "8b0e50375702",
       "files": [
         "SKILL.md",
         "references/design-red-flags.md",
@@ -36,7 +36,7 @@
     },
     {
       "name": "shipwright-autopilot",
-      "version": "f8a3593a7618",
+      "version": "008503065527",
       "files": [
         "SKILL.md",
         "references/autonomous-run.md",
@@ -62,7 +62,7 @@
     },
     {
       "name": "shipwright-build",
-      "version": "5fc7249e5723",
+      "version": "4a3c9f012db4",
       "files": [
         "SKILL.md",
         "references/bugfix.md",
@@ -154,9 +154,10 @@
     },
     {
       "name": "shipwright-flow",
-      "version": "523ac5202120",
+      "version": "3d2e015a1652",
       "files": [
-        "SKILL.md"
+        "SKILL.md",
+        "references/clarify.md"
       ]
     },
     {
@@ -211,16 +212,17 @@
     },
     {
       "name": "shipwright-lean",
-      "version": "c509091736cd",
+      "version": "d5834534c2b7",
       "files": [
         "SKILL.md",
         "references/lean-checks.md",
-        "references/smallest-change.md"
+        "references/smallest-change.md",
+        "references/worker-contract.md"
       ]
     },
     {
       "name": "shipwright-perf",
-      "version": "f8cf771020ac",
+      "version": "a0c508eb0cd5",
       "files": [
         "SKILL.md",
         "references/benchmark-checklist.md",
@@ -233,7 +235,7 @@
     },
     {
       "name": "shipwright-plan",
-      "version": "011b3a3941e7",
+      "version": "0c19eda71281",
       "files": [
         "SKILL.md",
         "references/example.md",
@@ -491,7 +493,7 @@
     },
     {
       "name": "shipwright-structure",
-      "version": "10cf0a5d5975",
+      "version": "ac43d8c1bf9f",
       "files": [
         "SKILL.md",
         "references/tech-debt.md"

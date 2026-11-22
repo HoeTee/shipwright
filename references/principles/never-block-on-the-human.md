@@ -9,3 +9,4 @@ The human supervises asynchronously. Agents must stay unblocked. Make reasonable
 - Irreversible actions (force-push, delete production data, send external messages) still require confirmation.
 - Reversible actions (write code, edit notes, split tasks) should proceed without blocking.
 - Product direction comes from the human. Execution should not block.
+- This does not cover a user who explicitly asked to think a requirement or concept through. Follow [clarify.md](../../skills/shipwright-flow/references/clarify.md). own and watch may adopt a recommendation and mark it as an assumption only when the user did not ask for that discussion. Do not treat silence, "continue", or the end of a count as approval.
