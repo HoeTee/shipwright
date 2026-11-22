@@ -24,7 +24,7 @@ The prose that ships alongside the type sketch. One page. Sentence-case headings
 
 ## Alternatives considered
 
-*Required. Name at least one concrete alternative shape, with one line on why it lost. Judge each alternative on interface depth, not implementation simplicity alone. Name the complexity it exposes to callers and the complexity it hides. Two or three alternatives belong here when the design space had real contenders. One is fine when the constraints forced the answer, with the conclusion phrased as "this was the only viable shape because..." Avoid listing flavors of the same shape. This section covers design alternatives the chosen shape considered and rejected, not other runner candidates.*
+*When a real structural comparison happened, name at least one concrete alternative shape, with one line on why it lost. Judge each alternative on interface depth, not implementation simplicity alone. Name the complexity it exposes to callers and the complexity it hides. Two or three alternatives belong here when the design space had real contenders. When the lean ladder's first sufficient option had no structural tradeoff, say that, and do not invent a second shape. Avoid listing flavors of the same shape. This section covers design alternatives the chosen shape considered and rejected, not other runner candidates. This rationale is not an ADR.*
 
 ## Open questions and risks
 

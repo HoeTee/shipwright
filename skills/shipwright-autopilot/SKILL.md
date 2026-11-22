@@ -13,7 +13,7 @@ description: "长时间无人值守：定判定条件、循环推进、干净暂
 1. 先写下退出条件，再动手。例子：测试全绿、原复现已消失、图像差异为零。条件在中途不能放宽。见 [autonomous-run.md](references/autonomous-run.md)。
 2. 每一轮只做证据所要求的最小改动，对着退出条件验证，有推进就提交，没有推进就撤回。原则 [sequence-verifiable-units](../../references/principles/sequence-verifiable-units.md)、[outcome-oriented-execution](../../references/principles/outcome-oriented-execution.md)、[never-block-on-the-human](../../references/principles/never-block-on-the-human.md)、[build-the-lever](../../references/principles/build-the-lever.md) 见 [principles](../../references/principles/README.md)，不要另抄。
 3. 没有现成剧本时，按 [hypothesis.md](references/hypothesis.md) 把每个单元当成一次实验：写出假设，改一小步，在真实产物上测量，不成立就回退。框定判定条件和设计阶段属于 shipwright-plan 和 shipwright-architect。决策日志交给 shipwright-trail。
-4. 可逆的事先做再报。只把不可逆动作、没有实验能解决的产品取舍、或真正的死胡同交给用户。
+4. 可逆的事先做再报。只把不可逆动作、没有实验能解决的产品取舍、或真正的死胡同交给用户。用户明确要求把需求或概念深入想清时，不按本条采用未答决策。那次讨论走 [clarify.md](../shipwright-flow/references/clarify.md)。确认共享理解之前，不做依赖那些决策的实现。
 5. 有事件就等事件。没有事件订阅时用粗间隔复查，不要空转轮询。
 6. 用户明确要求暂停时，按 [pause.md](references/pause.md) 停在安全边界：收尾或回退当前一步，不新开 PR，不新推送，把未提交改动做成一条 `wip:` 提交，并在 `/tmp/<slug>-resume.md` 写下续做所需的意图、进度、已验证项和下一步。用户说继续做时不要暂停。
 

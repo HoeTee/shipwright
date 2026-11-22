@@ -27,7 +27,9 @@ The subagent prompt must contain:
 > skipped, say so plainly. When finished, reply with exactly the report
 > format below.
 
-3. The report format:
+3. The worker contract from [worker-contract.md](../../shipwright-lean/references/worker-contract.md), inlined in full, whenever the executor writes code. Do not substitute the two lines in laziness-protocol. The parent reads that file when dispatching a code writer, not on every task. The implementer loads the lean skill files named in the contract when those paths resolve. A `shortcut:` comment does not exempt security or data integrity.
+
+4. The report format:
 
 ```
 STATUS: COMPLETE | STOPPED
